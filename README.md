@@ -9,3 +9,8 @@ This repository is created by [a clumsy programmer](https://leetcode.com/vinta/)
 ### Books
 
 - [Grokking Algorithms](https://learning.oreilly.com/library/view/grokking-algorithms-an/9781617292231/)
+- [Cracking the Coding Interview](http://www.crackingthecodinginterview.com/)
+
+### Websites
+
+- [Tech Interview Handbook](https://yangshun.github.io/tech-interview-handbook/)
