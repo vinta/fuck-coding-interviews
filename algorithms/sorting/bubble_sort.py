@@ -6,11 +6,7 @@ Worst-case Complexity: O(n^2)
 Best-case Complexity: O(n) (the input array is already sorted)
 Average Complexity: O(n^2)
 """
-
-array = [5, 7, 1, 9, 5, -4, 3, 0, 2]
-# array = [1, 2, 3]
-# array = [1, ]
-# array = []
+import unittest
 
 
 def bubble_sort(arr):
@@ -32,4 +28,26 @@ def bubble_sort(arr):
     return arr
 
 
-print(bubble_sort(array.copy()))
+class TestCase(unittest.TestCase):
+    def test(self):
+        array = [5, 7, 1, 9, 5, -4, 3, 0, 2]
+        expected = [-4, 0, 1, 2 ,3, 5, 5, 7, 9]
+        self.assertEqual(bubble_sort(array), expected)
+
+    def test2(self):
+        array = [1, 2, 3]
+        expected = [1, 2, 3]
+        self.assertEqual(bubble_sort(array), expected)
+
+    def test3(self):
+        array = [1, ]
+        expected = [1, ]
+        self.assertEqual(bubble_sort(array), expected)
+
+    def test4(self):
+        array = []
+        expected = []
+        self.assertEqual(bubble_sort(array), expected)
+
+
+unittest.main()
