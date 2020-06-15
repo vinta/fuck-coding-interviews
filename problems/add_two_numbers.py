@@ -2,6 +2,10 @@
 """
 https://leetcode.com/problems/add-two-numbers/
 """
+import unittest
+
+from utils.linked_list import list_to_listnode
+from utils.linked_list import listnode_to_list
 
 
 class ListNode:
@@ -51,3 +55,25 @@ class Solution:
             result_node.next = ListNode(carry)
 
         return dummy_head_result_node.next
+
+
+class TestCase(unittest.TestCase):
+    def setUp(self):
+        self.solution = Solution()
+
+    def test(self):
+        l1 = list_to_listnode([2, 4, 3])
+        l2 = list_to_listnode([5, 6, 4])
+        expected_head = self.solution.addTwoNumbers(l1, l2)
+        expected = [7, 0, 8]
+        self.assertEqual(listnode_to_list(expected_head), expected)
+
+    def test(self):
+        l1 = list_to_listnode([0, 1, 0, 9])
+        l2 = list_to_listnode([1, 9, 9])
+        expected_head = self.solution.addTwoNumbers(l1, l2)
+        expected = [1, 0, 0, 0, 1]
+        self.assertEqual(listnode_to_list(expected_head), expected)
+
+
+unittest.main()
