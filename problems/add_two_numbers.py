@@ -68,7 +68,7 @@ class TestCase(unittest.TestCase):
         expected = [7, 0, 8]
         self.assertEqual(listnode_to_list(expected_head), expected)
 
-    def test(self):
+    def test2(self):
         l1 = list_to_listnode([0, 1, 0, 9])
         l2 = list_to_listnode([1, 9, 9])
         expected_head = self.solution.addTwoNumbers(l1, l2)
