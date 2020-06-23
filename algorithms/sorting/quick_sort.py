@@ -11,27 +11,46 @@ import unittest
 
 
 def quick_sort(arr):
+    # Partition is to move all items that less than the pivot to the left side of the pivot,
+    # and move all items that greater than the pivot to the right side of the pivot
+    # As a result, the pivot is in the correct index,
+    # but items in both sides of the pivot don't necessarily end up sorted
     def partition(arr, start, end):
+        # Select the first item as the pivot,
+        # So the left cursor starts from the next index of the pivot
         pivot_index = start
         pivot = arr[pivot_index]
-        left = pivot_index + 1
+        left = start + 1
         right = end
 
         while True:
+            # If the current item is less than or equal to the pivot,
+            # it's in the proper side (left side of the pivot),
+            # then we move the left cursor right to the next element
             while left <= right and arr[left] <= pivot:
+                # The left cursor stops at the item which is greater than the pivot
                 left = left + 1
 
+            # If the current item is greater than or equal to the pivot,
+            # it's in the proper side (right side of the pivot),
+            # then we move the right cursor left to the next element
             while left <= right and arr[right] >= pivot:
+                # The right cursor stops at the item which is less than the pivot
                 right = right - 1
 
+            # We find items for both left and right cursor that are in the wrong side,
+            # so we swap them ("the leftmost item which greater than pivot" and "the rightmost item which less than the pivot"),
+            # In the end, we move all items to their proper side of the pivot
             if left <= right:
                 arr[left], arr[right] = arr[right], arr[left]
             else:
                 break
 
-        # if pivot_index != right:
-        arr[pivot_index], arr[right] = arr[right], arr[pivot_index]
-        pivot_index = right
+        # We swap the pivot with the right cursor,
+        # so the pivot ends up in the correct index
+        if pivot_index != right:
+            arr[pivot_index], arr[right] = arr[right], arr[pivot_index]
+            pivot_index = right
 
         return pivot_index
 
@@ -73,8 +92,8 @@ def quick_sort2(arr):
 
 class TestCase(unittest.TestCase):
     def test(self):
-        array = [5, 7, 1, 9, 5, -4, 3, 0, 2]
-        expected = [-4, 0, 1, 2, 3, 5, 5, 7, 9]
+        array = [5, 7, 1, 9, 5, 5, -4, 3, 0, 2]
+        expected = [-4, 0, 1, 2, 3, 5, 5, 5, 7, 9]
         self.assertEqual(quick_sort(array), expected)
 
     def test2(self):
