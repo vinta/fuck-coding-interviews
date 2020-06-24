@@ -55,14 +55,11 @@ def quick_sort(arr):
         return pivot_index
 
     def quick_sort_range(arr, start, end):
-        # base case
-        if start >= end:
-            return arr
+        if start < end:
+            pivot_index = partition(arr, start, end)
+            quick_sort_range(arr, start, pivot_index - 1)
+            quick_sort_range(arr, pivot_index + 1, end)
 
-        # recursive case
-        pivot_index = partition(arr, start, end)
-        quick_sort_range(arr, start, pivot_index - 1)
-        quick_sort_range(arr, pivot_index + 1, end)
         return arr
 
     return quick_sort_range(arr, 0, len(arr) - 1)
