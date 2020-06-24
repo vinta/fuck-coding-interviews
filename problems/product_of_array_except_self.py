@@ -59,4 +59,5 @@ class TestCase2(unittest.TestCase):
         self.assertEqual(self.solution.productExceptSelf(nums), expected_output)
 
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()

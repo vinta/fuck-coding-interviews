@@ -51,4 +51,5 @@ class TestCase2(unittest.TestCase):
         self.assertEqual(self.solution.maxProfit(prices), 5)
 
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()

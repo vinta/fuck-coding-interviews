@@ -44,4 +44,5 @@ class TestCase2(unittest.TestCase):
         self.assertEqual(self.solution.containsDuplicate(nums), True)
 
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()

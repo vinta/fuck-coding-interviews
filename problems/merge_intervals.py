@@ -50,4 +50,5 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.solution.merge(intervals), expected)
 
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()

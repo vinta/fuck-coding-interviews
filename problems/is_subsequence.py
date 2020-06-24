@@ -48,4 +48,5 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.solution.isSubsequence(s, t), True)
 
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()

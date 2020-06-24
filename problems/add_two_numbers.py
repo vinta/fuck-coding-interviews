@@ -76,4 +76,5 @@ class TestCase(unittest.TestCase):
         self.assertEqual(listnode_to_list(expected_head), expected)
 
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()

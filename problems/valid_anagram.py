@@ -76,4 +76,5 @@ class TestCase3(unittest.TestCase):
         self.assertEqual(self.solution.isAnagram(s, t), True)
 
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()

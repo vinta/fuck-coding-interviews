@@ -32,4 +32,5 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.solution.maxSubArray(nums), 6)
 
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()

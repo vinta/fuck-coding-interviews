@@ -52,4 +52,5 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.solution.maxProduct(nums), 2)
 
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()

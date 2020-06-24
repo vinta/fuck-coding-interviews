@@ -47,4 +47,5 @@ class TestCase2(unittest.TestCase):
         self.assertEqual(self.solution.twoSum(nums, target), [1, 5])
 
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()
