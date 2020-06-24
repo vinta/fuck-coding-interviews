@@ -72,22 +72,26 @@ def quick_sort2(arr):
     if len(arr) <= 1:
         return arr
     else:
-        # Select the last item as the pivot
-        pivot = arr.pop()
+        # Select the first item as the pivot
+        pivot = arr[0]
 
         # Partition the other elements into two sublists,
         # According to whether they are less than or greater than the pivot
         left_list = []
         right_list = []
-        for item in arr:
-            # There might be duplicates of pivot
-            if item <= pivot:
-                left_list.append(item)
-            else:
-                right_list.append(item)
 
-        # The sublists are then sorted recursively
-        return quick_sort(left_list) + [pivot, ] + quick_sort(right_list)
+        # There might be duplicates of pivot
+        pivot_list = []
+        for item in arr:
+            if item < pivot:
+                left_list.append(item)
+            elif item > pivot:
+                right_list.append(item)
+            else:
+                pivot_list.append(item)
+
+        # Sublists are then sorted recursively
+        return quick_sort2(left_list) + pivot_list + quick_sort2(right_list)
 
 
 class TestCase(unittest.TestCase):
