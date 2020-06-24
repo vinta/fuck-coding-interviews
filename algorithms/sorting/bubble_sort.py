@@ -16,13 +16,15 @@ def bubble_sort(arr):
     while swapped:
         swapped = False
 
-        # we check `i` and `i + 1` in each loop, so we only need `length - 1` loops to cover all items
+        # We check i and i + 1 in each loop,
+        # so we only need length - 1 loops to cover all items
         for i in range(0, length - 1):
             if arr[i] > arr[i + 1]:
                 arr[i], arr[i + 1] = arr[i + 1], arr[i]
                 swapped = True
 
-        # we sort one item in each iteration, so the length of remaining unsorted items is reduced by 1
+        # We sort one item in each iteration,
+        # so the length of remaining unsorted items is reduced by 1
         length = length - 1
 
     return arr
@@ -30,24 +32,21 @@ def bubble_sort(arr):
 
 class TestCase(unittest.TestCase):
     def test(self):
-        array = [5, 7, 1, 9, 5, -4, 3, 0, 2]
-        expected = [-4, 0, 1, 2 ,3, 5, 5, 7, 9]
-        self.assertEqual(bubble_sort(array), expected)
-
-    def test2(self):
-        array = [1, 2, 3]
-        expected = [1, 2, 3]
-        self.assertEqual(bubble_sort(array), expected)
-
-    def test3(self):
-        array = [1, ]
-        expected = [1, ]
-        self.assertEqual(bubble_sort(array), expected)
-
-    def test4(self):
-        array = []
-        expected = []
-        self.assertEqual(bubble_sort(array), expected)
+        test_lists = [
+            [5, 7, 1, 9, 5, 5, -4, 3, 0, 2],
+            [],
+            [1, ],
+            [1, 2],
+            [1, 2, 3],
+            [3, 2, 1],
+            [1, 2, 3, 4],
+            [4, 3, 2, 1],
+            [1, 1, 1, 1],
+        ]
+        for array in test_lists:
+            with self.subTest(array=array):
+                self.assertEqual(bubble_sort(array.copy()), sorted(array))
 
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()

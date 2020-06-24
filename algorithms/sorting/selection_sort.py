@@ -19,7 +19,7 @@ def selection_sort(arr):
 
         min_index = 0
         for i, item in enumerate(arr):
-            if item < arr[min_index]:
+            if item <= arr[min_index]:
                 min_index = i
         return min_index
 
@@ -33,7 +33,7 @@ def selection_sort(arr):
     return sorted_arr
 
 
-def selection_sort2(arr):
+def selection_sort_nested_for_loop(arr):
     length = len(arr)
     for i in range(length - 1):
         # Find the smallest item in the unsorted sublist
@@ -52,46 +52,39 @@ def selection_sort2(arr):
 
 class TestCase(unittest.TestCase):
     def test(self):
-        array = [5, 7, 1, 9, 5, -4, 3, 0, 2]
-        expected = [-4, 0, 1, 2, 3, 5, 5, 7, 9]
-        self.assertEqual(selection_sort(array), expected)
-
-    def test2(self):
-        array = [1, 2, 3]
-        expected = [1, 2, 3]
-        self.assertEqual(selection_sort(array), expected)
-
-    def test3(self):
-        array = [1, ]
-        expected = [1, ]
-        self.assertEqual(selection_sort(array), expected)
-
-    def test4(self):
-        array = []
-        expected = []
-        self.assertEqual(selection_sort(array), expected)
+        test_lists = [
+            [5, 7, 1, 9, 5, 5, -4, 3, 0, 2],
+            [],
+            [1, ],
+            [1, 2],
+            [1, 2, 3],
+            [3, 2, 1],
+            [1, 2, 3, 4],
+            [4, 3, 2, 1],
+            [1, 1, 1, 1],
+        ]
+        for array in test_lists:
+            with self.subTest(array=array):
+                self.assertEqual(selection_sort(array.copy()), sorted(array))
 
 
 class TestCase2(unittest.TestCase):
     def test(self):
-        array = [5, 7, 1, 9, 5, -4, 3, 0, 2]
-        expected = [-4, 0, 1, 2 ,3, 5, 5, 7, 9]
-        self.assertEqual(selection_sort2(array), expected)
-
-    def test2(self):
-        array = [1, 2, 3]
-        expected = [1, 2, 3]
-        self.assertEqual(selection_sort2(array), expected)
-
-    def test3(self):
-        array = [1, ]
-        expected = [1, ]
-        self.assertEqual(selection_sort2(array), expected)
-
-    def test4(self):
-        array = []
-        expected = []
-        self.assertEqual(selection_sort2(array), expected)
+        test_lists = [
+            [5, 7, 1, 9, 5, 5, -4, 3, 0, 2],
+            [],
+            [1, ],
+            [1, 2],
+            [1, 2, 3],
+            [3, 2, 1],
+            [1, 2, 3, 4],
+            [4, 3, 2, 1],
+            [1, 1, 1, 1],
+        ]
+        for array in test_lists:
+            with self.subTest(array=array):
+                self.assertEqual(selection_sort_nested_for_loop(array.copy()), sorted(array))
 
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()
