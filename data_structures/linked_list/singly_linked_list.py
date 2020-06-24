@@ -84,4 +84,5 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.linked_list.index_of_value('NOT EXIST'), None)
 
 
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()
