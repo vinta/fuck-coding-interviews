@@ -4,8 +4,8 @@ https://leetcode.com/problems/reverse-linked-list/
 """
 import unittest
 
-from utils.linked_list import list_to_listnode
-from utils.linked_list import listnode_to_list
+from utils.leetcode import list_to_listnode
+from utils.leetcode import listnode_to_list
 
 
 # Definition for singly-linked list.
