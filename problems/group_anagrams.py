@@ -28,7 +28,7 @@ class TestCase(unittest.TestCase):
     def test(self):
         strs = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat']
         expected = [['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']]
-        self.assertEqual(self.solution.groupAnagrams(strs), expected)
+        self.assertCountEqual(self.solution.groupAnagrams(strs), expected)
 
 
 if __name__ == '__main__':
