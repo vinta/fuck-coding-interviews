@@ -1,6 +1,6 @@
 # fuck-coding-interviews
 
-![GitHub Action](https://github.com/vinta/fuck-coding-interviews/workflows/CI/badge.svg)
+[![GitHub Actions](https://github.com/vinta/fuck-coding-interviews/workflows/CI/badge.svg)](https://github.com/vinta/fuck-coding-interviews/actions)
 
 This repository is created by [a clumsy programmer](https://leetcode.com/vinta/) who always struggles with coding problems on LeetCode, even with some **Easy** questions.
 
