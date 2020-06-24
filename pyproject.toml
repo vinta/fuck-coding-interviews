@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "fuck-coding-interviews"
+version = "0.1.0"
+description = "How on earth can I ever think of a solution like that in an interview?!"
+authors = ["Vinta Chen <vinta.chen@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.4.3"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
