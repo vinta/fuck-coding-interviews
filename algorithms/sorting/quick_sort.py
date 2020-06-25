@@ -10,6 +10,7 @@ Average Complexity: O(n * log(n))
 import unittest
 
 
+# This implementation takes extra space but is faster than the in-place version
 def quick_sort(arr):
     if len(arr) <= 1:
         return arr
