@@ -28,6 +28,25 @@ class LinkedList:
             yield current_node.value
             current_node = current_node.next
 
+    def reverse(self):
+        node = None
+        current_node = self.head
+        while current_node:
+            next_node = current_node.next
+            current_node.next = node
+            node = current_node
+            current_node = next_node
+
+        # TODO: We can cache the reversed version as self._reversed
+        return LinkedList(node)
+
+    def __reversed__(self):
+        reversed_linked_list = self.reverse()
+        current_node = reversed_linked_list.head
+        while current_node:
+            yield current_node.value
+            current_node = current_node.next
+
     def node_of_index(self, index):
         # TODO: Support negative indexes
         if index < 0:
@@ -129,6 +148,13 @@ class TestCase(unittest.TestCase):
     def test_iter(self):
         self.assertEqual(list(self.empty_linked_list), [])
         self.assertEqual(list(self.linked_list), [self.node_0.value, self.node_1.value, self.node_2.value, self.node_3.value])
+
+    def test_reverse(self):
+        reversed_linked_list = self.linked_list.reverse()
+        self.assertEqual(list(reversed_linked_list), [self.node_3.value, self.node_2.value, self.node_1.value, self.node_0.value])
+
+    def test_reversed(self):
+        self.assertEqual(list(reversed(self.linked_list)), [self.node_3.value, self.node_2.value, self.node_1.value, self.node_0.value])
 
     def test_value_of_index(self):
         with self.assertRaises(IndexError):
