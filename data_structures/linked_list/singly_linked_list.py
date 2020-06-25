@@ -113,10 +113,10 @@ class TestCase(unittest.TestCase):
     def setUp(self):
         self.empty_linked_list = LinkedList()
 
-        self.node_0 = ListNode('once')
-        self.node_1 = ListNode('upon')
-        self.node_2 = ListNode('a')
-        self.node_3 = ListNode('time')
+        self.node_0 = ListNode('nobody exists on purpose')
+        self.node_1 = ListNode('nobody belongs anywhere')
+        self.node_2 = ListNode('everybody is gonna die')
+        self.node_3 = ListNode('come writing Python')
         self.node_0.next = self.node_1
         self.node_1.next = self.node_2
         self.node_2.next = self.node_3
@@ -128,7 +128,7 @@ class TestCase(unittest.TestCase):
 
     def test_iter(self):
         self.assertEqual(list(self.empty_linked_list), [])
-        self.assertEqual(list(self.linked_list), ['once', 'upon', 'a', 'time'])
+        self.assertEqual(list(self.linked_list), [self.node_0.value, self.node_1.value, self.node_2.value, self.node_3.value])
 
     def test_value_of_index(self):
         with self.assertRaises(IndexError):
@@ -151,10 +151,10 @@ class TestCase(unittest.TestCase):
     def test_index_of_value(self):
         self.assertEqual(self.empty_linked_list.index_of_value('NOT EXIST'), None)
 
-        self.assertEqual(self.linked_list.index_of_value('once'), 0)
-        self.assertEqual(self.linked_list.index_of_value('upon'), 1)
-        self.assertEqual(self.linked_list.index_of_value('a'), 2)
-        self.assertEqual(self.linked_list.index_of_value('time'), 3)
+        self.assertEqual(self.linked_list.index_of_value(self.node_0.value), 0)
+        self.assertEqual(self.linked_list.index_of_value(self.node_1.value), 1)
+        self.assertEqual(self.linked_list.index_of_value(self.node_2.value), 2)
+        self.assertEqual(self.linked_list.index_of_value(self.node_3.value), 3)
 
         self.assertEqual(self.linked_list.index_of_value('NOT EXIST'), None)
 
