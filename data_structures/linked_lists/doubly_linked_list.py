@@ -16,49 +16,6 @@ class DoublyLinkedList(LinkedList):
         self.head = head
         self.tail = tail
 
-    def insert_at_index(self, index, value):
-        new_node = DoublyListNode(value)
-
-        if index == 0:
-            new_node.next = self.head
-            self.head.previous = new_node
-            self.head = new_node
-
-        elif index > 0:
-            current_node = self.head
-            current_index = 0
-            while current_node:
-                if current_index == index:
-                    new_node.previous = current_node.previous
-                    new_node.next = current_node
-                    current_node.previous = new_node
-                    return
-
-                current_node = current_node.next
-                current_index += 1
-
-            raise IndexError
-
-        elif index < 0:
-            current_node = self.tail
-            current_index = -1
-            while current_node:
-
-                current_node = current_node.previous
-
-    def insert_at_end(self, value):
-        new_node = DoublyListNode(value)
-        if not self.head:
-            self.head = new_node
-            self.tail = new_node
-        else:
-            new_node.previous = self.tail
-            self.tail.next = new_node
-            self.tail = new_node
-
-    def remove_from_front(self):
-        pass
-
 
 class TestCase(unittest.TestCase):
     def setUp(self):

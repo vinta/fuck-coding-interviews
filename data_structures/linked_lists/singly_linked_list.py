@@ -15,6 +15,12 @@ class LinkedList:
     def __repr__(self):
         pass
 
+    def __str__(self):
+        pass
+
+    def __bool__(self):
+        pass
+
     def __len__(self):
         length = 0
         current_node = self.head
@@ -40,7 +46,9 @@ class LinkedList:
             node = current_node
             current_node = next_node
 
-        # TODO: We can cache the reversed version as self._reversed
+        # TODO:
+        # We can cache the reversed version as self._reversed,
+        # but we need to invalidate cache when the LinkedList changes
         return LinkedList(node)
 
     def __reversed__(self):
@@ -56,19 +64,20 @@ class LinkedList:
     def __setitem__(self, index, value):
         pass
 
+    # TODO
     def append(self, value):
         pass
 
     def prepend(self, value):
         pass
 
+    def insert(self, index, value):
+        pass
+
     def pop(self, index):
         pass
 
-    def insert(self, i, x):
-        pass
-
-    def index(self, x):
+    def index(self, value):
         pass
 
     def node_of_index(self, index):
@@ -165,11 +174,11 @@ class TestCase(unittest.TestCase):
         self.node_2.next = self.node_3
         self.linked_list = LinkedList(self.node_0)
 
-    def test_len(self):
+    def test__len__(self):
         self.assertEqual(len(self.empty_linked_list), 0)
         self.assertEqual(len(self.linked_list), 4)
 
-    def test_iter(self):
+    def test__iter__(self):
         self.assertEqual(list(self.empty_linked_list), [])
         self.assertEqual(list(self.linked_list), [self.node_0.value, self.node_1.value, self.node_2.value, self.node_3.value])
 
@@ -177,7 +186,7 @@ class TestCase(unittest.TestCase):
         reversed_linked_list = self.linked_list.reverse()
         self.assertEqual(list(reversed_linked_list), [self.node_3.value, self.node_2.value, self.node_1.value, self.node_0.value])
 
-    def test_reversed(self):
+    def test__reversed__(self):
         self.assertEqual(list(reversed(self.linked_list)), [self.node_3.value, self.node_2.value, self.node_1.value, self.node_0.value])
 
     def test_value_of_index(self):
