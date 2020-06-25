@@ -42,7 +42,7 @@ def quick_sort(arr):
 def quick_sort_in_place(arr):
     # Partition is to move all items that less than the pivot to the left side of the pivot,
     # and move all items that greater than the pivot to the right side of the pivot
-    # As a result, the pivot is in the correct index,
+    # As a result, the pivot is in its final position,
     # but items in both sides of the pivot don't necessarily end up sorted
     def partition(arr, start, end):
         # Select the first item as the pivot,
