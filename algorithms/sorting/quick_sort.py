@@ -38,6 +38,7 @@ def quick_sort(arr):
 
 
 # https://en.wikipedia.org/wiki/Quicksort#Hoare_partition_scheme
+# https://stackabuse.com/quicksort-in-python/
 def quick_sort_in_place(arr):
     # Partition is to move all items that less than the pivot to the left side of the pivot,
     # and move all items that greater than the pivot to the right side of the pivot
