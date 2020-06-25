@@ -12,6 +12,9 @@ class LinkedList:
     def __init__(self, head=None):
         self.head = head
 
+    def __repr__(self):
+        pass
+
     def __len__(self):
         length = 0
         current_node = self.head
@@ -46,6 +49,27 @@ class LinkedList:
         while current_node:
             yield current_node.value
             current_node = current_node.next
+
+    def __getitem__(self, index):
+        pass
+
+    def __setitem__(self, index, value):
+        pass
+
+    def append(self, value):
+        pass
+
+    def prepend(self, value):
+        pass
+
+    def pop(self, index):
+        pass
+
+    def insert(self, i, x):
+        pass
+
+    def index(self, x):
+        pass
 
     def node_of_index(self, index):
         # TODO: Support negative indexes
