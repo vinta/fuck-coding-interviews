@@ -10,7 +10,7 @@ Average Complexity: O(n * log(n))
 import random
 import unittest
 
-import pytest
+import pytest  # pylint: disable=import-error
 
 
 # This implementation takes extra space but is more faster than the in-place version
