@@ -144,18 +144,15 @@ class LinkedList:
         current_node.next = ListNode(value)
 
     def reverse(self):
-        node = None
+        previous_node = None
         current_node = self.head
         while current_node:
             next_node = current_node.next
-            current_node.next = node
-            node = current_node
+            current_node.next = previous_node
+            previous_node = current_node
             current_node = next_node
 
-        # TODO:
-        # We can cache the reversed version as self._reversed,
-        # but we need to invalidate cache when the LinkedList changes
-        return LinkedList(node)
+        self.head = previous_node
 
 
 class TestCase(unittest.TestCase):
@@ -197,9 +194,6 @@ class TestCase(unittest.TestCase):
         with self.assertRaises(IndexError):
             print(self.linked_list[4])
 
-        with self.assertRaises(IndexError):
-            print(self.linked_list[100])
-
     def test__setitem__(self):
         with self.assertRaises(IndexError):
             self.empty_linked_list[0] = 0
@@ -238,9 +232,6 @@ class TestCase(unittest.TestCase):
 
         with self.assertRaises(IndexError):
             self.linked_list.insert(10, '10')
-
-        with self.assertRaises(IndexError):
-            self.linked_list.insert(100, '100')
 
     def test_pop(self):
         with self.assertRaises(IndexError):
@@ -281,15 +272,17 @@ class TestCase(unittest.TestCase):
         self.assertEqual(list(self.linked_list), expected)
 
     def test_reverse(self):
-        self.assertEqual(list(self.empty_linked_list.reverse()), [])
+        self.empty_linked_list.reverse()
+        self.assertEqual(list(self.empty_linked_list), [])
 
+        self.linked_list.reverse()
         expected = [
             self.node_3.value,
             self.node_2.value,
             self.node_1.value,
             self.node_0.value,
         ]
-        self.assertEqual(list(self.linked_list.reverse()), expected)
+        self.assertEqual(list(self.linked_list), expected)
 
 
 if __name__ == '__main__':
