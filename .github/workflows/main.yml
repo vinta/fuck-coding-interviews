@@ -25,9 +25,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # TODO: https://github.com/github/super-linter/issues/157
-      - name: Lint code
-        uses: docker://github/super-linter:v2.2.0
+      # # TODO: https://github.com/github/super-linter/issues/157
+      # - name: Lint code
+      #   uses: docker://github/super-linter:v2.2.0
 
       - name: Run tests
         run: pytest --benchmark-disable
