@@ -52,7 +52,7 @@ class LinkedList:
 
         raise IndexError
 
-    # linked_list[i] behaves like replace(i, value) instead of insert(i, value)
+    # This method behaves like replace(i, value) instead of insert(i, value)
     def __setitem__(self, index, value):
         if index < 0:
             raise IndexError
