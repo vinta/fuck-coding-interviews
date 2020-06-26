@@ -11,5 +11,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Run linter
+      - name: Lint code
         uses: docker://github/super-linter:v2.2.0
