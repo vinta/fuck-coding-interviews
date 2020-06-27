@@ -19,7 +19,7 @@ class LinkedList:
         return f'{list(self)}'
 
     def __bool__(self):
-        return self.head
+        return bool(self.head)
 
     def __len__(self):
         length = 0
