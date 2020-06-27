@@ -12,6 +12,7 @@ This repository is created by [a clumsy programmer](https://leetcode.com/vinta/)
 
 - [Grokking Algorithms](https://learning.oreilly.com/library/view/grokking-algorithms-an/9781617292231/)
 - [A Common-Sense Guide to Data Structures and Algorithms](https://learning.oreilly.com/library/view/a-common-sense-guide/9781680502794/)
+- [Data Structures and Algorithms in Python](https://learning.oreilly.com/library/view/data-structures-and/9781118290279/)
 - [Cracking the Coding Interview](http://www.crackingthecodinginterview.com/)
 
 ### Websites
