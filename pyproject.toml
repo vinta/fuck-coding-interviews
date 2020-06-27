@@ -6,10 +6,11 @@ authors = ["Vinta Chen <vinta.chen@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.6"
 
 [tool.poetry.dev-dependencies]
 pytest = "==5.4.3"
+pytest-benchmark = "==3.2.3"
 
 [build-system]
 requires = ["poetry>=0.12"]
