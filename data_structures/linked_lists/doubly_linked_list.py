@@ -11,6 +11,7 @@ class DoublyListNode:
         self.previous = previous
 
 
+# TODO: Override other methods to support negative indexes
 class DoublyLinkedList(LinkedList):
     def __init__(self, head=None, tail=None):
         self.head = head
@@ -31,7 +32,11 @@ class DoublyLinkedList(LinkedList):
         else:
             return super().__getitem__(index)
 
-    # TODO: Override other methods to support negative indexes
+    def __reverse__(self):
+        current_node = self.tail
+        while current_node:
+            yield current_node.value
+            current_node = current_node.previous
 
     def append(self, value):
         new_node = DoublyListNode(value)
@@ -87,6 +92,25 @@ class TestCase(unittest.TestCase):
 
         with self.assertRaises(IndexError):
             print(self.linked_list[-5])
+
+    def test__reversed__(self):
+        self.assertEqual(list(reversed(self.empty_linked_list)), [])
+
+        expected = [
+            self.node_3.value,
+            self.node_2.value,
+            self.node_1.value,
+            self.node_0.value,
+        ]
+        self.assertEqual(list(reversed(self.linked_list)), expected)
+
+        expected = [
+            self.node_0.value,
+            self.node_1.value,
+            self.node_2.value,
+            self.node_3.value,
+        ]
+        self.assertEqual(list(self.linked_list), expected)
 
     def test_append(self):
         self.linked_list.append('4')
