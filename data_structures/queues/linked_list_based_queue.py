@@ -1,4 +1,8 @@
 # coding: utf-8
+"""
+FIFO: first in, first out
+append, pop left
+"""
 import unittest
 
 
@@ -9,7 +13,7 @@ class ListNode:
 
 
 # Also see: https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/linked_lists/singly_linked_list.py
-# This implementation is more simplified, however, with some modifications
+# This implementation is more simplified, however, with specific modifications
 class LinkedList:
     def __init__(self, head=None, tail=None):
         self.head = None
@@ -37,7 +41,7 @@ class LinkedList:
         self.tail.next = new_node
         self.tail = new_node
 
-    def pop_head(self):
+    def pop_left(self):
         if not self.head:
             raise IndexError
 
@@ -62,7 +66,7 @@ class LinkedListBasedQueue:
 
     def dequeue(self):
         try:
-            return self.linked_list.pop_head()
+            return self.linked_list.pop_left()
         except IndexError:
             raise ValueError('Queue is empty')
 
