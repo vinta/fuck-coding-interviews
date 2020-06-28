@@ -28,11 +28,8 @@ class LinkedList:
             yield node.value
             node = node.next
 
-    def new_node(self, value):
-        return ListNode(value)
-
     def append(self, value):
-        new_node = self.new_node(value)
+        new_node = ListNode(value)
         if not self.head:
             self.head = new_node
             self.tail = new_node
