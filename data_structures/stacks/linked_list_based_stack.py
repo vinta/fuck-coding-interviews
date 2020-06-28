@@ -1,89 +1,80 @@
 # coding: utf-8
+"""
+LIFO: last in, first out
+append left, pop left
+"""
 import unittest
 
 
-class DoublyListNode:
-    def __init__(self, value, next=None, previous=None):
+class ListNode:
+    def __init__(self, value, next=None):
         self.value = value
         self.next = next
-        self.previous = previous
 
 
-# Also see: https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/linked_lists/doubly_linked_list.py
-# This implementation is more simplified, however, with some modifications
-class DoublyLinkedList:
-    def __init__(self, head=None, tail=None):
-        self.head = head
-        self.tail = tail
+# Also see: https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/linked_lists/singly_linked_list.py
+# This implementation is more simplified, however, with specific modifications
+class LinkedList:
+    def __init__(self, head=None):
+        self.head = None
 
     def __bool__(self):
         return bool(self.head)
 
-    def __reversed__(self):
-        node = self.tail
+    def __iter__(self):
+        node = self.head
         while node:
             yield node.value
-            node = node.previous
+            node = node.next
 
-    def new_node(self, value):
-        return DoublyListNode(value)
-
-    def append(self, value):
-        new_node = self.new_node(value)
+    def append_left(self, value):
+        new_node = ListNode(value)
         if not self.head:
             self.head = new_node
-            self.tail = new_node
             return
 
-        new_node.previous = self.tail
-        self.tail.next = new_node
-        self.tail = new_node
+        new_node.next = self.head
+        self.head = new_node
 
-    def pop(self):
+    def pop_left(self):
         if not self.head:
             raise IndexError
 
-        deleted_value = self.tail.value
-        previous_node = self.tail.previous
-        if previous_node:
-            previous_node.next = None
-            self.tail = previous_node
-        else:
-            self.head = None
-            self.tail = None
+        deleted_value = self.head.value
+        self.head = self.head.next
         return deleted_value
 
 
-class DoublyLinkedListBasedStack:
+class LinkedListBasedStack:
     def __init__(self):
-        self.linked_list = DoublyLinkedList()
+        self.linked_list = LinkedList()
 
     def __bool__(self):
         return bool(self.linked_list)
 
     def __iter__(self):
-        for item in reversed(self.linked_list):
+        for item in self.linked_list:
             yield item
 
     def push(self, value):
-        self.linked_list.append(value)
+        self.linked_list.append_left(value)
 
     def pop(self):
         try:
-            return self.linked_list.pop()
+            return self.linked_list.pop_left()
         except IndexError:
             raise ValueError('Stack is empty')
 
     def peek(self):
-        tail = self.linked_list.tail
-        if tail:
-            return tail.value
-        raise ValueError('Stack is empty')
+        if not self.linked_list.head:
+            raise ValueError('Stack is empty')
+
+        return self.linked_list.head.value
 
 
 class TestCase(unittest.TestCase):
     def setUp(self):
-        self.stack = DoublyLinkedListBasedStack()
+        self.stack = LinkedListBasedStack()
 
     def test__bool__(self):
         self.assertFalse(self.stack)
