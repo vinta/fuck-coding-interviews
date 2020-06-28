@@ -15,13 +15,9 @@ class DoublyLinkedList:
     def __init__(self, head=None, tail=None):
         self.head = head
         self.tail = tail
-        self.size = 0
-
-    def __len__(self):
-        return self.size
 
     def __bool__(self):
-        return bool(self.size)
+        return bool(self.head)
 
     def __reversed__(self):
         node = self.tail
@@ -37,13 +33,11 @@ class DoublyLinkedList:
         if not self.head:
             self.head = new_node
             self.tail = new_node
-            self.size += 1
             return
 
         new_node.previous = self.tail
         self.tail.next = new_node
         self.tail = new_node
-        self.size += 1
 
     def pop(self):
         if not self.head:
@@ -57,16 +51,12 @@ class DoublyLinkedList:
         else:
             self.head = None
             self.tail = None
-        self.size -= 1
         return deleted_value
 
 
 class DoublyLinkedListBasedStack:
     def __init__(self):
         self.linked_list = DoublyLinkedList()
-
-    def __len__(self):
-        return len(self.linked_list)
 
     def __bool__(self):
         return bool(self.linked_list)
@@ -95,12 +85,6 @@ class TestCase(unittest.TestCase):
     def setUp(self):
         self.stack = DoublyLinkedListBasedStack()
 
-    def test__len__(self):
-        self.assertEqual(len(self.stack), 0)
-
-        self.stack.push(0)
-        self.assertEqual(len(self.stack), 1)
-
     def test__bool__(self):
         self.assertFalse(self.stack)
 
@@ -112,7 +96,6 @@ class TestCase(unittest.TestCase):
         self.stack.push(1)
         self.stack.push(2)
         self.assertEqual(list(self.stack), [2, 1, 0])
-        self.assertEqual(len(self.stack), 3)
 
     def test_pop(self):
         with self.assertRaises(ValueError):
@@ -125,7 +108,6 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.stack.pop(), 1)
         self.assertEqual(self.stack.pop(), 0)
         self.assertEqual(list(self.stack), [])
-        self.assertEqual(len(self.stack), 0)
 
         with self.assertRaises(ValueError):
             print(self.stack.pop())

@@ -14,13 +14,9 @@ class LinkedList:
     def __init__(self, head=None, tail=None):
         self.head = None
         self.tail = None
-        self.size = 0
-
-    def __len__(self):
-        return self.size
 
     def __bool__(self):
-        return bool(self.size)
+        return bool(self.head)
 
     def __iter__(self):
         node = self.head
@@ -36,12 +32,10 @@ class LinkedList:
         if not self.head:
             self.head = new_node
             self.tail = new_node
-            self.size += 1
             return
 
         self.tail.next = new_node
         self.tail = new_node
-        self.size += 1
 
     def pop_head(self):
         if not self.head:
@@ -49,16 +43,12 @@ class LinkedList:
 
         deleted_value = self.head.value
         self.head = self.head.next
-        self.size -= 1
         return deleted_value
 
 
 class LinkedListBasedQueue:
     def __init__(self):
         self.linked_list = LinkedList()
-
-    def __len__(self):
-        return len(self.linked_list)
 
     def __bool__(self):
         return bool(self.linked_list)
@@ -80,12 +70,6 @@ class LinkedListBasedQueue:
 class TestCase(unittest.TestCase):
     def setUp(self):
         self.queue = LinkedListBasedQueue()
-
-    def test__len__(self):
-        self.assertEqual(len(self.queue), 0)
-
-        self.queue.enqueue(0)
-        self.assertEqual(len(self.queue), 1)
 
     def test__bool__(self):
         self.assertFalse(self.queue)

@@ -6,9 +6,6 @@ class ArrayBasedQueue:
     def __init__(self):
         self.array = []
 
-    def __len__(self):
-        return len(self.array)
-
     def __bool__(self):
         return bool(self.array)
 
@@ -29,12 +26,6 @@ class ArrayBasedQueue:
 class TestCase(unittest.TestCase):
     def setUp(self):
         self.queue = ArrayBasedQueue()
-
-    def test__len__(self):
-        self.assertEqual(len(self.queue), 0)
-
-        self.queue.enqueue(0)
-        self.assertEqual(len(self.queue), 1)
 
     def test__bool__(self):
         self.assertFalse(self.queue)

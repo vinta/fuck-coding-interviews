@@ -6,9 +6,6 @@ class ArrayBasedStack:
     def __init__(self):
         self.array = []
 
-    def __len__(self):
-        return len(self.array)
-
     def __bool__(self):
         return bool(self.array)
 
@@ -36,12 +33,6 @@ class TestCase(unittest.TestCase):
     def setUp(self):
         self.stack = ArrayBasedStack()
 
-    def test__len__(self):
-        self.assertEqual(len(self.stack), 0)
-
-        self.stack.push(0)
-        self.assertEqual(len(self.stack), 1)
-
     def test__bool__(self):
         self.assertFalse(self.stack)
 
@@ -64,6 +55,10 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.stack.pop(), 2)
         self.assertEqual(self.stack.pop(), 1)
         self.assertEqual(self.stack.pop(), 0)
+        self.assertEqual(list(self.stack), [])
+
+        with self.assertRaises(ValueError):
+            print(self.stack.pop())
 
     def test_peek(self):
         with self.assertRaises(ValueError):
