@@ -37,9 +37,8 @@ class LinkedList:
             current_node = current_node.next
 
     def __getitem__(self, index):
-        # TODO: Support negative indexes
         if index < 0:
-            raise IndexError
+            raise ValueError('Negative index is yet not supported')
 
         current_index = 0
         current_node = self.head
@@ -52,10 +51,9 @@ class LinkedList:
 
         raise IndexError
 
-    # This method behaves like replace(i, value) instead of insert(i, value)
     def __setitem__(self, index, value):
         if index < 0:
-            raise IndexError
+            raise ValueError('Negative index is yet not supported')
 
         current_node = self.head
         current_index = 0
@@ -68,17 +66,18 @@ class LinkedList:
 
         raise IndexError
 
-    def insert(self, index, value):
+    def insert_before(self, index, value):
         if index < 0:
-            raise IndexError
+            raise ValueError('Negative index is yet not supported')
 
         new_node = ListNode(value)
+        if not self.head:
+            self.head = new_node
+            return
+
         if index == 0:
-            if self.head:
-                new_node.next = self.head
-                self.head = new_node
-            else:
-                self.head = new_node
+            new_node.next = self.head
+            self.head = new_node
         else:
             current_node = self.head
             current_index = 0
@@ -97,7 +96,7 @@ class LinkedList:
 
     def pop(self, index):
         if index < 0:
-            raise IndexError
+            raise ValueError('Negative index is yet not supported')
 
         if index == 0:
             if not self.head:
@@ -135,7 +134,7 @@ class LinkedList:
 
     def append(self, value):
         if not self.head:
-            self.insert(0, value)
+            self.insert_before(0, value)
             return
 
         current_node = self.head
@@ -200,23 +199,25 @@ class TestCase(unittest.TestCase):
 
         self.linked_list[0] = '0'
         self.linked_list[1] = '1'
+        self.linked_list[3] = '3'
+        self.assertEqual(self.linked_list.head.value, '0')
         self.assertEqual(self.linked_list[0], '0')
         self.assertEqual(self.linked_list[1], '1')
         self.assertEqual(self.linked_list[2], self.node_2.value)
-        self.assertEqual(self.linked_list[3], self.node_3.value)
+        self.assertEqual(self.linked_list[3], '3')
 
         with self.assertRaises(IndexError):
             self.linked_list[4] = '4'
 
     def test_insert(self):
-        self.empty_linked_list.insert(0, '0')
+        self.empty_linked_list.insert_before(0, '0')
         self.assertEqual(self.empty_linked_list[0], '0')
 
-        self.linked_list.insert(0, '0')
-        self.linked_list.insert(1, '1')
-        self.linked_list.insert(3, '3')
-        self.linked_list.insert(6, '6')
-        self.linked_list.insert(8, '8')
+        self.linked_list.insert_before(0, '0')
+        self.linked_list.insert_before(1, '1')
+        self.linked_list.insert_before(3, '3')
+        self.linked_list.insert_before(6, '6')
+        self.linked_list.insert_before(8, '8')
         expected = [
             '0',
             '1',
@@ -228,10 +229,11 @@ class TestCase(unittest.TestCase):
             self.node_3.value,
             '8',
         ]
+        self.assertEqual(self.linked_list.head.value, '0')
         self.assertEqual(list(self.linked_list), expected)
 
         with self.assertRaises(IndexError):
-            self.linked_list.insert(10, '10')
+            self.linked_list.insert_before(10, '10')
 
     def test_pop(self):
         with self.assertRaises(IndexError):
@@ -243,10 +245,11 @@ class TestCase(unittest.TestCase):
             self.node_1.value,
             self.node_2.value,
         ]
+        self.assertEqual(self.linked_list.head.value, self.node_1.value)
         self.assertEqual(list(self.linked_list), expected)
 
         with self.assertRaises(IndexError):
-            self.linked_list.pop(2)
+            self.linked_list.pop(10)
 
     def test_index(self):
         self.assertEqual(self.linked_list.index(self.node_0.value), 0)
@@ -259,6 +262,7 @@ class TestCase(unittest.TestCase):
 
     def test_append(self):
         self.empty_linked_list.append('0')
+        self.assertEqual(self.empty_linked_list.head.value, '0')
         self.assertEqual(self.empty_linked_list[0], '0')
 
         self.linked_list.append('4')
@@ -282,6 +286,7 @@ class TestCase(unittest.TestCase):
             self.node_1.value,
             self.node_0.value,
         ]
+        self.assertEqual(self.linked_list.head.value, self.node_3.value)
         self.assertEqual(list(self.linked_list), expected)
 
 
