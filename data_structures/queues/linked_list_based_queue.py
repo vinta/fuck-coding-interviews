@@ -44,6 +44,8 @@ class LinkedList:
 
         deleted_value = self.head.value
         self.head = self.head.next
+        if not self.head:
+            self.tail = None
         return deleted_value
 
 
@@ -82,6 +84,8 @@ class TestCase(unittest.TestCase):
         self.queue.enqueue(0)
         self.queue.enqueue(1)
         self.queue.enqueue(2)
+        self.assertEqual(self.queue.linked_list.head.value, 0)
+        self.assertEqual(self.queue.linked_list.tail.value, 2)
         self.assertEqual(list(self.queue), [0, 1, 2])
 
     def test_dequeue(self):
@@ -92,8 +96,14 @@ class TestCase(unittest.TestCase):
         self.queue.enqueue(1)
         self.queue.enqueue(2)
         self.assertEqual(self.queue.dequeue(), 0)
+        self.assertEqual(self.queue.linked_list.head.value, 1)
+        self.assertEqual(self.queue.linked_list.tail.value, 2)
         self.assertEqual(self.queue.dequeue(), 1)
+        self.assertEqual(self.queue.linked_list.head.value, 2)
+        self.assertEqual(self.queue.linked_list.tail.value, 2)
         self.assertEqual(self.queue.dequeue(), 2)
+        self.assertEqual(self.queue.linked_list.head, None)
+        self.assertEqual(self.queue.linked_list.tail, None)
 
         with self.assertRaises(ValueError):
             print(self.queue.dequeue())
