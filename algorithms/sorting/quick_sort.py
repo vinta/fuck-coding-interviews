@@ -19,7 +19,6 @@ def quick_sort(arr):
         return arr
     else:
         # Select the middle item as the pivot
-        # pivot = arr[0]
         pivot = arr[round((0 + len(arr) - 1) / 2)]
 
         # Partition the other elements into two sublists,
