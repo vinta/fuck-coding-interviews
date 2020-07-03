@@ -20,6 +20,7 @@ def insertion_sort(arr):
             # No need to check remaining elements of the sorted part
             arr[i], arr[i - 1] = arr[i - 1], arr[i]
             i = i - 1
+
     return arr
 
 

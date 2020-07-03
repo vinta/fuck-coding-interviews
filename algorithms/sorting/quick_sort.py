@@ -15,28 +15,29 @@ import pytest  # pylint: disable=import-error
 
 # This implementation takes extra space but is more faster than the in-place version
 def quick_sort(arr):
+    # Base case
     if len(arr) <= 1:
         return arr
-    else:
-        # Select the middle item as the pivot
-        pivot = arr[round((0 + len(arr) - 1) / 2)]
 
-        # Partition the other elements into two sublists,
-        # According to whether they are less than or greater than the pivot
-        left_list = []
-        right_list = []
-        # There might be duplicates of pivot
-        center_list = []
-        for item in arr:
-            if item < pivot:
-                left_list.append(item)
-            elif item > pivot:
-                right_list.append(item)
-            elif item == pivot:
-                center_list.append(item)
+    # Recursive case
+    # Select the middle item as the pivot
+    pivot = arr[round((0 + len(arr) - 1) / 2)]
 
-        # Sublists are then sorted recursively
-        return quick_sort(left_list) + center_list + quick_sort(right_list)
+    # Partition the other elements into two sublists,
+    # According to whether they are less than or greater than the pivot
+    left_list = []
+    right_list = []
+    center_list = []
+    for item in arr:
+        if item < pivot:
+            left_list.append(item)
+        elif item > pivot:
+            right_list.append(item)
+        # There might be duplicates of the pivot
+        elif item == pivot:
+            center_list.append(item)
+
+    return quick_sort(left_list) + center_list + quick_sort(right_list)
 
 
 # https://en.wikipedia.org/wiki/Quicksort#Hoare_partition_scheme
