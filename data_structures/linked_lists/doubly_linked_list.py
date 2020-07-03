@@ -23,48 +23,57 @@ class DoublyLinkedList(LinkedList):
             yield current_node.value
             current_node = current_node.previous
 
-    # O(n), O(1) if it inserts before the first item
+    # O(n), O(1) if it inserts before the first or the last item
     def insert_before(self, index, value):
-        # TODO
-        if index < 0:
-            raise ValueError('Negative index is yet not supported')
-
         new_node = DoublyListNode(value)
         if not self.head:
             self.head = new_node
             self.tail = new_node
             return
 
-        current_node = self.head
-        current_index = 0
+        if index >= 0:
+            current_node = self.head
+            current_index = 0
+            index_step = 1
+            get_next_node = lambda node: node.next
+        else:
+            current_node = self.tail
+            current_index = -1
+            index_step = -1
+            get_next_node = lambda node: node.previous
+
         while current_node:
             if current_index == index:
                 new_node.next = current_node
                 new_node.previous = current_node.previous
                 if current_node.previous:
                     current_node.previous.next = new_node
-                current_node.previous = new_node
-
-                if current_node == self.head:
+                else:
                     self.head = new_node
+                current_node.previous = new_node
                 return
 
-            current_node = current_node.next
-            current_index += 1
+            current_node = get_next_node(current_node)
+            current_index += index_step
 
         raise IndexError
 
-    # O(n), O(1) if it pops the first item
+    # O(n), O(1) if it pops the first or the last item
     def pop(self, index):
-        # TODO
-        if index < 0:
-            raise ValueError('Negative index is yet not supported')
-
         if not self.head:
             raise IndexError('pop from empty linked list')
 
-        current_node = self.head
-        current_index = 0
+        if index >= 0:
+            current_node = self.head
+            current_index = 0
+            index_step = 1
+            get_next_node = lambda node: node.next
+        else:
+            current_node = self.tail
+            current_index = -1
+            index_step = -1
+            get_next_node = lambda node: node.previous
+
         while current_node:
             if current_index == index:
                 deleted_value = current_node.value
@@ -83,8 +92,8 @@ class DoublyLinkedList(LinkedList):
 
                 return deleted_value
 
-            current_node = current_node.next
-            current_index += 1
+            current_node = get_next_node(current_node)
+            current_index += index_step
 
         raise IndexError
 
@@ -174,6 +183,31 @@ class TestCase(unittest.TestCase):
         with self.assertRaises(IndexError):
             self.linked_list.insert_before(10, '10')
 
+    def test_insert_before_negative(self):
+        self.empty_linked_list.insert_before(-1, '0')
+        self.assertEqual(self.empty_linked_list.head.value, '0')
+        self.assertEqual(self.empty_linked_list.tail.value, '0')
+        self.assertEqual(self.empty_linked_list[0], '0')
+
+        self.linked_list.insert_before(-1, '-1')
+        self.linked_list.insert_before(-2, '-2')
+        self.linked_list.insert_before(-6, '-6')
+        expected = [
+            '-6',
+            self.node_0.value,
+            self.node_1.value,
+            self.node_2.value,
+            '-2',
+            '-1',
+            self.node_3.value,
+        ]
+        self.assertEqual(self.linked_list.head.value, '-6')
+        self.assertEqual(self.linked_list.tail.value, self.node_3.value)
+        self.assertEqual(list(self.linked_list), expected)
+
+        with self.assertRaises(IndexError):
+            self.linked_list.insert_before(-8, '-8')
+
     def test_pop(self):
         with self.assertRaises(IndexError):
             print(self.empty_linked_list.pop(0))
@@ -181,20 +215,34 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.linked_list.pop(0), self.node_0.value)
         self.assertEqual(self.linked_list.pop(1), self.node_2.value)
         self.assertEqual(self.linked_list.pop(1), self.node_3.value)
-        self.linked_list.insert_before(0, '0')
-        self.linked_list.append('2')
-        self.assertEqual(self.linked_list.pop(1), self.node_1.value)
 
         expected = [
-            '0',
-            '2',
+            self.node_1.value,
         ]
-        self.assertEqual(self.linked_list.head.value, '0')
-        self.assertEqual(self.linked_list.tail.value, '2')
+        self.assertEqual(self.linked_list.head.value, self.node_1.value)
+        self.assertEqual(self.linked_list.tail.value, self.node_1.value)
         self.assertEqual(list(self.linked_list), expected)
 
         with self.assertRaises(IndexError):
-            print(self.linked_list.pop(10))
+            print(self.linked_list.pop(1))
+
+    def test_pop_negative(self):
+        with self.assertRaises(IndexError):
+            print(self.empty_linked_list.pop(-1))
+
+        self.assertEqual(self.linked_list.pop(-1), self.node_3.value)
+        self.assertEqual(self.linked_list.pop(-1), self.node_2.value)
+        self.assertEqual(self.linked_list.pop(-2), self.node_0.value)
+
+        expected = [
+            self.node_1.value,
+        ]
+        self.assertEqual(self.linked_list.head.value, self.node_1.value)
+        self.assertEqual(self.linked_list.tail.value, self.node_1.value)
+        self.assertEqual(list(self.linked_list), expected)
+
+        with self.assertRaises(IndexError):
+            print(self.linked_list.pop(-2))
 
     def test_append(self):
         self.empty_linked_list.append('0')
