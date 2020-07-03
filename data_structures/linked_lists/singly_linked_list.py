@@ -12,15 +12,6 @@ class LinkedList:
     def __init__(self, head=None):
         self.head = head
 
-    def __repr__(self):
-        return f'<{self.__class__.__name__}: {list(self)}>'
-
-    def __str__(self):
-        return f'{list(self)}'
-
-    def __bool__(self):
-        return bool(self.head)
-
     def __len__(self):
         length = 0
         current_node = self.head
@@ -66,6 +57,7 @@ class LinkedList:
 
         raise IndexError
 
+    # O(n), O(1) if it inserts before the first item
     def insert_before(self, index, value):
         if index < 0:
             raise ValueError('Negative index is yet not supported')
@@ -94,6 +86,7 @@ class LinkedList:
 
             raise IndexError
 
+    # O(n), O(1) if it pops the first item
     def pop(self, index):
         if index < 0:
             raise ValueError('Negative index is yet not supported')
@@ -121,6 +114,7 @@ class LinkedList:
 
             raise IndexError
 
+    # O(n)
     def index(self, value):
         current_index = 0
         current_node = self.head
@@ -132,15 +126,17 @@ class LinkedList:
 
         raise ValueError(f'{value} is not in linked list')
 
+    # O(n)
     def append(self, value):
+        new_node = ListNode(value)
         if not self.head:
-            self.insert_before(0, value)
+            self.head = new_node
             return
 
         current_node = self.head
         while current_node.next:
             current_node = current_node.next
-        current_node.next = ListNode(value)
+        current_node.next = new_node
 
     def reverse(self):
         previous_node = None
@@ -166,12 +162,6 @@ class TestCase(unittest.TestCase):
         self.node_1.next = self.node_2
         self.node_2.next = self.node_3
         self.linked_list = LinkedList(self.node_0)
-
-    def test__repr__(self):
-        self.assertTrue(repr(self.linked_list))
-
-    def test__str__(self):
-        self.assertTrue(str(self.linked_list))
 
     def test__len__(self):
         self.assertEqual(len(self.empty_linked_list), 0)

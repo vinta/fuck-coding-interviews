@@ -22,6 +22,7 @@ class DoublyLinkedList(LinkedList):
             yield current_node.value
             current_node = current_node.previous
 
+    # O(n), O(1) if it inserts before the first item
     def insert_before(self, index, value):
         if index < 0:
             raise ValueError('Negative index is yet not supported')
@@ -51,6 +52,7 @@ class DoublyLinkedList(LinkedList):
 
         raise IndexError
 
+    # O(n), O(1) if it pops the first item
     def pop(self, index):
         if index < 0:
             raise ValueError('Negative index is yet not supported')
@@ -83,6 +85,7 @@ class DoublyLinkedList(LinkedList):
 
         raise IndexError
 
+    # O(1)
     def append(self, value):
         new_node = DoublyListNode(value)
         if not self.head:
