@@ -58,9 +58,11 @@ class LinkedListBasedQueue:
     def __init__(self):
         self.linked_list = LinkedList()
 
+    # O(1)
     def __len__(self):
         return len(self.linked_list)
 
+    # O(n)
     def __iter__(self):
         return self.linked_list.__iter__()
 

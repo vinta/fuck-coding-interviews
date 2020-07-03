@@ -16,6 +16,7 @@ class DoublyLinkedList(LinkedList):
         self.head = head
         self.tail = tail
 
+    # O(n)
     def __reverse__(self):
         current_node = self.tail
         while current_node:
@@ -24,6 +25,7 @@ class DoublyLinkedList(LinkedList):
 
     # O(n), O(1) if it inserts before the first item
     def insert_before(self, index, value):
+        # TODO
         if index < 0:
             raise ValueError('Negative index is yet not supported')
 
@@ -54,6 +56,7 @@ class DoublyLinkedList(LinkedList):
 
     # O(n), O(1) if it pops the first item
     def pop(self, index):
+        # TODO
         if index < 0:
             raise ValueError('Negative index is yet not supported')
 
@@ -97,6 +100,7 @@ class DoublyLinkedList(LinkedList):
         self.tail.next = new_node
         self.tail = new_node
 
+    # O(n)
     def reverse(self):
         current_node = self.head
         self.head, self.tail = self.tail, self.head

@@ -57,6 +57,7 @@ class LinkedListBasedStack:
     def __len__(self):
         return len(self.linked_list)
 
+    # O(n)
     def __iter__(self):
         for item in self.linked_list:
             yield item

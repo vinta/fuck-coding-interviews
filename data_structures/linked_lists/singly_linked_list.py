@@ -12,6 +12,7 @@ class LinkedList:
     def __init__(self, head=None):
         self.head = head
 
+    # O(n)
     def __len__(self):
         length = 0
         current_node = self.head
@@ -21,12 +22,14 @@ class LinkedList:
 
         return length
 
+    # O(n)
     def __iter__(self):
         current_node = self.head
         while current_node:
             yield current_node.value
             current_node = current_node.next
 
+    # O(n)
     def __getitem__(self, index):
         if index < 0:
             raise ValueError('Negative index is yet not supported')
@@ -42,6 +45,7 @@ class LinkedList:
 
         raise IndexError
 
+    # O(n)
     def __setitem__(self, index, value):
         if index < 0:
             raise ValueError('Negative index is yet not supported')
@@ -138,6 +142,7 @@ class LinkedList:
             current_node = current_node.next
         current_node.next = new_node
 
+    # O(n)
     def reverse(self):
         previous_node = None
         current_node = self.head
