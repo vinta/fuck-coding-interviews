@@ -6,8 +6,8 @@ class ArrayBasedStack:
     def __init__(self):
         self.array = []
 
-    def __bool__(self):
-        return bool(self.array)
+    def __len__(self):
+        return len(self.array)
 
     def __iter__(self):
         for item in reversed(self.array):
@@ -33,16 +33,11 @@ class TestCase(unittest.TestCase):
     def setUp(self):
         self.stack = ArrayBasedStack()
 
-    def test__bool__(self):
-        self.assertFalse(self.stack)
-
-        self.stack.push(0)
-        self.assertTrue(self.stack)
-
     def test_push(self):
         self.stack.push(0)
         self.stack.push(1)
         self.stack.push(2)
+        self.assertEqual(len(self.stack), 3)
         self.assertEqual(list(self.stack), [2, 1, 0])
 
     def test_pop(self):
@@ -55,6 +50,7 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.stack.pop(), 2)
         self.assertEqual(self.stack.pop(), 1)
         self.assertEqual(self.stack.pop(), 0)
+        self.assertEqual(len(self.stack), 0)
         self.assertEqual(list(self.stack), [])
 
         with self.assertRaises(ValueError):
