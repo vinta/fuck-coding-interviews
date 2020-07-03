@@ -15,6 +15,10 @@ class DoublyLinkedList:
     def __init__(self, head=None, tail=None):
         self.head = head
         self.tail = tail
+        self.size = 0
+
+    def __len__(self):
+        return self.size
 
     def __iter__(self):
         node = self.head
@@ -29,7 +33,9 @@ class DoublyLinkedList:
             node = node.previous
 
     def append(self, value):
+        self.size += 1
         new_node = DoublyListNode(value)
+
         if not self.head:
             self.head = new_node
             self.tail = new_node
@@ -40,7 +46,9 @@ class DoublyLinkedList:
         self.tail = new_node
 
     def append_left(self, value):
+        self.size += 1
         new_node = DoublyListNode(value)
+
         if not self.head:
             self.head = new_node
             self.tail = new_node
@@ -54,6 +62,7 @@ class DoublyLinkedList:
         if not self.tail:
             raise ValueError
 
+        self.size -= 1
         deleted_value = node.value
 
         if node.next:
@@ -86,21 +95,28 @@ class DoublyLinkedListBasedDeque:
     def __init__(self):
         self.linked_list = DoublyLinkedList()
 
+    def __len__(self):
+        return len(self.linked_list)
+
     def __iter__(self):
         return self.linked_list.__iter__()
 
     def __reversed__(self):
         return self.linked_list.__reversed__()
 
+    # O(1)
     def append(self, value):
         self.linked_list.append(value)
 
+    # O(1)
     def append_left(self, value):
         self.linked_list.append_left(value)
 
+    # O(1)
     def pop(self):
         return self.linked_list.pop()
 
+    # O(1)
     def pop_left(self):
         return self.linked_list.pop_left()
 
@@ -127,6 +143,7 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.deque.linked_list.tail.next, None)
 
         expected = [0, 1, 2]
+        self.assertEqual(len(self.deque), 3)
         self.assertEqual(list(self.deque), expected)
         self.assertEqual(list(reversed(self.deque)), list(reversed(expected)))
 
@@ -148,6 +165,7 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.deque.linked_list.tail.next, None)
 
         expected = [2, 1, 0]
+        self.assertEqual(len(self.deque), 3)
         self.assertEqual(list(self.deque), expected)
         self.assertEqual(list(reversed(self.deque)), list(reversed(expected)))
 
@@ -167,6 +185,7 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.deque.pop(), 0)
         self.assertEqual(self.deque.linked_list.head, None)
         self.assertEqual(self.deque.linked_list.tail, None)
+        self.assertEqual(len(self.deque), 0)
         self.assertEqual(list(self.deque), [])
         self.assertEqual(list(reversed(self.deque)), [])
 
@@ -189,6 +208,7 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.deque.pop_left(), 2)
         self.assertEqual(self.deque.linked_list.head, None)
         self.assertEqual(self.deque.linked_list.tail, None)
+        self.assertEqual(len(self.deque), 0)
         self.assertEqual(list(self.deque), [])
         self.assertEqual(list(reversed(self.deque)), [])
 

@@ -18,9 +18,10 @@ class LinkedList:
     def __init__(self, head=None, tail=None):
         self.head = None
         self.tail = None
+        self.size = 0
 
-    def __bool__(self):
-        return bool(self.head)
+    def __len__(self):
+        return self.size
 
     def __iter__(self):
         node = self.head
@@ -29,7 +30,9 @@ class LinkedList:
             node = node.next
 
     def append(self, value):
+        self.size += 1
         new_node = ListNode(value)
+
         if not self.head:
             self.head = new_node
             self.tail = new_node
@@ -42,10 +45,12 @@ class LinkedList:
         if not self.head:
             raise IndexError
 
+        self.size -= 1
         deleted_value = self.head.value
         self.head = self.head.next
         if not self.head:
             self.tail = None
+
         return deleted_value
 
 
@@ -53,16 +58,17 @@ class LinkedListBasedQueue:
     def __init__(self):
         self.linked_list = LinkedList()
 
-    def __bool__(self):
-        return bool(self.linked_list)
+    def __len__(self):
+        return len(self.linked_list)
 
     def __iter__(self):
-        for item in self.linked_list:
-            yield item
+        return self.linked_list.__iter__()
 
+    # O(1)
     def enqueue(self, value):
         self.linked_list.append(value)
 
+    # O(1)
     def dequeue(self):
         try:
             return self.linked_list.pop_left()
@@ -74,18 +80,13 @@ class TestCase(unittest.TestCase):
     def setUp(self):
         self.queue = LinkedListBasedQueue()
 
-    def test__bool__(self):
-        self.assertFalse(self.queue)
-
-        self.queue.enqueue(0)
-        self.assertTrue(self.queue)
-
     def test_enqueue(self):
         self.queue.enqueue(0)
         self.queue.enqueue(1)
         self.queue.enqueue(2)
         self.assertEqual(self.queue.linked_list.head.value, 0)
         self.assertEqual(self.queue.linked_list.tail.value, 2)
+        self.assertEqual(len(self.queue), 3)
         self.assertEqual(list(self.queue), [0, 1, 2])
 
     def test_dequeue(self):
@@ -104,6 +105,8 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.queue.dequeue(), 2)
         self.assertEqual(self.queue.linked_list.head, None)
         self.assertEqual(self.queue.linked_list.tail, None)
+        self.assertEqual(len(self.queue), 0)
+        self.assertEqual(list(self.queue), [])
 
         with self.assertRaises(ValueError):
             print(self.queue.dequeue())
