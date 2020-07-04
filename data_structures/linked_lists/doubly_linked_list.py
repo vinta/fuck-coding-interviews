@@ -17,7 +17,7 @@ class DoublyLinkedList(LinkedList):
         self.tail = tail
 
     # O(n)
-    def __reverse__(self):
+    def __reversed__(self):
         current_node = self.tail
         while current_node:
             yield current_node.value
