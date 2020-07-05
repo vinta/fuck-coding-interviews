@@ -15,10 +15,10 @@ def binary_search_left_bound(array, target):
                 right = mid
             else:
                 return mid
-        elif target > mid_value:
-            left = mid + 1
         elif target < mid_value:
             right = mid - 1
+        elif target > mid_value:
+            left = mid + 1
 
     return -1
 
@@ -29,7 +29,9 @@ class TestCase(unittest.TestCase):
             [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
             [1, 2, 2, 2, 2, 3, 4],
             [1, 1, 1, 2, 2, 2, 3, 3, 3],
-            [3] * random.randint(0, 100000),
+            [3],
+            [3, 3],
+            [3] * random.randint(1, 10),
         ]
         for array in test_lists:
             with self.subTest(array=array):
@@ -42,6 +44,12 @@ class TestCase(unittest.TestCase):
                 self.assertEqual(binary_search_left_bound(array, target), expected)
 
     def test2(self):
+        array = []
+        target = 0
+        expected = -1
+        self.assertEqual(binary_search_left_bound(array, target), expected)
+
+    def test3(self):
         array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         target = 100
         expected = -1

@@ -9,12 +9,12 @@ def binary_search(array, target):
     while low <= high:
         mid = int((low + high) / 2)
         mid_value = array[mid]
-        if target < mid_value:
+        if target == mid_value:
+            return mid
+        elif target < mid_value:
             high = mid - 1
         elif target > mid_value:
             low = mid + 1
-        else:
-            return mid
 
     return -1
 
@@ -51,6 +51,12 @@ class TestCase(unittest.TestCase):
         expected = -1
         self.assertEqual(binary_search(array, target), expected)
 
+    def test3(self):
+        array = []
+        target = 0
+        expected = -1
+        self.assertEqual(binary_search(array, target), expected)
+
 
 class TestCase2(unittest.TestCase):
     def test(self):
@@ -64,6 +70,12 @@ class TestCase2(unittest.TestCase):
         target = 100
         expected = -1
         self.assertEqual(binary_search_recursive(array, target), expected)
+
+    def test3(self):
+        array = []
+        target = 0
+        expected = -1
+        self.assertEqual(binary_search(array, target), expected)
 
 
 if __name__ == '__main__':
