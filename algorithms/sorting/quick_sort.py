@@ -112,8 +112,8 @@ class TestCase(unittest.TestCase):
             [-2, 3, -5],
             [-1, 2, -8, -10],
         ]
-        for test_array in test_lists:
-            with self.subTest(array=test_array):
+        for array in test_lists:
+            with self.subTest(array=array):
                 self.assertEqual(quick_sort(array.copy()), sorted(array))
 
 
@@ -132,8 +132,8 @@ class TestCase2(unittest.TestCase):
             [-2, 3, -5],
             [-1, 2, -8, -10],
         ]
-        for test_array in test_lists:
-            with self.subTest(array=test_array):
+        for array in test_lists:
+            with self.subTest(array=array):
                 self.assertEqual(quick_sort_in_place(array.copy()), sorted(array))
 
 
