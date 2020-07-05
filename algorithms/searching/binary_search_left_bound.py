@@ -37,6 +37,10 @@ class TestCase(unittest.TestCase):
                 expected = array.index(target)
                 self.assertEqual(binary_search_left_bound(array, target), expected)
 
+                target = 100
+                expected = -1
+                self.assertEqual(binary_search_left_bound(array, target), expected)
+
     def test2(self):
         array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         target = 100
