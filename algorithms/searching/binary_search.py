@@ -16,14 +16,14 @@ def binary_search(array, target):
         else:
             return mid
 
-    return None
+    return -1
 
 
 def binary_search_recursive(array, target):
     def binary_search_range(array, target, low, high):
         # Base case
         if low > high:
-            return None
+            return -1
 
         # Recursive case
         mid = int((low + high) / 2)
@@ -48,7 +48,7 @@ class TestCase(unittest.TestCase):
     def test2(self):
         array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         target = 100
-        expected = None
+        expected = -1
         self.assertEqual(binary_search(array, target), expected)
 
 
@@ -62,7 +62,7 @@ class TestCase2(unittest.TestCase):
     def test2(self):
         array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         target = 100
-        expected = None
+        expected = -1
         self.assertEqual(binary_search_recursive(array, target), expected)
 
 
