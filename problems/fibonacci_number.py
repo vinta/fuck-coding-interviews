@@ -16,21 +16,19 @@ class Solution:
 
 
 class Solution2:
+    caches = {}
+
     def fib(self, N: int) -> int:
         if N <= 1:
             return N
-        return self.memorize(N)
 
-    def memorize(self, N: int) -> {}:
-        caches = {
-            0: 0,
-            1: 1,
-        }
+        if (N - 1) not in self.caches:
+            self.caches[N - 1] = self.fib(N - 1)
 
-        for i in range(2, N + 1):
-            caches[i] = caches[i - 1] + caches[i - 2]
+        if (N - 2) not in self.caches:
+            self.caches[N - 2] = self.fib(N - 2)
 
-        return caches[N]
+        return self.caches[N - 1] + self.caches[N - 2]
 
 
 class TestCase(unittest.TestCase):
