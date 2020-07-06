@@ -23,7 +23,7 @@ class CircularArray:
             index = (self._front + i) % self._capacity
             yield self._array[index]
 
-    def _expand(self, new_capacity):
+    def _resize(self, new_capacity):
         new_array = [None, ] * new_capacity
         for i in range(self._size):
             old_index = (self._front + i) % self._capacity
@@ -35,7 +35,7 @@ class CircularArray:
 
     def append(self, value):
         if self._size == self._capacity:
-            self._expand(self._capacity * 2)
+            self._resize(self._capacity * 2)
 
         append_index = (self._front + self._size) % self._capacity
         self._array[append_index] = value

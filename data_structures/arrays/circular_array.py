@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-https://learning.oreilly.com/library/view/data-structures-and/9781118290279/11_chap06.html
+https://learning.oreilly.com/library/view/Data+Structures+and+Algorithms+in+Python/9781118290279/11_chap06.html#ch006-sec014
 """
 import unittest
 
@@ -47,7 +47,7 @@ class CircularArray:
             yield self._array[actual_index]
 
     # O(n)
-    def _expand(self, new_capacity):
+    def _resize(self, new_capacity):
         new_array = [None, ] * new_capacity
         for i in range(self._size):
             old_index = (self._front + i) % self._capacity
@@ -57,11 +57,6 @@ class CircularArray:
         self._capacity = new_capacity
         self._front = 0
 
-    # TODO
-    # O(n)
-    def _shrink(self, new_capacity):
-        pass
-
     @property
     def _rear(self):
         if self._size == 0:
@@ -69,17 +64,17 @@ class CircularArray:
         return (self._front + self._size - 1) % self._capacity
 
     # O(1)
-    # O(n) if it triggers expand
+    # O(n) if it triggers resize
     def append(self, value):
         if self._size == self._capacity:
-            self._expand(self._capacity * 2)
+            self._resize(self._capacity * 2)
 
         append_index = (self._front + self._size) % self._capacity
         self._array[append_index] = value
         self._size += 1
 
     # O(n)
-    # O(1) if it pops the first or the last item
+    # O(1) if it pops the first or the last item and doesn't trigger resize
     def pop(self, index=-1):
         if self._size == 0:
             raise IndexError
@@ -103,9 +98,10 @@ class CircularArray:
             self._array[self._rear] = None
             self._size -= 1
 
-        # TODO
-        # if 0 < self._size < (self._capacity * (1 / 4)):
-        #     self._shrink(self._capacity // 2)
+        # Reduce the array to half of its current size,
+        # whenever the number of elements stored in it falls below one fourth of its capacity
+        if 0 < self._size < (self._capacity * (1 / 4)):
+            self._resize(self._capacity // 2)
 
         return pop_value
 
@@ -147,6 +143,7 @@ class TestCase(unittest.TestCase):
         self.array[0] = self.array[0] * 10
         self.array[1] = self.array[1] * 10
         self.array[2] = self.array[2] * 10
+        self.assertEqual(len(self.array), 6)
         self.assertEqual(list(self.array), [0, 10, 20, 3, 4, 5])
 
         with self.assertRaises(IndexError):
@@ -155,6 +152,7 @@ class TestCase(unittest.TestCase):
         self.array[-4] = self.array[-4] * -1
         self.array[-5] = self.array[-5] * -1
         self.array[-6] = self.array[-6] * -1
+        self.assertEqual(len(self.array), 6)
         self.assertEqual(list(self.array), [0, -10, -20, 3, 4, 5])
 
         with self.assertRaises(IndexError):
@@ -168,23 +166,35 @@ class TestCase(unittest.TestCase):
         fill_data(2)
         self.assertEqual(self.array.pop(), 1)
         self.assertEqual(self.array.pop(), 0)
+        self.assertEqual(len(self.array), 0)
         self.assertEqual(list(self.array), [])
 
         fill_data(2)
         self.assertEqual(self.array.pop(0), 0)
         self.assertEqual(self.array.pop(-1), 1)
+        self.assertEqual(len(self.array), 0)
         self.assertEqual(list(self.array), [])
 
         fill_data(5)
         self.assertEqual(self.array.pop(3), 3)
         self.assertEqual(self.array.pop(1), 1)
         self.assertEqual(self.array.pop(-2), 2)
+        self.assertEqual(len(self.array), 2)
         self.assertEqual(list(self.array), [0, 4])
 
         fill_data(3)
         self.assertEqual(list(self.array), [0, 4, 0, 1, 2])
         self.assertEqual(self.array.pop(0), 0)
         self.assertEqual(self.array.pop(0), 4)
+        self.assertEqual(self.array.pop(1), 1)
+        self.assertEqual(self.array.pop(), 2)
+        self.assertEqual(len(self.array), 1)
+        self.assertEqual(list(self.array), [0, ])
+
+        fill_data(4)
+        self.assertEqual(self.array.pop(0), 0)
+        self.assertEqual(self.array.pop(), 3)
+        self.assertEqual(len(self.array), 3)
         self.assertEqual(list(self.array), [0, 1, 2])
 
 

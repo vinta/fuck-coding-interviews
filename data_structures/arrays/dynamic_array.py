@@ -49,7 +49,7 @@ class DynamicArray:
         return (capacity * ctypes.py_object)()
 
     # O(n)
-    def _expand(self, new_capacity):
+    def _resize(self, new_capacity):
         new_array = self._new_array(new_capacity)
 
         for i in range(self._size):
@@ -62,7 +62,7 @@ class DynamicArray:
     # O(n) if it triggers expand
     def append(self, value):
         if self._size == self._capacity:
-            self._expand(self._capacity * 2)
+            self._resize(self._capacity * 2)
 
         # Access the underlying array directly instead of using self.__setitem__()
         self._array[self._size] = value
@@ -84,7 +84,7 @@ class DynamicArray:
     # O(n)
     def insert_before(self, index, value):
         if self._size == self._capacity:
-            self._expand(self._capacity * 2)
+            self._resize(self._capacity * 2)
 
         positive_index = self._positive_index(index)
         for i in range(self._size, positive_index, -1):
@@ -97,7 +97,7 @@ class DynamicArray:
     def extend(self, another_array):
         new_size = self._size + len(another_array)
         if new_size > self._capacity:
-            self._expand(new_size * 2)
+            self._resize(new_size * 2)
 
         for i in range(len(another_array)):
             self._array[self._size + i] = another_array[i]
