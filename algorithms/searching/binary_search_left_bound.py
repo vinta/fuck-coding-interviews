@@ -7,7 +7,7 @@ def binary_search_left_bound(array, target):
     left = 0
     right = len(array) - 1
     while left <= right:
-        mid = int((left + right) / 2)
+        mid = (left + right) // 2
         mid_value = array[mid]
         if target == mid_value:
             if mid > 0 and array[mid - 1] == target:
