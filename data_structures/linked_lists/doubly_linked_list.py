@@ -23,7 +23,8 @@ class DoublyLinkedList(LinkedList):
             yield current_node.value
             current_node = current_node.previous
 
-    # O(n), O(1) if it inserts before the first or the last item
+    # O(n)
+    # O(1) if it inserts before the first or the last item
     def insert_before(self, index, value):
         new_node = DoublyListNode(value)
         if not self.head:
@@ -58,7 +59,8 @@ class DoublyLinkedList(LinkedList):
 
         raise IndexError
 
-    # O(n), O(1) if it pops the first or the last item
+    # O(n)
+    # O(1) if it pops the first or the last item
     def pop(self, index):
         if not self.head:
             raise IndexError('pop from empty linked list')

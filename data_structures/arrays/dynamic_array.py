@@ -18,25 +18,26 @@ class DynamicArray:
     def __len__(self):
         return self._size
 
-    def _valid_index(self, index):
+    def _positive_index(self, index):
         if index >= 0:
             if index >= self._size:
                 raise IndexError
+            positive_index = index
         else:
             if abs(index) > self._size:
                 raise IndexError
-            index = self._size + index  # Convert to the positive index
+            positive_index = self._size + index  # Convert to the positive index
 
-        return index
+        return positive_index
 
     # O(1)
     def __getitem__(self, index):
-        positive_index = self._valid_index(index)
+        positive_index = self._positive_index(index)
         return self._array[positive_index]
 
     # O(1)
     def __setitem__(self, index, value):
-        positive_index = self._valid_index(index)
+        positive_index = self._positive_index(index)
         self._array[positive_index] = value
 
     # O(n)
@@ -57,7 +58,8 @@ class DynamicArray:
         self._array = new_array
         self._capacity = new_capacity
 
-    # O(1), O(n) if it triggers expand
+    # O(1)
+    # O(n) if it triggers expand
     def append(self, value):
         if self._size == self._capacity:
             self._expand(self._capacity * 2)
@@ -66,24 +68,25 @@ class DynamicArray:
         self._array[self._size] = value
         self._size += 1
 
-    # O(n), O(1) if it pops the last item
+    # O(n)
+    # O(1) if it pops the last item
     def pop(self, index=-1):
-        positive_index = self._valid_index(index)
-        deleted_value = self._array[positive_index]
+        positive_index = self._positive_index(index)
+        pop_value = self._array[positive_index]
 
         for i in range(positive_index, self._size - 1):
             self._array[i] = self._array[i + 1]
 
         self._array[self._size - 1] = None
         self._size -= 1
-        return deleted_value
+        return pop_value
 
     # O(n)
     def insert_before(self, index, value):
         if self._size == self._capacity:
             self._expand(self._capacity * 2)
 
-        positive_index = self._valid_index(index)
+        positive_index = self._positive_index(index)
         for i in range(self._size, positive_index, -1):
             self._array[i] = self._array[i - 1]
 
@@ -166,10 +169,10 @@ class TestCase(unittest.TestCase):
         self.assertEqual(list(self.array), [])
 
         fill_data(5)
+        self.assertEqual(self.array.pop(3), 3)
         self.assertEqual(self.array.pop(1), 1)
-        self.assertEqual(self.array.pop(3), 4)
         self.assertEqual(self.array.pop(-2), 2)
-        self.assertEqual(list(self.array), [0, 3])
+        self.assertEqual(list(self.array), [0, 4])
 
     def test_insert_before(self):
         with self.assertRaises(IndexError):

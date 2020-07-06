@@ -61,7 +61,8 @@ class LinkedList:
 
         raise IndexError
 
-    # O(n), O(1) if it inserts before the first item
+    # O(n)
+    # O(1) if it inserts before the first item
     def insert_before(self, index, value):
         if index < 0:
             raise ValueError('Negative index is yet not supported')
@@ -90,7 +91,8 @@ class LinkedList:
 
             raise IndexError
 
-    # O(n), O(1) if it pops the first item
+    # O(n)
+    # O(1) if it pops the first item
     def pop(self, index):
         if index < 0:
             raise ValueError('Negative index is yet not supported')
