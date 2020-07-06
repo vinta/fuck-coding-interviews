@@ -6,6 +6,8 @@ append, pop left
 import unittest
 
 
+# Also see: https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/arrays/circular_array.py
+# This implementation is more simplified, however, with specific modifications
 class CircularArray:
     def __init__(self, capacity=10):
         self._capacity = capacity
@@ -64,6 +66,7 @@ class CircularArrayBasedQueue:
         return self._array.__iter__()
 
     # O(1)
+    # O(n) if it triggers expand
     def enqueue(self, value):
         self._array.append(value)
 
