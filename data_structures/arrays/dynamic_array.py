@@ -47,6 +47,7 @@ class DynamicArray:
     def _new_array(self, capacity):
         return (capacity * ctypes.py_object)()
 
+    # O(n)
     def _expand(self, new_capacity):
         new_array = self._new_array(new_capacity)
 
