@@ -1,17 +1,21 @@
 # coding: utf-8
-class Node:
+from abc import ABC, abstractmethod
+
+
+class BaseNode(ABC):
     def __init__(self, value):
         self.value = self.val = value
 
+    @abstractmethod
     def __eq__(self, other):
-        raise NotImplementedError
+        ...
 
     def __ne__(self, other):
         return not self == other
 
 
-class Tree:
-    NODE_CLASS = Node
+class BaseTree(ABC):
+    NODE_CLASS = BaseNode
 
     def __init__(self):
         self.root = None
@@ -20,8 +24,9 @@ class Tree:
     def __len__(self):
         return self.size
 
+    @abstractmethod
     def __iter__(self):
-        raise NotImplementedError
+        ...
 
     def _validate_node(self, node):
         if not isinstance(node, self.NODE_CLASS):
@@ -34,22 +39,32 @@ class Tree:
 
     def is_leaf(self, node):
         node = self._validate_node(node)
-        return self.num_children(node) == 0
+        return len(self.children(node)) == 0
 
+    is_external = is_leaf
+
+    def is_internal(self, node):
+        return not self.is_external(node)
+
+    @abstractmethod
     def parent(self, node):
-        raise NotImplementedError
+        ...
 
-    def num_children(self, node):
-        raise NotImplementedError
-
+    @abstractmethod
     def children(self, node):
-        raise NotImplementedError
+        ...
 
+    @abstractmethod
     def siblings(self, node):
-        raise NotImplementedError
+        ...
 
+    @abstractmethod
     def subtree(self, node):
-        raise NotImplementedError
+        ...
+
+    @abstractmethod
+    def traverse(self, node=None):
+        ...
 
     def height(self, node=None):
         """
@@ -76,9 +91,3 @@ class Tree:
         return 1 + self.depth(self.parent(node))
 
     level = depth
-
-    def external_nodes(self):
-        raise NotImplementedError
-
-    def internal_nodes(self):
-        raise NotImplementedError
