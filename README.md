@@ -6,6 +6,19 @@ This repository is created by [a clumsy programmer](https://leetcode.com/vinta/)
 
 > How on earth can I ever think of a solution like that in an interview?!
 
+**This project requires Python 3.6 or higher.**
+
+## Testing
+
+```bash
+# Install packages
+$ pip install -U pip poetry
+$ poetry install
+
+# Run tests
+$ poetry run pytest --benchmark-disable
+```
+
 ## Resources
 
 ### Books
