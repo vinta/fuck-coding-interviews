@@ -10,9 +10,6 @@ class BaseNode(ABC):
     def __eq__(self, other):
         ...
 
-    def __ne__(self, other):
-        return not self == other
-
 
 class BaseTree(ABC):
     NODE_CLASS = BaseNode
