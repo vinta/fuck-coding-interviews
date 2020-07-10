@@ -23,6 +23,14 @@ tests = ["coverage", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.i
 
 [[package]]
 category = "dev"
+description = "Python Library for Studying Binary Trees"
+name = "binarytree"
+optional = false
+python-versions = "*"
+version = "5.1.0"
+
+[[package]]
+category = "dev"
 description = "Cross-platform colored terminal text."
 marker = "sys_platform == \"win32\""
 name = "colorama"
@@ -96,7 +104,7 @@ description = "Get CPU info with pure Python 2 & 3"
 name = "py-cpuinfo"
 optional = false
 python-versions = "*"
-version = "6.0.0"
+version = "7.0.0"
 
 [[package]]
 category = "dev"
@@ -179,7 +187,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "ee6c6b5223b3a7903ab03c8e51da36ab76f1abc4184db9c1da70f0054268bec0"
+content-hash = "c169e6dd8b1d24d8120e7bad8625b69cebb5778f2c9eb2c3f3e5ca19ac42d4a9"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -190,6 +198,10 @@ atomicwrites = [
 attrs = [
     {file = "attrs-19.3.0-py2.py3-none-any.whl", hash = "sha256:08a96c641c3a74e44eb59afb61a24f2cb9f4d7188748e76ba4bb5edfa3cb7d1c"},
     {file = "attrs-19.3.0.tar.gz", hash = "sha256:f7b7ce16570fe9965acd6d30101a28f62fb4a7f9e926b3bbc9b61f8b04247e72"},
+]
+binarytree = [
+    {file = "binarytree-5.1.0-py2.py3-none-any.whl", hash = "sha256:9f21efc73c66cdcc88b97b27eb02c3565e46088cf9b0f66089d221a87c8dc557"},
+    {file = "binarytree-5.1.0.tar.gz", hash = "sha256:6b8c5f6b298993015a3181f7e6d88e4b0be6632a649cc690a273a653d8dd6b1b"},
 ]
 colorama = [
     {file = "colorama-0.4.3-py2.py3-none-any.whl", hash = "sha256:7d73d2a99753107a36ac6b455ee49046802e59d9d076ef8e47b61499fa29afff"},
@@ -216,7 +228,7 @@ py = [
     {file = "py-1.9.0.tar.gz", hash = "sha256:9ca6883ce56b4e8da7e79ac18787889fa5206c79dcc67fb065376cd2fe03f342"},
 ]
 py-cpuinfo = [
-    {file = "py-cpuinfo-6.0.0.tar.gz", hash = "sha256:7ffb31dea845b9f359b99bd5f7eea72dc70f852e0e34547d261a630f2b8c9c61"},
+    {file = "py-cpuinfo-7.0.0.tar.gz", hash = "sha256:9aa2e49675114959697d25cf57fec41c29b55887bff3bc4809b44ac6f5730097"},
 ]
 pyparsing = [
     {file = "pyparsing-2.4.7-py2.py3-none-any.whl", hash = "sha256:ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"},

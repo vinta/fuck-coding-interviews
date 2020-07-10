@@ -9,6 +9,7 @@ license = "MIT"
 python = "^3.6"
 
 [tool.poetry.dev-dependencies]
+binarytree = "==5.1.0"
 pytest = "==5.4.3"
 pytest-benchmark = "==3.2.3"
 
