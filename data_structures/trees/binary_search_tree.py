@@ -124,7 +124,7 @@ class BinarySearchTree:
         if not node:
             return
 
-        # self.inorder_traverse(node.left) only creates the generator object,
+        # NOTE: self.inorder_traverse(node.left) only creates the generator object,
         # we need to actually run it with a for loop or yield from.
         yield from self.inorder_traverse(node.left)
         yield node
