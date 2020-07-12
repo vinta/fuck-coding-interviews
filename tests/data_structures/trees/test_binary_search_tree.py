@@ -83,39 +83,6 @@ class BinarySearchTreeTest(unittest.TestCase):
 
         self.assertEqual(self.bst.search(100), None)
 
-    def test_inorder_traverse(self):
-        items = [node.value for node in self.bst.inorder_traverse(self.bst.root)]
-        expected = [1, 3, 4, 6, 7, 8, 10, 13, 14]
-        self.assertEqual(items, expected)
-
-        items = [node.value for node in self.bst.inorder_traverse(self.bst.root.right.left)]
-        expected = []
-        self.assertEqual(items, expected)
-
-    def test_preorder_traverse(self):
-        items = [node.value for node in self.bst.preorder_traverse(self.bst.root)]
-        expected = [8, 3, 1, 6, 4, 7, 10, 14, 13]
-        self.assertEqual(items, expected)
-
-    def test_postorder_traverse(self):
-        items = [node.value for node in self.bst.postorder_traverse(self.bst.root)]
-        expected = [1, 4, 7, 6, 3, 13, 14, 10, 8]
-        self.assertEqual(items, expected)
-
-    def test_breadth_first_traverse(self):
-        items = [node.value for node in self.bst.breadth_first_traverse(self.bst.root)]
-        expected = [8, 3, 10, 1, 6, 14, 4, 7, 13]
-        self.assertEqual(items, expected)
-
-    def test_level_order_traverse(self):
-        items = [node.value for node in self.bst.level_order_traverse(self.bst.root)]
-        expected = [8, 3, 10, 1, 6, 14, 4, 7, 13]
-        self.assertEqual(items, expected)
-
-    def test_traverse(self):
-        with self.assertRaises(ValueError):
-            self.bst.traverse('NOT EXIST')
-
     def test_is_root(self):
         self.assertTrue(self.bst.is_root(self.bst.root))
         self.assertFalse(self.bst.is_root(self.bst.root.left))
@@ -137,6 +104,46 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.assertFalse(self.bst.is_leaf(self.bst.root.left))
         self.assertFalse(self.bst.is_leaf(self.bst.root.right))
 
+    def test_inorder_traverse(self):
+        items = [node.value for node in self.bst.inorder_traverse(self.bst.root)]
+        expected = [1, 3, 4, 6, 7, 8, 10, 13, 14]
+        self.assertEqual(items, expected)
+
+        items = [node.value for node in self.bst.inorder_traverse(self.bst.root.right.left)]
+        expected = []
+        self.assertEqual(items, expected)
+
+    def test_preorder_traverse(self):
+        items = [node.value for node in self.bst.preorder_traverse(self.bst.root)]
+        expected = [8, 3, 1, 6, 4, 7, 10, 14, 13]
+        self.assertEqual(items, expected)
+
+    def test_postorder_traverse(self):
+        items = [node.value for node in self.bst.postorder_traverse(self.bst.root)]
+        expected = [1, 4, 7, 6, 3, 13, 14, 10, 8]
+        self.assertEqual(items, expected)
+
+    def test_levelorder_traverse(self):
+        items = [node.value for node in self.bst.levelorder_traverse(self.bst.root)]
+        expected = [8, 3, 10, 1, 6, 14, 4, 7, 13]
+        self.assertEqual(items, expected)
+
+    def test_breadth_first_traverse(self):
+        items = [node.value for node in self.bst.breadth_first_traverse(self.bst.root)]
+        expected = [8, 3, 10, 1, 6, 14, 4, 7, 13]
+        self.assertEqual(items, expected)
+
+    def test_traverse(self):
+        with self.assertRaises(ValueError):
+            self.bst.traverse('NOT EXIST')
+
 
 if __name__ == '__main__':
+    #     ______8
+    #    /       \
+    #   3__       10___
+    #  /   \           \
+    # 1     6          _14
+    #      / \        /
+    #     4   7      13
     unittest.main()

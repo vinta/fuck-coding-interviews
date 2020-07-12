@@ -148,7 +148,8 @@ class BinarySearchTree:
         yield from self.postorder_traverse(node.right)
         yield node
 
-    def breadth_first_traverse(self, node):
+    # Levelorder: visiting nodes level by level, left to right.
+    def levelorder_traverse(self, node):
         if not node:
             return
 
@@ -156,18 +157,20 @@ class BinarySearchTree:
         while queue:
             node = queue.popleft()
             yield node
-            for child in self.children(node):
-                queue.append(child)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
 
-    level_order_traverse = breadth_first_traverse
+    breadth_first_traverse = levelorder_traverse
 
     def traverse(self, method='inorder'):
         method_to_func = {
             'inorder': self.inorder_traverse,
             'preorder': self.preorder_traverse,
             'postorder': self.postorder_traverse,
+            'levelorder': self.levelorder_traverse,
             'breadth_first': self.breadth_first_traverse,
-            'level_order': self.level_order_traverse,
         }
         try:
             traverse_func = method_to_func[method]
