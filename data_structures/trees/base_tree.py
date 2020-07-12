@@ -1,5 +1,10 @@
 # coding: utf-8
-from abc import ABC, abstractmethod
+"""
+https://en.wikipedia.org/wiki/Tree_%28data_structure%29#Terminology_used_in_trees
+http://typeocaml.com/2014/11/26/height-depth-and-level-of-a-tree/
+"""
+from abc import ABC
+from abc import abstractmethod
 
 
 class BaseNode(ABC):
@@ -47,6 +52,10 @@ class BaseTree(ABC):
         return not self.is_external(node)
 
     @abstractmethod
+    def parent(self, node):
+        ...
+
+    @abstractmethod
     def children(self, node):
         ...
 
@@ -55,23 +64,32 @@ class BaseTree(ABC):
         ...
 
     @abstractmethod
-    def height(self, node=None):
+    def height(self, node):
         """
-        The height of a tree is equal to the maximum level of any node in the tree.
+        The height of a node is the number of edges on the longest path between the node and a descendant leaf.
 
         If node is a leaf, then the height of node is 0.
-        Otherwise, the height of node is 1 + the maximum of the heights of node's children.
+        Otherwise, the height of node is 1 + the maximum of heights of node's children.
         """
-        ...
+        if self.is_leaf(node):
+            return 0
+        return 1 + max(self.height(child) for child in self.children(node))
 
     @abstractmethod
-    def depth(self, node=None):
+    def depth(self, node):
         """
-        The depth is the number of ancestors of node, excluding node itself.
+        The depth of a node is the number of edges between the node and the root.
 
         If node is the root, then the depth of node is 0.
-        Otherwise, the depth of node is 1 + the depth of the parent of node.
+        Otherwise, the depth of node is 1 + the depth of node's parent.
         """
-        ...
+        if self.is_root(node):
+            return 0
+        return 1 + self.depth(self.parent(node))
 
-    level = depth
+    @abstractmethod
+    def level(self, node):
+        """
+        The level of a node is 1 + the depth of the node.
+        """
+        return 1 + self.depth(node)
