@@ -2,7 +2,8 @@
 import unittest
 import random
 
-from data_structures.trees.binary_search_tree import BinaryTreeNode, BinarySearchTree
+from data_structures.trees.binary_search_tree import BinarySearchTree
+from data_structures.trees.binary_search_tree import BinaryTreeNode
 
 
 class BinaryTreeNodeTest(unittest.TestCase):
