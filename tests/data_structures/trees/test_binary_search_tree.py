@@ -116,11 +116,6 @@ class BinarySearchTreeTest(unittest.TestCase):
         expected = [8, 3, 10, 1, 6, 14, 4, 7, 13]
         self.assertEqual(items, expected)
 
-    def test_breadth_first_traverse(self):
-        items = [node.value for node in self.bst.breadth_first_traverse(self.bst.root)]
-        expected = [8, 3, 10, 1, 6, 14, 4, 7, 13]
-        self.assertEqual(items, expected)
-
     def test_traverse(self):
         with self.assertRaises(ValueError):
             self.bst.traverse('NOT EXIST')

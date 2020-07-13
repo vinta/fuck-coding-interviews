@@ -44,7 +44,7 @@ class BinarySearchTree:
         return self.size
 
     def __iter__(self):
-        return self.breadth_first_traverse(self.root)
+        return self.levelorder_traverse(self.root)
 
     def __contains__(self, value):
         return self.search(value)
@@ -142,15 +142,14 @@ class BinarySearchTree:
             if node.right:
                 queue.append(node.right)
 
-    breadth_first_traverse = levelorder_traverse
-
     def traverse(self, method='inorder'):
         method_to_func = {
+            # Depth-First Search (DFS)
             'inorder': self.inorder_traverse,
             'preorder': self.preorder_traverse,
             'postorder': self.postorder_traverse,
+            # Breadth-First Search (BFS)
             'levelorder': self.levelorder_traverse,
-            'breadth_first': self.breadth_first_traverse,
         }
         try:
             traverse_func = method_to_func[method]
