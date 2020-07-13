@@ -21,18 +21,6 @@ class TreeNodeTest(unittest.TestCase):
         other_node = TreeNode(22)
         self.assertNotEqual(self.node, other_node)
 
-    def test_left(self):
-        self.assertEqual(self.node.left, None)
-
-        self.node.left = TreeNode(1)
-        self.assertEqual(self.node.left.value, 1)
-
-    def test_right(self):
-        self.assertEqual(self.node.right, None)
-
-        self.node.right = TreeNode(3)
-        self.assertEqual(self.node.right.value, 3)
-
 
 class BinarySearchTreeTest(unittest.TestCase):
     def setUp(self):
