@@ -39,7 +39,7 @@ def list_to_compact_str(array):
 
 def serialize_treenode(root):
     if not root:
-        return None
+        return '[]'
 
     items = []
     queue = deque([root, ])
@@ -52,6 +52,10 @@ def serialize_treenode(root):
             queue.append(node.right)
         else:
             items.append('null')
+
+    # Remove tail nulls
+    while items and (items[-1] == 'null'):
+        items.pop()
 
     return f"[{','.join(str(i) for i in items)}]"
 
