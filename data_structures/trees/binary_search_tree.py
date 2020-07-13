@@ -10,11 +10,11 @@ https://en.wikipedia.org/wiki/Binary_search_tree
 from collections import deque
 
 
-class BinaryTreeNode:
-    __slots__ = ['value', '_left', '_right']
+class TreeNode:
+    __slots__ = ['value', 'val', 'left', 'right']
 
     def __init__(self, value, left=None, right=None):
-        self.value = value
+        self.value = self.val = value
         self.left = left
         self.right = right
 
@@ -27,29 +27,9 @@ class BinaryTreeNode:
             self.right == other.right,
         ))
 
-    @property
-    def left(self):
-        return self._left
-
-    @left.setter
-    def left(self, node):
-        if node is not None and not isinstance(node, BinaryTreeNode):
-            raise TypeError('left must be None or a {self.__name__} instance')
-        self._left = node
-
-    @property
-    def right(self):
-        return self._right
-
-    @right.setter
-    def right(self, node):
-        if node is not None and not isinstance(node, BinaryTreeNode):
-            raise TypeError('right must be None or a {self.__name__} instance')
-        self._right = node
-
 
 class BinarySearchTree:
-    NODE_CLASS = BinaryTreeNode
+    NODE_CLASS = TreeNode
 
     def __init__(self):
         self.root = None
@@ -178,7 +158,3 @@ class BinarySearchTree:
             raise ValueError(f'invalid method {method}')
 
         return traverse_func(self.root)
-
-
-Node = BinaryTreeNode
-BST = BinarySearchTree

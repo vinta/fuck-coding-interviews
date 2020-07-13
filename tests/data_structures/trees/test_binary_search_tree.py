@@ -3,34 +3,34 @@ import unittest
 import random
 
 from data_structures.trees.binary_search_tree import BinarySearchTree
-from data_structures.trees.binary_search_tree import BinaryTreeNode
+from data_structures.trees.binary_search_tree import TreeNode
 
 
-class BinaryTreeNodeTest(unittest.TestCase):
+class TreeNodeTest(unittest.TestCase):
     def setUp(self):
-        self.node = BinaryTreeNode(2)
+        self.node = TreeNode(2)
 
     def test__eq__(self):
-        other_node = BinaryTreeNode(2)
+        other_node = TreeNode(2)
         self.assertEqual(self.node, other_node)
 
-        node_a = BinaryTreeNode(2, left=BinaryTreeNode(1), right=BinaryTreeNode(3))
-        node_b = BinaryTreeNode(2, left=BinaryTreeNode(1), right=BinaryTreeNode(3))
+        node_a = TreeNode(2, left=TreeNode(1), right=TreeNode(3))
+        node_b = TreeNode(2, left=TreeNode(1), right=TreeNode(3))
         self.assertEqual(node_a, node_b)
 
-        other_node = BinaryTreeNode(22)
+        other_node = TreeNode(22)
         self.assertNotEqual(self.node, other_node)
 
     def test_left(self):
         self.assertEqual(self.node.left, None)
 
-        self.node.left = BinaryTreeNode(1)
+        self.node.left = TreeNode(1)
         self.assertEqual(self.node.left.value, 1)
 
     def test_right(self):
         self.assertEqual(self.node.right, None)
 
-        self.node.right = BinaryTreeNode(3)
+        self.node.right = TreeNode(3)
         self.assertEqual(self.node.right.value, 3)
 
 
@@ -139,11 +139,4 @@ class BinarySearchTreeTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    #     ______8
-    #    /       \
-    #   3__       10___
-    #  /   \           \
-    # 1     6          _14
-    #      / \        /
-    #     4   7      13
     unittest.main()
