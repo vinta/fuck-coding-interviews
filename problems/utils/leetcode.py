@@ -41,53 +41,54 @@ def serialize_treenode(root):
     if not root:
         return '[]'
 
-    items = []
-    queue = deque([root, ])
-    while queue:
-        node = queue.popleft()
+    values = []
+    node_queue = deque([root, ])
 
+    while node_queue:
+        node = node_queue.popleft()
         if node:
-            items.append(node.val)
-            queue.append(node.left)
-            queue.append(node.right)
+            values.append(node.val)
+            node_queue.append(node.left)
+            node_queue.append(node.right)
         else:
-            items.append('null')
+            values.append('null')
 
     # Remove tail nulls
-    while items and (items[-1] == 'null'):
-        items.pop()
+    while values and (values[-1] == 'null'):
+        values.pop()
 
-    return f"[{','.join(str(i) for i in items)}]"
+    return f"[{','.join(str(i) for i in values)}]"
 
 
 def deserialize_tree_str(data):
     if data == '[]':
         return None
 
-    value_queue = data.strip('[]').split(',')
-    for i in range(len(value_queue)):
-        if value_queue[i] == 'null':
-            value_queue[i] = None
+    values = data.strip('[]').split(',')
+    for i in range(len(values)):
+        if values[i] == 'null':
+            values[i] = None
         else:
-            value_queue[i] = int(value_queue[i])
+            values[i] = int(values[i])
+    value_queue = deque(values)
 
-    root_val = value_queue.pop(0)
-    root = TreeNode(root_val)
-    tree_queue = deque([root, ])
+    root = TreeNode(value_queue.popleft())
+    node_queue = deque([root, ])
 
-    while (tree_queue and value_queue):
-        node = tree_queue.popleft()
+    while node_queue and value_queue:
+        node = node_queue.popleft()
 
-        if value_queue:
-            val = value_queue.pop(0)
-            if val:
-                node.left = TreeNode(val)
-                tree_queue.append(node.left)
+        val = value_queue.popleft()
+        if val:
+            node.left = TreeNode(val)
+            node_queue.append(node.left)
 
-        if value_queue:
-            val = value_queue.pop(0)
-            if val:
-                node.right = TreeNode(val)
-                tree_queue.append(node.right)
+        try:
+            val = value_queue.popleft()
+        except IndexError:
+            continue
+        if val:
+            node.right = TreeNode(val)
+            node_queue.append(node.right)
 
     return root
