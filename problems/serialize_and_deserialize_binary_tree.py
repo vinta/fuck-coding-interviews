@@ -12,6 +12,7 @@ class TreeNode(object):
         self.right = None
 
 
+# Also see https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/binary_tree_serialization.py
 class Codec:
     def serialize(self, root):
         if not root:
@@ -38,8 +39,7 @@ class Codec:
         if not data:
             return None
 
-        values = [None if v == '#' else int(v) for v in data.split(',')]
-        value_queue = deque(values)
+        value_queue = deque(None if v == '#' else int(v) for v in data.split(','))
 
         root = TreeNode(value_queue.popleft())
         node_queue = deque([root, ])
@@ -55,7 +55,7 @@ class Codec:
             try:
                 right_value = value_queue.popleft()
             except IndexError:
-                continue
+                return root
             if right_value is not None:
                 node.right = TreeNode(right_value)
                 node_queue.append(node.right)
