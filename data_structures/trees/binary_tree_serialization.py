@@ -1,5 +1,6 @@
 # coding: utf-8
 from collections import deque
+import json
 
 
 class TreeNode:
@@ -64,3 +65,26 @@ class LevelorderCodec:
                 node_queue.append(node.right)
 
         return root
+
+
+class PreorderCodec:
+    def serialize(self, root):
+        def to_tuple(root):
+            if not root:
+                return root
+            return (root.val, to_tuple(root.left), to_tuple(root.right))
+
+        traversal_tuple = to_tuple(root)
+        return json.dumps(traversal_tuple)
+
+    def deserialize(self, data):
+        def to_node(t):
+            if not t:
+                return None
+            root = TreeNode(t[0])
+            root.left = to_node(t[1])
+            root.right = to_node(t[2])
+            return root
+
+        traversal_tuple = json.loads(data)
+        return to_node(traversal_tuple)
