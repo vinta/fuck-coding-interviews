@@ -47,7 +47,7 @@ class LevelorderCodec(BaseCodec):
         while values and (values[-1] == self.terminator):
             values.pop()
 
-        return f"{self.open_bracket}{f'{self.delimiter}'.join(str(i) for i in values)}{self.close_bracket}"
+        return f"{self.open_bracket}{f'{self.delimiter}'.join(str(v) for v in values)}{self.close_bracket}"
 
     def deserialize(self, data):
         if not data or data == self.brackets:
@@ -55,11 +55,7 @@ class LevelorderCodec(BaseCodec):
 
         # Retrieve values from the serialized string, and convert them to proper types
         values = data.strip(self.brackets).split(self.delimiter)
-        for i in range(len(values)):
-            if values[i] == self.terminator:
-                values[i] = None
-            else:
-                values[i] = int(values[i])
+        values = [None if v == self.terminator else int(v) for v in values]
         value_queue = deque(values)
 
         root = TreeNode(value_queue.popleft())
@@ -68,17 +64,17 @@ class LevelorderCodec(BaseCodec):
         while node_queue and value_queue:
             node = node_queue.popleft()
 
-            val = value_queue.popleft()
-            if val:
-                node.left = TreeNode(val)
+            left_value = value_queue.popleft()
+            if left_value is not None:
+                node.left = TreeNode(left_value)
                 node_queue.append(node.left)
 
             try:
-                val = value_queue.popleft()
+                right_value = value_queue.popleft()
             except IndexError:
                 continue
-            if val:
-                node.right = TreeNode(val)
+            if right_value is not None:
+                node.right = TreeNode(right_value)
                 node_queue.append(node.right)
 
         return root

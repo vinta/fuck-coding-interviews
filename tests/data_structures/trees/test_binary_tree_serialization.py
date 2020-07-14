@@ -11,6 +11,7 @@ class LevelorderCodecTest(unittest.TestCase):
     def test(self):
         test_data = [
             {'input': '[]'},
+            {'input': '[-1,0,1]'},
             {'input': '[1,2,3,4,null,2,4,null,null,4]'},
             {'input': '[1,2,3,null,4]'},
             {'input': '[1,2,3,null,null,4,5]'},

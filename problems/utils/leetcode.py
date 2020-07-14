@@ -53,7 +53,6 @@ def serialize_treenode(root):
         else:
             values.append('null')
 
-    # Remove tail nulls
     while values and (values[-1] == 'null'):
         values.pop()
 
@@ -78,17 +77,17 @@ def deserialize_tree_str(data):
     while node_queue and value_queue:
         node = node_queue.popleft()
 
-        val = value_queue.popleft()
-        if val:
-            node.left = TreeNode(val)
+        left_value = value_queue.popleft()
+        if left_value is not None:
+            node.left = TreeNode(left_value)
             node_queue.append(node.left)
 
         try:
-            val = value_queue.popleft()
+            right_value = value_queue.popleft()
         except IndexError:
             continue
-        if val:
-            node.right = TreeNode(val)
+        if right_value is not None:
+            node.right = TreeNode(right_value)
             node_queue.append(node.right)
 
     return root
