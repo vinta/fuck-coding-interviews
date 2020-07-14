@@ -9,26 +9,12 @@ class TreeNode:
         self.right = None
 
 
-class BaseCodec:
-    def __init__(self, delimiter=',', terminator='null', brackets='[]'):
-        self.delimiter = delimiter
-        self.terminator = terminator
-
-        len_brackets = len(brackets)
-        if len_brackets not in (0, 2):
-            raise ValueError('brackets must be 0 or 2 characters')
-
-        self.brackets = brackets
-        self.open_bracket = brackets[0] if len_brackets == 2 else ''
-        self.close_bracket = brackets[1] if len_brackets == 2 else ''
-
-
 # This format is the same as how LeetCode serializes a binary tree
 # https://support.leetcode.com/hc/en-us/articles/360011883654-What-does-1-null-2-3-mean-in-binary-tree-representation
-class LevelorderCodec(BaseCodec):
+class LevelorderCodec:
     def serialize(self, root):
         if not root:
-            return self.brackets
+            return '[]'
 
         # Levelorder traversal: visting node level by level, left to right
         values = []
@@ -41,21 +27,21 @@ class LevelorderCodec(BaseCodec):
                 node_queue.append(node.left)
                 node_queue.append(node.right)
             else:
-                values.append(self.terminator)
+                values.append('null')
 
         # Remove tail nulls
-        while values and (values[-1] == self.terminator):
+        while values and (values[-1] == 'null'):
             values.pop()
 
-        return f"{self.open_bracket}{f'{self.delimiter}'.join(str(v) for v in values)}{self.close_bracket}"
+        return f"[{','.join(str(v) for v in values)}]"
 
     def deserialize(self, data):
-        if not data or data == self.brackets:
+        if not data or data == '[]':
             return None
 
         # Retrieve values from the serialized string, and convert them to proper types
-        values = data.strip(self.brackets).split(self.delimiter)
-        values = [None if v == self.terminator else int(v) for v in values]
+        values = data.strip('[]').split(',')
+        values = [None if v == 'null' else int(v) for v in values]
         value_queue = deque(values)
 
         root = TreeNode(value_queue.popleft())
@@ -65,7 +51,7 @@ class LevelorderCodec(BaseCodec):
             node = node_queue.popleft()
 
             left_value = value_queue.popleft()
-            if left_value is not None:
+            if left_value is not None:  # Check the value explicitly since the value might be falsy value, for instance, 0
                 node.left = TreeNode(left_value)
                 node_queue.append(node.left)
 
