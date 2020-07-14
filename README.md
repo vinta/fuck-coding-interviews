@@ -8,6 +8,72 @@ This repository is created by [a clumsy programmer](https://leetcode.com/vinta/)
 
 **This project requires Python 3.6 or higher.**
 
+## Contents
+
+- `algorithms/`
+    - `math/`
+        - [fibonacci_sequence](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/math/fibonacci_sequence.py)
+    - `searching/`
+        - [binary_search](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/binary_search.py)
+        - [binary_search_left_bound](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/binary_search_left_bound.py)
+    - `sorting/`
+        - [bubble_sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/bubble_sort.py)
+        - [insertion_sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/insertion_sort.py)
+        - [quick_sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/quick_sort.py)
+        - [selection_sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/selection_sort.py)
+- `data_structures/`
+    - `arrays/`
+        - [circular_array](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/arrays/circular_array.py)
+        - [dynamic_array](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/arrays/dynamic_array.py)
+    - `linked_lists/`
+        - [doubly_linked_list](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/linked_lists/doubly_linked_list.py)
+        - [singly_linked_list](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/linked_lists/singly_linked_list.py)
+    - `queues/`
+        - [array_based_queue](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/queues/array_based_queue.py)
+        - [circular_array_based_queue](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/queues/circular_array_based_queue.py)
+        - [doubly_linked_list_based_deque](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/queues/doubly_linked_list_based_deque.py)
+        - [linked_list_based_queue](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/queues/linked_list_based_queue.py)
+    - `stacks/`
+        - [array_based_stack](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/stacks/array_based_stack.py)
+        - [linked_list_based_stack](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/stacks/linked_list_based_stack.py)
+    - `trees/`
+        - [binary_search_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/binary_search_tree.py)
+        - [binary_tree_serialization](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/binary_tree_serialization.py)
+- `problems/`
+    - [add_two_numbers](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/add_two_numbers.py) - [LeetCode](https://leetcode.com/problems/add-two-numbers/)
+    - [best_time_to_buy_and_sell_stock](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/best_time_to_buy_and_sell_stock.py) - [LeetCode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+    - [big_countries](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/big_countries.sql) - [LeetCode](https://leetcode.com/problems/big-countries/)
+    - [binary_tree_inorder_traversal](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/binary_tree_inorder_traversal.py) - [LeetCode](https://leetcode.com/problems/binary-tree-inorder-traversal/)
+    - [binary_tree_postorder_traversal](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/binary_tree_postorder_traversal.py) - [LeetCode](https://leetcode.com/problems/binary-tree-postorder-traversal/)
+    - [binary_tree_preorder_traversal](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/binary_tree_preorder_traversal.py) - [LeetCode](https://leetcode.com/problems/binary-tree-preorder-traversal/)
+    - [container_with_most_water](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/container_with_most_water.py) - [LeetCode](https://leetcode.com/problems/container-with-most-water/)
+    - [contains_duplicate](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/contains_duplicate.py) - [LeetCode](https://leetcode.com/problems/contains-duplicate/)
+    - [fibonacci_number](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/fibonacci_number.py) - [LeetCode](https://leetcode.com/problems/fibonacci-number/)
+    - [find_minimum_in_rotated_sorted_array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/find_minimum_in_rotated_sorted_array.py) - [LeetCode](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
+    - [fizz_buzz](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/fizz_buzz.py) - [LeetCode](https://leetcode.com/problems/fizz-buzz/)
+    - [group_anagrams](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/group_anagrams.py) - [LeetCode](https://leetcode.com/problems/group-anagrams/)
+    - [implement_strstr](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/implement_strstr.py) - [LeetCode](https://leetcode.com/problems/implement-strstr/)
+    - [is_subsequence](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/is_subsequence.py) - [LeetCode](https://leetcode.com/problems/is-subsequence/)
+    - [linked_list_cycle](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/linked_list_cycle.py) - [LeetCode](https://leetcode.com/problems/linked-list-cycle/)
+    - [maximum_product_subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_product_subarray.py) - [LeetCode](https://leetcode.com/problems/maximum-product-subarray/)
+    - [maximum_subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_subarray.py) - [LeetCode](https://leetcode.com/problems/maximum-subarray/)
+    - [merge_intervals](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/merge_intervals.py) - [LeetCode](https://leetcode.com/problems/merge-intervals/)
+    - [nth_highest_salary](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/nth_highest_salary.sql) - [LeetCode](https://leetcode.com/problems/nth-highest-salary/)
+    - [product_of_array_except_self](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/product_of_array_except_self.py) - [LeetCode](https://leetcode.com/problems/product-of-array-except-self/)
+    - [rank_scores](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/rank_scores.sql) - [LeetCode](https://leetcode.com/problems/rank-scores/)
+    - [remove_nth_node_from_end_of_list](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/remove_nth_node_from_end_of_list.py) - [LeetCode](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
+    - [reverse_integer](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/reverse_integer.py) - [LeetCode](https://leetcode.com/problems/reverse-integer/)
+    - [reverse_linked_list](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/reverse_linked_list.py) - [LeetCode](https://leetcode.com/problems/reverse-linked-list/)
+    - [search_in_a_binary_search_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/search_in_a_binary_search_tree.py) - [LeetCode](https://leetcode.com/problems/search-in-a-binary-search-tree/)
+    - [second_highest_salary](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/second_highest_salary.sql) - [LeetCode](https://leetcode.com/problems/second-highest-salary/)
+    - [serialize_and_deserialize_binary_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/serialize_and_deserialize_binary_tree.py) - [LeetCode](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)
+    - [subsets](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/subsets.py) - [LeetCode](https://leetcode.com/problems/subsets/)
+    - [task_scheduler](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/task_scheduler.py) - [LeetCode](https://leetcode.com/problems/task-scheduler/)
+    - [three_sum](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/three_sum.py) - [LeetCode](https://leetcode.com/problems/3sum/)
+    - [two_sum](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/two_sum.py) - [LeetCode](https://leetcode.com/problems/two-sum/)
+    - [valid_anagram](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/valid_anagram.py) - [LeetCode](https://leetcode.com/problems/valid-anagram/)
+    - [valid_parentheses](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/valid_parentheses.py) - [LeetCode](https://leetcode.com/problems/valid-parentheses/)
+
 ## Testing
 
 ```bash
