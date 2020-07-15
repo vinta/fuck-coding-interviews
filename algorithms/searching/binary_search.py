@@ -1,4 +1,9 @@
 # coding: utf-8
+"""
+The following implementations cannot properly handle duplicates.
+"""
+
+
 def binary_search(array, target):
     low = 0
     high = len(array) - 1
