@@ -64,6 +64,10 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.assertIn(random.choice(self.insert_items), self.bst)
         self.assertNotIn(100, self.bst)
 
+    def test_num_edges(self):
+        self.assertEqual(self.empty_bst.num_edges(), 0)
+        self.assertEqual(self.bst.num_edges(), len(self.bst) - 1)
+
     def test_search(self):
         self.assertEqual(self.bst.search(8), self.bst.root)
         self.assertEqual(self.bst.search(1), self.bst.root.left.left)

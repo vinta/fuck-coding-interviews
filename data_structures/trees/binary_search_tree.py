@@ -49,6 +49,11 @@ class BinarySearchTree:
     def __contains__(self, value):
         return self.search(value)
 
+    def num_edges(self):
+        # If there are n nodes, then there are n - 1 edges.
+        # The 1 indicates the root node which has no edge points to it.
+        return self.size - 1 if self.size else 0
+
     def _insert_node(self, node, value):
         if value < node.value:
             if node.left:
@@ -70,6 +75,7 @@ class BinarySearchTree:
         else:
             self.root = self.NODE_CLASS(value)
 
+    # This is basically binary search
     def _search_node(self, node, value):
         if not node:
             return None
