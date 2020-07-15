@@ -23,11 +23,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          python -m pip install -r requirements.txt
 
-      # # TODO: https://github.com/github/super-linter/issues/157
-      # - name: Lint code
-      #   uses: docker://github/super-linter:v2.2.0
-
+      # python -m xxx will put the current directory into sys.path
       - name: Run tests
         run: python -m pytest --benchmark-disable
