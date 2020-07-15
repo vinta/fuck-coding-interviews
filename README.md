@@ -85,7 +85,7 @@ This repository is created by [a clumsy programmer](https://leetcode.com/vinta/)
     - [valid_anagram](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/valid_anagram.py) from [LeetCode](https://leetcode.com/problems/valid-anagram/)
     - [valid_parentheses](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/valid_parentheses.py) from [LeetCode](https://leetcode.com/problems/valid-parentheses/)
 
-## Testing
+## Tests
 
 ```bash
 # Install packages
@@ -95,6 +95,10 @@ $ poetry install
 # Run tests
 $ poetry run pytest --benchmark-disable
 ```
+
+## Bugs
+
+**If you find any bug or poor implementation in this repo, please let me know by opening an issue or pull request.**
 
 ## Resources
 
