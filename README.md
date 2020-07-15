@@ -13,7 +13,7 @@ This repository is created by [a clumsy programmer](https://leetcode.com/vinta/)
 - `algorithms/`
     - `math/`
         - `tests/`
-        - [fibonacci_sequence](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/math/fibonacci_sequence.py)
+        - [fibonacci](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/math/fibonacci.py)
     - `searching/`
         - `tests/`
         - [binary_search](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/binary_search.py)
