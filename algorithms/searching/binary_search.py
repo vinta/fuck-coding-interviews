@@ -1,6 +1,8 @@
 # coding: utf-8
 """
 The following implementations cannot properly handle duplicates.
+
+Also see https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/binary_search_left_bound.py
 """
 
 
