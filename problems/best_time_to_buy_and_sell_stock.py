@@ -3,7 +3,6 @@
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 """
 from typing import List
-import unittest
 
 
 class Solution:
@@ -31,25 +30,3 @@ class Solution2:
                 if profit > max_profit:
                     max_profit = profit
         return max_profit
-
-
-class TestCase(unittest.TestCase):
-    def setUp(self):
-        self.solution = Solution()
-
-    def test(self):
-        prices = [7, 1, 5, 3, 6, 4]
-        self.assertEqual(self.solution.maxProfit(prices), 5)
-
-
-class TestCase2(unittest.TestCase):
-    def setUp(self):
-        self.solution = Solution2()
-
-    def test(self):
-        prices = [7, 1, 5, 3, 6, 4]
-        self.assertEqual(self.solution.maxProfit(prices), 5)
-
-
-if __name__ == '__main__':
-    unittest.main()

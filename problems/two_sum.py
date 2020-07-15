@@ -3,7 +3,6 @@
 https://leetcode.com/problems/two-sum/
 """
 from typing import List
-import unittest
 
 
 class Solution:
@@ -25,27 +24,3 @@ class Solution2:
                 # return [index, index_dict[complement]]
                 return [index_dict[complement], index]
             index_dict[num] = index
-
-
-class TestCase(unittest.TestCase):
-    def setUp(self):
-        self.solution = Solution()
-
-    def test(self):
-        nums = [2, 3, 7, 11, 15, 3]
-        target = 6
-        self.assertEqual(self.solution.twoSum(nums, target), [1, 5])
-
-
-class TestCase2(unittest.TestCase):
-    def setUp(self):
-        self.solution = Solution2()
-
-    def test(self):
-        nums = [2, 3, 7, 11, 15, 3]
-        target = 6
-        self.assertEqual(self.solution.twoSum(nums, target), [1, 5])
-
-
-if __name__ == '__main__':
-    unittest.main()

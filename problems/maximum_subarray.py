@@ -3,7 +3,6 @@
 https://leetcode.com/problems/maximum-subarray/
 """
 from typing import List
-import unittest
 
 
 class Solution:
@@ -21,16 +20,3 @@ class Solution:
                 max_sum = current_sum
 
         return max_sum
-
-
-class TestCase(unittest.TestCase):
-    def setUp(self):
-        self.solution = Solution()
-
-    def test(self):
-        nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
-        self.assertEqual(self.solution.maxSubArray(nums), 6)
-
-
-if __name__ == '__main__':
-    unittest.main()

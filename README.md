@@ -12,34 +12,43 @@ This repository is created by [a clumsy programmer](https://leetcode.com/vinta/)
 
 - `algorithms/`
     - `math/`
+        - `tests/`
         - [fibonacci_sequence](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/math/fibonacci_sequence.py)
     - `searching/`
+        - `tests/`
         - [binary_search](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/binary_search.py)
         - [binary_search_left_bound](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/binary_search_left_bound.py)
     - `sorting/`
+        - `tests/`
         - [bubble_sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/bubble_sort.py)
         - [insertion_sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/insertion_sort.py)
         - [quick_sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/quick_sort.py)
         - [selection_sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/selection_sort.py)
 - `data_structures/`
     - `arrays/`
+        - `tests/`
         - [circular_array](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/arrays/circular_array.py)
         - [dynamic_array](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/arrays/dynamic_array.py)
     - `linked_lists/`
+        - `tests/`
         - [doubly_linked_list](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/linked_lists/doubly_linked_list.py)
         - [singly_linked_list](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/linked_lists/singly_linked_list.py)
     - `queues/`
+        - `tests/`
         - [array_based_queue](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/queues/array_based_queue.py)
         - [circular_array_based_queue](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/queues/circular_array_based_queue.py)
         - [doubly_linked_list_based_deque](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/queues/doubly_linked_list_based_deque.py)
         - [linked_list_based_queue](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/queues/linked_list_based_queue.py)
     - `stacks/`
+        - `tests/`
         - [array_based_stack](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/stacks/array_based_stack.py)
         - [linked_list_based_stack](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/stacks/linked_list_based_stack.py)
     - `trees/`
+        - `tests/`
         - [binary_search_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/binary_search_tree.py)
         - [binary_tree_serialization](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/binary_tree_serialization.py)
 - `problems/`
+    - `tests/`
     - [add_two_numbers](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/add_two_numbers.py) from [LeetCode](https://leetcode.com/problems/add-two-numbers/)
     - [best_time_to_buy_and_sell_stock](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/best_time_to_buy_and_sell_stock.py) from [LeetCode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
     - [big_countries](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/big_countries.sql) from [LeetCode](https://leetcode.com/problems/big-countries/)

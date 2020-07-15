@@ -2,7 +2,6 @@
 """
 https://leetcode.com/problems/container-with-most-water/
 """
-import unittest
 from typing import List
 
 
@@ -46,27 +45,3 @@ class Solution2:
             max_area = max(max_area, area)
 
         return max_area
-
-
-class TestCase(unittest.TestCase):
-    def setUp(self):
-        self.solution = Solution()
-
-    def test(self):
-        self.assertEqual(self.solution.maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]), 49)
-        self.assertEqual(self.solution.maxArea([2, 3, 4, 5, 18, 17, 6]), 17)
-        self.assertEqual(self.solution.maxArea([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]), 25)
-
-
-class TestCase2(unittest.TestCase):
-    def setUp(self):
-        self.solution = Solution2()
-
-    def test(self):
-        self.assertEqual(self.solution.maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]), 49)
-        self.assertEqual(self.solution.maxArea([2, 3, 4, 5, 18, 17, 6]), 17)
-        self.assertEqual(self.solution.maxArea([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]), 25)
-
-
-if __name__ == '__main__':
-    unittest.main()

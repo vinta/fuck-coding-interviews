@@ -3,7 +3,6 @@
 FIFO: first in, first out
 append, pop left
 """
-import unittest
 
 
 class ListNode:
@@ -76,43 +75,3 @@ class LinkedListBasedQueue:
             return self.linked_list.pop_left()
         except IndexError:
             raise ValueError('Queue is empty')
-
-
-class TestCase(unittest.TestCase):
-    def setUp(self):
-        self.queue = LinkedListBasedQueue()
-
-    def test_enqueue(self):
-        self.queue.enqueue(0)
-        self.queue.enqueue(1)
-        self.queue.enqueue(2)
-        self.assertEqual(self.queue.linked_list.head.value, 0)
-        self.assertEqual(self.queue.linked_list.tail.value, 2)
-        self.assertEqual(len(self.queue), 3)
-        self.assertEqual(list(self.queue), [0, 1, 2])
-
-    def test_dequeue(self):
-        with self.assertRaises(ValueError):
-            print(self.queue.dequeue())
-
-        self.queue.enqueue(0)
-        self.queue.enqueue(1)
-        self.queue.enqueue(2)
-        self.assertEqual(self.queue.dequeue(), 0)
-        self.assertEqual(self.queue.linked_list.head.value, 1)
-        self.assertEqual(self.queue.linked_list.tail.value, 2)
-        self.assertEqual(self.queue.dequeue(), 1)
-        self.assertEqual(self.queue.linked_list.head.value, 2)
-        self.assertEqual(self.queue.linked_list.tail.value, 2)
-        self.assertEqual(self.queue.dequeue(), 2)
-        self.assertEqual(self.queue.linked_list.head, None)
-        self.assertEqual(self.queue.linked_list.tail, None)
-        self.assertEqual(len(self.queue), 0)
-        self.assertEqual(list(self.queue), [])
-
-        with self.assertRaises(ValueError):
-            print(self.queue.dequeue())
-
-
-if __name__ == '__main__':
-    unittest.main()

@@ -4,7 +4,6 @@ https://leetcode.com/problems/subsets/
 """
 from itertools import combinations
 from typing import List
-import unittest
 
 
 class Solution:
@@ -29,95 +28,3 @@ class Solution2:
                     yield p
 
         return list(gen_power_set(nums))
-
-
-class TestCase(unittest.TestCase):
-    def setUp(self):
-        self.solution = Solution()
-
-    def test(self):
-        nums = [1, 2, 3]
-        expected = [
-            [],
-            [1],
-            [2],
-            [3],
-            [1, 2],
-            [1, 3],
-            [2, 3],
-            [1, 2, 3],
-        ]
-        self.assertCountEqual(self.solution.subsets(nums), expected)
-
-    def test2(self):
-        nums = []
-        expected = [
-            [],
-        ]
-        self.assertCountEqual(self.solution.subsets(nums), expected)
-
-    def test3(self):
-        nums = [1]
-        expected = [
-            [],
-            [1, ],
-        ]
-        self.assertCountEqual(self.solution.subsets(nums), expected)
-
-    def test4(self):
-        nums = [1, 2]
-        expected = [
-            [],
-            [1, ],
-            [2, ],
-            [1, 2],
-        ]
-        self.assertCountEqual(self.solution.subsets(nums), expected)
-
-
-class TestCase2(unittest.TestCase):
-    def setUp(self):
-        self.solution = Solution2()
-
-    def test(self):
-        nums = [1, 2, 3]
-        expected = [
-            [],
-            [1],
-            [2],
-            [3],
-            [1, 2],
-            [1, 3],
-            [2, 3],
-            [1, 2, 3],
-        ]
-        self.assertCountEqual(self.solution.subsets(nums), expected)
-
-    def test2(self):
-        nums = []
-        expected = [
-            [],
-        ]
-        self.assertCountEqual(self.solution.subsets(nums), expected)
-
-    def test3(self):
-        nums = [1]
-        expected = [
-            [],
-            [1, ],
-        ]
-        self.assertCountEqual(self.solution.subsets(nums), expected)
-
-    def test4(self):
-        nums = [1, 2]
-        expected = [
-            [],
-            [1, ],
-            [2, ],
-            [1, 2],
-        ]
-        self.assertCountEqual(self.solution.subsets(nums), expected)
-
-
-if __name__ == '__main__':
-    unittest.main()

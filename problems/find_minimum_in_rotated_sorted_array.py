@@ -4,7 +4,6 @@ https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
 """
 from typing import List
 import sys
-import unittest
 
 
 class Solution:
@@ -55,37 +54,3 @@ class Solution2:
             # ex: [7, 0, 1, 2, 4, 5, 6]
             if first_value > mid_value:
                 high = mid - 1
-
-
-class TestCase(unittest.TestCase):
-    def setUp(self):
-        self.solution = Solution()
-
-    def test(self):
-        self.assertEqual(self.solution.findMin([4, 5, 6, 7, 0, 1, 2]), 0)
-        self.assertEqual(self.solution.findMin([0, 1, 2, 4, 5, 6, 7]), 0)
-        self.assertEqual(self.solution.findMin([1, 2, 4, 5, 6, 7, 0]), 0)
-        self.assertEqual(self.solution.findMin([7, 0, 1, 2, 4, 5, 6]), 0)
-        self.assertEqual(self.solution.findMin([3, 4, 5, 1, 2]), 1)
-        self.assertEqual(self.solution.findMin([1, ]), 1)
-        self.assertEqual(self.solution.findMin([2, 1]), 1)
-        self.assertEqual(self.solution.findMin([3, 1, 2]), 1)
-
-
-class TestCase2(unittest.TestCase):
-    def setUp(self):
-        self.solution = Solution2()
-
-    def test(self):
-        self.assertEqual(self.solution.findMin([4, 5, 6, 7, 0, 1, 2]), 0)
-        self.assertEqual(self.solution.findMin([0, 1, 2, 4, 5, 6, 7]), 0)
-        self.assertEqual(self.solution.findMin([1, 2, 4, 5, 6, 7, 0]), 0)
-        self.assertEqual(self.solution.findMin([7, 0, 1, 2, 4, 5, 6]), 0)
-        self.assertEqual(self.solution.findMin([3, 4, 5, 1, 2]), 1)
-        self.assertEqual(self.solution.findMin([1, ]), 1)
-        self.assertEqual(self.solution.findMin([2, 1]), 1)
-        self.assertEqual(self.solution.findMin([3, 1, 2]), 1)
-
-
-if __name__ == '__main__':
-    unittest.main()

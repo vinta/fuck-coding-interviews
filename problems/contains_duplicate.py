@@ -3,7 +3,6 @@
 https://leetcode.com/problems/contains-duplicate/
 """
 from typing import List
-import unittest
 
 
 class Solution:
@@ -24,25 +23,3 @@ class Solution2:
             dedup_set.add(num)
 
         return False
-
-
-class TestCase(unittest.TestCase):
-    def setUp(self):
-        self.solution = Solution()
-
-    def test(self):
-        nums = [1, 2, 3, 1]
-        self.assertEqual(self.solution.containsDuplicate(nums), True)
-
-
-class TestCase2(unittest.TestCase):
-    def setUp(self):
-        self.solution = Solution2()
-
-    def test(self):
-        nums = [1, 2, 3, 1]
-        self.assertEqual(self.solution.containsDuplicate(nums), True)
-
-
-if __name__ == '__main__':
-    unittest.main()

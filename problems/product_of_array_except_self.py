@@ -3,7 +3,6 @@
 https://leetcode.com/problems/product-of-array-except-self/
 """
 from typing import List
-import unittest
 
 
 class Solution:
@@ -37,27 +36,3 @@ class Solution2:
             output.append(left_products[i] * right_products[i])
 
         return output
-
-
-class TestCase(unittest.TestCase):
-    def setUp(self):
-        self.solution = Solution()
-
-    def test(self):
-        nums = [1, 2, 3, 4]
-        expected_output = [24, 12, 8, 6]
-        self.assertEqual(self.solution.productExceptSelf(nums), expected_output)
-
-
-class TestCase2(unittest.TestCase):
-    def setUp(self):
-        self.solution = Solution2()
-
-    def test(self):
-        nums = [1, 2, 3, 4]
-        expected_output = [24, 12, 8, 6]
-        self.assertEqual(self.solution.productExceptSelf(nums), expected_output)
-
-
-if __name__ == '__main__':
-    unittest.main()

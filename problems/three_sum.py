@@ -3,7 +3,6 @@
 https://leetcode.com/problems/3sum/
 """
 from typing import List
-import unittest
 
 
 class Solution:
@@ -53,28 +52,3 @@ class Solution:
                         results.append(result)
 
         return results
-
-
-# class Solution2:
-#     def threeSum(self, nums: List[int]) -> List[List[int]]:
-#         pass
-
-
-class TestCase(unittest.TestCase):
-    def setUp(self):
-        self.solution = Solution()
-
-    def test(self):
-        nums = [-1, 0, 1, 2, -1, -4]
-        expected = [[-1, 0, 1], [-1, -1, 2]]
-        self.assertEqual(self.solution.threeSum(nums), expected)
-
-
-# class TestCase2(unittest.TestCase):
-#     def setUp(self):
-#         self.solution = Solution2()
-
-#     def test2(self):
-#         nums = [-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6]
-#         expected = []
-#         self.assertEqual(self.solution.threeSum(nums), expected)
