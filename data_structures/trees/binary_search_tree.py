@@ -101,9 +101,6 @@ class BinarySearchTree:
 
         return depth
 
-    def max_depth(self):
-        pass
-
     def level(self, node):
         """
         The level of a node is 1 + the depth of the node.
