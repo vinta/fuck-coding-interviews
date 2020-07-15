@@ -30,4 +30,4 @@ jobs:
       #   uses: docker://github/super-linter:v2.2.0
 
       - name: Run tests
-        run: pytest --benchmark-disable
+        run: python -m pytest --benchmark-disable
