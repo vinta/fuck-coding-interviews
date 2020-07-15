@@ -98,7 +98,7 @@ $ poetry run pytest --benchmark-disable
 
 ## Bugs
 
-**If you find any bug or poor implementation in this repo, please let me know by opening an issue or pull request.**
+If you find any bug or poor implementation in this repo, please let me know by opening an issue or pull request.
 
 ## Resources
 
