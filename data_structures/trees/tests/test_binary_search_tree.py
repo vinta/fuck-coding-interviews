@@ -64,17 +64,6 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.assertIn(random.choice(self.insert_items), self.bst)
         self.assertNotIn(100, self.bst)
 
-    def test_num_edges(self):
-        self.assertEqual(self.empty_bst.num_edges(), 0)
-        self.assertEqual(self.bst.num_edges(), len(self.bst) - 1)
-
-    def test_search(self):
-        self.assertEqual(self.bst.search(8), self.bst.root)
-        self.assertEqual(self.bst.search(1), self.bst.root.left.left)
-        self.assertEqual(self.bst.search(13), self.bst.root.right.right.left)
-
-        self.assertEqual(self.bst.search(100), None)
-
     def test_is_root(self):
         self.assertTrue(self.bst.is_root(self.bst.root))
         self.assertFalse(self.bst.is_root(self.bst.root.left))
@@ -95,6 +84,48 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.assertFalse(self.bst.is_leaf(self.bst.root))
         self.assertFalse(self.bst.is_leaf(self.bst.root.left))
         self.assertFalse(self.bst.is_leaf(self.bst.root.right))
+
+    def test_height(self):
+        self.assertEqual(self.empty_bst.height(self.empty_bst.root), 0)
+        self.assertEqual(self.bst.height(self.bst.root), 3)
+        self.assertEqual(self.bst.height(self.bst.root.left.left), 0)
+        self.assertEqual(self.bst.height(self.bst.root.left.right), 1)
+        self.assertEqual(self.bst.height(self.bst.root.right), 2)
+
+        self.bst.insert(15)
+        self.bst.insert(30)
+        self.assertEqual(self.bst.height(self.bst.root), 4)
+
+    def test_depth(self):
+        self.assertEqual(self.bst.depth(self.bst.root), 0)
+        self.assertEqual(self.bst.depth(self.bst.root.right), 1)
+        self.assertEqual(self.bst.depth(self.bst.root.right.right), 2)
+        self.assertEqual(self.bst.depth(self.bst.root.left.right.left), 3)
+
+        self.bst.insert(15)
+        self.bst.insert(30)
+        self.assertEqual(self.bst.depth(self.bst.root.right.right.right.right), 4)
+
+    def test_level(self):
+        self.assertEqual(self.bst.level(self.bst.root), 1)
+        self.assertEqual(self.bst.level(self.bst.root.right), 2)
+        self.assertEqual(self.bst.level(self.bst.root.right.right), 3)
+        self.assertEqual(self.bst.level(self.bst.root.left.right.left), 4)
+
+        self.bst.insert(15)
+        self.bst.insert(30)
+        self.assertEqual(self.bst.level(self.bst.root.right.right.right.right), 5)
+
+    def test_num_edges(self):
+        self.assertEqual(self.empty_bst.num_edges(), 0)
+        self.assertEqual(self.bst.num_edges(), len(self.bst) - 1)
+
+    def test_search(self):
+        self.assertEqual(self.bst.search(8), self.bst.root)
+        self.assertEqual(self.bst.search(1), self.bst.root.left.left)
+        self.assertEqual(self.bst.search(13), self.bst.root.right.right.left)
+
+        self.assertEqual(self.bst.search(100), None)
 
     def test_inorder_traverse(self):
         items = [node.value for node in self.bst.inorder_traverse(self.bst.root)]
