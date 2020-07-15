@@ -13,6 +13,7 @@ This repository is created by [a clumsy programmer](https://leetcode.com/vinta/)
 - `algorithms/`
     - `math/`
         - `tests/`
+        - [factorial](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/math/factorial.py)
         - [fibonacci](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/math/fibonacci.py)
     - `searching/`
         - `tests/`
