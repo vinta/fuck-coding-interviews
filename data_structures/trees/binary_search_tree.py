@@ -118,32 +118,39 @@ class BinarySearchTree:
         return 1 + self.depth(node)
 
     def num_edges(self):
-        # If there are n nodes, then there are n - 1 edges.
-        # The 1 indicates the root node which has no edge points to it.
+        """
+        If there are n nodes, then there are n - 1 edges.
+
+        The 1 indicates the root node which has no edge points to it.
+        """
         return self.size - 1 if self.size else 0
 
     def _insert_node(self, node, value):
+        if not self.root:
+            self.size += 1
+            self.root = self.NODE_CLASS(value)
+            return
+
         if value < node.value:
             if node.left:
                 self._insert_node(node.left, value)
             else:
+                self.size += 1
                 node.left = self.NODE_CLASS(value)
         elif value > node.value:
             if node.right:
                 self._insert_node(node.right, value)
             else:
+                self.size += 1
                 node.right = self.NODE_CLASS(value)
         elif value == node.value:
             raise ValueError('value is duplicate')
+        else:
+            raise RuntimeError
 
     def insert(self, value):
-        self.size += 1
-        if self.root:
-            self._insert_node(self.root, value)
-        else:
-            self.root = self.NODE_CLASS(value)
+        self._insert_node(self.root, value)
 
-    # This is basically binary search
     def _search_node(self, node, value):
         if not node:
             return None
@@ -210,7 +217,7 @@ class BinarySearchTree:
             if node.right:
                 queue.append(node.right)
 
-    def traverse(self, method='inorder'):
+    def traverse(self, method):
         method_to_func = {
             # Depth-First Search (DFS)
             'inorder': self.inorder_traverse,
