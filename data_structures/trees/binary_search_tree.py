@@ -19,6 +19,12 @@ class TreeNode:
         self.left = left
         self.right = right
 
+    def __repr__(self):
+        return f'TreeNode({self.value})'
+
+    def __str__(self):
+        return str(self.value)
+
     def __eq__(self, other):
         if not isinstance(other, self.__class__):
             return False
