@@ -135,6 +135,19 @@ class BinarySearchTreeTest(unittest.TestCase):
 
         self.assertEqual(self.bst.search(100), None)
 
+    def test_delete(self):
+        with self.assertRaises(ValueError):
+            self.bst.delete(100)
+
+        self.bst.delete(1)
+        self.assertEqual(len(self.bst), 8)
+
+        self.bst.delete(8)
+        self.assertEqual(len(self.bst), 7)
+
+        self.bst.delete(14)
+        self.assertEqual(len(self.bst), 6)
+
     def test_inorder_traverse(self):
         items = [node.value for node in self.bst.inorder_traverse(self.bst.root)]
         expected = [1, 3, 4, 6, 7, 8, 10, 13, 14]

@@ -165,6 +165,69 @@ class BinarySearchTree:
     def search(self, value):
         return self._search_node(self.root, value)
 
+    def find_min_node(self, node):
+        """
+        The minimum node is the leftmost node in subtrees of node.
+        """
+        current_node = node
+        while current_node:
+            if current_node.left:
+                current_node = current_node.left
+            else:
+                return current_node
+
+    def find_max_node(self, node):
+        """
+        The maximum node is the rightmost node in subtrees of node.
+        """
+        current_node = node
+        while current_node:
+            if current_node.right:
+                current_node = current_node.right
+            else:
+                return current_node
+
+    def _delete_node(self, node, value):
+        if not node:
+            raise ValueError('value is not found')
+
+        if value == node.value:
+            if self.num_children(node) == 0:
+                self.size -= 1
+                node = None
+            elif self.num_children(node) == 1:
+                self.size -= 1
+                if node.left:
+                    node = node.left
+                elif node.right:
+                    node = node.right
+            elif self.num_children(node) == 2:
+                inorder_successor = self.find_min_node(node.right)
+                node.value = inorder_successor.value
+                node.right = self._delete_node(node.right, inorder_successor.value)
+        elif value < node.value:
+            node.left = self._delete_node(node.left, value)
+        elif value > node.value:
+            node.right = self._delete_node(node.right, value)
+
+        # NOTE: Python function's parameters are "passed by assignment"
+        # https://docs.python.org/3/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference
+        return node
+
+    def delete(self, value):
+        """
+        If the node to be deleted:
+            - Is a leaf:
+                - Simply remove the node from the tree.
+            - Has 1 child:
+                - Copy the child to the node and delete the child.
+            - Has 2 children:
+                - Find the leftmost node in the node's right subtree, the inorder successor.
+                - Copy the value of the inorder successor to the node.
+                - Delete the inorder successor.
+        """
+        self.root = self._delete_node(self.root, value)
+
     def inorder_traverse(self, node):
         """
         Inorder: the root is accessed between the left and the right.
