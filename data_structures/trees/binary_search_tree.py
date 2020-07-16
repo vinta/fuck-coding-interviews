@@ -1,10 +1,11 @@
 # coding: utf-8
 """
+Binary Search Ttree
 https://en.wikipedia.org/wiki/Binary_search_tree
 
 - Every node has at most two children, left and right.
-- All values in left subtree of a node are less than the node's value.
-- All values in right subtree of a node are greater than the node's value.
+- Elements in left subtree of a node are less than the node.
+- Elements in right subtree of a node are greater than the node.
 - Each of left and right subtree must also be a Binary Search Tree.
 """
 from collections import deque
@@ -61,6 +62,9 @@ class BinarySearchTree:
             yield node.left
         if node.right:
             yield node.right
+
+    def num_children(self, node):
+        return len(list(self.children(node)))
 
     def is_leaf(self, node):
         for _ in self.children(node):

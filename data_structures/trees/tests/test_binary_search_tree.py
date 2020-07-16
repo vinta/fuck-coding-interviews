@@ -69,11 +69,17 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.assertFalse(self.bst.is_root(self.bst.root.left))
         self.assertFalse(self.bst.is_root(self.bst.root.right))
 
-    def test_childre(self):
+    def test_children(self):
         self.assertEqual(list(self.bst.children(self.bst.root)), [self.bst.root.left, self.bst.root.right])
         self.assertEqual(list(self.bst.children(self.bst.root.left)), [self.bst.root.left.left, self.bst.root.left.right])
-        self.assertEqual(list(self.bst.children(self.bst.root.right)), [self.bst.root.right.right])
+        self.assertEqual(list(self.bst.children(self.bst.root.right)), [self.bst.root.right.right, ])
         self.assertEqual(list(self.bst.children(self.bst.root.left.left)), [])
+
+    def test_num_children(self):
+        self.assertEqual(self.bst.num_children(self.bst.root), 2)
+        self.assertEqual(self.bst.num_children(self.bst.root.left), 2)
+        self.assertEqual(self.bst.num_children(self.bst.root.right), 1)
+        self.assertEqual(self.bst.num_children(self.bst.root.left.left), 0)
 
     def test_is_leaf(self):
         self.assertTrue(self.bst.is_leaf(self.bst.root.left.left))
