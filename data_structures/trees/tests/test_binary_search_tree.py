@@ -2,6 +2,8 @@
 import unittest
 import random
 
+import binarytree
+
 from data_structures.trees.binary_search_tree import BinarySearchTree
 from data_structures.trees.binary_search_tree import TreeNode
 
@@ -160,6 +162,22 @@ class BinarySearchTreeTest(unittest.TestCase):
     def test_traverse(self):
         with self.assertRaises(ValueError):
             self.bst.traverse('NOT EXIST')
+
+    def test_to_array_representation(self):
+        array = self.empty_bst.to_array_representation()
+        self.assertEqual(array, [])
+
+        array = self.bst.to_array_representation()
+        root = binarytree.build(array)
+        self.assertEqual(array, root.values)
+
+    def test_from_array_representation(self):
+        height = random.randint(0, 9)
+        is_perfect = random.choice([True, False])
+        bst = binarytree.bst(height=height, is_perfect=is_perfect)
+        array = bst.values
+        expected_bst = BinarySearchTree.from_array_representation(array)
+        self.assertEqual(array, expected_bst.to_array_representation())
 
 
 if __name__ == '__main__':
