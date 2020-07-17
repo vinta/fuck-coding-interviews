@@ -159,6 +159,14 @@ histogram = ["pygal", "pygaljs"]
 
 [[package]]
 category = "dev"
+description = "Data Structures package for Problem Solving with Algorithms and Data Structures using Python"
+name = "pythonds3"
+optional = false
+python-versions = "*"
+version = "3.0.3"
+
+[[package]]
+category = "dev"
 description = "Python 2 and 3 compatibility utilities"
 name = "six"
 optional = false
@@ -187,7 +195,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "c169e6dd8b1d24d8120e7bad8625b69cebb5778f2c9eb2c3f3e5ca19ac42d4a9"
+content-hash = "33a6fde26c0c031d5ab6b30866603d43d05f7a61b009c4abba6b09626d24139f"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -241,6 +249,10 @@ pytest = [
 pytest-benchmark = [
     {file = "pytest-benchmark-3.2.3.tar.gz", hash = "sha256:ad4314d093a3089701b24c80a05121994c7765ce373478c8f4ba8d23c9ba9528"},
     {file = "pytest_benchmark-3.2.3-py2.py3-none-any.whl", hash = "sha256:01f79d38d506f5a3a0a9ada22ded714537bbdfc8147a881a35c1655db07289d9"},
+]
+pythonds3 = [
+    {file = "pythonds3-3.0.3-py3-none-any.whl", hash = "sha256:9a83ea9ae8976347377a9af1aedb84ce65bce0a96dee9e46e1772f1054f46009"},
+    {file = "pythonds3-3.0.3.tar.gz", hash = "sha256:a7b53d422c5c5be80a41b1fd8697616313607b753fbebbb38fb3346e0e80eade"},
 ]
 six = [
     {file = "six-1.15.0-py2.py3-none-any.whl", hash = "sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"},
