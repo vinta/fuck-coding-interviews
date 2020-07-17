@@ -165,7 +165,7 @@ class BinarySearchTree:
     def search(self, value):
         return self._search_node(self.root, value)
 
-    def find_min_node(self, node):
+    def get_min_node(self, node):
         """
         The minimum node is the leftmost node in subtrees of node.
         """
@@ -176,7 +176,7 @@ class BinarySearchTree:
             else:
                 return current_node
 
-    def find_max_node(self, node):
+    def get_max_node(self, node):
         """
         The maximum node is the rightmost node in subtrees of node.
         """
@@ -202,7 +202,7 @@ class BinarySearchTree:
                 elif node.right:
                     node = node.right
             elif self.num_children(node) == 2:
-                inorder_successor = self.find_min_node(node.right)
+                inorder_successor = self.get_min_node(node.right)
                 node.value = inorder_successor.value
                 node.right = self._delete_node(node.right, inorder_successor.value)
         elif value < node.value:
@@ -210,7 +210,8 @@ class BinarySearchTree:
         elif value > node.value:
             node.right = self._delete_node(node.right, value)
 
-        # NOTE: Python function's parameters are "passed by assignment"
+        # NOTE: Python function's parameters are "passed by assignment".
+        # If you re-assign a parameter, you lose the parameter's reference to the original object.
         # https://docs.python.org/3/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference
         return node
 
@@ -239,7 +240,7 @@ class BinarySearchTree:
         # NOTE: self.inorder_traverse(node.left) only creates the generator object,
         # we need to actually run it with a for loop or yield from.
         yield from self.inorder_traverse(node.left)
-        yield node
+        yield node.value
         yield from self.inorder_traverse(node.right)
 
     def preorder_traverse(self, node):
@@ -249,7 +250,7 @@ class BinarySearchTree:
         if not node:
             return
 
-        yield node
+        yield node.value
         yield from self.preorder_traverse(node.left)
         yield from self.preorder_traverse(node.right)
 
@@ -262,7 +263,7 @@ class BinarySearchTree:
 
         yield from self.postorder_traverse(node.left)
         yield from self.postorder_traverse(node.right)
-        yield node
+        yield node.value
 
     def levelorder_traverse(self, node):
         """
@@ -274,13 +275,13 @@ class BinarySearchTree:
         queue = deque([node, ])
         while queue:
             node = queue.popleft()
-            yield node
+            yield node.value
             if node.left:
                 queue.append(node.left)
             if node.right:
                 queue.append(node.right)
 
-    def traverse(self, method):
+    def traverse(self, method='inorder'):
         method_to_func = {
             # Depth-First Search (DFS)
             'inorder': self.inorder_traverse,

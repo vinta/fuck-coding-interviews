@@ -3,6 +3,7 @@ import unittest
 import random
 
 import binarytree
+import pythonds3
 
 from data_structures.trees.binary_search_tree import BinarySearchTree
 from data_structures.trees.binary_search_tree import TreeNode
@@ -58,7 +59,7 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.assertEqual(len(self.bst), len(self.insert_items))
 
     def test__iter__(self):
-        items = [node.value for node in self.bst]
+        items = list(self.bst)
         expected = [8, 3, 10, 1, 6, 14, 4, 7, 13]
         self.assertEqual(items, expected)
 
@@ -135,40 +136,86 @@ class BinarySearchTreeTest(unittest.TestCase):
 
         self.assertEqual(self.bst.search(100), None)
 
+    def test_get_min_node(self):
+        self.assertEqual(self.bst.get_min_node(self.bst.root).value, min(self.insert_items))
+
+    def test_get_max_node(self):
+        self.assertEqual(self.bst.get_max_node(self.bst.root).value, max(self.insert_items))
+
     def test_delete(self):
         with self.assertRaises(ValueError):
             self.bst.delete(100)
 
+        bst2 = pythonds3.BinarySearchTree()
+        for i in self.insert_items:
+            bst2.put(key=i, value=i)
+
+        #   ______8
+        #  /       \
+        # 3__       10___
+        #    \           \
+        #     6          _14
+        #    / \        /
+        #   4   7      13
         self.bst.delete(1)
-        self.assertEqual(len(self.bst), 8)
+        bst2.delete(1)
+        self.assertEqual(len(self.bst), len(bst2))
+        self.assertEqual(list(self.bst.traverse()), list(bst2))
 
+        #   ______10___
+        #  /           \
+        # 3__          _14
+        #    \        /
+        #     6      13
+        #    / \
+        #   4   7
         self.bst.delete(8)
-        self.assertEqual(len(self.bst), 7)
+        bst2.delete(8)
+        self.assertEqual(len(self.bst), len(bst2))
+        self.assertEqual(list(self.bst.traverse()), list(bst2))
 
+        #   ____10___
+        #  /         \
+        # 3__        _14
+        #    \      /
+        #     7    13
+        #    /
+        #   4
+        self.bst.delete(6)
+        bst2.delete(6)
+        self.assertEqual(len(self.bst), len(bst2))
+        self.assertEqual(list(self.bst.traverse()), list(bst2))
+
+        self.bst.delete(10)
+        self.bst.delete(4)
+        self.bst.delete(7)
         self.bst.delete(14)
-        self.assertEqual(len(self.bst), 6)
+        self.bst.delete(3)
+        self.bst.delete(13)
+        self.assertEqual(len(self.bst), 0)
+        self.assertFalse(self.bst)
 
     def test_inorder_traverse(self):
-        items = [node.value for node in self.bst.inorder_traverse(self.bst.root)]
+        items = list(self.bst.inorder_traverse(self.bst.root))
         expected = [1, 3, 4, 6, 7, 8, 10, 13, 14]
         self.assertEqual(items, expected)
 
-        items = [node.value for node in self.bst.inorder_traverse(self.bst.root.right.left)]
+        items = list(self.bst.inorder_traverse(self.bst.root.right.left))
         expected = []
         self.assertEqual(items, expected)
 
     def test_preorder_traverse(self):
-        items = [node.value for node in self.bst.preorder_traverse(self.bst.root)]
+        items = list(self.bst.preorder_traverse(self.bst.root))
         expected = [8, 3, 1, 6, 4, 7, 10, 14, 13]
         self.assertEqual(items, expected)
 
     def test_postorder_traverse(self):
-        items = [node.value for node in self.bst.postorder_traverse(self.bst.root)]
+        items = list(self.bst.postorder_traverse(self.bst.root))
         expected = [1, 4, 7, 6, 3, 13, 14, 10, 8]
         self.assertEqual(items, expected)
 
     def test_levelorder_traverse(self):
-        items = [node.value for node in self.bst.levelorder_traverse(self.bst.root)]
+        items = list(self.bst.levelorder_traverse(self.bst.root))
         expected = [8, 3, 10, 1, 6, 14, 4, 7, 13]
         self.assertEqual(items, expected)
 
@@ -185,12 +232,9 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.assertEqual(array, root.values)
 
     def test_from_array_representation(self):
-        height = random.randint(0, 9)
-        is_perfect = random.choice([True, False])
-        bst = binarytree.bst(height=height, is_perfect=is_perfect)
-        array = bst.values
-        expected_bst = BinarySearchTree.from_array_representation(array)
-        self.assertEqual(array, expected_bst.to_array_representation())
+        array = binarytree.bst(height=random.randint(0, 9), is_perfect=random.choice([True, False])).values
+        bst = BinarySearchTree.from_array_representation(array)
+        self.assertEqual(array, bst.to_array_representation())
 
 
 if __name__ == '__main__':
