@@ -1,3 +1,4 @@
 binarytree==5.1.0
 pytest==5.4.3
 pytest-benchmark==3.2.3
+pythonds3==3.0.3
