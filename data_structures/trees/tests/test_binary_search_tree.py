@@ -95,15 +95,15 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.assertFalse(self.bst.is_leaf(self.bst.root.right))
 
     def test_height(self):
-        self.assertEqual(self.empty_bst.height(self.empty_bst.root), 0)
-        self.assertEqual(self.bst.height(self.bst.root), 3)
+        self.assertEqual(self.empty_bst.height(), 0)
+        self.assertEqual(self.bst.height(), 3)
         self.assertEqual(self.bst.height(self.bst.root.left.left), 0)
         self.assertEqual(self.bst.height(self.bst.root.left.right), 1)
         self.assertEqual(self.bst.height(self.bst.root.right), 2)
 
         self.bst.insert(15)
         self.bst.insert(30)
-        self.assertEqual(self.bst.height(self.bst.root), 4)
+        self.assertEqual(self.bst.height(), 4)
 
     def test_depth(self):
         self.assertEqual(self.bst.depth(self.bst.root), 0)
@@ -137,10 +137,10 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.assertEqual(self.bst.search(100), None)
 
     def test_get_min_node(self):
-        self.assertEqual(self.bst.get_min_node(self.bst.root).value, min(self.insert_items))
+        self.assertEqual(self.bst.get_min_node().value, min(self.insert_items))
 
     def test_get_max_node(self):
-        self.assertEqual(self.bst.get_max_node(self.bst.root).value, max(self.insert_items))
+        self.assertEqual(self.bst.get_max_node().value, max(self.insert_items))
 
     def test_delete(self):
         with self.assertRaises(ValueError):
@@ -196,7 +196,7 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.assertFalse(self.bst)
 
     def test_inorder_traverse(self):
-        items = list(self.bst.inorder_traverse(self.bst.root))
+        items = list(self.bst.inorder_traverse())
         expected = [1, 3, 4, 6, 7, 8, 10, 13, 14]
         self.assertEqual(items, expected)
 
@@ -205,17 +205,17 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.assertEqual(items, expected)
 
     def test_preorder_traverse(self):
-        items = list(self.bst.preorder_traverse(self.bst.root))
+        items = list(self.bst.preorder_traverse())
         expected = [8, 3, 1, 6, 4, 7, 10, 14, 13]
         self.assertEqual(items, expected)
 
     def test_postorder_traverse(self):
-        items = list(self.bst.postorder_traverse(self.bst.root))
+        items = list(self.bst.postorder_traverse())
         expected = [1, 4, 7, 6, 3, 13, 14, 10, 8]
         self.assertEqual(items, expected)
 
     def test_levelorder_traverse(self):
-        items = list(self.bst.levelorder_traverse(self.bst.root))
+        items = list(self.bst.levelorder_traverse())
         expected = [8, 3, 10, 1, 6, 14, 4, 7, 13]
         self.assertEqual(items, expected)
 

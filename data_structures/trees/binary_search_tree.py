@@ -38,6 +38,7 @@ class TreeNode:
 # This implementation cannot properly handle duplicates.
 class BinarySearchTree:
     NODE_CLASS = TreeNode
+    DEFAULT_TO_ROOT = object()
 
     def __init__(self):
         self.root = None
@@ -52,7 +53,7 @@ class BinarySearchTree:
         return self.size
 
     def __iter__(self):
-        return self.levelorder_traverse(self.root)
+        return self.levelorder_traverse()
 
     def __contains__(self, value):
         return self.search(value)
@@ -77,13 +78,16 @@ class BinarySearchTree:
             return False
         return True
 
-    def height(self, node):
+    def height(self, node=DEFAULT_TO_ROOT):
         """
         The height of a node is the number of edges on the longest path between the node and a descendant leaf.
 
         If node is a leaf, then the height of node is 0.
         Otherwise, the height of node is 1 + the maximum of heights of node's children.
         """
+        if node is self.DEFAULT_TO_ROOT:
+            node = self.root
+
         if self.is_leaf(node):
             return 0
         return 1 + max(self.height(child) for child in self.children(node))
@@ -165,10 +169,13 @@ class BinarySearchTree:
     def search(self, value):
         return self._search_node(self.root, value)
 
-    def get_min_node(self, node):
+    def get_min_node(self, node=DEFAULT_TO_ROOT):
         """
         The minimum node is the leftmost node in subtrees of node.
         """
+        if node is self.DEFAULT_TO_ROOT:
+            node = self.root
+
         current_node = node
         while current_node:
             if current_node.left:
@@ -176,10 +183,13 @@ class BinarySearchTree:
             else:
                 return current_node
 
-    def get_max_node(self, node):
+    def get_max_node(self, node=DEFAULT_TO_ROOT):
         """
         The maximum node is the rightmost node in subtrees of node.
         """
+        if node is self.DEFAULT_TO_ROOT:
+            node = self.root
+
         current_node = node
         while current_node:
             if current_node.right:
@@ -229,10 +239,13 @@ class BinarySearchTree:
         """
         self.root = self._delete_node(self.root, value)
 
-    def inorder_traverse(self, node):
+    def inorder_traverse(self, node=DEFAULT_TO_ROOT):
         """
         Inorder: the root is accessed between the left and the right.
         """
+        if node is self.DEFAULT_TO_ROOT:
+            node = self.root
+
         # Inorder traversal of a BST will give you all elements in order.
         if not node:
             return
@@ -243,10 +256,13 @@ class BinarySearchTree:
         yield node.value
         yield from self.inorder_traverse(node.right)
 
-    def preorder_traverse(self, node):
+    def preorder_traverse(self, node=DEFAULT_TO_ROOT):
         """
         Preorder: the root is accessed before the left and the right.
         """
+        if node is self.DEFAULT_TO_ROOT:
+            node = self.root
+
         if not node:
             return
 
@@ -254,10 +270,13 @@ class BinarySearchTree:
         yield from self.preorder_traverse(node.left)
         yield from self.preorder_traverse(node.right)
 
-    def postorder_traverse(self, node):
+    def postorder_traverse(self, node=DEFAULT_TO_ROOT):
         """
         Postorder: the root is accessed after the left and the right.
         """
+        if node is self.DEFAULT_TO_ROOT:
+            node = self.root
+
         if not node:
             return
 
@@ -265,10 +284,13 @@ class BinarySearchTree:
         yield from self.postorder_traverse(node.right)
         yield node.value
 
-    def levelorder_traverse(self, node):
+    def levelorder_traverse(self, node=DEFAULT_TO_ROOT):
         """
         Levelorder: visiting nodes level by level, left to right.
         """
+        if node is self.DEFAULT_TO_ROOT:
+            node = self.root
+
         if not node:
             return
 
