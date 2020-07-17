@@ -319,6 +319,15 @@ class BinarySearchTree:
 
         return traverse_func(self.root)
 
+    def invert(self):
+        # Traverse nodes by levelorder
+        queue = deque([self.root, ])
+        while queue:
+            node = queue.popleft()
+            if node:
+                queue.extend((node.left, node.right))
+                node.left, node.right = node.right, node.left
+
     def to_array_representation(self):
         """
         Return the "Array Representation" of the tree.

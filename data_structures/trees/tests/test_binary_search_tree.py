@@ -223,6 +223,14 @@ class BinarySearchTreeTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.bst.traverse('NOT EXIST')
 
+    def test_invert(self):
+        self.empty_bst.invert()
+
+        self.bst.invert()
+        items = list(self.bst.levelorder_traverse())
+        expected = [8, 10, 3, 14, 6, 1, 13, 7, 4]
+        self.assertEqual(items, expected)
+
     def test_to_array_representation(self):
         array = self.empty_bst.to_array_representation()
         self.assertEqual(array, [])
