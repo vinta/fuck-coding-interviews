@@ -85,6 +85,7 @@ This repository is created by [a clumsy programmer](https://leetcode.com/vinta/)
     - [two_sum](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/two_sum.py) from [LeetCode](https://leetcode.com/problems/two-sum/)
     - [valid_anagram](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/valid_anagram.py) from [LeetCode](https://leetcode.com/problems/valid-anagram/)
     - [valid_parentheses](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/valid_parentheses.py) from [LeetCode](https://leetcode.com/problems/valid-parentheses/)
+    - [validate_binary_search_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/validate_binary_search_tree.py) from [LeetCode](https://leetcode.com/problems/validate-binary-search-tree/)
 
 ## Tests
 
