@@ -13,6 +13,12 @@ class TreeNodeTest(unittest.TestCase):
     def setUp(self):
         self.node = TreeNode(2)
 
+    def test__repr__(self):
+        self.assertTrue(repr(self.node))
+
+    def test__str__(self):
+        self.assertTrue(str(self.node))
+
     def test__eq__(self):
         other_node = TreeNode(2)
         self.assertEqual(self.node, other_node)
@@ -28,6 +34,9 @@ class TreeNodeTest(unittest.TestCase):
 class BinarySearchTreeTest(unittest.TestCase):
     def setUp(self):
         self.empty_bst = BinarySearchTree()
+
+        self.one_node_bst = BinarySearchTree()
+        self.one_node_bst.insert(1)
 
         #     ______8
         #    /       \
@@ -71,6 +80,11 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.assertEqual(self.empty_bst.is_valid(), True)
         self.assertEqual(self.bst.is_valid(), True)
 
+    def test_is_balanced(self):
+        self.assertEqual(self.empty_bst.is_balanced(), True)
+        self.assertEqual(self.one_node_bst.is_balanced(), True)
+        self.assertEqual(self.bst.is_balanced(), False)
+
     def test_is_root(self):
         self.assertEqual(self.bst.is_root(self.bst.root), True)
         self.assertEqual(self.bst.is_root(self.bst.root.left), False)
@@ -93,13 +107,13 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.assertEqual(self.bst.is_leaf(self.bst.root.left.right.left), True)
         self.assertEqual(self.bst.is_leaf(self.bst.root.left.right.right), True)
         self.assertEqual(self.bst.is_leaf(self.bst.root.right.right.left), True)
-
         self.assertEqual(self.bst.is_leaf(self.bst.root), False)
         self.assertEqual(self.bst.is_leaf(self.bst.root.left), False)
         self.assertEqual(self.bst.is_leaf(self.bst.root.right), False)
 
     def test_height(self):
-        self.assertEqual(self.empty_bst.height(), 0)
+        self.assertEqual(self.empty_bst.height(), -1)
+        self.assertEqual(self.one_node_bst.height(), 0)
         self.assertEqual(self.bst.height(), 3)
         self.assertEqual(self.bst.height(self.bst.root.left.left), 0)
         self.assertEqual(self.bst.height(self.bst.root.left.right), 1)
@@ -137,7 +151,6 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.assertEqual(self.bst.search(8), self.bst.root)
         self.assertEqual(self.bst.search(1), self.bst.root.left.left)
         self.assertEqual(self.bst.search(13), self.bst.root.right.right.left)
-
         self.assertEqual(self.bst.search(100), None)
 
     def test_get_min_node(self):

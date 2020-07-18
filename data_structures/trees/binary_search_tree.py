@@ -60,6 +60,7 @@ class BinarySearchTree:
         return self.search(value)
 
     def is_valid(self):
+        # An inorder traversal of a Binary Search Tree results in an ascending sorted array.
         def inorder(node):
             if not node:
                 return None
@@ -75,6 +76,24 @@ class BinarySearchTree:
             previous_value = value
 
         return True
+
+    def is_balanced(self):
+        tree = {'is_balanced': True}
+
+        def _height(node):
+            # Trigger the short circuit if we already found the tree unbalanced
+            if not node or not tree['is_balanced']:
+                return 0
+
+            left_height = _height(node.left)
+            right_height = _height(node.right)
+            if abs(left_height - right_height) > 1:
+                tree['is_balanced'] = False
+
+            return 1 + max(left_height, right_height)
+
+        _height(self.root)
+        return tree['is_balanced']
 
     def is_root(self, node):
         # TODO: What should we do if this is an empty tree?
@@ -106,9 +125,13 @@ class BinarySearchTree:
         if node is self.DEFAULT_TO_ROOT:
             node = self.root
 
-        if self.is_leaf(node):
+        if not node:
+            return -1
+
+        if (not node.left) and (not node.right):
             return 0
-        return 1 + max(self.height(child) for child in self.children(node))
+
+        return 1 + max(self.height(node.left), self.height(node.right))
 
     def depth(self, node):
         """
