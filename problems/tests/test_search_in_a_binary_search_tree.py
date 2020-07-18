@@ -21,7 +21,7 @@ class TestCase(unittest.TestCase):
             tree_str = data['input']
             target = data['target']
             expected = data['expected']
-            with self.subTest(tree_str=tree_str, targettarget=target, expected=expected):
+            with self.subTest(tree_str=tree_str, target=target, expected=expected):
                 root = deserialize_tree_str(tree_str)
                 output = self.solution.searchBST(root, target)
                 self.assertEqual(serialize_treenode(output), expected)
@@ -41,7 +41,7 @@ class TestCase2(unittest.TestCase):
             tree_str = data['input']
             target = data['target']
             expected = data['expected']
-            with self.subTest(tree_str=tree_str, targettarget=target, expected=expected):
+            with self.subTest(tree_str=tree_str, target=target, expected=expected):
                 root = deserialize_tree_str(tree_str)
                 output = self.solution.searchBST(root, target)
                 self.assertEqual(serialize_treenode(output), expected)
