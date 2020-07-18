@@ -9,6 +9,7 @@ https://en.wikipedia.org/wiki/Binary_search_tree
 - Each of left and right subtree must also be a Binary Search Tree.
 """
 from collections import deque
+import sys
 
 
 class TreeNode:
@@ -57,6 +58,23 @@ class BinarySearchTree:
 
     def __contains__(self, value):
         return self.search(value)
+
+    def is_valid(self):
+        def inorder(node):
+            if not node:
+                return None
+
+            yield from inorder(node.left)
+            yield node.value
+            yield from inorder(node.right)
+
+        previous_value = -sys.maxsize
+        for value in inorder(self.root):
+            if previous_value >= value:
+                return False
+            previous_value = value
+
+        return True
 
     def is_root(self, node):
         # TODO: What should we do if this is an empty tree?

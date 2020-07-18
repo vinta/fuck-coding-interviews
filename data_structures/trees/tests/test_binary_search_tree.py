@@ -67,10 +67,14 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.assertIn(random.choice(self.insert_items), self.bst)
         self.assertNotIn(100, self.bst)
 
+    def test_is_valid(self):
+        self.assertEqual(self.empty_bst.is_valid(), True)
+        self.assertEqual(self.bst.is_valid(), True)
+
     def test_is_root(self):
-        self.assertTrue(self.bst.is_root(self.bst.root))
-        self.assertFalse(self.bst.is_root(self.bst.root.left))
-        self.assertFalse(self.bst.is_root(self.bst.root.right))
+        self.assertEqual(self.bst.is_root(self.bst.root), True)
+        self.assertEqual(self.bst.is_root(self.bst.root.left), False)
+        self.assertEqual(self.bst.is_root(self.bst.root.right), False)
 
     def test_children(self):
         self.assertEqual(list(self.bst.children(self.bst.root)), [self.bst.root.left, self.bst.root.right])
@@ -85,14 +89,14 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.assertEqual(self.bst.num_children(self.bst.root.left.left), 0)
 
     def test_is_leaf(self):
-        self.assertTrue(self.bst.is_leaf(self.bst.root.left.left))
-        self.assertTrue(self.bst.is_leaf(self.bst.root.left.right.left))
-        self.assertTrue(self.bst.is_leaf(self.bst.root.left.right.right))
-        self.assertTrue(self.bst.is_leaf(self.bst.root.right.right.left))
+        self.assertEqual(self.bst.is_leaf(self.bst.root.left.left), True)
+        self.assertEqual(self.bst.is_leaf(self.bst.root.left.right.left), True)
+        self.assertEqual(self.bst.is_leaf(self.bst.root.left.right.right), True)
+        self.assertEqual(self.bst.is_leaf(self.bst.root.right.right.left), True)
 
-        self.assertFalse(self.bst.is_leaf(self.bst.root))
-        self.assertFalse(self.bst.is_leaf(self.bst.root.left))
-        self.assertFalse(self.bst.is_leaf(self.bst.root.right))
+        self.assertEqual(self.bst.is_leaf(self.bst.root), False)
+        self.assertEqual(self.bst.is_leaf(self.bst.root.left), False)
+        self.assertEqual(self.bst.is_leaf(self.bst.root.right), False)
 
     def test_height(self):
         self.assertEqual(self.empty_bst.height(), 0)
@@ -161,6 +165,7 @@ class BinarySearchTreeTest(unittest.TestCase):
         bst2.delete(1)
         self.assertEqual(len(self.bst), len(bst2))
         self.assertEqual(list(self.bst.traverse()), list(bst2))
+        self.assertEqual(self.bst.is_valid(), True)
 
         #   ______10___
         #  /           \
@@ -173,6 +178,7 @@ class BinarySearchTreeTest(unittest.TestCase):
         bst2.delete(8)
         self.assertEqual(len(self.bst), len(bst2))
         self.assertEqual(list(self.bst.traverse()), list(bst2))
+        self.assertEqual(self.bst.is_valid(), True)
 
         #   ____10___
         #  /         \
@@ -185,6 +191,7 @@ class BinarySearchTreeTest(unittest.TestCase):
         bst2.delete(6)
         self.assertEqual(len(self.bst), len(bst2))
         self.assertEqual(list(self.bst.traverse()), list(bst2))
+        self.assertEqual(self.bst.is_valid(), True)
 
         self.bst.delete(10)
         self.bst.delete(4)
@@ -194,6 +201,7 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.bst.delete(13)
         self.assertEqual(len(self.bst), 0)
         self.assertFalse(self.bst)
+        self.assertEqual(self.bst.is_valid(), True)
 
     def test_inorder_traverse(self):
         items = list(self.bst.inorder_traverse())
@@ -230,6 +238,7 @@ class BinarySearchTreeTest(unittest.TestCase):
         items = list(self.bst.levelorder_traverse())
         expected = [8, 10, 3, 14, 6, 1, 13, 7, 4]
         self.assertEqual(items, expected)
+        self.assertEqual(self.bst.is_valid(), False)
 
     def test_to_array_representation(self):
         array = self.empty_bst.to_array_representation()
