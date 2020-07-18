@@ -51,6 +51,7 @@ This repository is created by [a clumsy programmer](https://leetcode.com/vinta/)
 - `problems/`
     - `tests/`
     - [add_two_numbers](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/add_two_numbers.py) from [LeetCode](https://leetcode.com/problems/add-two-numbers/)
+    - [balanced_binary_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/balanced_binary_tree.py) from [LeetCode](https://leetcode.com/problems/balanced-binary-tree/)
     - [best_time_to_buy_and_sell_stock](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/best_time_to_buy_and_sell_stock.py) from [LeetCode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
     - [big_countries](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/big_countries.sql) from [LeetCode](https://leetcode.com/problems/big-countries/)
     - [binary_tree_inorder_traversal](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/binary_tree_inorder_traversal.py) from [LeetCode](https://leetcode.com/problems/binary-tree-inorder-traversal/)

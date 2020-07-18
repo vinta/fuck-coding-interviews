@@ -78,6 +78,9 @@ class BinarySearchTree:
         return True
 
     def is_balanced(self):
+        # NOTE: If you use something like _is_balanced = True, it won't work.
+        # When you run _is_balanced = False inside the _height() function,
+        # you simply create a new local variable, _is_balanced, in the function.
         tree = {'is_balanced': True}
 
         def _height(node):
