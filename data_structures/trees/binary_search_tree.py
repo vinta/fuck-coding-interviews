@@ -77,7 +77,28 @@ class BinarySearchTree:
 
         return True
 
+    def is_full(self):
+        """
+        A full binary tree is a binary tree where each node has exactly 0 or 2 children.
+        """
+        if not self.root:
+            raise ValueError('Tree is empty')
+
+        queue = deque([self.root, ])
+        while queue:
+            node = queue.popleft()
+            if node:
+                if not ((not node.left and not node.right) or (node.left and node.right)):
+                    return False
+                queue.extend((node.left, node.right))
+
+        return True
+
     def is_balanced(self):
+        """
+        A balanced binary tree is a binary tree in which
+        the left and right subtrees of every node differ in height by no more than 1.
+        """
         # NOTE: If you use something like _is_balanced = True, it won't work.
         # When you run _is_balanced = False inside the _height() function,
         # you simply create a new local variable, _is_balanced, in the function.
@@ -130,7 +151,6 @@ class BinarySearchTree:
 
         if not node:
             return -1
-
         if (not node.left) and (not node.right):
             return 0
 
