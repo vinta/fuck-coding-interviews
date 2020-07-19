@@ -21,50 +21,42 @@ class ArrayBasedHeap:
     def _right(self, index):
         return (2 * index) + 2
 
-    def _is_leaf(self, index):
-        length = len(self._array)
-        if (self._left(index) < length) or (self._right(index) < length):
-            return False
-
-        return True
-
     def _swap(self, index_a, index_b):
         self._array[index_a], self._array[index_b] = self._array[index_b], self._array[index_a]
 
-    def _min_child(self, index):
-        length = len(self._array)
-        left_index = self._left(index)
-        right_index = self._right(index)
-        left = self._array[left_index] if left_index < length else None
-        right = self._array[right_index] if right_index < length else None
-        if (left is not None) and (right is not None):
-            if left < right:
-                return left_index
-            else:
-                return right_index
-        elif left is not None:
-            return left_index
-        elif right is not None:
-            return right_index
-
-    def _heapify(self, index):
-        if not self._is_leaf(index):
-            parent = self._array[index]
-            min_child_index = self._min_child(index)
-            min_child = self._array[min_child_index]
-            if parent > min_child:
-                self._swap(index, min_child_index)
-                self._heapify(min_child_index)
-
-    def push(self, value):
-        self._array.append(value)
-
-        index = len(self._array) - 1
+    def _up_heap_bubbling(self, index):
         while index >= 1:
             parent_index = self._parent(index)
             if self._array[index] < self._array[parent_index]:
                 self._swap(index, parent_index)
             index = parent_index
+
+    def push(self, value):
+        self._array.append(value)
+        self._up_heap_bubbling(len(self._array) - 1)
+
+    def down_heap_bubbling(self, index):
+        length = len(self._array)
+        left_index = self._left(index)
+        right_index = self._right(index)
+        left = self._array[left_index] if left_index < length else None
+        right = self._array[right_index] if right_index < length else None
+        if (left is not None) or (right is not None):
+            if (left is not None) and (right is not None):
+                if left < right:
+                    min_child_index = left_index
+                else:
+                    min_child_index = right_index
+            elif left is not None:
+                min_child_index = left_index
+            elif right is not None:
+                min_child_index = right_index
+
+            parent = self._array[index]
+            min_child = self._array[min_child_index]
+            if parent > min_child:
+                self._swap(index, min_child_index)
+                self.down_heap_bubbling(min_child_index)
 
     def pop_min(self):
         try:
@@ -74,7 +66,7 @@ class ArrayBasedHeap:
 
         self._swap(0, len(self._array) - 1)
         self._array.pop()
-        self._heapify(0)
+        self.down_heap_bubbling(0)
 
         return popped
 

@@ -1,4 +1,5 @@
 # coding: utf-8
+import heapq
 import random
 import unittest
 
@@ -9,10 +10,12 @@ class TestCase(unittest.TestCase):
     def setUp(self):
         self.empty_heap = ArrayBasedHeap()
         self.heap = ArrayBasedHeap()
+        self.heapq_heap = []
 
         self.values = [random.randint(-100, 100) for _ in range(random.randint(1, 100))]
         for value in self.values:
             self.heap.push(value)
+            heapq.heappush(self.heapq_heap, value)
 
     def test__len__(self):
         self.assertEqual(len(self.empty_heap), 0)
@@ -21,23 +24,20 @@ class TestCase(unittest.TestCase):
     def test_push(self):
         self.empty_heap.push(42)
         self.assertEqual(len(self.empty_heap), 1)
+        self.assertEqual(self.empty_heap.pop_min(), 42)
+        self.assertEqual(len(self.empty_heap), 0)
 
     def test_pop_min(self):
-        self.empty_heap.push(42)
-        self.empty_heap.push(8)
-        self.empty_heap.push(27)
-        self.empty_heap.push(99)
-        self.assertEqual(self.empty_heap.pop_min(), 8)
-        self.assertEqual(self.empty_heap.pop_min(), 27)
-        self.assertEqual(self.empty_heap.pop_min(), 42)
-        self.assertEqual(self.empty_heap.pop_min(), 99)
-        self.assertEqual(len(self.empty_heap), 0)
+        for _ in range(len(self.values)):
+            self.assertEqual(self.heap.pop_min(), heapq.heappop(self.heapq_heap))
+
+        self.assertEqual(len(self.heap), 0)
 
     def test_peek_min(self):
         with self.assertRaises(ValueError):
             self.empty_heap.peek_min()
 
-        self.assertEqual(self.heap.peek_min(), min(self.values))
+        self.assertEqual(self.heap.peek_min(), self.heapq_heap[0])
 
 
 if __name__ == '__main__':
