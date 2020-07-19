@@ -50,6 +50,7 @@ This repository is created by [a clumsy programmer](https://leetcode.com/vinta/)
         - [binary_tree_serialization](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/binary_tree_serialization.py)
 - `problems/`
     - `tests/`
+    - `utils/`
     - [add_two_numbers](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/add_two_numbers.py) from [LeetCode](https://leetcode.com/problems/add-two-numbers/)
     - [balanced_binary_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/balanced_binary_tree.py) from [LeetCode](https://leetcode.com/problems/balanced-binary-tree/)
     - [best_time_to_buy_and_sell_stock](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/best_time_to_buy_and_sell_stock.py) from [LeetCode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
@@ -83,6 +84,7 @@ This repository is created by [a clumsy programmer](https://leetcode.com/vinta/)
     - [subsets](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/subsets.py) from [LeetCode](https://leetcode.com/problems/subsets/)
     - [task_scheduler](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/task_scheduler.py) from [LeetCode](https://leetcode.com/problems/task-scheduler/)
     - [three_sum](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/three_sum.py) from [LeetCode](https://leetcode.com/problems/3sum/)
+    - [tree_height_of_a_binary_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/tree_height_of_a_binary_tree.py) from [HackerRank](https://www.hackerrank.com/challenges/tree-height-of-a-binary-tree/problem)
     - [two_sum](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/two_sum.py) from [LeetCode](https://leetcode.com/problems/two-sum/)
     - [valid_anagram](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/valid_anagram.py) from [LeetCode](https://leetcode.com/problems/valid-anagram/)
     - [valid_parentheses](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/valid_parentheses.py) from [LeetCode](https://leetcode.com/problems/valid-parentheses/)
