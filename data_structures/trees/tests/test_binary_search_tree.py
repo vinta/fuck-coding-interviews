@@ -2,6 +2,7 @@
 import unittest
 import random
 
+from binarytree import Node
 import binarytree
 import pythonds3
 
@@ -49,6 +50,17 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.bst = BinarySearchTree()
         for i in self.insert_items:
             self.bst.insert(i)
+
+        root = Node(8)
+        root.left = Node(3)
+        root.right = Node(10)
+        root.left.left = Node(1)
+        root.left.right = Node(6)
+        root.right.right = Node(14)
+        root.left.right.left = Node(4)
+        root.left.right.right = Node(7)
+        root.right.right.left = Node(13)
+        self.binarytree = root
 
     def test__eq__(self):
         tree_1 = BinarySearchTree()
