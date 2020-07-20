@@ -46,7 +46,7 @@ This repository is created by [a clumsy programmer](https://leetcode.com/vinta/)
         - [linked_list_based_stack](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/stacks/linked_list_based_stack.py)
     - `trees/`
         - `tests/`
-        - [array_based_heap](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/array_based_heap.py)
+        - [array_based_binary_heap](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/array_based_binary_heap.py)
         - [binary_search_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/binary_search_tree.py)
         - [binary_tree_serialization](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/binary_tree_serialization.py)
 - `problems/`

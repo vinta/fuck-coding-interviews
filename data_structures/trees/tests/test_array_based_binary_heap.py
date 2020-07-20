@@ -3,13 +3,13 @@ import heapq
 import random
 import unittest
 
-from data_structures.trees.array_based_heap import ArrayBasedHeap
+from data_structures.trees.array_based_binary_heap import ArrayBasedBinaryHeap
 
 
 class TestCase(unittest.TestCase):
     def setUp(self):
-        self.empty_heap = ArrayBasedHeap()
-        self.heap = ArrayBasedHeap()
+        self.empty_heap = ArrayBasedBinaryHeap()
+        self.heap = ArrayBasedBinaryHeap()
         self.heapq_heap = []
 
         self.values = [random.randint(-100, 100) for _ in range(random.randint(1, 100))]

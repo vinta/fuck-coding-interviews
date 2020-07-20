@@ -11,7 +11,7 @@ A binary heap is a special binary tree which satisfies following properties:
 
 
 # This is a min heap.
-class ArrayBasedHeap:
+class ArrayBasedBinaryHeap:
     def __init__(self):
         self._array = []
 
