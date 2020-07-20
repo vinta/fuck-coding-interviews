@@ -1,12 +1,13 @@
 # coding: utf-8
 """
-Binary Search Ttree
+Binary Search Tree
 https://en.wikipedia.org/wiki/Binary_search_tree
 
+A binary search tree is a special binary tree which satisfies following properties:
 - Every node has at most two children, left and right.
 - Elements in left subtree of a node are less than the node.
 - Elements in right subtree of a node are greater than the node.
-- Each of left and right subtree must also be a Binary Search Tree.
+- Each of left and right subtree must also be a binary search tree.
 """
 from collections import deque
 import sys
@@ -60,7 +61,7 @@ class BinarySearchTree:
         return self.search(value)
 
     def is_valid(self):
-        # An inorder traversal of a Binary Search Tree results in an ascending sorted array.
+        # An inorder traversal of a binary search tree results in an ascending sorted array.
         def inorder(node):
             if not node:
                 return None
@@ -82,7 +83,7 @@ class BinarySearchTree:
         A full binary tree is a binary tree where each node has exactly 0 or 2 children.
         """
         if not self.root:
-            raise ValueError('Tree is empty')
+            raise ValueError('tree is empty')
 
         queue = deque([self.root, ])
         while queue:
