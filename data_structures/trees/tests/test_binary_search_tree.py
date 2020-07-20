@@ -95,6 +95,9 @@ class BinarySearchTreeTest(unittest.TestCase):
     def test_is_full(self):
         self.assertEqual(self.bst.is_full(), False)
 
+    def test_is_complate(self):
+        self.assertEqual(self.bst.is_complate(), False)
+
     def test_is_balanced(self):
         self.assertEqual(self.empty_bst.is_balanced(), True)
         self.assertEqual(self.one_node_bst.is_balanced(), True)

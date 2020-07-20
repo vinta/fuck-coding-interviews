@@ -95,6 +95,24 @@ class BinarySearchTree:
 
         return True
 
+    def is_complate(self):
+        """
+        In the levelorder traversal, if we find any concrete node after an empty node (a None),
+        then the tree is not complete.
+        """
+        queue = deque([self.root, ])
+        found_none_node = False
+        while queue:
+            node = queue.popleft()
+            if node:
+                if found_none_node:
+                    return False
+                queue.extend((node.left, node.right))
+            else:
+                found_none_node = True
+
+        return True
+
     def is_balanced(self):
         """
         A balanced binary tree is a binary tree in which
