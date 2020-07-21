@@ -1,4 +1,5 @@
 # coding: utf-8
+import random
 import unittest
 
 from algorithms.sorting.bubble_sort import bubble_sort
@@ -16,6 +17,9 @@ class TestCase(unittest.TestCase):
             [1, 2, 3, 4],
             [4, 3, 2, 1],
             [1, 1, 1, 1],
+            [-2, 3, -5],
+            [-1, 2, -8, -10],
+            [random.randint(-100, 100) for i in range(1000)],
         ]
         for array in test_lists:
             with self.subTest(array=array):
