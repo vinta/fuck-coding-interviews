@@ -2,6 +2,7 @@
 import heapq
 
 
+# Also see: https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/heaps/array_based_binary_heap.py
 class Heap:
     def __init__(self):
         self._array = []
