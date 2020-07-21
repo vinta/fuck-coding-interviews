@@ -61,7 +61,7 @@ class BinarySearchTree:
         return self.search(value)
 
     def is_valid(self):
-        # An inorder traversal of a binary search tree results in an ascending sorted array.
+        # The inorder traversal of a binary search tree results in an ascending sorted array.
         def inorder(node):
             if not node:
                 return None
@@ -82,9 +82,6 @@ class BinarySearchTree:
         """
         A full binary tree is a binary tree where each node has exactly 0 or 2 children.
         """
-        if not self.root:
-            raise ValueError('tree is empty')
-
         queue = deque([self.root, ])
         while queue:
             node = queue.popleft()
@@ -97,7 +94,9 @@ class BinarySearchTree:
 
     def is_complate(self):
         """
-        In the levelorder traversal, if we find any concrete node after an empty node (a None),
+        When we fill out a complete binary tree, we go top to bottom, left to right.
+
+        Also, in the levelorder traversal, if we find any concrete node after an empty node (a None node),
         then the tree is not complete.
         """
         queue = deque([self.root, ])
@@ -125,7 +124,12 @@ class BinarySearchTree:
 
         def _height(node):
             # Trigger the short circuit if we already found the tree unbalanced
-            if not node or not tree['is_balanced']:
+            if not tree['is_balanced']:
+                return 0
+
+            if not node:
+                return -1
+            if (not node.left) and (not node.right):
                 return 0
 
             left_height = _height(node.left)
@@ -154,8 +158,11 @@ class BinarySearchTree:
         return len(list(self.children(node)))
 
     def is_leaf(self, node):
-        for _ in self.children(node):
-            return False
+        if node:
+            if node.left:
+                return False
+            if node.right:
+                return False
         return True
 
     def height(self, node=DEFAULT_TO_ROOT):
