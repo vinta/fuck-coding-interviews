@@ -4,6 +4,28 @@ version = "0.1.0"
 description = "How on earth can I ever think of a solution like that in an interview?!"
 authors = ["Vinta Chen <vinta.chen@gmail.com>"]
 license = "MIT"
+readme = "README.md"
+repository = "https://github.com/vinta/fuck-coding-interviews"
+keywords = [
+    "Algorithms",
+    "Data Structures",
+    "Coding Interviews",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: Implementation",
+    "Topic :: Education",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+]
 
 [tool.poetry.dependencies]
 python = "^3.6"
