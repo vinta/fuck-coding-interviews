@@ -142,6 +142,29 @@ class BinarySearchTree:
         _height(self.root)
         return tree['is_balanced']
 
+    def is_perfect(self):
+        """
+        A perfect binary tree is a binary tree in which
+        every non-leaf node has exactly 2 children.
+
+        Also, a perfect binary tree of height h has (2 ** (h + 1)) – 1 nodes.
+        """
+        tree = {'node_count': 0}
+
+        def _height(node):
+            if not node:
+                return -1
+
+            tree['node_count'] += 1
+
+            if not node.left and not node.right:
+                return 0
+
+            return 1 + max(_height(node.left), _height(node.right))
+
+        height = _height(self.root)
+        return tree['node_count'] == (2 ** (height + 1)) - 1
+
     def is_root(self, node):
         # TODO: What should we do if this is an empty tree?
         return self.root == node

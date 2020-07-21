@@ -51,16 +51,8 @@ class BinarySearchTreeTest(unittest.TestCase):
         for i in self.insert_items:
             self.bst.insert(i)
 
-        root = Node(8)
-        root.left = Node(3)
-        root.right = Node(10)
-        root.left.left = Node(1)
-        root.left.right = Node(6)
-        root.right.right = Node(14)
-        root.left.right.left = Node(4)
-        root.left.right.right = Node(7)
-        root.right.right.left = Node(13)
-        self.binarytree = root
+        array = binarytree.bst(is_perfect=True).values
+        self.perfect_bst = BinarySearchTree.from_array_representation(array)
 
     def test__eq__(self):
         tree_1 = BinarySearchTree()
@@ -97,16 +89,25 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.assertEqual(self.empty_bst.is_full(), True)
         self.assertEqual(self.one_node_bst.is_full(), True)
         self.assertEqual(self.bst.is_full(), False)
+        self.assertEqual(self.perfect_bst.is_full(), True)
 
     def test_is_complate(self):
         self.assertEqual(self.empty_bst.is_complate(), True)
         self.assertEqual(self.one_node_bst.is_complate(), True)
         self.assertEqual(self.bst.is_complate(), False)
+        self.assertEqual(self.perfect_bst.is_complate(), True)
 
     def test_is_balanced(self):
         self.assertEqual(self.empty_bst.is_balanced(), True)
         self.assertEqual(self.one_node_bst.is_balanced(), True)
         self.assertEqual(self.bst.is_balanced(), False)
+        self.assertEqual(self.perfect_bst.is_balanced(), True)
+
+    def test_is_perfect(self):
+        self.assertEqual(self.empty_bst.is_perfect(), True)
+        self.assertEqual(self.one_node_bst.is_perfect(), True)
+        self.assertEqual(self.bst.is_perfect(), False)
+        self.assertEqual(self.perfect_bst.is_perfect(), True)
 
     def test_is_root(self):
         self.assertEqual(self.bst.is_root(self.bst.root), True)
