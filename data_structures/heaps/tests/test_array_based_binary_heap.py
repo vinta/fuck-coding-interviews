@@ -3,7 +3,7 @@ import heapq
 import random
 import unittest
 
-from data_structures.trees.array_based_binary_heap import ArrayBasedBinaryHeap
+from data_structures.heaps.array_based_binary_heap import ArrayBasedBinaryHeap
 
 
 class TestCase(unittest.TestCase):
