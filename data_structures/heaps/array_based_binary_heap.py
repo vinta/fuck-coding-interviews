@@ -40,7 +40,7 @@ class ArrayBasedBinaryHeap:
         while index >= 1:
             parent_index = self._parent(index)
             if self._array[parent_index] > self._array[index]:
-                self._swap(index, parent_index)
+                self._swap(parent_index, index)
             else:
                 return
             index = parent_index
@@ -50,7 +50,7 @@ class ArrayBasedBinaryHeap:
         self._array.append(value)
         self._up_heap(len(self._array) - 1)
 
-    def _down_heap(self, index):
+    def _min_child_index(self, index):
         # Compare the current item with its children;
         # if they're not in the correct order, swap with its smaller child.
         left_index = self._left(index)
@@ -60,22 +60,22 @@ class ArrayBasedBinaryHeap:
 
         # Determine the smaller child.
         if (left is not None) and (right is not None):  # There're both left and right children.
-            if left < right:
-                min_child_index = left_index
-            else:
-                min_child_index = right_index
+            return left_index if left < right else right_index
         elif left is not None:  # There's only left child.
-            min_child_index = left_index
+            return left_index
         elif right is not None:  # There's only right child.
-            min_child_index = right_index
-        else:  # There's no child.
-            return
+            return right_index
 
-        parent = self._array[index]
-        min_child = self._array[min_child_index]
-        if parent > min_child:
-            self._swap(index, min_child_index)
-            self._down_heap(min_child_index)
+        return None  # There's no child.
+
+    def _down_heap(self, index):
+        min_child_index = self._min_child_index(index)
+        if min_child_index:
+            current = self._array[index]
+            min_child = self._array[min_child_index]
+            if current > min_child:
+                self._swap(index, min_child_index)
+                self._down_heap(min_child_index)
 
     # O(log n)
     def pop_min(self):
