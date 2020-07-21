@@ -18,6 +18,10 @@ class ArrayBasedBinaryHeap:
     def __len__(self):
         return len(self._array)
 
+    def __iter__(self):
+        for value in sorted(self._array):
+            yield value
+
     def _parent(self, index):
         return (index - 1) // 2
 

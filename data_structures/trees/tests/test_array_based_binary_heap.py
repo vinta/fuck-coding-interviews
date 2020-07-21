@@ -21,6 +21,10 @@ class TestCase(unittest.TestCase):
         self.assertEqual(len(self.empty_heap), 0)
         self.assertEqual(len(self.heap), len(self.values))
 
+    def test__iter__(self):
+        self.assertEqual(list(self.empty_heap), [])
+        self.assertEqual(list(self.heap), sorted(self.values))
+
     def test_push(self):
         self.empty_heap.push(42)
         self.assertEqual(len(self.empty_heap), 1)
