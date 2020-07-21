@@ -70,11 +70,11 @@ class LinkedListBasedStack:
         try:
             return self.linked_list.pop_left()
         except IndexError:
-            raise ValueError('Stack is empty')
+            raise ValueError('stack is empty')
 
     # O(1)
     def peek(self):
         if not self.linked_list.head:
-            raise ValueError('Stack is empty')
+            raise ValueError('stack is empty')
 
         return self.linked_list.head.value

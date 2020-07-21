@@ -14,7 +14,7 @@ def selection_sort(arr):
 
     def find_min_index(arr):
         if not arr:
-            raise ValueError('The array is empty')
+            raise ValueError('array is empty')
 
         min_index = 0
         for i, item in enumerate(arr):

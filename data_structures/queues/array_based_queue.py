@@ -17,4 +17,4 @@ class ArrayBasedQueue:
         try:
             return self.array.pop(0)
         except IndexError:
-            raise ValueError('Queue is empty')
+            raise ValueError('queue is empty')

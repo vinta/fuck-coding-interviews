@@ -17,10 +17,10 @@ class ArrayBasedStack:
         try:
             return self.array.pop()
         except IndexError:
-            raise ValueError('Stack is empty')
+            raise ValueError('stack is empty')
 
     def peek(self):
         try:
             return self.array[-1]
         except IndexError:
-            raise ValueError('Stack is empty')
+            raise ValueError('stack is empty')

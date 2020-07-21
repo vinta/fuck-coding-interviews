@@ -74,4 +74,4 @@ class LinkedListBasedQueue:
         try:
             return self.linked_list.pop_left()
         except IndexError:
-            raise ValueError('Queue is empty')
+            raise ValueError('queue is empty')

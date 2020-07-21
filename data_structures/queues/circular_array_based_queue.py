@@ -74,4 +74,4 @@ class CircularArrayBasedQueue:
         try:
             return self._array.pop_left()
         except ValueError:
-            raise ValueError('Queue is empty')
+            raise ValueError('queue is empty')
