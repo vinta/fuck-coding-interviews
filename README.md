@@ -93,7 +93,7 @@ $ pip install -U pip poetry
 $ poetry install
 
 # Run tests
-$ poetry run pytest --benchmark-disable
+$ poetry run pytest --benchmark-skip
 ```
 
 ## Bugs
