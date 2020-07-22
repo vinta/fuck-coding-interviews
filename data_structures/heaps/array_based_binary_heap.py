@@ -51,8 +51,6 @@ class ArrayBasedBinaryHeap:
         self._up_heap(len(self._array) - 1)
 
     def _min_child_index(self, index):
-        # Compare the current item with its children;
-        # if they're not in the correct order, swap with its smaller child.
         left_index = self._left(index)
         right_index = self._right(index)
         left = self._array[left_index] if left_index < len(self._array) else None
@@ -69,6 +67,8 @@ class ArrayBasedBinaryHeap:
         return None  # There's no child.
 
     def _down_heap(self, index):
+        # Compare the current item with its smaller child;
+        # if they're not in the correct order, swap with its smaller child.
         min_child_index = self._min_child_index(index)
         if min_child_index:
             current = self._array[index]
