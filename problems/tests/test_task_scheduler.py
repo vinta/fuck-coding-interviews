@@ -9,36 +9,42 @@ class TestCase(unittest.TestCase):
         self.solution = Solution()
 
     def test(self):
-        tasks = ['A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'E', 'E', 'F', 'F', 'G', 'G', 'H', 'H', 'I', 'I', 'J', 'J', 'K', 'K', 'L', 'L', 'M', 'M', 'N', 'N', 'O', 'O', 'P', 'P', 'Q', 'Q', 'R', 'R', 'S', 'S', 'T', 'T', 'U', 'U', 'V', 'V', 'W', 'W', 'X', 'X', 'Y', 'Y', 'Z', 'Z']
-        n = 2
-        expected = 52
-        self.assertEqual(self.solution.leastInterval(tasks, n), expected)
-
-    def test2(self):
+        # ['A', 'B', 'idle', 'A', 'B', 'idle', 'A', 'B']
         tasks = ['A', 'A', 'A', 'B', 'B', 'B']
         n = 2
         expected = 8
         self.assertEqual(self.solution.leastInterval(tasks, n), expected)
 
-    def test3(self):
+    def test2(self):
+        # ['A', 'B', 'A', 'B', 'A', 'B']
         tasks = ['A', 'A', 'A', 'B', 'B', 'B']
         n = 0
         expected = 6
         self.assertEqual(self.solution.leastInterval(tasks, n), expected)
 
-    def test4(self):
+    def test3(self):
+        # ['A', 'B', 'C', 'A', 'D', 'E', 'A', 'F', 'G', 'A', 'idle', 'idle', 'A', 'idle', 'idle', 'A']
         tasks = ['A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G']
         n = 2
         expected = 16
         self.assertEqual(self.solution.leastInterval(tasks, n), expected)
 
+    def test4(self):
+        # ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+        tasks = ['A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'E', 'E', 'F', 'F', 'G', 'G', 'H', 'H', 'I', 'I', 'J', 'J', 'K', 'K', 'L', 'L', 'M', 'M', 'N', 'N', 'O', 'O', 'P', 'P', 'Q', 'Q', 'R', 'R', 'S', 'S', 'T', 'T', 'U', 'U', 'V', 'V', 'W', 'W', 'X', 'X', 'Y', 'Y', 'Z', 'Z']
+        n = 2
+        expected = 52
+        self.assertEqual(self.solution.leastInterval(tasks, n), expected)
+
     def test5(self):
+        # ['A', 'B', 'C', 'A', 'B']
         tasks = ['A', 'B', 'C', 'A', 'B']
         n = 2
         expected = 5
         self.assertEqual(self.solution.leastInterval(tasks, n), expected)
 
     def test6(self):
+        # ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'A', 'B', 'I', 'J', 'K', 'idle', 'idle', 'idle', 'A', 'B']
         tasks = ['A', 'A', 'A', 'B', 'B', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K']
         n = 7
         expected = 18
