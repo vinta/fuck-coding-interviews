@@ -190,7 +190,7 @@ class BinarySearchTree:
 
     def height(self, node=DEFAULT_TO_ROOT):
         """
-        The height of a node is the number of edges on the longest path between the node and a descendant leaf.
+        The height of a node is the number of edges between the node and its deepest leaf.
 
         If node is a leaf, then the height of node is 0.
         Otherwise, the height of node is 1 + the maximum of heights of node's children.
