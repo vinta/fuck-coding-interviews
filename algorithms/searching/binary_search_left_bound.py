@@ -1,12 +1,12 @@
 # coding: utf-8
-def binary_search_left_bound(array, target):
+def binary_search_left_bound(sorted_array, target):
     left = 0
-    right = len(array) - 1
+    right = len(sorted_array) - 1
     while left <= right:
         mid = (left + right) // 2
-        mid_value = array[mid]
+        mid_value = sorted_array[mid]
         if target == mid_value:
-            if mid > 0 and array[mid - 1] == target:
+            if mid > 0 and sorted_array[mid - 1] == target:
                 left = mid - 1
                 right = mid
             else:

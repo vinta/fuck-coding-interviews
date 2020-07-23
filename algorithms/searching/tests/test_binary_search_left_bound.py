@@ -15,27 +15,27 @@ class TestCase(unittest.TestCase):
             [3, 3],
             [3] * random.randint(1, 10),
         ]
-        for array in test_lists:
-            with self.subTest(array=array):
-                target = random.choice(array)
-                expected = array.index(target)
-                self.assertEqual(binary_search_left_bound(array, target), expected)
+        for sorted_array in test_lists:
+            with self.subTest(sorted_array=sorted_array):
+                target = random.choice(sorted_array)
+                expected = sorted_array.index(target)
+                self.assertEqual(binary_search_left_bound(sorted_array, target), expected)
 
                 target = 100
                 expected = -1
-                self.assertEqual(binary_search_left_bound(array, target), expected)
+                self.assertEqual(binary_search_left_bound(sorted_array, target), expected)
 
     def test2(self):
-        array = []
+        sorted_array = []
         target = 0
         expected = -1
-        self.assertEqual(binary_search_left_bound(array, target), expected)
+        self.assertEqual(binary_search_left_bound(sorted_array, target), expected)
 
     def test3(self):
-        array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        sorted_array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         target = 100
         expected = -1
-        self.assertEqual(binary_search_left_bound(array, target), expected)
+        self.assertEqual(binary_search_left_bound(sorted_array, target), expected)
 
 
 if __name__ == '__main__':
