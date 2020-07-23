@@ -17,6 +17,7 @@ This repository is created by [a clumsy programmer](https://leetcode.com/vinta/)
     - `searching/`
         - [binary_search](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/binary_search.py)
         - [binary_search_left_bound](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/binary_search_left_bound.py)
+        - [linear_search](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/linear_search.py)
     - `sorting/`
         - [bubble_sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/bubble_sort.py)
         - [heap_sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/heap_sort.py)
