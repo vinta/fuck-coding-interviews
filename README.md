@@ -28,6 +28,8 @@ This repository is created by [a clumsy programmer](https://leetcode.com/vinta/)
     - `arrays/`
         - [circular_array](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/arrays/circular_array.py)
         - [dynamic_array](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/arrays/dynamic_array.py)
+    - `hash_maps`
+        - [unsorted_table_map](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/hash_maps/unsorted_table_map.py)
     - `heaps`
         - [array_based_binary_heap](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/heaps/array_based_binary_heap.py)
     - `linked_lists/`
