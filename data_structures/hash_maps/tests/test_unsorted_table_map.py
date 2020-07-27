@@ -28,18 +28,26 @@ class TestCase(unittest.TestCase):
         self.assertCountEqual(list(self.map), list(self.dict))
 
     def test__setitem__(self):
+        self.map[self.d2['key']] = -42
+        self.dict[self.d2['key']] = -42
         self.map[self.d3['key']] = self.d3['value']
         self.dict[self.d3['key']] = self.d3['value']
-        self.assertCountEqual(list(self.map), list(self.dict))
+        self.assertCountEqual([(k, v) for k, v in self.map.items()], [(k, v) for k, v in self.dict.items()])
 
     def test__getitem__(self):
+        with self.assertRaises(KeyError):
+            self.map['NOT EXIST']
+
         self.assertEqual(self.map[self.d1['key']], self.dict[self.d1['key']])
         self.assertEqual(self.map[self.d2['key']], self.dict[self.d2['key']])
 
     def test__delitem__(self):
+        with self.assertRaises(KeyError):
+            del self.map['NOT EXIST']
+
         del self.map[self.d1['key']]
         del self.dict[self.d1['key']]
-        self.assertCountEqual(list(self.map), list(self.dict))
+        self.assertCountEqual([(k, v) for k, v in self.map.items()], [(k, v) for k, v in self.dict.items()])
 
 
 if __name__ == '__main__':
