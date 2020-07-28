@@ -1,6 +1,5 @@
 # coding: utf-8
 import random
-import statistics
 import unittest
 
 from data_structures.hash_maps.chain_hash_map import ChainHashMap
