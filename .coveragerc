@@ -5,4 +5,5 @@ source =
     data_structures/
     problems/
 omit =
+    tests/*
     */tests/*
