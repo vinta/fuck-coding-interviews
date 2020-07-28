@@ -1,6 +1,7 @@
 # fuck-coding-interviews
 
-[![CI](https://github.com/vinta/fuck-coding-interviews/workflows/CI/badge.svg)](https://github.com/vinta/fuck-coding-interviews/actions)
+[![Build](https://img.shields.io/github/workflow/status/vinta/fuck-coding-interviews/CI?style=flat-square)](https://github.com/vinta/fuck-coding-interviews/actions)
+[![Coverage](https://img.shields.io/codecov/c/github/vinta/fuck-coding-interviews?style=flat-square&label=Coverage)](https://codecov.io/gh/vinta/fuck-coding-interviews)
 
 This repository is created by [a clumsy programmer](https://leetcode.com/vinta/) who always struggles with coding problems on LeetCode, even with some **Easy** questions.
 
