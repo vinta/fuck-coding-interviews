@@ -52,10 +52,10 @@ class BaseMap(MutableMapping):
 
 
 class BaseHashMap(BaseMap):
-    def __init__(self, capacity=11, load_factor=0.5, prime=109345121):
-        self._table = [None, ] * capacity
+    def __init__(self, capacity=11, load_factor_threshold=0.5, prime=109345121):
+        self._bucket_array = [None, ] * capacity  # Setting capacity to a prime number can slightly reduce collision.
         self._size = 0
-        self._load_factor = load_factor
+        self._load_factor_threshold = load_factor_threshold
 
         # The following variables are used by MAD compression function.
         self._prime = prime
@@ -76,12 +76,15 @@ class BaseHashMap(BaseMap):
         P is a prime number larger than N,
         and scale and shift are random integers from the [0, p – 1], with scale > 0.
         """
-        return ((hash(key) * self._scale + self._shift) % self._prime) % len(self._table)
+        return ((hash(key) * self._scale + self._shift) % self._prime) % len(self._bucket_array)
 
     def _resize(self, new_capacity):
         old_items = list(self.items())
-        self._table = [None, ] * new_capacity
+        self._bucket_array = [None, ] * new_capacity
         self._size = 0
         for key, value in old_items:
             # __setitem__() will re-calculate self._size
             self[key] = value
+
+    def load_factor(self):
+        return self._size / len(self._bucket_array)
