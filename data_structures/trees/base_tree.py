@@ -7,7 +7,7 @@ from abc import ABC
 from abc import abstractmethod
 
 
-class BaseNode(ABC):
+class BaseNode(ABC):  # pragma: no cover
     def __init__(self, value):
         self.value = self.val = value
 
@@ -16,7 +16,7 @@ class BaseNode(ABC):
         ...
 
 
-class BaseTree(ABC):
+class BaseTree(ABC):  # pragma: no cover
     NODE_CLASS = BaseNode
 
     @abstractmethod
@@ -47,7 +47,8 @@ class BaseTree(ABC):
     def is_leaf(self, node):
         ...
 
-    is_external = is_leaf
+    def is_external(self, node):
+        return self.is_leaf(node)
 
     def is_internal(self, node):
         return not self.is_external(node)

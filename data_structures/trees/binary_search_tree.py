@@ -12,6 +12,8 @@ A binary search tree is a special binary tree which satisfies following properti
 from collections import deque
 import sys
 
+from data_structures.trees.base_tree import BaseTree
+
 
 class TreeNode:
     __slots__ = ['value', 'val', 'left', 'right']
@@ -38,7 +40,7 @@ class TreeNode:
 
 
 # This implementation cannot properly handle duplicates.
-class BinarySearchTree:
+class BinarySearchTree(BaseTree):
     NODE_CLASS = TreeNode
     DEFAULT_TO_ROOT = object()
 
