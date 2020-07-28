@@ -27,7 +27,7 @@ jobs:
 
       # python -m xxx will put the current directory into sys.path
       - name: Run tests
-        run: python -m pytest --benchmark-skip --cov-report=xml --cov=algorithms --cov=data_structures --cov=problems
+        run: python -m pytest --benchmark-skip --cov-report=xml
 
       - name: Upload test reports
         run: bash <(curl -s https://codecov.io/bash)

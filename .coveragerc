@@ -1,0 +1,8 @@
+[run]
+branch = True
+source =
+    algorithms/
+    data_structures/
+    problems/
+omit =
+    */tests/*
