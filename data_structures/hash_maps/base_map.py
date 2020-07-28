@@ -1,6 +1,7 @@
 # coding: utf-8
 from abc import abstractmethod
 from collections.abc import MutableMapping
+import random
 
 
 class Item:
@@ -48,3 +49,39 @@ class BaseMap(MutableMapping):
     @abstractmethod
     def __delitem__(self, key):
         ...
+
+
+class BaseHashMap(BaseMap):
+    def __init__(self, capacity=11, load_factor=0.5, prime=109345121):
+        self._table = [None, ] * capacity
+        self._size = 0
+        self._load_factor = load_factor
+
+        # The following variables are used by MAD compression function.
+        self._prime = prime
+        self._scale = 1 + random.randrange(prime - 1)
+        self._shift = random.randrange(prime)
+
+    def __len__(self):
+        return self._size
+
+    def _hash_func(self, key):
+        """
+        We use Python's built-in hash() to generate hash code for key,
+        then use Multiply-Add-and-Divide (MAD) as compression function:
+
+        [(hash_code * scale + shift) mod P] mod N
+
+        where N is the size of the bucket array,
+        P is a prime number larger than N,
+        and scale and shift are random integers from the [0, p – 1], with scale > 0.
+        """
+        return ((hash(key) * self._scale + self._shift) % self._prime) % len(self._table)
+
+    def _resize(self, new_capacity):
+        old_items = list(self.items())
+        self._table = [None, ] * new_capacity
+        self._size = 0
+        for key, value in old_items:
+            # __setitem__() will re-calculate self._size
+            self[key] = value
