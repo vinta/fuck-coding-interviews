@@ -135,6 +135,24 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.assertEqual(self.bst.is_leaf(self.bst.root.left), False)
         self.assertEqual(self.bst.is_leaf(self.bst.root.right), False)
 
+    def test_is_external(self):
+        self.assertEqual(self.bst.is_external(self.bst.root.left.left), True)
+        self.assertEqual(self.bst.is_external(self.bst.root.left.right.left), True)
+        self.assertEqual(self.bst.is_external(self.bst.root.left.right.right), True)
+        self.assertEqual(self.bst.is_external(self.bst.root.right.right.left), True)
+        self.assertEqual(self.bst.is_external(self.bst.root), False)
+        self.assertEqual(self.bst.is_external(self.bst.root.left), False)
+        self.assertEqual(self.bst.is_external(self.bst.root.right), False)
+
+    def test_is_internal(self):
+        self.assertEqual(self.bst.is_internal(self.bst.root.left.left), False)
+        self.assertEqual(self.bst.is_internal(self.bst.root.left.right.left), False)
+        self.assertEqual(self.bst.is_internal(self.bst.root.left.right.right), False)
+        self.assertEqual(self.bst.is_internal(self.bst.root.right.right.left), False)
+        self.assertEqual(self.bst.is_internal(self.bst.root), True)
+        self.assertEqual(self.bst.is_internal(self.bst.root.left), True)
+        self.assertEqual(self.bst.is_internal(self.bst.root.right), True)
+
     def test_height(self):
         self.assertEqual(self.empty_bst.height(), -1)
         self.assertEqual(self.one_node_bst.height(), 0)
@@ -170,6 +188,10 @@ class BinarySearchTreeTest(unittest.TestCase):
     def test_num_edges(self):
         self.assertEqual(self.empty_bst.num_edges(), 0)
         self.assertEqual(self.bst.num_edges(), len(self.bst) - 1)
+
+    def test_insert(self):
+        with self.assertRaises(ValueError):
+            self.bst.insert(random.choice(self.insert_items))
 
     def test_search(self):
         self.assertEqual(self.bst.search(8), self.bst.root)
@@ -286,6 +308,9 @@ class BinarySearchTreeTest(unittest.TestCase):
         self.assertEqual(array, root.values)
 
     def test_from_array_representation(self):
+        bst = BinarySearchTree.from_array_representation([])
+        self.assertEqual(bst, self.empty_bst)
+
         array = binarytree.bst(height=random.randint(0, 9), is_perfect=random.choice([True, False])).values
         bst = BinarySearchTree.from_array_representation(array)
         self.assertEqual(array, bst.to_array_representation())

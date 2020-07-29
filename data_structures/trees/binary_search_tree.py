@@ -12,10 +12,11 @@ A binary search tree is a special binary tree which satisfies following properti
 from collections import deque
 import sys
 
+from data_structures.trees.base_tree import BaseNode
 from data_structures.trees.base_tree import BaseTree
 
 
-class TreeNode:
+class TreeNode(BaseNode):
     __slots__ = ['value', 'val', 'left', 'right']
 
     def __init__(self, value, left=None, right=None):
@@ -49,8 +50,6 @@ class BinarySearchTree(BaseTree):
         self.size = 0
 
     def __eq__(self, other):
-        if not isinstance(other, self.__class__):
-            return False
         return self.root == other.root  # It runs self.root's __eq__() resursively
 
     def __len__(self):
@@ -264,8 +263,6 @@ class BinarySearchTree(BaseTree):
                 node.right = self.NODE_CLASS(value)
         elif value == node.value:
             raise ValueError('value is duplicate')
-        else:
-            raise RuntimeError
 
     def insert(self, value):
         self._insert_node(self.root, value)

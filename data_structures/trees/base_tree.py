@@ -7,16 +7,17 @@ from abc import ABC
 from abc import abstractmethod
 
 
-class BaseNode(ABC):  # pragma: no cover
-    def __init__(self, value):
-        self.value = self.val = value
+class BaseNode(ABC):
+    @abstractmethod
+    def __init__(self):
+        ...
 
     @abstractmethod
     def __eq__(self, other):
         ...
 
 
-class BaseTree(ABC):  # pragma: no cover
+class BaseTree(ABC):
     NODE_CLASS = BaseNode
 
     @abstractmethod
