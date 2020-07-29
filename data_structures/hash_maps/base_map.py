@@ -85,6 +85,9 @@ class BaseHashMap(BaseMap):
         """
         return ((hash(key) * self._scale + self._shift) % self._prime) % len(self._bucket_array)
 
+    def _load_factor(self):
+        return self._size / len(self._bucket_array)
+
     def _resize(self, new_capacity):
         old_items = list(self.items())
         self._bucket_array = [None, ] * new_capacity
@@ -94,5 +97,6 @@ class BaseHashMap(BaseMap):
             # according to the new capacity of the bucket array.
             self[key] = value
 
-    def load_factor(self):
-        return self._size / len(self._bucket_array)
+    def _auto_resize(self):
+        if self._load_factor() > self._load_factor_threshold:
+            self._resize(len(self._bucket_array) * 2 - 1)

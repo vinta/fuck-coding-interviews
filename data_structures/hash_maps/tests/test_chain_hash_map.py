@@ -53,12 +53,12 @@ class TestCase(unittest.TestCase):
     def test_load_factor(self):
         for i in range(1, random.randint(2, 1000)):
             self.map[i] = i
-        self.assertTrue(self.map.load_factor() < self.map._load_factor_threshold)
+        self.assertTrue(self.map._load_factor() < self.map._load_factor_threshold)
 
     def test_distribution_mean(self):
         for i in range(1, random.randint(2, 1000)):
             self.map[i] = i
-        self.assertTrue(self.map.distribution_mean() <= 3)
+        self.assertTrue(self.map._distribution_mean() <= 3)
 
 
 if __name__ == '__main__':

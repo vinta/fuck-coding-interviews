@@ -31,9 +31,7 @@ class ChainHashMap(BaseHashMap):
         self._bucket_array[i][key] = value
         if len(self._bucket_array[i]) > old_bucket_size:
             self._size += 1
-
-        if self.load_factor() > self._load_factor_threshold:
-            self._resize(len(self._bucket_array) * 2 - 1)
+            self._auto_resize()
 
     # O(1) + O(fairly small n)
     def __getitem__(self, key):
@@ -51,5 +49,5 @@ class ChainHashMap(BaseHashMap):
             raise KeyError
         del bucket[key]  # UnsortedTableMap might also raise KeyError.
 
-    def distribution_mean(self):
+    def _distribution_mean(self):
         return statistics.mean([len(bucket) for bucket in self._bucket_array if bucket is not None])
