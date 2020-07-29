@@ -72,8 +72,8 @@ class BaseHashMap(BaseMap):
         1. A hash code that maps a key k to an integer.
         2. A compression function that maps the hash code to an index within [0, N − 1], for a bucket array.
 
-        We use Python's built-in hash() to generate hash code,
-        then use Multiply-Add-and-Divide (MAD) as compression function:
+        We use Python's built-in hash() to produce hash code for key,
+        and a randomized Multiply-Add-and-Divide (MAD) formula as compression function:
 
         ((hash_code * scale + shift) mod P) mod N
 
@@ -88,7 +88,7 @@ class BaseHashMap(BaseMap):
         self._bucket_array = [None, ] * new_capacity
         self._size = 0
         for key, value in old_items:
-            # __setitem__() will re-hash items and re-calculate self._size
+            # __setitem__() will re-hash items and re-calculate _size
             # according to the new capacity of the bucket array.
             self[key] = value
 

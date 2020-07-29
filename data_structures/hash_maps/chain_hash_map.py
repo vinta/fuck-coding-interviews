@@ -22,7 +22,9 @@ class ChainHashMap(BaseHashMap):
     def __setitem__(self, key, value):
         i = self._hash_func(key)
         if self._bucket_array[i] is None:
-            self._bucket_array[i] = UnsortedTableMap()  # self._bucket_array[i] is called a bucket.
+            # _bucket_array[i] is called a bucket,
+            # and each bucket is an independent structure.
+            self._bucket_array[i] = UnsortedTableMap()
 
         # __setitem__() can be either an insertion or a replacement.
         old_bucket_size = len(self._bucket_array[i])
