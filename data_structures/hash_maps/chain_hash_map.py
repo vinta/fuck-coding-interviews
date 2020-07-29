@@ -30,7 +30,7 @@ class ChainHashMap(BaseHashMap):
         if len(self._bucket_array[i]) > old_bucket_size:
             self._size += 1
 
-        if self._size > (len(self._bucket_array) * self._load_factor_threshold):
+        if self.load_factor() > self._load_factor_threshold:
             self._resize(len(self._bucket_array) * 2 - 1)
 
     # O(1) + O(fairly small n)

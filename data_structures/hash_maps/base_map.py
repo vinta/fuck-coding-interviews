@@ -88,7 +88,8 @@ class BaseHashMap(BaseMap):
         self._bucket_array = [None, ] * new_capacity
         self._size = 0
         for key, value in old_items:
-            # __setitem__() will re-calculate self._size
+            # __setitem__() will re-hash items and re-calculate self._size
+            # according to the new capacity of the bucket array.
             self[key] = value
 
     def load_factor(self):
