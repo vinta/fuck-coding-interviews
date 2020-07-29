@@ -8,6 +8,10 @@ This repository is created by [a clumsy programmer](https://leetcode.com/vinta/)
 
 > How on earth can I ever think of a solution like that in an interview?!
 
+I'm working on implementing common Algorithms and Data Structures in Python (with unit tests, of course), as well as straightforward solutions to some LeetCode and HackerRank problems which I solved with frustration in mind.
+
+Well, there are SO MUCH things to learn in Computer Science. I'm just a peasant who happens to write some awkward code for living.
+
 **This project requires Python 3.6 or higher.**
 
 ## Contents
@@ -104,9 +108,11 @@ $ poetry install
 $ poetry run pytest --benchmark-skip
 ```
 
+And no, you shouldn't use `pipenv` anymore. Actually, the plain old `requirements.txt` with `virtualenv` is good enough in most of the situations.
+
 ## Bugs
 
-If you find any bug or poor implementation in this repo, please let me know by opening an issue or pull request.
+If you find any bug or poor implementation in this repo, please let me know by opening an issue or pull request. I would appreciate your help.
 
 ## Resources
 
