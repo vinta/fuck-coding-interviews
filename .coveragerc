@@ -6,3 +6,7 @@ omit =
     problems/sock_merchant.py
     problems/tree_height_of_a_binary_tree.py
     problems/tree_top_view.py
+
+[report]
+exclude_lines =
+    \.\.\.
