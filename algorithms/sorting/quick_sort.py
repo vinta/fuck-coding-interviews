@@ -3,9 +3,9 @@
 Quick Sort
 https://en.wikipedia.org/wiki/Quicksort
 
-Worst-case Complexity: O(n^2)
-Best-case Complexity: O(n * log(n))
-Average Complexity: O(n * log(n))
+Worst-case performance: O(n^2)
+Best-case performance: O(n * log(n))
+Average performance: O(n * log(n))
 """
 
 

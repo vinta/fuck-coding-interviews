@@ -3,9 +3,9 @@
 Selection Sort
 https://en.wikipedia.org/wiki/Selection_sort
 
-Worst-case Complexity: О(n^2) comparisons, О(n) swaps
-Best-case Complexity: О(n^2) comparisons, О(n) swaps
-Average Complexity: О(n^2) comparisons, О(n) swaps
+Worst-case performance: О(n^2) comparisons, О(n) swaps
+Best-case performance: О(n^2) comparisons, О(n) swaps
+Average performance: О(n^2) comparisons, О(n) swaps
 """
 
 

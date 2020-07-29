@@ -67,10 +67,14 @@ class BaseHashMap(BaseMap):
 
     def _hash_func(self, key):
         """
-        We use Python's built-in hash() to generate hash code for key,
+        It is common to view a hash function, h(k), as consisting of two parts:
+        1. A hash code that maps a key k to an integer.
+        2. A compression function that maps the hash code to an index within [0, N − 1], for a bucket array.
+
+        We use Python's built-in hash() to generate hash code,
         then use Multiply-Add-and-Divide (MAD) as compression function:
 
-        [(hash_code * scale + shift) mod P] mod N
+        ((hash_code * scale + shift) mod P) mod N
 
         where N is the size of the bucket array,
         P is a prime number larger than N,
