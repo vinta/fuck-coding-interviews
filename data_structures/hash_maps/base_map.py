@@ -52,15 +52,16 @@ class BaseMap(MutableMapping):
 
 
 class BaseHashMap(BaseMap):
-    def __init__(self, capacity=11, load_factor_threshold=0.5, prime=109345121):
-        self._bucket_array = [None, ] * capacity  # Setting capacity to a prime number can slightly reduce collision.
+    def __init__(self, capacity=None, lf_threshold=None, prime=None):
+        # Setting capacity to a prime number can slightly reduce collision.
+        self._bucket_array = [None, ] * (capacity if capacity else 11)
         self._size = 0
-        self._load_factor_threshold = load_factor_threshold
+        self._load_factor_threshold = lf_threshold if lf_threshold else 0.5
 
         # The following variables are used by MAD compression function.
-        self._prime = prime
-        self._scale = 1 + random.randrange(prime - 1)
-        self._shift = random.randrange(prime)
+        self._prime = prime if prime else 109345121
+        self._scale = 1 + random.randrange(self._prime - 1)
+        self._shift = random.randrange(self._prime)
 
     def __len__(self):
         return self._size
