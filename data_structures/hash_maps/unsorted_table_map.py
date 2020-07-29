@@ -1,11 +1,8 @@
 # coding: utf-8
 from data_structures.hash_maps.base_map import BaseMap
-from data_structures.hash_maps.base_map import Item
 
 
 class UnsortedTableMap(BaseMap):
-    ITEM_CLASS = Item
-
     def __init__(self):
         self._table = []
 

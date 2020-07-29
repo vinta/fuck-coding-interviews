@@ -26,6 +26,8 @@ class Item:
 
 
 class BaseMap(MutableMapping):
+    ITEM_CLASS = Item
+
     @abstractmethod
     def __init__(self):
         ...
