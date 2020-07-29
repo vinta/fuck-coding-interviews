@@ -112,7 +112,7 @@ And no, you shouldn't use `pipenv` anymore. Actually, the plain old `requirement
 
 ## Bugs
 
-If you find any bug or poor implementation in this repo, please let me know by opening an issue or pull request. I would appreciate your help.
+If you find any bug or poor implementation in this repo, please let me know by opening an issue or pull request. Me and my cats would appreciate your help.
 
 ## Resources
 
