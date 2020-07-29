@@ -51,8 +51,14 @@ class TestCase(unittest.TestCase):
         self.assertCountEqual([(k, v) for k, v in self.map.items()], [(k, v) for k, v in self.dict.items()])
 
     def test_load_factor(self):
-        for i in range(1, random.randint(2, 1000)):
+        for i in range(1, random.randint(2, 10000)):
             self.map[i] = i
+            self.dict[i] = i
+            if i % 5 == 0:
+                del self.map[i]
+                del self.dict[i]
+
+        self.assertCountEqual(list(self.map.items()), list(self.dict.items()))
         self.assertTrue(self.map._load_factor() < self.map._load_factor_threshold)
 
     def test_distribution_mean(self):
