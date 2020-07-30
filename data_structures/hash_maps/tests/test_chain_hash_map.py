@@ -33,6 +33,7 @@ class TestCase(unittest.TestCase):
         self.dict[self.d2['key']] = -42
         self.map[self.d3['key']] = self.d3['value']
         self.dict[self.d3['key']] = self.d3['value']
+        self.assertEqual(len(self.map), len(self.dict))
         self.assertCountEqual([(k, v) for k, v in self.map.items()], [(k, v) for k, v in self.dict.items()])
 
     def test__getitem__(self):
@@ -48,9 +49,20 @@ class TestCase(unittest.TestCase):
 
         del self.map[self.d1['key']]
         del self.dict[self.d1['key']]
+        self.assertEqual(len(self.map), len(self.dict))
         self.assertCountEqual([(k, v) for k, v in self.map.items()], [(k, v) for k, v in self.dict.items()])
 
     def test_load_factor(self):
+        for i in range(1, random.randint(2, 10000)):
+            self.map[i] = i
+        self.assertTrue(self.map._load_factor() < self.map._load_factor_threshold)
+
+    def test_distribution_mean(self):
+        for i in range(1, random.randint(2, 1000)):
+            self.map[i] = i
+        self.assertTrue(self.map._distribution_mean() <= 3)
+
+    def test_integration(self):
         for i in range(1, random.randint(2, 10000)):
             self.map[i] = i
             self.dict[i] = i
@@ -58,13 +70,8 @@ class TestCase(unittest.TestCase):
                 del self.map[i]
                 del self.dict[i]
 
+        self.assertEqual(len(self.map), len(self.dict))
         self.assertCountEqual(list(self.map.items()), list(self.dict.items()))
-        self.assertTrue(self.map._load_factor() < self.map._load_factor_threshold)
-
-    def test_distribution_mean(self):
-        for i in range(1, random.randint(2, 1000)):
-            self.map[i] = i
-        self.assertTrue(self.map._distribution_mean() <= 3)
 
 
 if __name__ == '__main__':

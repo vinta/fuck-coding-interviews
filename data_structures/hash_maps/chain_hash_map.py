@@ -48,6 +48,7 @@ class ChainHashMap(BaseHashMap):
         if bucket is None:
             raise KeyError
         del bucket[key]  # UnsortedTableMap might also raise KeyError.
+        self._size -= 1
 
     def _distribution_mean(self):
         return statistics.mean([len(bucket) for bucket in self._bucket_array if bucket is not None])

@@ -66,6 +66,7 @@ class LinearProbingHashMap(BaseHashMap):
             else:
                 if item.key == key:
                     self._bucket_array[index] = self.AVAILABLE_MARKER
+                    self._size -= 1
                     return
 
             index = (index + 1) % len(self._bucket_array)
