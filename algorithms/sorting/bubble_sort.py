@@ -6,6 +6,8 @@ Worst-case performance: O(n^2)
 Best-case performance: O(n) (the input array is already sorted)
 Average performance: O(n^2)
 """
+
+
 def bubble_sort(arr):
     length = len(arr)
 

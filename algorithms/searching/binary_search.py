@@ -7,11 +7,11 @@ Worst-case performance: O(log n)
 Best-case performance: O(1)
 Average performance: O(log n)
 
-The following implementations cannot properly handle duplicates.
 Also see https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/binary_search_left_bound.py
 """
 
 
+# The following implementations cannot properly handle duplicates.
 def binary_search(sorted_array, target):
     low = 0
     high = len(sorted_array) - 1

@@ -10,14 +10,18 @@ from data_structures.hash_maps.base_map import BaseHashMap
 class LinearProbingHashMap(BaseHashMap):
     AVAILABLE_MARKER = object()
 
+    # O(n)
     def __iter__(self):
         for item in self._bucket_array:
             if not self._is_empty_or_available(item):
                 yield item.key
 
+    # O(1) + O(fairly small n) for probing if the load factor is below 1
     def _is_empty_or_available(self, item):
         return (item is None) or (item is self.AVAILABLE_MARKER)
 
+    # O(1) + O(fairly small n) for probing if the load factor is below 1
+    # O(n) if it triggers resizing
     def __setitem__(self, key, value):
         index = self._hash_func(key)
         while True:
@@ -39,6 +43,7 @@ class LinearProbingHashMap(BaseHashMap):
 
             index = (index + 1) % len(self._bucket_array)
 
+    # O(1) + O(fairly small n) for probing if the load factor is below 1
     def __getitem__(self, key):
         """
         We can only stop searching consecutive slots for key when we encounter an "empty" bucket or the item with that key.
@@ -56,6 +61,7 @@ class LinearProbingHashMap(BaseHashMap):
 
             index = (index + 1) % len(self._bucket_array)
 
+    # O(1) + O(fairly small n) for probing if the load factor is below 1
     def __delitem__(self, key):
         index = self._hash_func(key)
         while True:

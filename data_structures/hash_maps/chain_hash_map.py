@@ -18,7 +18,7 @@ class ChainHashMap(BaseHashMap):
                 for key in bucket.keys():
                     yield key
 
-    # O(1) + O(fairly small n)
+    # O(1) + O(fairly small n) for linear searching if the load factor is below 1
     def __setitem__(self, key, value):
         i = self._hash_func(key)
         if self._bucket_array[i] is None:
@@ -33,7 +33,7 @@ class ChainHashMap(BaseHashMap):
             self._size += 1
             self._auto_resize()
 
-    # O(1) + O(fairly small n)
+    # O(1) + O(fairly small n) for linear searching if the load factor is below 1
     def __getitem__(self, key):
         i = self._hash_func(key)
         bucket = self._bucket_array[i]
@@ -41,7 +41,7 @@ class ChainHashMap(BaseHashMap):
             raise KeyError
         return bucket[key]  # UnsortedTableMap might also raise KeyError.
 
-    # O(1) + O(fairly small n)
+    # O(1) + O(fairly small n) for linear searching if the load factor is below 1
     def __delitem__(self, key):
         i = self._hash_func(key)
         bucket = self._bucket_array[i]
@@ -50,5 +50,6 @@ class ChainHashMap(BaseHashMap):
         del bucket[key]  # UnsortedTableMap might also raise KeyError.
         self._size -= 1
 
+    # O(n)
     def _distribution_mean(self):
         return statistics.mean([len(bucket) for bucket in self._bucket_array if bucket is not None])
