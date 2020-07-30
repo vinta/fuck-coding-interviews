@@ -291,8 +291,9 @@ class BinarySearchTreeTest(unittest.TestCase):
             self.bst.traverse('NOT EXIST')
 
     def test_invert(self):
-        self.empty_bst.invert()
+        self.assertEqual(self.empty_bst.invert(), None)
 
+        self.assertEqual(self.bst.is_valid(), True)
         self.bst.invert()
         items = list(self.bst.levelorder_traverse())
         expected = [8, 10, 3, 14, 6, 1, 13, 7, 4]
