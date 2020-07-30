@@ -65,7 +65,7 @@ class CircularArrayBasedQueue:
         return self._array.__iter__()
 
     # O(1)
-    # O(n) if it triggers expand
+    # O(n) if it triggers resizing
     def enqueue(self, value):
         self._array.append(value)
 

@@ -58,7 +58,7 @@ class DynamicArray:
         self._capacity = new_capacity
 
     # O(1)
-    # O(n) if it triggers expand
+    # O(n) if it triggers resizing
     def append(self, value):
         if self._size == self._capacity:
             self._resize(self._capacity * 2)

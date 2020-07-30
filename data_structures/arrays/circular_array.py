@@ -63,7 +63,7 @@ class CircularArray:
         return (self._front + self._size - 1) % self._capacity
 
     # O(1)
-    # O(n) if it triggers resize
+    # O(n) if it triggers resizing
     def append(self, value):
         if self._size == self._capacity:
             self._resize(self._capacity * 2)
