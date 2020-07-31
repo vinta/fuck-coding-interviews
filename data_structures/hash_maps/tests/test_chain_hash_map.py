@@ -60,6 +60,7 @@ class TestCase(unittest.TestCase):
     def test_distribution_mean(self):
         for i in range(1, random.randint(2, 1000)):
             self.map[f'{i}'] = i
+        print(self.map._distribution_mean())
         self.assertTrue(self.map._distribution_mean() <= 3)
 
     def test_integration(self):
