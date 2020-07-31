@@ -37,6 +37,7 @@ Well, there are SO MUCH things to learn in Computer Science. I'm just a peasant 
     - `hash_maps`
         - [chain_hash_map](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/hash_maps/chain_hash_map.py)
         - [linear_probing_hash_map](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/hash_maps/linear_probing_hash_map.py)
+        - [sorted_table_map](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/hash_maps/sorted_table_map.py)
         - [unsorted_table_map](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/hash_maps/unsorted_table_map.py)
     - `heaps`
         - [array_based_binary_heap](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/heaps/array_based_binary_heap.py)
