@@ -20,9 +20,9 @@ def binary_search(sorted_array, target):
         mid_value = sorted_array[mid]
         if target == mid_value:
             return mid
-        elif target < mid_value:
+        elif target < mid_value:  # The target is on the left side of mid.
             high = mid - 1
-        elif target > mid_value:
+        elif target > mid_value:  # The target is on the right side of mid.
             low = mid + 1
 
     return -1
