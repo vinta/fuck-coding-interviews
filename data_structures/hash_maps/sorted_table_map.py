@@ -7,15 +7,16 @@ class SortedTableMap(BaseMap):
     def __init__(self):
         self._table = []
 
+    # O(1)
     def __len__(self):
         return len(self._table)
 
+    # O(n)
     def __iter__(self):
         for item in self._table:
             yield item.key
 
-    # There is no duplicate key in a map,
-    # so we don't need neither the left or right bound version of Binary Search.
+    # O(log n)
     def _insertable_binary_search(self, target_key, low, high):
         # NOTE: If target_key is not in _table,
         # it returns the index that the key should be inserted.
@@ -26,6 +27,8 @@ class SortedTableMap(BaseMap):
         mid = (low + high) // 2
         mid_key = self._table[mid].key
         if target_key == mid_key:
+            # There is no duplicate key in a map,
+            # so we don't need neither the left or right bound version of Binary Search.
             return (True, mid)
         elif target_key < mid_key:
             return self._insertable_binary_search(target_key, low, mid - 1)
@@ -40,11 +43,6 @@ class SortedTableMap(BaseMap):
         else:
             # index might be len(_table) if key is greater than every item in _table.
             self._table.insert(index, self.ITEM_CLASS(key, value))
-
-        # if index <= len(self._table) - 1 and self._table[index].key == key:
-        #     self._table[index].value = value
-        # else:
-        #     self._table.insert(index, self.ITEM_CLASS(key, value))
 
     # O(log n)
     def __getitem__(self, key):
@@ -81,39 +79,50 @@ class SortedTableMap(BaseMap):
             return (item.key, item.value)
 
     # O(log n) + O(n)
-    def find_lt_pairs(self, key):
+    def find_lt(self, key):
         _, index = self._insertable_binary_search(key, 0, len(self._table) - 1)
-        start, end = 0, index
+        start, stop = 0, index
 
-        for item in self._table[start:end]:
+        for item in self._table[start:stop]:
             yield (item.key, item.value)
 
     # O(log n) + O(n)
-    def find_le_pairs(self, key):
+    def find_le(self, key):
         found, index = self._insertable_binary_search(key, 0, len(self._table) - 1)
         if found:
-            start, end = 0, index + 1
+            start, stop = 0, index + 1
         else:
-            start, end = 0, index
+            start, stop = 0, index
 
-        for item in self._table[start:end]:
+        for item in self._table[start:stop]:
             yield (item.key, item.value)
 
     # O(log n) + O(n)
-    def find_gt_pairs(self, key):
+    def find_gt(self, key):
         found, index = self._insertable_binary_search(key, 0, len(self._table) - 1)
         if found:
-            start, end = index + 1, len(self._table)
+            start, stop = index + 1, len(self._table)
         else:
-            start, end = index, len(self._table)
+            start, stop = index, len(self._table)
 
-        for item in self._table[start:end]:
+        for item in self._table[start:stop]:
             yield (item.key, item.value)
 
     # O(log n) + O(n)
-    def find_ge_pairs(self, key):
+    def find_ge(self, key):
         _, index = self._insertable_binary_search(key, 0, len(self._table) - 1)
-        start, end = index, len(self._table)
+        start, stop = index, len(self._table)
 
-        for item in self._table[start:end]:
+        for item in self._table[start:stop]:
             yield (item.key, item.value)
+
+    # O(log n) + O(n)
+    def find_range(self, start_key, stop_key):
+        if start_key > stop_key:
+            return
+
+        _, i = self._insertable_binary_search(start_key, 0, len(self._table) - 1)
+        while i < len(self._table) and (self._table[i].key < stop_key):
+            item = self._table[i]
+            yield (item.key, item.value)
+            i += 1
