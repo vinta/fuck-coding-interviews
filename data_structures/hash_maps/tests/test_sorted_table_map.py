@@ -60,10 +60,14 @@ class TestCase(unittest.TestCase):
         self.assertCountEqual([(k, v) for k, v in self.map.items()], [(k, v) for k, v in self.dict.items()])
 
     def test_find_min(self):
+        self.assertEqual(self.empty_map.find_min(), None)
+
         key, value = self.int_map.find_min()
         self.assertEqual(key, min(self.numbers))
 
     def test_find_max(self):
+        self.assertEqual(self.empty_map.find_max(), None)
+
         key, value = self.int_map.find_max()
         self.assertEqual(key, max(self.numbers))
 
