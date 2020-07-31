@@ -54,16 +54,16 @@ class TestCase(unittest.TestCase):
 
     def test_load_factor(self):
         for i in range(1, random.randint(2, 10000)):
-            self.map[i] = i
+            self.map[f'{i}'] = i
         self.assertTrue(self.map._load_factor() < self.map._load_factor_threshold)
 
     def test_integration(self):
         for i in range(1, random.randint(2, 10000)):
-            self.map[i] = i
-            self.dict[i] = i
+            self.map[f'{i}'] = i
+            self.dict[f'{i}'] = i
             if i % 5 == 0:
-                del self.map[i]
-                del self.dict[i]
+                del self.map[f'{i}']
+                del self.dict[f'{i}']
 
         self.assertEqual(len(self.map), len(self.dict))
         self.assertCountEqual(list(self.map.items()), list(self.dict.items()))
