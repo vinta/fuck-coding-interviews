@@ -17,6 +17,8 @@ Well, there are SO MUCH things to learn in Computer Science. I'm just a peasant 
 ## Contents
 
 - `algorithms/`
+    - `hashing/`
+        - [mad](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/hashing/mad_compression.py)
     - `math/`
         - [factorial](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/math/factorial.py)
         - [fibonacci](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/math/fibonacci.py)
