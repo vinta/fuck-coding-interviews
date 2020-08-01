@@ -265,6 +265,9 @@ class BinarySearchTree(BaseTree):
             raise ValueError('value is duplicate')
 
     def insert(self, value):
+        """
+        Insertion of a binary search tree follows the basic logic of binary search.
+        """
         self._insert_node(self.root, value)
 
     def _search_node(self, node, value):
