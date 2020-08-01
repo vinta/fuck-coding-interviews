@@ -14,6 +14,12 @@ Well, there are SO MUCH things to learn in Computer Science. I'm just a peasant 
 
 **This project requires Python 3.6 or higher.**
 
+## Featured
+
+[Hiring Without Whiteboards](https://github.com/poteto/hiring-without-whiteboards)
+
+A list of companies (or teams) that don't do "whiteboard" interviews.
+
 ## Contents
 
 - `algorithms/`
