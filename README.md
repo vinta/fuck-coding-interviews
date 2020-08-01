@@ -103,6 +103,7 @@ Well, there are SO MUCH things to learn in Computer Science. I'm just a peasant 
     - [tree_height_of_a_binary_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/tree_height_of_a_binary_tree.py) from [HackerRank](https://www.hackerrank.com/challenges/tree-height-of-a-binary-tree/problem)
     - [tree_top_view](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/tree_top_view.py) from [HackerRank](https://www.hackerrank.com/challenges/tree-top-view/problem)
     - [two_sum](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/two_sum.py) from [LeetCode](https://leetcode.com/problems/two-sum/)
+    - [univalued_binary_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/univalued_binary_tree.py) from [LeetCode](https://leetcode.com/problems/univalued-binary-tree/)
     - [valid_anagram](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/valid_anagram.py) from [LeetCode](https://leetcode.com/problems/valid-anagram/)
     - [valid_parentheses](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/valid_parentheses.py) from [LeetCode](https://leetcode.com/problems/valid-parentheses/)
     - [validate_binary_search_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/validate_binary_search_tree.py) from [LeetCode](https://leetcode.com/problems/validate-binary-search-tree/)
