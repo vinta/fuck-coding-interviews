@@ -9,4 +9,6 @@ omit =
 
 [report]
 exclude_lines =
+    pragma: no cover
+
     \.\.\.

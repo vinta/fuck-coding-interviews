@@ -5,7 +5,7 @@ https://leetcode.com/problems/check-completeness-of-a-binary-tree/
 from collections import deque
 
 
-class TreeNode:
+class TreeNode:  # pragma: no cover
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
