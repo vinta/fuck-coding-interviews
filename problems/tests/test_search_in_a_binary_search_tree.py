@@ -16,6 +16,7 @@ class TestCase(unittest.TestCase):
             {'input': '[4,2,7,1,3]', 'target': 2, 'expected': '[2,1,3]'},
             {'input': '[4,2,7,1,3]', 'target': 100, 'expected': '[]'},
             {'input': '[8,3,10,1,6,null,14,null,null,4,7,13]', 'target': 3, 'expected': '[3,1,6,null,null,4,7]'},
+            {'input': '[]', 'target': 0, 'expected': '[]'},
         ]
         for data in test_data:
             tree_str = data['input']
@@ -36,6 +37,7 @@ class TestCase2(unittest.TestCase):
             {'input': '[4,2,7,1,3]', 'target': 2, 'expected': '[2,1,3]'},
             {'input': '[4,2,7,1,3]', 'target': 100, 'expected': '[]'},
             {'input': '[8,3,10,1,6,null,14,null,null,4,7,13]', 'target': 3, 'expected': '[3,1,6,null,null,4,7]'},
+            {'input': '[]', 'target': 0, 'expected': '[]'},
         ]
         for data in test_data:
             tree_str = data['input']

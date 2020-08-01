@@ -13,6 +13,10 @@ class TestCase(unittest.TestCase):
         nums = [1, 2, 3, 1]
         self.assertEqual(self.solution.containsDuplicate(nums), True)
 
+    def test2(self):
+        nums = [1, 2, 3]
+        self.assertEqual(self.solution.containsDuplicate(nums), False)
+
 
 class TestCase2(unittest.TestCase):
     def setUp(self):
@@ -21,6 +25,10 @@ class TestCase2(unittest.TestCase):
     def test(self):
         nums = [1, 2, 3, 1]
         self.assertEqual(self.solution.containsDuplicate(nums), True)
+
+    def test2(self):
+        nums = [1, 2, 3]
+        self.assertEqual(self.solution.containsDuplicate(nums), False)
 
 
 if __name__ == '__main__':

@@ -15,6 +15,11 @@ class TestCase(unittest.TestCase):
         t = 'nagaram'
         self.assertEqual(self.solution.isAnagram(s, t), True)
 
+    def test2(self):
+        s = 'abc'
+        t = 'ab'
+        self.assertEqual(self.solution.isAnagram(s, t), False)
+
 
 class TestCase2(unittest.TestCase):
     def setUp(self):
@@ -34,6 +39,11 @@ class TestCase3(unittest.TestCase):
         s = 'anagram'
         t = 'nagaram'
         self.assertEqual(self.solution.isAnagram(s, t), True)
+
+    def test2(self):
+        s = 'abc'
+        t = 'ab'
+        self.assertEqual(self.solution.isAnagram(s, t), False)
 
 
 if __name__ == '__main__':

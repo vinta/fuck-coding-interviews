@@ -16,6 +16,7 @@ class TestCase(unittest.TestCase):
             (-120, -21),
             (0, 0),
             (1534236469, 0),
+            (-2147483648, 0),
         ]
 
         for x, expected in test_lists:

@@ -13,6 +13,16 @@ class TestCase(unittest.TestCase):
         expected = [[-1, 0, 1], [-1, -1, 2]]
         self.assertEqual(self.solution.threeSum(nums), expected)
 
+    def test2(self):
+        nums = [1, ]
+        expected = []
+        self.assertEqual(self.solution.threeSum(nums), expected)
+
+    def test3(self):
+        nums = [0, 0, 0, 0]
+        expected = [[0, 0, 0], ]
+        self.assertEqual(self.solution.threeSum(nums), expected)
+
 
 if __name__ == '__main__':
     unittest.main()

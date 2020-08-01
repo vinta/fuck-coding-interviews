@@ -24,6 +24,18 @@ class TestCase(unittest.TestCase):
         s = '){'
         self.assertEqual(self.solution.isValid(s), False)
 
+    def test5(self):
+        s = '['
+        self.assertEqual(self.solution.isValid(s), False)
+
+    def test6(self):
+        s = '}'
+        self.assertEqual(self.solution.isValid(s), False)
+
+    def test7(self):
+        s = ')(]'
+        self.assertEqual(self.solution.isValid(s), False)
+
 
 if __name__ == '__main__':
     unittest.main()
