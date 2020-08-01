@@ -88,6 +88,7 @@ Well, there are SO MUCH things to learn in Computer Science. I'm just a peasant 
     - [remove_nth_node_from_end_of_list](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/remove_nth_node_from_end_of_list.py) from [LeetCode](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
     - [reverse_integer](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/reverse_integer.py) from [LeetCode](https://leetcode.com/problems/reverse-integer/)
     - [reverse_linked_list](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/reverse_linked_list.py) from [LeetCode](https://leetcode.com/problems/reverse-linked-list/)
+    - [same_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/same_tree.py) from [LeetCode](https://leetcode.com/problems/same-tree/)
     - [search_in_a_binary_search_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/search_in_a_binary_search_tree.py) from [LeetCode](https://leetcode.com/problems/search-in-a-binary-search-tree/)
     - [second_highest_salary](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/second_highest_salary.sql) from [LeetCode](https://leetcode.com/problems/second-highest-salary/)
     - [serialize_and_deserialize_binary_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/serialize_and_deserialize_binary_tree.py) from [LeetCode](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)
