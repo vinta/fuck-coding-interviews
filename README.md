@@ -84,6 +84,7 @@ Well, there are SO MUCH things to learn in Computer Science. I'm just a peasant 
     - [maximum_product_subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_product_subarray.py) from [LeetCode](https://leetcode.com/problems/maximum-product-subarray/)
     - [maximum_subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_subarray.py) from [LeetCode](https://leetcode.com/problems/maximum-subarray/)
     - [merge_intervals](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/merge_intervals.py) from [LeetCode](https://leetcode.com/problems/merge-intervals/)
+    - [minimum_depth_of_binary_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/minimum_depth_of_binary_tree.py) from [LeetCode](https://leetcode.com/problems/minimum-depth-of-binary-tree/)
     - [nth_highest_salary](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/nth_highest_salary.sql) from [LeetCode](https://leetcode.com/problems/nth-highest-salary/)
     - [product_of_array_except_self](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/product_of_array_except_self.py) from [LeetCode](https://leetcode.com/problems/product-of-array-except-self/)
     - [rank_scores](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/rank_scores.sql) from [LeetCode](https://leetcode.com/problems/rank-scores/)
