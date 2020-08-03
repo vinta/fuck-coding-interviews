@@ -14,11 +14,14 @@ Well, there are SO MUCH things to learn in Computer Science. I'm just a peasant 
 
 **This project requires Python 3.6 or higher.**
 
-## Featured
+## No Whiteboards
 
 [Hiring Without Whiteboards](https://github.com/poteto/hiring-without-whiteboards)
 
 A list of companies (or teams) that don't do "whiteboard" interviews.
+
+> - Discussing a real world problem (with or without whiteboard) is 👍
+> - Solving CS trivia, technical puzzles, riddles, brainteasers (with or without whiteboard) is 👎
 
 ## Contents
 
@@ -142,5 +145,6 @@ If you find any bug or poor implementation in this repo, please let me know by o
 
 ### Websites
 
+- [Programiz](https://www.programiz.com/dsa)
 - [Tech Interview Handbook](https://yangshun.github.io/tech-interview-handbook/)
 - [Visualize Python Code Execution](http://www.pythontutor.com/live.html#mode=edit)
