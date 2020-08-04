@@ -2,7 +2,6 @@
 import unittest
 import random
 
-from binarytree import Node
 import binarytree
 import pythonds3
 
