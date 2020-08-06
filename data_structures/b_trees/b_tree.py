@@ -86,6 +86,19 @@ class BTree:
     def __len__(self):
         return self._size
 
+    def __iter__(self):
+        for node in self.inorder_traverse(self.root):
+            yield from node.keys
+
+    def inorder_traverse(self, node):
+        for child_node in node.children[:len(node.children) - 1]:
+            yield from self.inorder_traverse(child_node)
+
+        yield node
+
+        if node.children:
+            yield from self.inorder_traverse(node.children[-1])
+
     def _binary_search(self, arr, target, low, high):
         if low > high:
             return -1
