@@ -52,14 +52,17 @@ class BTreeTest(unittest.TestCase):
         self.assertEqual([node.keys for node in btree.root.children[1].children], [[23], [42]])
 
         self.assertEqual(list(btree), [4, 8, 11, 16, 23, 27, 42])
+        self.assertEqual(btree.num_nodes(), 7)
 
-    def test_integration(self):
-        for _ in range(1000):
-            btree = BTree(order=random.randint(2, 128))
-            keys = random.sample(range(1000), k=random.randint(1, 1000))
-            self.assertEqual(len(keys), len(set(keys)))
-            for i in keys:
-                btree.insert(key=i, value=f'{i}')
+    def test_check(self):
+        btree = BTree(order=random.randint(2, 128))
+        keys = random.sample(range(1000), k=random.randint(1, 1000))
+        self.assertEqual(len(keys), len(set(keys)))
+        for i in keys:
+            btree.insert(key=i, value=f'{i}')
+
+        for node in btree.levelorder_traverse():
+            node.check_validation()
 
 
 if __name__ == '__main__':

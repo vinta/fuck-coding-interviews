@@ -7,11 +7,12 @@ A B-tree of order m is an m-way search tree that either is empty or satisfies th
 - All nodes have ceil(m / 2) <= k <= m children, except for:
     - The root node which has 2 <= k <= m children.
     - Leaf nodes which have no children.
-- All leaf nodes are in the same level and carry no information.
+- All leaf nodes are in the same level.
 - All non-leaf nodes with k children contain k − 1 keys.
 - All keys within a node are in increasing order.
 """
 import bisect
+import math
 
 
 class BTreeNode:
@@ -74,16 +75,27 @@ class BTreeNode:
         if self.is_full():
             self.split()
 
+    def check_validation(self):
+        if self.is_root():
+            if not self.is_leaf():
+                assert 2 <= len(self.children) <= self.tree.order
+        else:
+            if not self.is_leaf():
+                assert math.ceil(self.tree.order / 2) <= len(self.children) <= self.tree.order
+                assert len(self.keys) + 1 == len(self.children)
+
+        assert self.keys == sorted(self.keys)
+
 
 class BTree:
     NODE_CLASS = BTreeNode
+    DEFAULT_TO_ROOT = object()
 
     def __init__(self, order=512):
         if order <= 1:
             raise ValueError('order must be greater than 1')
 
         self._size = 0
-        self._height = 0
         self.order = order
         self.root = self.NODE_CLASS(tree=self)
 
@@ -94,7 +106,10 @@ class BTree:
         for node in self.inorder_traverse(self.root):
             yield from node.keys
 
-    def inorder_traverse(self, node):
+    def inorder_traverse(self, node=DEFAULT_TO_ROOT):
+        if node == self.DEFAULT_TO_ROOT:
+            node = self.root
+
         for child_node in node.children[:len(node.children) - 1]:
             yield from self.inorder_traverse(child_node)
 
@@ -103,10 +118,24 @@ class BTree:
         if node.children:
             yield from self.inorder_traverse(node.children[-1])
 
-    def levelorder_traverse(self, node):
-        yield node
-        for child in node.children:
-            yield from self.levelorder_traverse()
+    def levelorder_traverse(self, node=DEFAULT_TO_ROOT):
+        if node == self.DEFAULT_TO_ROOT:
+            node = self.root
+
+        current_level = [self.root, ]
+        while current_level:
+            next_level = []
+            for node in current_level:
+                yield node
+                next_level.extend(node.children)
+
+            current_level = next_level
+
+    def num_nodes(self):
+        count = 0
+        for _ in self.levelorder_traverse():
+            count += 1
+        return count
 
     def _binary_search(self, arr, target, low, high):
         if low > high:
