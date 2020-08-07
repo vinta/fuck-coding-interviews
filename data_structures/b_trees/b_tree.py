@@ -18,25 +18,25 @@ class BTreeNode:
     def __init__(self, tree, parent=None):
         self.tree = tree
         self.parent = parent
-        self.children = []
         self.keys = []
-        self.values = []
+        self._children = []
+
+    @property
+    def children(self):
+        return self._children
+
+    @children.setter
+    def children(self, new_children):
+        self._children = []
+        for child in new_children:
+            child.parent = self
+            self._children.append(child)
 
     def __repr__(self):
         return f'BTreeNode({self.keys})'
 
     def __str__(self):
         return self.__repr__()
-
-    def __eq__(self, other):
-        if not isinstance(other, self.__class__):
-            return False
-        return all((
-            # self.tree == other.tree,
-            # self.parent == other.parent,
-            # self.children == other.children,
-            self.keys == other.keys,
-        ))
 
     def is_root(self):
         return self.parent is None
@@ -45,23 +45,16 @@ class BTreeNode:
         return not self.children
 
     def is_full(self):
-        # return len(self.keys) > (self.tree.order - 1)
-        return len(self.keys) > (2 * self.tree.t)
-
-    def get_root(self):
-        if self.is_root():
-            return self
-        return self.parent.get_root()
+        return len(self.keys) > (self.tree.order - 1)
 
     def split(self):
         if self.is_root():
             new_root = self.__class__(tree=self.tree, parent=None)
-            self.tree.root = self.parent = new_root
+            self.tree.root = new_root
+            self.parent = new_root
             self.parent.children = [self, ]
 
-        # median_index = (0 + len(self.keys) - 1) // 2
-        # median_index = len(self.keys) // 2
-        median_index = self.tree.t
+        median_index = (0 + len(self.keys) - 1) // 2
         median = self.keys[median_index]
 
         new_right = self.__class__(tree=self.tree, parent=self.parent)
@@ -72,10 +65,8 @@ class BTreeNode:
         self.children = self.children[:median_index + 1]  # NOTE
 
         child_index = self.parent.children.index(self)
-        self.parent.keys.insert(child_index, median)
         self.parent.children.insert(child_index + 1, new_right)
-        if self.parent.is_full():
-            self.parent.split()
+        self.parent.insert(key=median, value=median)
 
     def insert(self, key, value):
         index = bisect.bisect_left(self.keys, key)
@@ -94,7 +85,6 @@ class BTree:
         self._size = 0
         self._height = 0
         self.order = order
-        self.degree = self.t = 4  # The minimum number of
         self.root = self.NODE_CLASS(tree=self)
 
     def __len__(self):
