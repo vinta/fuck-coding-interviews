@@ -106,6 +106,40 @@ class BTree:
         for node in self.inorder_traverse(self.root):
             yield from node.keys
 
+    def _binary_search(self, arr, target, low, high):
+        if low > high:
+            return -1
+
+        mid_index = (low + high) // 2
+        mid = arr[mid_index]
+        if target == mid:
+            return mid_index
+        elif target < mid:
+            return self._binary_search(arr, target, low, mid_index - 1)
+        elif target > mid:
+            return self._binary_search(arr, target, mid_index + 1, high)
+
+    def _search_node(self, node, key):
+        if node.is_leaf():
+            index = self._binary_search(node.keys, key, 0, len(node.keys) - 1)
+            return node, index
+        else:
+            index = bisect.bisect_left(node.keys, key)
+            child_node = node.children[index]
+            return self._search_node(child_node, key)
+
+    def insert(self, key, value):
+        # TODO: duplicate key?
+        node, index = self._search_node(self.root, key)
+        node.insert(key, value)
+        self._size += 1
+
+    def num_nodes(self):
+        count = 0
+        for _ in self.levelorder_traverse():
+            count += 1
+        return count
+
     def inorder_traverse(self, node=DEFAULT_TO_ROOT):
         if node == self.DEFAULT_TO_ROOT:
             node = self.root
@@ -130,43 +164,3 @@ class BTree:
                 next_level.extend(node.children)
 
             current_level = next_level
-
-    def num_nodes(self):
-        count = 0
-        for _ in self.levelorder_traverse():
-            count += 1
-        return count
-
-    def _binary_search(self, arr, target, low, high):
-        if low > high:
-            return -1
-
-        mid_index = (low + high) // 2
-        mid = arr[mid_index]
-        if target == mid:
-            return mid_index
-        elif target < mid:
-            return self._binary_search(arr, target, low, mid_index - 1)
-        elif target > mid:
-            return self._binary_search(arr, target, mid_index + 1, high)
-
-    def _search_node(self, node, key):
-        if node.is_leaf():
-            index = self._binary_search(node.keys, key, 0, len(node.keys) - 1)
-            return node, index
-        else:
-            index = bisect.bisect_left(node.keys, key)
-            child_node = node.children[index]
-            return self._search_node(child_node, key)
-
-    def search(self, key):
-        node, index = self._search_node(self.root, key)
-        if index == -1:
-            raise ValueError
-        return node.values[index]
-
-    def insert(self, key, value):
-        # TODO: duplicate key?
-        node, index = self._search_node(self.root, key)
-        node.insert(key, value)
-        self._size += 1
