@@ -5,7 +5,7 @@ https://en.wikipedia.org/wiki/B-tree
 
 A B-tree of order m is an m-way search tree that either is empty or satisfies the following properties:
 - All nodes have ceil(m / 2) <= k <= m children, except for:
-    - The root node which has 2 <= k <= m children.
+    - The root node which has 2 <= k <= m children if it's not a leaf node.
     - Leaf nodes which have no children.
 - All leaf nodes are in the same level.
 - All non-leaf nodes with k children contain k − 1 keys.
@@ -15,6 +15,7 @@ import bisect
 import math
 
 
+# This implementation does not support duplicate keys.
 class BTreeNode:
     def __init__(self, tree, parent=None):
         self.tree = tree
@@ -34,10 +35,33 @@ class BTreeNode:
             self._children.append(child)
 
     def __repr__(self):
-        return f'BTreeNode({self.keys})'
+        node_name = 'internal'
+        if self.is_root():
+            node_name = 'root'
+        else:
+            if self.is_leaf():
+                node_name = 'leaf'
+
+        return f'BTreeNode({node_name}, {self.keys})'
 
     def __str__(self):
         return self.__repr__()
+
+    def _binary_search(self, arr, target, low, high):
+        if low > high:
+            return -1
+
+        mid_index = (low + high) // 2
+        mid = arr[mid_index]
+        if target == mid:
+            return mid_index
+        elif target < mid:
+            return self._binary_search(arr, target, low, mid_index - 1)
+        elif target > mid:
+            return self._binary_search(arr, target, mid_index + 1, high)
+
+    def search(self, key):
+        return self._binary_search(self.keys, key, 0, len(self.keys) - 1)
 
     def is_root(self):
         return self.parent is None
@@ -45,8 +69,16 @@ class BTreeNode:
     def is_leaf(self):
         return not self.children
 
-    def is_full(self):
-        return len(self.keys) > (self.tree.order - 1)
+    def is_overflow(self):
+        return len(self.keys) > self.tree.order - 1
+
+    def is_underflow(self):
+        if self.is_root():
+            if self.is_leaf():
+                return False
+            else:
+                return len(self.keys) < 2 - 1
+        return len(self.keys) < math.ceil(self.tree.order / 2) - 1
 
     def split(self):
         if self.is_root():
@@ -72,19 +104,168 @@ class BTreeNode:
     def insert(self, key, value):
         index = bisect.bisect_left(self.keys, key)
         self.keys.insert(index, key)
-        if self.is_full():
+        if self.is_overflow():
             self.split()
 
-    def check_validation(self):
-        if self.is_root():
-            if not self.is_leaf():
-                assert 2 <= len(self.children) <= self.tree.order
-        else:
-            if not self.is_leaf():
-                assert math.ceil(self.tree.order / 2) <= len(self.children) <= self.tree.order
-                assert len(self.keys) + 1 == len(self.children)
+    def rotate_right(self):  # Borrow a key from the left sibling.
+        my_index = self.parent.children.index(self)
+        if my_index == 0:  # There is no left sibling.
+            return False
 
-        assert self.keys == sorted(self.keys)
+        separator_index = my_index - 1
+        left_sibling_index = my_index - 1
+        left_sibling = self.parent.children[left_sibling_index]
+        if len(left_sibling.keys) <= math.ceil(self.tree.order / 2) - 1:
+            return False
+
+        separator = self.parent.keys[separator_index]
+        self.keys.insert(0, separator)
+        self.parent.keys[separator_index] = left_sibling.keys.pop()
+        if not self.is_leaf():  # Since we borrow a key from the left sibling, the corresponding child node of the key should also be moved.
+            child = left_sibling.children.pop()
+            child.parent = self
+            self.children.insert(0, child)
+
+        return True
+
+    def rotate_left(self):
+        my_index = self.parent.children.index(self)
+        if my_index == len(self.parent.children) - 1:
+            return False
+
+        separator_index = my_index
+        right_sibling_index = my_index + 1
+        right_sibling = self.parent.children[right_sibling_index]
+        if len(right_sibling.keys) <= math.ceil(self.tree.order / 2) - 1:
+            return False
+
+        separator = self.parent.keys[separator_index]
+        self.keys.append(separator)
+        self.parent.keys[separator_index] = right_sibling.keys.pop(0)
+        if not self.is_leaf():
+            child = right_sibling.children.pop(0)
+            child.parent = self
+            self.children.append(child)
+
+        return True
+
+    def merge_left(self):  # Merge the left sibling into the current node.
+        my_index = self.parent.children.index(self)
+        if my_index == 0:
+            return False
+
+        left_sibling_index = my_index - 1
+        left_sibling = self.parent.children[left_sibling_index]
+        if len(left_sibling.keys) != math.ceil(self.tree.order / 2) - 1:  # We can only merge a sibling which has exactly the minimum number of keys.
+            return False
+
+        # Copy the separator from the parent to the end of the left node.
+        # Move the left sibling's keys and children to the current node.
+        separator_index = my_index - 1
+        separator = self.parent.keys[separator_index]
+        self.keys = left_sibling.keys + [separator, ] + self.keys
+        self.children = left_sibling.children + self.children
+
+        # Remove the separator from the parent along with its empty right child.
+        self.parent.keys.pop(separator_index)
+        self.parent.children.pop(left_sibling_index)
+
+        if self.parent.is_underflow():
+            self.parent.rebalance()
+
+        return True
+
+    def merge_right(self):
+        my_index = self.parent.children.index(self)
+        if my_index == len(self.parent.children) - 1:
+            return False
+
+        right_sibling_index = my_index + 1
+        right_sibling = self.parent.children[right_sibling_index]
+        if len(right_sibling.keys) != math.ceil(self.tree.order / 2) - 1:
+            return False
+
+        separator_index = my_index
+        separator = self.parent.keys[separator_index]
+        self.keys = self.keys + [separator, ] + right_sibling.keys
+        self.children = self.children + right_sibling.children
+
+        self.parent.keys.pop(separator_index)
+        self.parent.children.pop(right_sibling_index)
+
+        if self.parent.is_underflow():
+            self.parent.rebalance()
+
+        return True
+
+    def rebalance(self):
+        """
+        First, we borrow a key from both immediate sibling nodes in the order of left and right.
+
+        If both immediate sibling nodes already have a minimum number of keys,
+        then we merge the left or right sibling into the current node.
+
+        https://en.wikipedia.org/wiki/B-tree#Rebalancing_after_deletion
+        """
+        if self.is_root():
+            # If we land here, the root node has no keys but one child node.
+            # So we promote the only child as the new root.
+            new_root = self.children[0]
+            new_root.parent = None
+            self.tree.root = new_root
+            return True
+
+        assert \
+            self.rotate_right() or self.rotate_left() or \
+            self.merge_left() or self.merge_right()
+
+    def delete(self, key):
+        if self.is_leaf():
+            self.keys.remove(key)
+            if self.is_underflow():
+                self.rebalance()
+        else:
+            index = self.keys.index(key)
+
+            node = self.children[index]
+            while not node.is_leaf():
+                node = node.children[-1]
+
+            new_separator = node.keys[-1]  # Choose the largest key in the left subtree as the new separator.
+            self.keys[index] = new_separator  # Replace the key to be deleted with the new separator.
+            node.delete(new_separator)  # Delete the new separator from the leaf node.
+
+    def check_validation(self):
+        """
+        According to Knuth's definition, a B-tree of order m is a tree which satisfies the following properties:
+
+        - Every node has at most m children.
+        - Every non-leaf node (except root) has at least ⌈m/2⌉ child nodes.
+        - The root has at least 2 children if it is not a leaf node.
+        - A non-leaf node with k children contains k − 1 keys.
+        - All leaves appear in the same level and carry no information.
+
+        https://en.wikipedia.org/wiki/B-tree#Definition
+        """
+        if len(self.tree):
+            assert self.keys
+            assert self.keys == sorted(self.keys), self.keys
+
+        num_children = len(self.children)
+        assert num_children <= self.tree.order, num_children
+
+        if not self.is_leaf() and not self.is_root():
+            assert num_children >= math.ceil(self.tree.order / 2), num_children
+
+        if self.is_root() and not self.is_leaf():
+            assert num_children >= 2, num_children
+
+        if not self.is_leaf():
+            assert num_children - 1 == len(self.keys), num_children
+
+        for child in self.children:
+            assert child.parent == self
+            child.check_validation()
 
 
 class BTree:
@@ -92,8 +273,8 @@ class BTree:
     DEFAULT_TO_ROOT = object()
 
     def __init__(self, order=512):
-        if order <= 1:
-            raise ValueError('order must be greater than 1')
+        if order < 3:
+            raise ValueError('order must be greater than 3')
 
         self._size = 0
         self.order = order
@@ -106,33 +287,35 @@ class BTree:
         for node in self.inorder_traverse(self.root):
             yield from node.keys
 
-    def _binary_search(self, arr, target, low, high):
-        if low > high:
-            return -1
-
-        mid_index = (low + high) // 2
-        mid = arr[mid_index]
-        if target == mid:
-            return mid_index
-        elif target < mid:
-            return self._binary_search(arr, target, low, mid_index - 1)
-        elif target > mid:
-            return self._binary_search(arr, target, mid_index + 1, high)
-
     def _search_node(self, node, key):
+        index = bisect.bisect_left(node.keys, key)
+        try:
+            if node.keys[index] == key:
+                return node, index
+        except IndexError:
+            pass
+
         if node.is_leaf():
-            index = self._binary_search(node.keys, key, 0, len(node.keys) - 1)
-            return node, index
+            return node, -1
         else:
-            index = bisect.bisect_left(node.keys, key)
             child_node = node.children[index]
             return self._search_node(child_node, key)
 
     def insert(self, key, value):
-        # TODO: duplicate key?
         node, index = self._search_node(self.root, key)
+        if index != -1:
+            raise KeyError('Duplicate key')
+
         node.insert(key, value)
         self._size += 1
+
+    def delete(self, key):
+        node, index = self._search_node(self.root, key)
+        if index == -1:
+            raise KeyError
+
+        node.delete(key)
+        self._size -= 1
 
     def num_nodes(self):
         count = 0
