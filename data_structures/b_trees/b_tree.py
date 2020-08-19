@@ -79,7 +79,7 @@ class BTreeNode:
         new_right.children = self.children[median_index + 1:]
 
         self.keys = self.keys[:median_index]
-        self.children = self.children[:median_index + 1]  # NOTE
+        self.children = self.children[:median_index + 1]  # NOTE: Here is "median_index + 1" instead of "median_index".
 
         child_index = self.parent.children.index(self)
         self.parent.children.insert(child_index + 1, new_right)
@@ -210,14 +210,10 @@ class BTreeNode:
                 self.rebalance()
         else:
             index = self.keys.index(key)
-
-            node = self.children[index]
-            while not node.is_leaf():
-                node = node.children[-1]
-
-            new_separator = node.keys[-1]  # Choose the largest key in the left subtree as the new separator.
+            child = self.children[index]  # The left subtree.
+            new_separator = self.tree.max_key(child)  # Choose the largest key in the left subtree as the new separator.
             self.keys[index] = new_separator  # Replace the key to be deleted with the new separator.
-            node.delete(new_separator)  # Delete the new separator from the leaf node.
+            child.delete(new_separator)  # Delete the new separator from the leaf node.
 
     def check_validation(self):
         """
@@ -306,6 +302,24 @@ class BTree:
         for _ in self.levelorder_traverse():
             count += 1
         return count
+
+    def min_key(self, node=DEFAULT_TO_ROOT):
+        if node == self.DEFAULT_TO_ROOT:
+            node = self.root
+
+        if node.is_leaf():
+            return node.keys[0]
+        else:
+            return self.min_key(node.children[0])
+
+    def max_key(self, node=DEFAULT_TO_ROOT):
+        if node == self.DEFAULT_TO_ROOT:
+            node = self.root
+
+        if node.is_leaf():
+            return node.keys[-1]
+        else:
+            return self.max_key(node.children[-1])
 
     def inorder_traverse(self, node=DEFAULT_TO_ROOT):
         if node == self.DEFAULT_TO_ROOT:

@@ -95,6 +95,12 @@ class BTreeTest(unittest.TestCase):
         self.assertEqual(len(btree), 0)
         self.assertEqual(list(btree), [])
 
+    def test_min_key(self):
+        self.assertEqual(self.btree.min_key(), min(self.keys))
+
+    def test_max_key(self):
+        self.assertEqual(self.btree.max_key(), max(self.keys))
+
     def test_check_validation(self):
         btree = BTree(order=random.randint(3, 128))
         keys = random.sample(range(1000), k=random.randint(1, 1000))
