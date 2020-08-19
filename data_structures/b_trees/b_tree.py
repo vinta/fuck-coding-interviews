@@ -47,22 +47,6 @@ class BTreeNode:
     def __str__(self):
         return self.__repr__()
 
-    def _binary_search(self, arr, target, low, high):
-        if low > high:
-            return -1
-
-        mid_index = (low + high) // 2
-        mid = arr[mid_index]
-        if target == mid:
-            return mid_index
-        elif target < mid:
-            return self._binary_search(arr, target, low, mid_index - 1)
-        elif target > mid:
-            return self._binary_search(arr, target, mid_index + 1, high)
-
-    def search(self, key):
-        return self._binary_search(self.keys, key, 0, len(self.keys) - 1)
-
     def is_root(self):
         return self.parent is None
 
@@ -284,7 +268,7 @@ class BTree:
         return self._size
 
     def __iter__(self):
-        for node in self.inorder_traverse(self.root):
+        for node in self.inorder_traverse():
             yield from node.keys
 
     def _search_node(self, node, key):
