@@ -327,23 +327,25 @@ class BTree:
             count += 1
         return count
 
-    def min_key(self, node=DEFAULT_TO_ROOT):
+    def min(self, node=DEFAULT_TO_ROOT):
         if node == self.DEFAULT_TO_ROOT:
             node = self.root
 
         if node.is_leaf():
-            return node.keys[0]
+            key = node.keys[0]
+            return {'key': key, 'value': node.data[key]}
         else:
-            return self.min_key(node.children[0])
+            return self.min(node.children[0])
 
-    def max_key(self, node=DEFAULT_TO_ROOT):
+    def max(self, node=DEFAULT_TO_ROOT):
         if node == self.DEFAULT_TO_ROOT:
             node = self.root
 
         if node.is_leaf():
-            return node.keys[-1]
+            key = node.keys[-1]
+            return {'key': key, 'value': node.data[key]}
         else:
-            return self.max_key(node.children[-1])
+            return self.max(node.children[-1])
 
     def inorder_traverse(self, node=DEFAULT_TO_ROOT):
         if node == self.DEFAULT_TO_ROOT:
