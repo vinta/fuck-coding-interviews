@@ -8,126 +8,129 @@ from data_structures.b_trees.b_tree import BTree
 class BTreeTest(unittest.TestCase):
     def setUp(self):
         with self.assertRaises(ValueError):
-            BTree(order=1)
+            BTree(order=2)
 
-        self.btree = BTree(order=5)
+        self.b_tree = BTree(order=5)
         self.size = random.randint(1, 1000)
         self.keys = random.sample(range(1000), k=self.size)
         self.assertEqual(len(self.keys), len(set(self.keys)))
         for i in self.keys:
-            self.btree.insert(key=i, value=f'{i}')
+            self.b_tree.insert(key=i, value=f'{i}')
 
     def test__len__(self):
-        self.assertEqual(len(self.btree), self.size)
+        self.assertEqual(len(self.b_tree), self.size)
 
     def test_insert(self):
-        btree = BTree(order=3)
+        b_tree = BTree(order=3)
 
-        btree.insert(key=42, value='42')
-        self.assertEqual(btree.root.keys, [42, ])
-        self.assertEqual(btree.root.children, [])
+        b_tree.insert(key=42, value='42')
+        self.assertEqual(b_tree.root.keys, [42, ])
+        self.assertEqual(b_tree.root.children, [])
 
-        btree.insert(key=11, value='11')
-        self.assertEqual(btree.root.keys, [11, 42])
-        self.assertEqual(btree.root.children, [])
+        b_tree.insert(key=11, value='11')
+        self.assertEqual(b_tree.root.keys, [11, 42])
+        self.assertEqual(b_tree.root.children, [])
 
-        btree.insert(key=27, value='27')
-        self.assertEqual(btree.root.keys, [27, ])
-        self.assertEqual([node.keys for node in btree.root.children], [[11, ], [42, ]])
+        b_tree.insert(key=27, value='27')
+        self.assertEqual(b_tree.root.keys, [27, ])
+        self.assertEqual([node.keys for node in b_tree.root.children], [[11, ], [42, ]])
 
-        btree.insert(key=4, value='4')
-        self.assertEqual(btree.root.keys, [27, ])
-        self.assertEqual([node.keys for node in btree.root.children], [[4, 11], [42, ]])
+        b_tree.insert(key=4, value='4')
+        self.assertEqual(b_tree.root.keys, [27, ])
+        self.assertEqual([node.keys for node in b_tree.root.children], [[4, 11], [42, ]])
 
-        btree.insert(key=8, value='8')
-        self.assertEqual(btree.root.keys, [8, 27])
-        self.assertEqual([node.keys for node in btree.root.children], [[4], [11], [42]])
+        b_tree.insert(key=8, value='8')
+        self.assertEqual(b_tree.root.keys, [8, 27])
+        self.assertEqual([node.keys for node in b_tree.root.children], [[4], [11], [42]])
 
-        btree.insert(key=16, value='16')
-        self.assertEqual(btree.root.keys, [8, 27])
-        self.assertEqual([node.keys for node in btree.root.children], [[4], [11, 16], [42]])
+        b_tree.insert(key=16, value='16')
+        self.assertEqual(b_tree.root.keys, [8, 27])
+        self.assertEqual([node.keys for node in b_tree.root.children], [[4], [11, 16], [42]])
 
-        btree.insert(key=23, value='23')
-        self.assertEqual(btree.root.keys, [16, ])
-        self.assertEqual([node.keys for node in btree.root.children], [[8], [27]])
-        self.assertEqual([node.keys for node in btree.root.children[0].children], [[4], [11]])
-        self.assertEqual([node.keys for node in btree.root.children[1].children], [[23], [42]])
+        b_tree.insert(key=23, value='23')
+        self.assertEqual(b_tree.root.keys, [16, ])
+        self.assertEqual([node.keys for node in b_tree.root.children], [[8], [27]])
+        self.assertEqual([node.keys for node in b_tree.root.children[0].children], [[4], [11]])
+        self.assertEqual([node.keys for node in b_tree.root.children[1].children], [[23], [42]])
 
-        self.assertEqual(list(btree), [4, 8, 11, 16, 23, 27, 42])
-        self.assertEqual(len(btree), 7)
-        self.assertEqual(btree.num_nodes(), 7)
+        with self.assertRaises(KeyError):
+            b_tree.insert(23, '23')
+
+        self.assertEqual(list(b_tree), [4, 8, 11, 16, 23, 27, 42])
+        self.assertEqual(len(b_tree), 7)
+        self.assertEqual(b_tree.num_nodes(), 7)
 
     def test_delete(self):
-        btree = BTree(order=3)
-        btree.insert(key=42, value='42')
-        btree.insert(key=11, value='11')
-        btree.insert(key=27, value='27')
-        btree.insert(key=4, value='4')
-        btree.insert(key=8, value='8')
-        btree.insert(key=16, value='16')
-        btree.insert(key=23, value='23')
-        self.assertEqual(btree.root.keys, [16, ])
-        self.assertEqual([node.keys for node in btree.root.children], [[8], [27]])
-        self.assertEqual([node.keys for node in btree.root.children[0].children], [[4], [11]])
-        self.assertEqual([node.keys for node in btree.root.children[1].children], [[23], [42]])
+        b_tree = BTree(order=3)
+        b_tree.insert(key=42, value='42')
+        b_tree.insert(key=11, value='11')
+        b_tree.insert(key=27, value='27')
+        b_tree.insert(key=4, value='4')
+        b_tree.insert(key=8, value='8')
+        b_tree.insert(key=16, value='16')
+        b_tree.insert(key=23, value='23')
 
-        btree.delete(key=16)
-        self.assertEqual(btree.root.keys, [11, 27])
-        self.assertEqual([node.keys for node in btree.root.children], [[4, 8], [23], [42]])
+        with self.assertRaises(KeyError):
+            b_tree.delete(0)
 
-        btree.delete(key=4)
-        self.assertEqual(btree.root.keys, [11, 27])
-        self.assertEqual([node.keys for node in btree.root.children], [[8], [23], [42]])
+        b_tree.delete(key=16)
+        self.assertEqual(b_tree.root.keys, [11, 27])
+        self.assertEqual([node.keys for node in b_tree.root.children], [[4, 8], [23], [42]])
 
-        btree.delete(key=11)
-        self.assertEqual(btree.root.keys, [27])
-        self.assertEqual([node.keys for node in btree.root.children], [[8, 23], [42]])
+        b_tree.delete(key=4)
+        self.assertEqual(b_tree.root.keys, [11, 27])
+        self.assertEqual([node.keys for node in b_tree.root.children], [[8], [23], [42]])
 
-        btree.delete(key=23)
-        self.assertEqual(btree.root.keys, [27])
-        self.assertEqual([node.keys for node in btree.root.children], [[8], [42]])
+        b_tree.delete(key=11)
+        self.assertEqual(b_tree.root.keys, [27])
+        self.assertEqual([node.keys for node in b_tree.root.children], [[8, 23], [42]])
 
-        btree.delete(key=8)
-        self.assertEqual(btree.root.keys, [27, 42])
+        b_tree.delete(key=23)
+        self.assertEqual(b_tree.root.keys, [27])
+        self.assertEqual([node.keys for node in b_tree.root.children], [[8], [42]])
 
-        btree.delete(key=42)
-        self.assertEqual(btree.root.keys, [27])
+        b_tree.delete(key=8)
+        self.assertEqual(b_tree.root.keys, [27, 42])
 
-        btree.delete(key=27)
-        self.assertEqual(btree.root.keys, [])
+        b_tree.delete(key=42)
+        self.assertEqual(b_tree.root.keys, [27])
 
-        self.assertEqual(len(btree), 0)
-        self.assertEqual(list(btree), [])
+        b_tree.delete(key=27)
+        self.assertEqual(b_tree.root.keys, [])
+
+        self.assertEqual(len(b_tree), 0)
+        self.assertEqual(list(b_tree), [])
 
     def test_min(self):
-        self.assertEqual(self.btree.min()['key'], min(self.keys))
+        self.assertEqual(self.b_tree.min()['key'], min(self.keys))
 
     def test_max(self):
-        self.assertEqual(self.btree.max()['key'], max(self.keys))
+        self.assertEqual(self.b_tree.max()['key'], max(self.keys))
 
     def test_check_validation(self):
-        btree = BTree(order=random.randint(3, 128))
-        keys = random.sample(range(1000), k=random.randint(1, 1000))
+        b_tree = BTree(order=random.randint(3, 64))
+        keys = random.sample(range(5000), k=random.randint(1, 5000))
         self.assertEqual(len(keys), len(set(keys)))
 
         inserted_keys = []
         for i in keys:
-            btree.insert(key=i, value=f'{i}')
+            b_tree.insert(key=i, value=f'{i}')
             inserted_keys.append(i)
 
             if random.randint(1, 10) % 3 == 0:
                 random_index = random.randint(0, len(inserted_keys) - 1)
                 delete_key = inserted_keys.pop(random_index)
-                btree.delete(delete_key)
+                b_tree.delete(delete_key)
 
-            for node in btree.levelorder_traverse():
+            for node in b_tree.levelorder_traverse():
                 node.check_validation()
 
         for i in inserted_keys:
-            btree.delete(i)
+            b_tree.delete(i)
 
-        self.assertEqual(len(btree), 0)
-        self.assertEqual(list(btree), [])
+        self.assertEqual(len(b_tree), 0)
+        self.assertEqual(list(b_tree), [])
+        self.assertEqual(b_tree.num_nodes(), 1)  # An empty root node.
 
 
 if __name__ == '__main__':

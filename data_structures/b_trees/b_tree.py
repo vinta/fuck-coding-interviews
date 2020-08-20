@@ -278,7 +278,7 @@ class BTree:
 
     def __init__(self, order=512):
         if order < 3:
-            raise ValueError('order must be greater than 3')
+            raise ValueError('order must be greater than or equal to 3')
 
         self._size = 0
         self.order = order
