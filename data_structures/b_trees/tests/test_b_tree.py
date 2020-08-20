@@ -58,7 +58,7 @@ class BTreeTest(unittest.TestCase):
         self.assertEqual(btree.num_nodes(), 7)
 
     def test_delete(self):
-        btree = BTree(order=4)
+        btree = BTree(order=3)
         btree.insert(key=42, value='42')
         btree.insert(key=11, value='11')
         btree.insert(key=27, value='27')
@@ -66,18 +66,22 @@ class BTreeTest(unittest.TestCase):
         btree.insert(key=8, value='8')
         btree.insert(key=16, value='16')
         btree.insert(key=23, value='23')
+        self.assertEqual(btree.root.keys, [16, ])
+        self.assertEqual([node.keys for node in btree.root.children], [[8], [27]])
+        self.assertEqual([node.keys for node in btree.root.children[0].children], [[4], [11]])
+        self.assertEqual([node.keys for node in btree.root.children[1].children], [[23], [42]])
 
         btree.delete(key=16)
-        self.assertEqual(btree.root.keys, [8, 23])
-        self.assertEqual([node.keys for node in btree.root.children], [[4], [11], [27, 42]])
+        self.assertEqual(btree.root.keys, [11, 27])
+        self.assertEqual([node.keys for node in btree.root.children], [[4, 8], [23], [42]])
 
         btree.delete(key=4)
-        self.assertEqual(btree.root.keys, [23])
-        self.assertEqual([node.keys for node in btree.root.children], [[8, 11], [27, 42]])
+        self.assertEqual(btree.root.keys, [11, 27])
+        self.assertEqual([node.keys for node in btree.root.children], [[8], [23], [42]])
 
         btree.delete(key=11)
-        self.assertEqual(btree.root.keys, [23])
-        self.assertEqual([node.keys for node in btree.root.children], [[8], [27, 42]])
+        self.assertEqual(btree.root.keys, [27])
+        self.assertEqual([node.keys for node in btree.root.children], [[8, 23], [42]])
 
         btree.delete(key=23)
         self.assertEqual(btree.root.keys, [27])

@@ -21,6 +21,7 @@ class BTreeNode:
         self.tree = tree
         self.parent = parent
         self.keys = []
+        self.data = {}
         self._children = []
 
     @property
@@ -72,22 +73,26 @@ class BTreeNode:
             self.parent.children = [self, ]
 
         median_index = (0 + len(self.keys) - 1) // 2
-        median = self.keys[median_index]
+        median_key = self.keys[median_index]
+        median_value = self.data.pop(median_key)
 
         new_right = self.__class__(tree=self.tree, parent=self.parent)
         new_right.keys = self.keys[median_index + 1:]
         new_right.children = self.children[median_index + 1:]
+        for key in new_right.keys:
+            new_right.data[key] = self.data.pop(key)
 
         self.keys = self.keys[:median_index]
         self.children = self.children[:median_index + 1]  # NOTE: Here is "median_index + 1" instead of "median_index".
 
         child_index = self.parent.children.index(self)
         self.parent.children.insert(child_index + 1, new_right)
-        self.parent.insert(key=median, value=median)
+        self.parent.insert(key=median_key, value=median_value)
 
     def insert(self, key, value):
         index = bisect.bisect_left(self.keys, key)
         self.keys.insert(index, key)
+        self.data[key] = value
         if self.is_overflow():
             self.split()
 
@@ -104,7 +109,10 @@ class BTreeNode:
 
         separator = self.parent.keys[separator_index]
         self.keys.insert(0, separator)
-        self.parent.keys[separator_index] = left_sibling.keys.pop()
+        self.data[separator] = self.parent.data.pop(separator)
+        self.parent.keys[separator_index] = key = left_sibling.keys.pop()
+        self.parent.data[key] = left_sibling.data.pop(key)
+
         if not self.is_leaf():  # Since we borrow a key from the left sibling, the corresponding child node of the key should also be moved.
             child = left_sibling.children.pop()
             child.parent = self
@@ -125,7 +133,10 @@ class BTreeNode:
 
         separator = self.parent.keys[separator_index]
         self.keys.append(separator)
-        self.parent.keys[separator_index] = right_sibling.keys.pop(0)
+        self.data[separator] = self.parent.data.pop(separator)
+        self.parent.keys[separator_index] = key = right_sibling.keys.pop(0)
+        self.parent.data[key] = right_sibling.data.pop(key)
+
         if not self.is_leaf():
             child = right_sibling.children.pop(0)
             child.parent = self
@@ -149,6 +160,9 @@ class BTreeNode:
         separator = self.parent.keys[separator_index]
         self.keys = left_sibling.keys + [separator, ] + self.keys
         self.children = left_sibling.children + self.children
+        self.data[separator] = self.parent.data.pop(separator)
+        for key in left_sibling.keys:
+            self.data[key] = left_sibling.data.pop(key)
 
         # Remove the separator from the parent along with its empty right child.
         self.parent.keys.pop(separator_index)
@@ -173,6 +187,9 @@ class BTreeNode:
         separator = self.parent.keys[separator_index]
         self.keys = self.keys + [separator, ] + right_sibling.keys
         self.children = self.children + right_sibling.children
+        self.data[separator] = self.parent.data.pop(separator)
+        for key in right_sibling.keys:
+            self.data[key] = right_sibling.data.pop(key)
 
         self.parent.keys.pop(separator_index)
         self.parent.children.pop(right_sibling_index)
@@ -206,14 +223,20 @@ class BTreeNode:
     def delete(self, key):
         if self.is_leaf():
             self.keys.remove(key)
+            self.data.pop(key)
             if self.is_underflow():
                 self.rebalance()
         else:
             index = self.keys.index(key)
-            child = self.children[index]  # The left subtree.
-            new_separator = self.tree.max_key(child)  # Choose the largest key in the left subtree as the new separator.
+            node = self.children[index]  # The left subtree.
+            while not node.is_leaf():
+                node = node.children[-1]
+
+            new_separator = node.keys[-1]  # Choose the largest key in the left subtree as the new separator.
+            del self.data[self.keys[index]]
             self.keys[index] = new_separator  # Replace the key to be deleted with the new separator.
-            child.delete(new_separator)  # Delete the new separator from the leaf node.
+            self.data[new_separator] = node.data[new_separator]  # Replace the key to be deleted with the new separator.
+            node.delete(new_separator)  # Delete the new separator from the leaf node.
 
     def check_validation(self):
         """
@@ -230,6 +253,7 @@ class BTreeNode:
         if len(self.tree):
             assert self.keys
             assert self.keys == sorted(self.keys), self.keys
+            assert set(self.keys) == set(self.data.keys())
 
         num_children = len(self.children)
         assert num_children <= self.tree.order, num_children
