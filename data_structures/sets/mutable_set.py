@@ -1,7 +1,5 @@
 # coding: utf-8
-from collections import Sequence
-from collections.abc import MutableSet
-import statistics
+from collections.abc import MutableSet, Sequence
 
 from algorithms.hashing.mad_compression import mad
 
