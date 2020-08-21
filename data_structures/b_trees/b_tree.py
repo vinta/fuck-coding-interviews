@@ -92,8 +92,7 @@ class BTreeNode:
         self.parent.insert(key=median_key, value=median_value)
 
     def insert(self, key, value):
-        index = bisect.bisect_left(self.keys, key)
-        self.keys.insert(index, key)
+        bisect.insort_left(self.keys, key)
         self.data[key] = value
         if self.is_overflow():
             self.split()
