@@ -304,6 +304,13 @@ class BTree:
         else:
             return self._search_node(key, node.children[index])
 
+    def get(self, key):
+        node, index = self._search_node(key, self.root)
+        if index == -1:
+            raise KeyError
+
+        return node.data[key]
+
     def insert(self, key, value):
         node, index = self._search_node(key, self.root)
         if index != -1:

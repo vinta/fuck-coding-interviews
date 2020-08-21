@@ -22,6 +22,13 @@ class BTreeTest(unittest.TestCase):
     def test__iter__(self):
         self.assertEqual(list(self.b_tree), sorted(self.keys))
 
+    def test_get(self):
+        for key in self.keys:
+            self.assertEqual(self.b_tree.get(key), f'{key}')
+
+        with self.assertRaises(KeyError):
+            self.b_tree.get(-1)
+
     def test_insert(self):
         b_tree = BTree(order=3)
 
