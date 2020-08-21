@@ -291,7 +291,7 @@ class BTree:
     def __iter__(self):
         yield from self.inorder_traverse_keys()
 
-    def _search_node(self, node, key):
+    def _search_node(self, key, node):
         index = bisect.bisect_left(node.keys, key)
         try:
             if node.keys[index] == key:
@@ -302,11 +302,10 @@ class BTree:
         if node.is_leaf():
             return node, -1
         else:
-            child_node = node.children[index]
-            return self._search_node(child_node, key)
+            return self._search_node(key, node.children[index])
 
     def insert(self, key, value):
-        node, index = self._search_node(self.root, key)
+        node, index = self._search_node(key, self.root)
         if index != -1:
             raise KeyError('Duplicate key')
 
@@ -314,7 +313,7 @@ class BTree:
         self._size += 1
 
     def delete(self, key):
-        node, index = self._search_node(self.root, key)
+        node, index = self._search_node(key, self.root)
         if index == -1:
             raise KeyError
 
