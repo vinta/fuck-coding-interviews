@@ -290,8 +290,7 @@ class BTree:
         return self._size
 
     def __iter__(self):
-        for node in self.inorder_traverse():
-            yield from node.keys
+        yield from self.inorder_traverse_keys()
 
     def _search_node(self, node, key):
         index = bisect.bisect_left(node.keys, key)
@@ -325,7 +324,7 @@ class BTree:
 
     def num_nodes(self):
         count = 0
-        for _ in self.levelorder_traverse():
+        for _ in self.levelorder_traverse_nodes():
             count += 1
         return count
 
@@ -349,19 +348,21 @@ class BTree:
         else:
             return self.max(node.children[-1])
 
-    def inorder_traverse(self, node=DEFAULT_TO_ROOT):
+    def inorder_traverse_keys(self, node=DEFAULT_TO_ROOT):
         if node == self.DEFAULT_TO_ROOT:
             node = self.root
 
-        for child_node in node.children[:len(node.children) - 1]:
-            yield from self.inorder_traverse(child_node)
+        if node.is_leaf():
+            yield from node.keys
+            return
 
-        yield node
+        key_length = len(node.keys)
+        for i, left_child_node in enumerate(node.children):
+            yield from self.inorder_traverse_keys(left_child_node)
+            if i < key_length:
+                yield node.keys[i]
 
-        if node.children:
-            yield from self.inorder_traverse(node.children[-1])
-
-    def levelorder_traverse(self, node=DEFAULT_TO_ROOT):
+    def levelorder_traverse_nodes(self, node=DEFAULT_TO_ROOT):
         if node == self.DEFAULT_TO_ROOT:
             node = self.root
 

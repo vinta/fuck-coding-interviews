@@ -13,12 +13,14 @@ class BTreeTest(unittest.TestCase):
         self.b_tree = BTree(order=5)
         self.size = random.randint(1, 1000)
         self.keys = random.sample(range(1000), k=self.size)
-        self.assertEqual(len(self.keys), len(set(self.keys)))
         for i in self.keys:
             self.b_tree.insert(key=i, value=f'{i}')
 
     def test__len__(self):
         self.assertEqual(len(self.b_tree), self.size)
+
+    def test__iter__(self):
+        self.assertEqual(list(self.b_tree), sorted(self.keys))
 
     def test_insert(self):
         b_tree = BTree(order=3)
@@ -108,29 +110,38 @@ class BTreeTest(unittest.TestCase):
         self.assertEqual(self.b_tree.max()['key'], max(self.keys))
 
     def test_check_validation(self):
-        b_tree = BTree(order=random.randint(3, 64))
-        keys = random.sample(range(5000), k=random.randint(1, 5000))
-        self.assertEqual(len(keys), len(set(keys)))
+        order = random.randint(3, 64)
+        size = random.randint(1, 5000)
 
-        inserted_keys = []
-        for i in keys:
-            b_tree.insert(key=i, value=f'{i}')
-            inserted_keys.append(i)
+        with self.subTest(order=order, size=size):
+            b_tree = BTree(order=order)
+            keys = random.sample(range(5000), k=size)
+            self.assertEqual(len(keys), len(set(keys)))
 
-            if random.randint(1, 10) % 3 == 0:
-                random_index = random.randint(0, len(inserted_keys) - 1)
-                delete_key = inserted_keys.pop(random_index)
-                b_tree.delete(delete_key)
+            inserted_keys = []
+            for i in keys:
+                b_tree.insert(key=i, value=f'{i}')
+                inserted_keys.append(i)
 
-            for node in b_tree.levelorder_traverse():
-                node.check_validation()
+                if random.randint(1, 10) % 3 == 0:
+                    random_index = random.randint(0, len(inserted_keys) - 1)
+                    delete_key = inserted_keys.pop(random_index)
+                    b_tree.delete(delete_key)
 
-        for i in inserted_keys:
-            b_tree.delete(i)
+                for node in b_tree.levelorder_traverse_nodes():
+                    node.check_validation()
 
-        self.assertEqual(len(b_tree), 0)
-        self.assertEqual(list(b_tree), [])
-        self.assertEqual(b_tree.num_nodes(), 1)  # An empty root node.
+            self.assertEqual(list(b_tree), sorted(inserted_keys))
+
+            for i in inserted_keys:
+                b_tree.delete(i)
+
+                for node in b_tree.levelorder_traverse_nodes():
+                    node.check_validation()
+
+            self.assertEqual(len(b_tree), 0)
+            self.assertEqual(list(b_tree), [])
+            self.assertEqual(b_tree.num_nodes(), 1)  # An empty root node.
 
 
 if __name__ == '__main__':
