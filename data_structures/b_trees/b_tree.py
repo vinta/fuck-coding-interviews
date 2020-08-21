@@ -17,6 +17,8 @@ import math
 
 # This implementation does not support duplicate keys.
 class BTreeNode:
+    __slots__ = ['tree', 'parent', 'keys', 'data', '_children']
+
     def __init__(self, tree, parent=None):
         self.tree = tree
         self.parent = parent
