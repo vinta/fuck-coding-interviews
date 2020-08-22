@@ -22,6 +22,10 @@ class BPlusTreeTest(unittest.TestCase):
     def test__iter__(self):
         self.assertEqual(list(self.b_plus_tree), sorted(self.keys))
 
+    def test_get(self):
+        for key in self.keys:
+            self.assertEqual(self.b_plus_tree.get(key), f'{key}')
+
     def test_insert(self):
         b_plus_tree = BPlusTree(order=3)
 
