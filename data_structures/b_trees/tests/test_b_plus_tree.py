@@ -30,6 +30,9 @@ class BPlusTreeTest(unittest.TestCase):
         self.assertEqual(b_plus_tree.root.pointers, ['86'])
         self.assertEqual(list(b_plus_tree), [86])
 
+        with self.assertRaises(KeyError):
+            b_plus_tree.insert(86, '86')
+
         b_plus_tree.insert(key=99, value='99')
         self.assertEqual(b_plus_tree.root.keys, [86, 99])
         self.assertEqual(b_plus_tree.root.pointers, ['86', '99'])
@@ -61,6 +64,35 @@ class BPlusTreeTest(unittest.TestCase):
         self.assertEqual([leaf_node.keys for leaf_node in b_plus_tree.root.pointers[0].pointers], [[5], [17]])
         self.assertEqual([leaf_node.keys for leaf_node in b_plus_tree.root.pointers[1].pointers], [[24, 53], [86, 99]])
         self.assertEqual(list(b_plus_tree), [5, 17, 24, 53, 86, 99])
+
+        b_plus_tree.insert(key=31, value='31')
+        self.assertEqual(b_plus_tree.root.keys, [24])
+        self.assertEqual(b_plus_tree.root.pointers[0].keys, [17])
+        self.assertEqual(b_plus_tree.root.pointers[1].keys, [31, 86])
+        self.assertEqual([leaf_node.keys for leaf_node in b_plus_tree.root.pointers[0].pointers], [[5], [17]])
+        self.assertEqual([leaf_node.keys for leaf_node in b_plus_tree.root.pointers[1].pointers], [[24], [31, 53], [86, 99]])
+        self.assertEqual(list(b_plus_tree), [5, 17, 24, 31, 53, 86, 99])
+
+        with self.assertRaises(KeyError):
+            b_plus_tree.insert(86, '86')
+
+        with self.assertRaises(KeyError):
+            b_plus_tree.insert(99, '99')
+
+        with self.assertRaises(KeyError):
+            b_plus_tree.insert(5, '5')
+
+        with self.assertRaises(KeyError):
+            b_plus_tree.insert(17, '17')
+
+        with self.assertRaises(KeyError):
+            b_plus_tree.insert(24, '24')
+
+        with self.assertRaises(KeyError):
+            b_plus_tree.insert(53, '53')
+
+        with self.assertRaises(KeyError):
+            b_plus_tree.insert(31, '31')
 
 
 if __name__ == '__main__':

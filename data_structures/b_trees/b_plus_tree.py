@@ -115,20 +115,19 @@ class BPlusTree:
             leaf_node = leaf_node.next
 
     def _search_node(self, key, node):
-        index = bisect.bisect_left(node.keys, key)
         if isinstance(node, LeafNode):
+            index = bisect.bisect_left(node.keys, key)
             if index < len(node.keys) and node.keys[index] == key:
                 return node, index
             return node, -1
+
+        if key < node.keys[0]:
+            return self._search_node(key, node.pointers[0])
+        elif key >= node.keys[-1]:
+            return self._search_node(key, node.pointers[-1])
         else:
+            index = bisect.bisect_right(node.keys, key)
             return self._search_node(key, node.pointers[index])
-
-    def get(self, key):
-        node, index = self._search_node(key, self.root)
-        if index == -1:
-            raise KeyError
-
-        return node.pointers[index]
 
     def insert(self, key, value):
         node, index = self._search_node(key, self.root)
