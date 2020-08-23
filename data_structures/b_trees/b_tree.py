@@ -253,13 +253,13 @@ class BTreeNode:
         """
         if len(self.tree):
             assert self.keys
-            assert self.keys == sorted(self.keys), self.keys
+            assert self.keys == sorted(self.keys)
             assert set(self.keys) == set(self.data.keys())
 
         num_children = len(self.children)
         assert num_children <= self.tree.order, num_children
 
-        if not self.is_leaf() and not self.is_root():
+        if not self.is_leaf() and not self.is_root():  # Internal nodes.
             assert num_children >= math.ceil(self.tree.order / 2), num_children
 
         if self.is_root() and not self.is_leaf():
