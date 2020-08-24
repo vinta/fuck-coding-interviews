@@ -65,6 +65,7 @@ class BTreeNode:
                 return False
             else:
                 return len(self.keys) < 2 - 1
+
         return len(self.keys) < math.ceil(self.tree.order / 2) - 1
 
     def split(self):

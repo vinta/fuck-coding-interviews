@@ -7,7 +7,7 @@ import bisect
 import math
 
 
-class BPlusTreeNode:
+class Node:
     __slots__ = ['tree', 'parent', 'keys', 'values']
 
     def __init__(self, tree, parent=None):
@@ -26,45 +26,41 @@ class BPlusTreeNode:
         return self.parent is None
 
     def is_leaf(self):
-        return isinstance(self, BPlusTreeLeafNode)
+        return isinstance(self, LeafNode)
 
     def is_overflow(self):
         return len(self.keys) > self.tree.order - 1
 
+    def create_new_root(self):
+        new_root = Node(tree=self.tree)
+        self.tree.root = new_root
+        self.parent = new_root
+        self.parent.values = [self, ]
+
+    def add_child(self, new_key, new_child):
+        child_index = bisect.bisect_left(self.keys, new_key)
+        self.keys.insert(child_index, new_key)
+        self.values.insert(child_index + 1, new_child)
+        if self.is_overflow():
+            self.split()
+
     def split(self):
         if self.is_root():
-            new_root = BPlusTreeNode(tree=self.tree)
-            self.tree.root = new_root
-            self.parent = new_root
-            self.parent.values = [self, ]
+            self.create_new_root()
 
         median_index = self.tree.order // 2
         median_key = self.keys[median_index]
 
-        if self.is_leaf():
-            new_right = BPlusTreeLeafNode(tree=self.tree, parent=self.parent)
-            new_right.keys = self.keys[median_index:]
-            new_right.values = self.values[median_index:]  # values are nodes.
-            new_right.next = self.next
+        new_right = Node(tree=self.tree, parent=self.parent)
+        new_right.keys = self.keys[median_index + 1:]
+        new_right.values = self.values[median_index + 1:]  # values are data.
+        for child in new_right.values:
+            child.parent = new_right
 
-            self.keys = self.keys[:median_index]
-            self.values = self.values[:median_index]
-            self.next = new_right
-        else:
-            new_right = BPlusTreeNode(tree=self.tree, parent=self.parent)
-            new_right.keys = self.keys[median_index + 1:]
-            new_right.values = self.values[median_index + 1:]  # values are data.
-            for child in new_right.values:
-                child.parent = new_right
+        self.keys = self.keys[:median_index]
+        self.values = self.values[:median_index + 1]  # NOTE: Here is "median_index + 1" instead of "median_index".
 
-            self.keys = self.keys[:median_index]
-            self.values = self.values[:median_index + 1]  # NOTE: Here is "median_index + 1" instead of "median_index".
-
-        child_index = bisect.bisect_left(self.parent.keys, median_key)
-        self.parent.keys.insert(child_index, median_key)
-        self.parent.values.insert(child_index + 1, new_right)
-        if self.parent.is_overflow():
-            self.parent.split()
+        self.parent.add_child(median_key, new_right)
 
     def insert(self, key, value):
         index = bisect.bisect_left(self.keys, key)
@@ -81,29 +77,48 @@ class BPlusTreeNode:
         num_pointers = len(self.pointers)
         assert num_pointers <= self.tree.order, num_pointers
 
-        if not self.is_leaf() and not self.is_root():  # Internal nodes.
-            assert num_pointers >= math.ceil(self.tree.order / 2), num_pointers
-
         if self.is_root() and not self.is_leaf():
             assert num_pointers >= 2, num_pointers
 
         if self.is_leaf():
             for value in self.values:
-                assert not isinstance(value, (BPlusTreeNode, BPlusTreeLeafNode))
-        else:
+                assert not isinstance(value, (Node, LeafNode))
+        else:  # Internal nodes.
+            assert num_pointers >= math.ceil(self.tree.order / 2), num_pointers
             assert num_pointers - 1 == len(self.keys)
 
             for child in self.values:
+                assert isinstance(value, (Node, LeafNode))
                 assert child.parent == self
                 child.check_validation()
 
 
-class BPlusTreeLeafNode(BPlusTreeNode):
-    __slots__ = ['tree', 'parent', 'keys', 'values', 'next']
+class LeafNode(Node):
+    __slots__ = ['tree', 'parent', 'keys', 'values', 'previous', 'next']
 
     def __init__(self, tree, parent=None):
         super().__init__(tree, parent=parent)
+        self.previous = None
         self.next = None
+
+    def split(self):
+        if self.is_root():
+            self.create_new_root()
+
+        median_index = self.tree.order // 2
+        median_key = self.keys[median_index]
+
+        new_right = LeafNode(tree=self.tree, parent=self.parent)
+        new_right.keys = self.keys[median_index:]
+        new_right.values = self.values[median_index:]  # values are nodes.
+        new_right.previous = self
+        new_right.next = self.next
+
+        self.keys = self.keys[:median_index]
+        self.values = self.values[:median_index]
+        self.next = new_right
+
+        self.parent.add_child(median_key, new_right)
 
 
 class BPlusTree:
@@ -115,7 +130,7 @@ class BPlusTree:
 
         self.size = 0
         self.order = order
-        self.root = BPlusTreeLeafNode(tree=self)
+        self.root = LeafNode(tree=self)
         self.head = self.root
 
     def __len__(self):
@@ -128,7 +143,7 @@ class BPlusTree:
             leaf_node = leaf_node.next
 
     def search_node(self, key, node):
-        if isinstance(node, BPlusTreeLeafNode):
+        if isinstance(node, LeafNode):
             return node
 
         index = bisect.bisect_right(node.keys, key)

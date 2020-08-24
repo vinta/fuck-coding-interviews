@@ -14,7 +14,7 @@ class BPlusTreeTest(unittest.TestCase):
         self.size = random.randint(1, 1000)
         self.keys = random.sample(range(1000), k=self.size)
         for i in self.keys:
-            self.b_plus_tree.insert(key=i, value=f'{i}')
+            self.b_plus_tree.insert(i, f'{i}')
 
     def test__len__(self):
         self.assertEqual(len(self.b_plus_tree), self.size)
@@ -32,7 +32,7 @@ class BPlusTreeTest(unittest.TestCase):
     def test_insert(self):
         b_plus_tree = BPlusTree(order=3)
 
-        b_plus_tree.insert(key=86, value='86')
+        b_plus_tree.insert(86, '86')
         self.assertEqual(b_plus_tree.root.keys, [86])
         self.assertEqual(b_plus_tree.root.values, ['86'])
         self.assertEqual(list(b_plus_tree), [86])
@@ -40,31 +40,31 @@ class BPlusTreeTest(unittest.TestCase):
         with self.assertRaises(KeyError):
             b_plus_tree.insert(86, '86')
 
-        b_plus_tree.insert(key=99, value='99')
+        b_plus_tree.insert(99, '99')
         self.assertEqual(b_plus_tree.root.keys, [86, 99])
         self.assertEqual(b_plus_tree.root.values, ['86', '99'])
         self.assertEqual(list(b_plus_tree), [86, 99])
 
-        b_plus_tree.insert(key=5, value='5')
+        b_plus_tree.insert(5, '5')
         self.assertEqual(b_plus_tree.root.keys, [86])
         self.assertEqual([leaf.keys for leaf in b_plus_tree.root.values], [[5], [86, 99]])
         self.assertEqual([leaf.values for leaf in b_plus_tree.root.values], [['5'], ['86', '99']])
         self.assertEqual(list(b_plus_tree), [5, 86, 99])
 
-        b_plus_tree.insert(key=17, value='17')
+        b_plus_tree.insert(17, '17')
         self.assertEqual(b_plus_tree.root.keys, [86])
         self.assertEqual([leaf.keys for leaf in b_plus_tree.root.values], [[5, 17], [86, 99]])
         self.assertEqual([leaf.values for leaf in b_plus_tree.root.values], [['5', '17'], ['86', '99']])
         self.assertEqual(list(b_plus_tree), [5, 17, 86, 99])
 
-        b_plus_tree.insert(key=24, value='24')
+        b_plus_tree.insert(24, '24')
         self.assertEqual(b_plus_tree.root.keys, [17, 86])
         self.assertEqual(b_plus_tree.root.values[0].keys, [5])
         self.assertEqual(b_plus_tree.root.values[1].keys, [17, 24])
         self.assertEqual(b_plus_tree.root.values[2].keys, [86, 99])
         self.assertEqual(list(b_plus_tree), [5, 17, 24, 86, 99])
 
-        b_plus_tree.insert(key=53, value='53')
+        b_plus_tree.insert(53, '53')
         self.assertEqual(b_plus_tree.root.keys, [24])
         self.assertEqual(b_plus_tree.root.values[0].keys, [17])
         self.assertEqual(b_plus_tree.root.values[1].keys, [86])
@@ -72,7 +72,7 @@ class BPlusTreeTest(unittest.TestCase):
         self.assertEqual([leaf_node.keys for leaf_node in b_plus_tree.root.values[1].values], [[24, 53], [86, 99]])
         self.assertEqual(list(b_plus_tree), [5, 17, 24, 53, 86, 99])
 
-        b_plus_tree.insert(key=31, value='31')
+        b_plus_tree.insert(31, '31')
         self.assertEqual(b_plus_tree.root.keys, [24])
         self.assertEqual(b_plus_tree.root.values[0].keys, [17])
         self.assertEqual(b_plus_tree.root.values[1].keys, [31, 86])
