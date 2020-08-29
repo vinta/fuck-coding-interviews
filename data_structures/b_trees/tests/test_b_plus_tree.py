@@ -101,6 +101,40 @@ class BPlusTreeTest(unittest.TestCase):
         with self.assertRaises(KeyError):
             b_plus_tree.insert(31, '31')
 
+    def test_delete(self):
+        b_plus_tree = BPlusTree(order=3)
+        for i in [5, 15, 20, 25, 30, 35, 40, 45]:
+            b_plus_tree.insert(i, f'{i}')
+
+        assert b_plus_tree.root.keys == [20, 30]
+        assert [child.keys for child in b_plus_tree.root.values] == [[15], [25], [35, 40]]
+        assert [child.keys for child in b_plus_tree.root.values[0].values] == [[5], [15]]
+        assert [child.keys for child in b_plus_tree.root.values[1].values] == [[20], [25]]
+        assert [child.keys for child in b_plus_tree.root.values[2].values] == [[30], [35], [40, 45]]
+
+        with self.assertRaises(KeyError):
+            b_plus_tree.delete(0)
+
+        b_plus_tree.delete(35)
+        assert b_plus_tree.root.keys == [20, 30]
+        assert [child.keys for child in b_plus_tree.root.values] == [[15], [25], [40, 45]]
+        assert [child.keys for child in b_plus_tree.root.values[0].values] == [[5], [15]]
+        assert [child.keys for child in b_plus_tree.root.values[1].values] == [[20], [25]]
+        assert [child.keys for child in b_plus_tree.root.values[2].values] == [[30], [40], [45]]
+
+        b_plus_tree.delete(40)
+        assert b_plus_tree.root.keys == [20, 30]
+        assert [child.keys for child in b_plus_tree.root.values] == [[15], [25], [45]]
+        assert [child.keys for child in b_plus_tree.root.values[0].values] == [[5], [15]]
+        assert [child.keys for child in b_plus_tree.root.values[1].values] == [[20], [25]]
+        assert [child.keys for child in b_plus_tree.root.values[2].values] == [[30], [45]]
+
+        b_plus_tree.delete(30)
+        assert b_plus_tree.root.keys == [20]
+        assert [child.keys for child in b_plus_tree.root.values] == [[15], [25, 45]]
+        assert [child.keys for child in b_plus_tree.root.values[0].values] == [[5], [15]]
+        assert [child.keys for child in b_plus_tree.root.values[1].values] == [[20], [25], [45]]
+
 
 if __name__ == '__main__':
     unittest.main()
