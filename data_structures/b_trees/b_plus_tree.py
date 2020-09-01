@@ -60,14 +60,25 @@ class Node:
         median_index = self.tree.order // 2
         median_key = self.keys[median_index]
 
-        new_right = Node(tree=self.tree, parent=self.parent)
-        new_right.keys = self.keys[median_index + 1:]
-        new_right.values = self.values[median_index + 1:]  # values here are child nodes.
-        for child in new_right.values:
-            child.parent = new_right
+        if self.is_leaf():
+            new_right = LeafNode(tree=self.tree, parent=self.parent)
+            new_right.keys = self.keys[median_index:]
+            new_right.values = self.values[median_index:]  # values are nodes.
+            new_right.previous = self
+            new_right.next = self.next
 
-        self.keys = self.keys[:median_index]
-        self.values = self.values[:median_index + 1]  # NOTE: Here is "median_index + 1" instead of "median_index".
+            self.keys = self.keys[:median_index]
+            self.values = self.values[:median_index]
+            self.next = new_right
+        else:
+            new_right = Node(tree=self.tree, parent=self.parent)
+            new_right.keys = self.keys[median_index + 1:]
+            new_right.values = self.values[median_index + 1:]  # values here are child nodes.
+            for child in new_right.values:
+                child.parent = new_right
+
+            self.keys = self.keys[:median_index]
+            self.values = self.values[:median_index + 1]  # NOTE: Here is "median_index + 1" instead of "median_index".
 
         self.parent.add_child(median_key, new_right)
 
@@ -212,25 +223,6 @@ class LeafNode(Node):
         super().__init__(tree, parent=parent)
         self.previous = None
         self.next = None
-
-    def split(self):
-        if self.is_root():
-            self.create_new_root()
-
-        median_index = self.tree.order // 2
-        median_key = self.keys[median_index]
-
-        new_right = LeafNode(tree=self.tree, parent=self.parent)
-        new_right.keys = self.keys[median_index:]
-        new_right.values = self.values[median_index:]  # values are nodes.
-        new_right.previous = self
-        new_right.next = self.next
-
-        self.keys = self.keys[:median_index]
-        self.values = self.values[:median_index]
-        self.next = new_right
-
-        self.parent.add_child(median_key, new_right)
 
     def insert(self, key, value):
         """
