@@ -62,7 +62,7 @@ class Node:
 
         new_right = Node(tree=self.tree, parent=self.parent)
         new_right.keys = self.keys[median_index + 1:]
-        new_right.values = self.values[median_index + 1:]  # values are data.
+        new_right.values = self.values[median_index + 1:]  # values here are child nodes.
         for child in new_right.values:
             child.parent = new_right
 
@@ -71,7 +71,8 @@ class Node:
 
         self.parent.add_child(median_key, new_right)
 
-    def borrow_left(self, my_index):
+    def borrow_left(self):
+        my_index = self.parent.values.index(self)
         if my_index == 0:  # There is no left sibling.
             return False
 
@@ -79,11 +80,10 @@ class Node:
         if len(left_sibling.keys) <= math.ceil(self.tree.order / 2) - 1:
             return False
 
-        node = self
-        sibling = left_sibling
+        borrowed_key = left_sibling.keys.pop(-1)
+        borrowed_value = left_sibling.values.pop(-1)
+
         if self.is_leaf():
-            borrowed_key = left_sibling.keys.pop(-1)
-            borrowed_value = left_sibling.values.pop(-1)
             self.keys.insert(0, borrowed_key)
             self.values.insert(0, borrowed_value)
 
@@ -91,18 +91,20 @@ class Node:
             for i, child in enumerate(self.parent.values[1:]):
                 self.parent.keys[i] = child.keys[0]
         else:
-            parent_key = node.parent.keys.pop(-1)
-            sibling_key = sibling.keys.pop(-1)
-            data = sibling.values.pop(-1)
-            data.parent = node
+            # This procedure is the same as B-Tree's.
+            borrowed_value.parent = self
 
-            node.parent.keys.insert(0, sibling_key)
-            node.keys.insert(0, parent_key)
-            node.values.insert(0, data)
+            separator_index = my_index - 1  # The separator key between the left sibling and the current node.
+            separator = self.parent.keys[separator_index]
+            self.parent.keys[separator_index] = borrowed_key
+
+            self.keys.insert(0, separator)
+            self.values.insert(0, borrowed_value)
 
         return True
 
-    def borrow_right(self, my_index):
+    def borrow_right(self):
+        my_index = self.parent.values.index(self)
         if my_index == len(self.parent.values) - 1:  # There is no right sibling.
             return False
 
@@ -110,11 +112,10 @@ class Node:
         if len(right_sibling.keys) <= math.ceil(self.tree.order / 2) - 1:
             return False
 
-        node = self
-        sibling = right_sibling
+        borrowed_key = right_sibling.keys.pop(0)
+        borrowed_value = right_sibling.values.pop(0)
+
         if self.is_leaf():
-            borrowed_key = right_sibling.keys.pop(0)
-            borrowed_value = right_sibling.values.pop(0)
             self.keys.append(borrowed_key)
             self.values.append(borrowed_value)
 
@@ -122,36 +123,20 @@ class Node:
             for i, child in enumerate(self.parent.values[1:]):
                 self.parent.keys[i] = child.keys[0]
         else:
-            parent_key = node.parent.keys.pop(0)
-            sibling_key = sibling.keys.pop(0)
-            data = sibling.values.pop(0)
-            data.parent = node
+            # This procedure is the same as B-Tree's.
+            borrowed_value.parent = self
 
-            node.parent.keys.append(sibling_key)
-            node.keys.append(parent_key)
-            node.values.append(data)
+            separator_index = my_index  # The separator key between the current node and the right sibling.
+            separator = self.parent.keys[separator_index]
+            self.parent.keys[separator_index] = borrowed_key
+
+            self.keys.append(separator)
+            self.values.append(borrowed_value)
 
         return True
 
-    def update_separator(self, deleted_key):
-        def next_smallest_key():
-            key = ''
-            if len(self.keys) > 0:
-                key = self.keys[0]
-            else:
-                if self.next:
-                    key = self.next.keys[0]
-            return key
-
-        parent = self.parent
-        while parent:
-            for i, key in enumerate(parent.keys):
-                if key == deleted_key:
-                    parent.keys[i] = next_smallest_key()
-                    return
-            parent = parent.parent
-
-    def merge_left(self, my_index):  # Merge the current node into the left sibling.
+    def merge_left(self):  # Merge the current node into the left sibling.
+        my_index = self.parent.values.index(self)
         if my_index == 0:
             return False
 
@@ -182,7 +167,8 @@ class Node:
 
         return True
 
-    def merge_right(self, my_index):  # Merge the right sibling into the current node.
+    def merge_right(self):  # Merge the right sibling into the current node.
+        my_index = self.parent.values.index(self)
         if my_index == len(self.parent.values) - 1:
             return False
 
@@ -222,10 +208,34 @@ class Node:
             self.tree.root = new_root
             return True
 
-        my_index = self.parent.values.index(self)
         assert \
-            self.borrow_left(my_index) or self.borrow_right(my_index) or \
-            self.merge_left(my_index) or self.merge_right(my_index)
+            self.borrow_left() or self.borrow_right() or \
+            self.merge_left() or self.merge_right()
+
+    def check_validation(self):
+        if len(self.tree):
+            # assert self.keys
+            assert self.keys == sorted(set(self.keys)), self.keys
+
+        num_values = len(self.values)
+        assert num_values <= self.tree.order, num_values
+
+        if self.is_leaf():
+            for value in self.values:
+                assert not isinstance(value, (Node, LeafNode))
+        else:
+            # Internal nodes.
+            if self.is_root():
+                assert num_values >= 2, num_values
+            else:
+                assert num_values >= math.ceil(self.tree.order / 2), num_values
+
+            assert num_values - 1 == len(self.keys)
+
+            for child in self.values:
+                assert isinstance(child, (Node, LeafNode))
+                assert child.parent == self
+                child.check_validation()
 
 
 class LeafNode(Node):
@@ -262,17 +272,34 @@ class LeafNode(Node):
         if self.is_overflow():
             self.split()
 
+    def update_parent_separator(self, deleted_key):
+        def next_smallest_key():
+            key = None
+            if len(self.keys) > 0:
+                key = self.keys[0]
+            else:
+                if self.next:
+                    key = self.next.keys[0]
+            return key
+
+        parent = self.parent
+        while parent:
+            for i, key in enumerate(parent.keys):
+                if key == deleted_key:
+                    parent.keys[i] = next_smallest_key()
+                    return
+            parent = parent.parent
+
     def delete(self, key):
         index = bisect.bisect_left(self.keys, key)
         self.keys.pop(index)
         self.values.pop(index)
 
-        # If we remove the smallest element in a leaf,
-        # then find the *next* smallest element,
-        # go up our parent stack,
-        # and fix index keys.
+        # NOTE: If we remove the smallest element in a leaf node,
+        # we must replace the separator key in the parent or grandparent
+        # with the next smallest element.
         if index == 0 and self.parent:
-            self.update_separator(key)
+            self.update_parent_separator(key)
 
         if self.is_underflow():
             self.rebalance()

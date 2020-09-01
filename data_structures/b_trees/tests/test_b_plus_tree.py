@@ -213,6 +213,39 @@ class BPlusTreeTest(unittest.TestCase):
     def test_max(self):
         self.assertEqual(self.b_plus_tree.max()['key'], max(self.keys))
 
+    def test_check_validation(self):
+        order = random.randint(3, 64)
+        size = random.randint(1, 5000)
+
+        with self.subTest(order=order, size=size):
+            b_plus_tree = BPlusTree(order=order)
+            keys = random.sample(range(5000), k=size)
+            self.assertEqual(len(keys), len(set(keys)))
+
+            inserted_keys = []
+            for i in keys:
+                b_plus_tree.insert(key=i, value=f'{i}')
+                inserted_keys.append(i)
+
+                if random.randint(1, 10) % 3 == 0:
+                    random_index = random.randint(0, len(inserted_keys) - 1)
+                    delete_key = inserted_keys.pop(random_index)
+                    b_plus_tree.delete(delete_key)
+
+                # for node in b_plus_tree.levelorder_traverse_nodes():
+                #     node.check_validation()
+
+            self.assertEqual(list(b_plus_tree), sorted(inserted_keys))
+
+            for i in inserted_keys:
+                b_plus_tree.delete(i)
+
+                # for node in b_plus_tree.levelorder_traverse_nodes():
+                #     node.check_validation()
+
+            self.assertEqual(len(b_plus_tree), 0)
+            self.assertEqual(list(b_plus_tree), [])
+
 
 if __name__ == '__main__':
     unittest.main()
