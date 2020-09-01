@@ -233,6 +233,9 @@ class LeafNode(Node):
         self.parent.add_child(median_key, new_right)
 
     def insert(self, key, value):
+        """
+        https://www.tutorialspoint.com/bplus-tree-insertion-in-data-structure
+        """
         index = bisect.bisect_left(self.keys, key)
         self.keys.insert(index, key)
         self.values.insert(index, value)
@@ -258,6 +261,9 @@ class LeafNode(Node):
             parent = parent.parent
 
     def delete(self, key):
+        """
+        https://www.tutorialspoint.com/bplus-tree-deletion-in-data-structure
+        """
         index = bisect.bisect_left(self.keys, key)
         self.keys.pop(index)
         self.values.pop(index)
