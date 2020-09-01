@@ -81,6 +81,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
     - [binary_tree_level_order_traversal](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/binary_tree_level_order_traversal.py) from [LeetCode](https://leetcode.com/problems/binary-tree-level-order-traversal/)
     - [binary_tree_postorder_traversal](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/binary_tree_postorder_traversal.py) from [LeetCode](https://leetcode.com/problems/binary-tree-postorder-traversal/)
     - [binary_tree_preorder_traversal](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/binary_tree_preorder_traversal.py) from [LeetCode](https://leetcode.com/problems/binary-tree-preorder-traversal/)
+    - [camel_case](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/camel_case.py) from [HackerRank](https://www.hackerrank.com/challenges/camelcase/problem)
     - [check_completeness_of_a_binary_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/check_completeness_of_a_binary_tree.py) from [LeetCode](https://leetcode.com/problems/check-completeness-of-a-binary-tree/)
     - [container_with_most_water](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/container_with_most_water.py) from [LeetCode](https://leetcode.com/problems/container-with-most-water/)
     - [contains_duplicate](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/contains_duplicate.py) from [LeetCode](https://leetcode.com/problems/contains-duplicate/)
