@@ -71,15 +71,23 @@ class Node:
 
         self.parent.add_child(median_key, new_right)
 
-    def borrow_left(self):
+    def immediate_siblings(self):
+        if self.is_root():
+            return None, None
+
         my_index = self.parent.values.index(self)
-        if my_index == 0:  # There is no left sibling.
-            return False
+        if my_index == 0:
+            left_sibling = None
+        else:
+            left_sibling = self.parent.values[my_index - 1]
+        if my_index == len(self.parent.values) - 1:
+            right_sibling = None
+        else:
+            right_sibling = self.parent.values[my_index + 1]
 
-        left_sibling = self.parent.values[my_index - 1]
-        if len(left_sibling.keys) <= math.ceil(self.tree.order / 2) - 1:
-            return False
+        return left_sibling, right_sibling
 
+    def borrow_left(self, left_sibling, my_index):
         borrowed_key = left_sibling.keys.pop(-1)
         borrowed_value = left_sibling.values.pop(-1)
 
@@ -103,15 +111,7 @@ class Node:
 
         return True
 
-    def borrow_right(self):
-        my_index = self.parent.values.index(self)
-        if my_index == len(self.parent.values) - 1:  # There is no right sibling.
-            return False
-
-        right_sibling = self.parent.values[my_index + 1]
-        if len(right_sibling.keys) <= math.ceil(self.tree.order / 2) - 1:
-            return False
-
+    def borrow_right(self, right_sibling, my_index):
         borrowed_key = right_sibling.keys.pop(0)
         borrowed_value = right_sibling.values.pop(0)
 
@@ -135,69 +135,27 @@ class Node:
 
         return True
 
-    def merge_left(self):  # Merge the current node into the left sibling.
-        my_index = self.parent.values.index(self)
-        if my_index == 0:
-            return False
-
-        left_sibling_index = my_index - 1
-        left_sibling = self.parent.values[left_sibling_index]
-        if len(left_sibling.keys) != math.ceil(self.tree.order / 2) - 1:  # We can only merge a sibling which has exactly the minimum number of keys.
-            return False
+    def merge(self, left_node, right_node):  # Merge the right node into the left node.
+        index = left_node.parent.values.index(right_node)
 
         # Drop the current node from the parent,
         # also drop the the separator key since the parent lose a child.
-        separator_index = left_sibling_index
-        parent_separator_key = self.parent.keys.pop(separator_index)
-        left_sibling.parent.values.pop(my_index)
+        left_node.parent.values.pop(index)
+        parent_separator_key = left_node.parent.keys.pop(index - 1)
 
-        if left_sibling.is_leaf():
-            left_sibling.next = self.next
+        if left_node.is_leaf():
+            left_node.next = right_node.next
         else:
             # Drag the separator key into the merged node.
-            left_sibling.keys.append(parent_separator_key)
-            for child in self.values:
-                child.parent = left_sibling
+            left_node.keys.append(parent_separator_key)
+            for child in right_node.values:
+                child.parent = left_node
 
-        left_sibling.keys.extend(self.keys)
-        left_sibling.values.extend(self.values)
+        left_node.keys.extend(right_node.keys)
+        left_node.values.extend(right_node.values)
 
-        if left_sibling.parent.is_underflow():
-            left_sibling.parent.rebalance()
-
-        return True
-
-    def merge_right(self):  # Merge the right sibling into the current node.
-        my_index = self.parent.values.index(self)
-        if my_index == len(self.parent.values) - 1:
-            return False
-
-        right_sibling_index = my_index + 1
-        right_sibling = self.parent.values[right_sibling_index]
-        if len(right_sibling.keys) != math.ceil(self.tree.order / 2) - 1:  # We can only merge a sibling which has exactly the minimum number of keys.
-            return False
-
-        # Drop the right sibling from the parent,
-        # also drop the the separator key since the parent lose a child.
-        separator_index = my_index
-        parent_separator_key = self.parent.keys.pop(separator_index)
-        self.parent.values.pop(right_sibling_index)
-
-        if self.is_leaf():
-            self.next = right_sibling.next
-        else:
-            # Drag the separator key into the merged node.
-            self.keys.append(parent_separator_key)
-            for child in right_sibling.values:
-                child.parent = self
-
-        self.keys.extend(right_sibling.keys)
-        self.values.extend(right_sibling.values)
-
-        if self.parent.is_underflow():
-            self.parent.rebalance()
-
-        return True
+        if left_node.parent.is_underflow():
+            left_node.parent.rebalance()
 
     def rebalance(self):
         if self.is_root():
@@ -208,9 +166,18 @@ class Node:
             self.tree.root = new_root
             return True
 
-        assert \
-            self.borrow_left() or self.borrow_right() or \
-            self.merge_left() or self.merge_right()
+        my_index = self.parent.values.index(self)
+        left_sibling, right_sibling = self.immediate_siblings()
+
+        # We can only merge a sibling which has exactly the minimum number of keys.
+        if left_sibling and (len(left_sibling.keys) > math.ceil(self.tree.order / 2) - 1):
+            self.borrow_left(left_sibling, my_index)
+        elif right_sibling and (len(right_sibling.keys) > math.ceil(self.tree.order / 2) - 1):
+            self.borrow_right(right_sibling, my_index)
+        elif left_sibling and len(left_sibling.keys) == math.ceil(self.tree.order / 2) - 1:
+            self.merge(left_sibling, self)
+        elif right_sibling and len(right_sibling.keys) == math.ceil(self.tree.order / 2) - 1:
+            self.merge(self, right_sibling)
 
     def check_validation(self):
         if len(self.tree):
