@@ -299,14 +299,6 @@ class BPlusTree:
             yield from leaf_node.keys
             leaf_node = leaf_node.next
 
-    @staticmethod
-    def _find(node: Node, key):
-        for i, item in enumerate(node.keys):
-            if key < item:
-                return node.values[i], i
-            elif i + 1 == len(node.keys):
-                return node.values[i + 1], i + 1  # return right-most node/pointer.
-
     def search_node(self, key, node):
         if isinstance(node, LeafNode):
             return node
@@ -339,3 +331,33 @@ class BPlusTree:
 
         node.delete(key)
         self.size -= 1
+
+    def min(self):
+        try:
+            return {'key': self.head.keys[0], 'value': self.head.values[0]}
+        except IndexError:
+            raise KeyError('Tree is empty')
+
+    def max(self):
+        last_leaf = self.head
+        while last_leaf.next:
+            last_leaf = last_leaf.next
+
+        try:
+            return {'key': last_leaf.keys[-1], 'value': last_leaf.values[-1]}
+        except IndexError:
+            raise KeyError('Tree is empty')
+
+    def levelorder_traverse_nodes(self, node=DEFAULT_TO_ROOT):
+        if node == self.DEFAULT_TO_ROOT:
+            node = self.root
+
+        current_level = [self.root, ]
+        while current_level:
+            next_level = []
+            for node in current_level:
+                yield node
+                if not isinstance(node, LeafNode):
+                    next_level.extend(node.values)
+
+            current_level = next_level
