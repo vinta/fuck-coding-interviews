@@ -149,6 +149,7 @@ If you find any bug or poor implementation in this repo, please let me know by o
 
 ### Websites
 
+- [Data Structure Visualizations](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
 - [Programiz](https://www.programiz.com/dsa)
 - [Tech Interview Handbook](https://yangshun.github.io/tech-interview-handbook/)
 - [Visualize Python Code Execution](http://www.pythontutor.com/live.html#mode=edit)
