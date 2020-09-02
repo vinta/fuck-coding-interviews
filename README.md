@@ -72,6 +72,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
     - `trees/`
         - [binary_search_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/binary_search_tree.py)
         - [binary_tree_serialization](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/binary_tree_serialization.py)
+        - [trie](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/trie.py)
 - `problems/`
     - [add_two_numbers](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/add_two_numbers.py) from [LeetCode](https://leetcode.com/problems/add-two-numbers/)
     - [balanced_binary_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/balanced_binary_tree.py) from [LeetCode](https://leetcode.com/problems/balanced-binary-tree/)
