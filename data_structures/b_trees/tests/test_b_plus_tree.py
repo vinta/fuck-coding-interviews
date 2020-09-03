@@ -232,16 +232,16 @@ class BPlusTreeTest(unittest.TestCase):
                     delete_key = inserted_keys.pop(random_index)
                     b_plus_tree.delete(delete_key)
 
-                # for node in b_plus_tree.levelorder_traverse_nodes():
-                #     node.check_validation()
+                for node in b_plus_tree.levelorder_traverse_nodes():
+                    node.check_validation()
 
             self.assertEqual(list(b_plus_tree), sorted(inserted_keys))
 
             for i in inserted_keys:
                 b_plus_tree.delete(i)
 
-                # for node in b_plus_tree.levelorder_traverse_nodes():
-                #     node.check_validation()
+                for node in b_plus_tree.levelorder_traverse_nodes():
+                    node.check_validation()
 
             self.assertEqual(len(b_plus_tree), 0)
             self.assertEqual(list(b_plus_tree), [])

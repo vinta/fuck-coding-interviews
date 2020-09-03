@@ -83,9 +83,6 @@ class Node:
         self.parent.add_child(median_key, new_right)
 
     def immediate_siblings(self):
-        if self.is_root():
-            return None, None
-
         my_index = self.parent.values.index(self)
         if my_index == 0:
             left_sibling = None
