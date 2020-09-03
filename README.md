@@ -78,6 +78,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
     - [balanced_binary_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/balanced_binary_tree.py) from [LeetCode](https://leetcode.com/problems/balanced-binary-tree/)
     - [best_time_to_buy_and_sell_stock](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/best_time_to_buy_and_sell_stock.py) from [LeetCode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
     - [big_countries](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/big_countries.sql) from [LeetCode](https://leetcode.com/problems/big-countries/)
+    - [binary_search_tree_iterator](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/binary-search-tree-iterator.py) from [LeetCode](https://leetcode.com/problems/binary-search-tree-iterator/)
     - [binary_tree_inorder_traversal](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/binary_tree_inorder_traversal.py) from [LeetCode](https://leetcode.com/problems/binary-tree-inorder-traversal/)
     - [binary_tree_level_order_traversal](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/binary_tree_level_order_traversal.py) from [LeetCode](https://leetcode.com/problems/binary-tree-level-order-traversal/)
     - [binary_tree_postorder_traversal](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/binary_tree_postorder_traversal.py) from [LeetCode](https://leetcode.com/problems/binary-tree-postorder-traversal/)
