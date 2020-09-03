@@ -337,12 +337,12 @@ class BinarySearchTree(BaseTree):
         if node is self.DEFAULT_TO_ROOT:
             node = self.root
 
-        # Inorder traversal of a BST will give you all elements in order.
+        # Inorder traversal of a BST will give you all elements in the increasing order.
         if not node:
             return
 
-        # NOTE: self.inorder_traverse(node.left) only creates the generator object,
-        # we need to actually run it with a for loop or yield from.
+        # NOTE: `self.inorder_traverse(node.left)` only creates the generator object,
+        # we need to actually run it with a for loop or `yield from`.
         yield from self.inorder_traverse(node.left)
         yield node.value
         yield from self.inorder_traverse(node.right)
