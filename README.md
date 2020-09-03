@@ -96,6 +96,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
     - [invert_binary_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/invert_binary_tree.py) from [LeetCode](https://leetcode.com/problems/invert-binary-tree/)
     - [is_subsequence](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/is_subsequence.py) from [LeetCode](https://leetcode.com/problems/is-subsequence/)
     - [linked_list_cycle](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/linked_list_cycle.py) from [LeetCode](https://leetcode.com/problems/linked-list-cycle/)
+    - [mars_exploration](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/mars_exploration.py) from [HackerRank](https://www.hackerrank.com/challenges/mars-exploration/problem)
     - [maximum_depth_of_binary_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_depth_of_binary_tree.py) from [LeetCode](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
     - [maximum_product_subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_product_subarray.py) from [LeetCode](https://leetcode.com/problems/maximum-product-subarray/)
     - [maximum_subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_subarray.py) from [LeetCode](https://leetcode.com/problems/maximum-subarray/)
