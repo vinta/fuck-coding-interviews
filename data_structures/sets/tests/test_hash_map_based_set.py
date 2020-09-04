@@ -47,9 +47,11 @@ class TestCase(unittest.TestCase):
         for i in range(1, random.randint(2, 10000)):
             self.set.add(i)
             self.py_set.add(i)
+            self.assertEqual(i in self.set, True)
             if i % 5 == 0:
                 self.set.discard(i)
                 self.py_set.discard(i)
+                self.assertEqual(i in self.set, False)
 
         self.assertEqual(len(self.set), len(self.py_set))
         self.assertCountEqual(list(self.set), list(self.py_set))

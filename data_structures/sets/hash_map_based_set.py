@@ -69,8 +69,8 @@ class SimpleHashMap:
         i = self._hash_func(key)
         bucket = self._buckets[i]
         if bucket:
-            for j, check_key in enumerate(bucket):
-                if check_key == key:
+            for j, _key in enumerate(bucket):
+                if _key == key:
                     bucket.pop(j)
                     self._size -= 1
                     return
