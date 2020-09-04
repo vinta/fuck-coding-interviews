@@ -65,7 +65,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [heap_based_priority_queue](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/queues/heap_based_priority_queue.py)
         - [linked_list_based_queue](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/queues/linked_list_based_queue.py)
     - `sets/`
-        - [mutable_set](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/sets/mutable_set.py)
+        - [hash_map_based_set](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/sets/hash_map_based_set.py)
     - `stacks/`
         - [array_based_stack](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/stacks/array_based_stack.py)
         - [linked_list_based_stack](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/stacks/linked_list_based_stack.py)

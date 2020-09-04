@@ -1,4 +1,7 @@
 # coding: utf-8
+"""
+https://en.wikipedia.org/wiki/Set_(abstract_data_type)
+"""
 from collections.abc import MutableSet, Sequence
 
 from algorithms.hashing.mad_compression import mad
@@ -66,7 +69,7 @@ class Set(MutableSet):
         if self._bucket_array[i] is None:
             self._bucket_array[i] = []
 
-        if elem not in self._bucket_array[i]:
+        if elem not in self._bucket_array[i]:  # Prevent duplicates.
             self._bucket_array[i].append(elem)
             self._size += 1
             self._auto_resize()
