@@ -2,7 +2,7 @@
 import random
 import unittest
 
-from data_structures.sets.mutable_set import Set
+from data_structures.sets.hash_map_based_set import Set
 
 
 class TestCase(unittest.TestCase):
@@ -42,11 +42,6 @@ class TestCase(unittest.TestCase):
         self.py_set.discard(100)
         self.assertEqual(len(self.set), len(self.py_set))
         self.assertCountEqual(list(self.set), list(self.py_set))
-
-    def test_load_factor(self):
-        for i in range(1, random.randint(2, 10000)):
-            self.set.add(i)
-        self.assertTrue(self.set._load_factor() < self.set._load_factor_threshold)
 
     def test_integration(self):
         for i in range(1, random.randint(2, 10000)):
