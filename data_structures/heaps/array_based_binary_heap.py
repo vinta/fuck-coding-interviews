@@ -7,6 +7,12 @@ A binary heap is a special binary tree which satisfies following properties:
 - The tree is complete.
 - The parent's value is less than or equal to children's values.
 - The root's value would be the minimum of the tree.
+
+A binary heap is typically represented as an array which:
+- array[0] is the root node.
+- array[floor((i - 1) / 2)] is the parent node of array[i].
+- array[(i * 2) + 1] is the left child node of array[i].
+- array[(i * 2) + 2] is the right child node of array[i].
 """
 
 
@@ -23,13 +29,15 @@ class ArrayBasedBinaryHeap:
             yield value
 
     def _parent(self, index):
+        if index == 0:
+            raise IndexError('The root node has no parent.')
         return (index - 1) // 2
 
     def _left(self, index):
-        return (2 * index) + 1
+        return (index * 2) + 1
 
     def _right(self, index):
-        return (2 * index) + 2
+        return (index * 2) + 2
 
     def _swap(self, index_a, index_b):
         self._array[index_a], self._array[index_b] = self._array[index_b], self._array[index_a]
@@ -45,9 +53,10 @@ class ArrayBasedBinaryHeap:
                 return
             index = parent_index
 
-    # O(log n)
+    # O(1)
+    # O(log n) if it triggers up-heap
     def push(self, value):
-        self._array.append(value)
+        self._array.append(value)  # Add the element to the bottom level at the leftmost open space.
         self._up_heap(len(self._array) - 1)
 
     def _min_child_index(self, index):
