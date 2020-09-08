@@ -37,16 +37,14 @@ class TreeNode:
         pivot = root.left
         root.left = pivot.right
         pivot.right = root
-        root = pivot
-        return root
+        return pivot
 
     def left_rotate(self):
         root = self
         pivot = root.right
         root.right = pivot.left
         pivot.left = root
-        root = pivot
-        return root
+        return pivot
 
     def check_validation(self):
         if self.left:
