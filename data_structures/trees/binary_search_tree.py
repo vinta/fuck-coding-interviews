@@ -385,14 +385,14 @@ class BinarySearchTree(BaseTree):
         if not node:
             return
 
-        queue = deque([node, ])
-        while queue:
-            node = queue.popleft()
-            yield node.value
-            if node.left:
-                queue.append(node.left)
-            if node.right:
-                queue.append(node.right)
+        current_level = [node, ]
+        while current_level:
+            next_level = []
+            for node in current_level:
+                if node:
+                    yield node.value
+                    next_level.extend([node.left, node.right])
+            current_level = next_level
 
     def traverse(self, method='inorder'):
         method_to_func = {
