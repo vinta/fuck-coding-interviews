@@ -96,6 +96,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
     - [implement_trie_prefix_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/implement_trie_prefix_tree.py) from [LeetCode](https://leetcode.com/problems/implement-trie-prefix-tree/)
     - [invert_binary_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/invert_binary_tree.py) from [LeetCode](https://leetcode.com/problems/invert-binary-tree/)
     - [is_subsequence](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/is_subsequence.py) from [LeetCode](https://leetcode.com/problems/is-subsequence/)
+    - [kth_smallest_element_in_a_bst](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/kth_smallest_element_in_a_bst.py) from [LeetCode](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
     - [linked_list_cycle](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/linked_list_cycle.py) from [LeetCode](https://leetcode.com/problems/linked-list-cycle/)
     - [mars_exploration](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/mars_exploration.py) from [HackerRank](https://www.hackerrank.com/challenges/mars-exploration/problem)
     - [maximum_depth_of_binary_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_depth_of_binary_tree.py) from [LeetCode](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
