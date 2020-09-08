@@ -18,10 +18,10 @@ class BaseNode(ABC):
 
 
 class TreeNode(BaseNode):
-    __slots__ = ['value', 'val', 'left', 'right']
+    __slots__ = ['value', 'left', 'right']
 
     def __init__(self, value, left=None, right=None):
-        self.value = self.val = value
+        self.value = value
         self.left = left
         self.right = right
 
