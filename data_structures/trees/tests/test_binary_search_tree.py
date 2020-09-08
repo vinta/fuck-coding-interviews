@@ -204,6 +204,12 @@ class BinarySearchTreeTest(unittest.TestCase):
     def test_get_max_node(self):
         self.assertEqual(self.bst.get_max_node().value, max(self.insert_items))
 
+    def test_get_k_th_value(self):
+        sorted_values = sorted(self.insert_items)
+        for k in range(1, len(self.insert_items) + 1):
+            with self.subTest(k=k):
+                self.assertEqual(self.bst.get_k_th_smallest(k), sorted_values[k - 1])
+
     def test_delete(self):
         with self.assertRaises(ValueError):
             self.bst.delete(100)

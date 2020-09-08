@@ -288,6 +288,13 @@ class BinarySearchTree(BaseTree):
             else:
                 return current_node
 
+    def get_k_th_smallest(self, k):
+        count = 1
+        for value in self.inorder_traverse():
+            if count == k:
+                return value
+            count += 1
+
     def _delete_node(self, node, value):
         if not node:
             raise ValueError('value is not found')
