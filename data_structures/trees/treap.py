@@ -32,6 +32,7 @@ class TreeNode:
         #    pivot   gamma    =>    alpha   root
         #    /   \                          /  \
         # alpha  beta                   beta  gamma
+        # https://en.wikipedia.org/wiki/Tree_rotation
         root = self
         pivot = root.left
         root.left = pivot.right
