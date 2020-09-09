@@ -16,13 +16,12 @@ def binary_search(sorted_array, target):
     low = 0
     high = len(sorted_array) - 1
     while low <= high:
-        mid = int((low + high) / 2)
-        mid_value = sorted_array[mid]
-        if target == mid_value:
+        mid = (low + high) // 2
+        if target == sorted_array[mid]:
             return mid
-        elif target < mid_value:  # The target is on the left side of mid.
+        elif target < sorted_array[mid]:  # target is on the left side of mid.
             high = mid - 1
-        elif target > mid_value:  # The target is on the right side of mid.
+        elif target > sorted_array[mid]:  # target is on the right side of mid.
             low = mid + 1
 
     return -1

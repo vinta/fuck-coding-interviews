@@ -2,17 +2,22 @@
 """
 Binary Heap
 https://en.wikipedia.org/wiki/Binary_heap
+https://en.wikipedia.org/wiki/Heap_(data_structure)
 
 A binary heap is a special binary tree which satisfies following properties:
 - The tree is complete.
 - The parent's value is less than or equal to children's values.
 - The root's value would be the minimum of the tree.
 
-A binary heap is typically represented as an array which:
+A binary heap is typically represented as a compact array since it's a complete binary search tree:
 - array[0] is the root node.
 - array[floor((i - 1) / 2)] is the parent node of array[i].
 - array[(i * 2) + 1] is the left child node of array[i].
 - array[(i * 2) + 2] is the right child node of array[i].
+
+Applications:
+- Priority queues.
+- Arrays's k-way merging.
 """
 
 
@@ -88,7 +93,7 @@ class ArrayBasedBinaryHeap:
 
     # O(log n)
     def pop_min(self):
-        if not self:
+        if not self._array:
             raise ValueError('heap is empty')
 
         # Replace the root with the last element on the last level, and drop the old root.
