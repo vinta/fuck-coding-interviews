@@ -112,6 +112,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
     - [reverse_linked_list](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/reverse_linked_list.py) from [LeetCode](https://leetcode.com/problems/reverse-linked-list/)
     - [same_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/same_tree.py) from [LeetCode](https://leetcode.com/problems/same-tree/)
     - [search_in_a_binary_search_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/search_in_a_binary_search_tree.py) from [LeetCode](https://leetcode.com/problems/search-in-a-binary-search-tree/)
+    - [search_in_rotated_sorted_array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/search_in_rotated_sorted_array.py) from [LeetCode](https://leetcode.com/problems/search-in-rotated-sorted-array/)
     - [second_highest_salary](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/second_highest_salary.sql) from [LeetCode](https://leetcode.com/problems/second-highest-salary/)
     - [serialize_and_deserialize_binary_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/serialize_and_deserialize_binary_tree.py) from [LeetCode](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)
     - [sock_merchant](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/sock_merchant.py) from [HackerRank](https://www.hackerrank.com/challenges/sock-merchant/problem)
