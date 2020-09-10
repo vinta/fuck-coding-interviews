@@ -22,3 +22,9 @@ class Solution2:
         for _ in range(k):
             kth_largest = heapq.heappop(max_heap)
         return -kth_largest
+
+
+class Solution3:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        k_largests = heapq.nlargest(k, nums)
+        return k_largests[-1]
