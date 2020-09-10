@@ -3,7 +3,7 @@
 Multiset
 https://en.wikipedia.org/wiki/Multiset
 
-Multiset is a set which allows duplicates, and keeps track of how many times each elements appear.
+A multiset (also known as a bag) is a set which allows duplicates, and keeps track of how many times each elements appear.
 
 Actually, a multiset is more like a hash map which keys are elements and values are counts of each elements.
 """
