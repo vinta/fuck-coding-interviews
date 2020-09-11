@@ -16,8 +16,8 @@ A binary heap is typically represented as a compact array since it's a complete 
 - array[(i * 2) + 2] is the right child node of array[i].
 
 Applications:
+- K-way merges (merging k sorted arrays into a single sorted array).
 - Priority queues.
-- Arrays's k-way merging.
 """
 
 
