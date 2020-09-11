@@ -105,6 +105,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
     - [maximum_product_subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_product_subarray.py) from [LeetCode](https://leetcode.com/problems/maximum-product-subarray/)
     - [maximum_subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_subarray.py) from [LeetCode](https://leetcode.com/problems/maximum-subarray/)
     - [merge_intervals](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/merge_intervals.py) from [LeetCode](https://leetcode.com/problems/merge-intervals/)
+    - [merge_k_sorted_lists](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/merge_k_sorted_lists.py) from [LeetCode](https://leetcode.com/problems/merge-k-sorted-lists/)
     - [merge_two_sorted_lists](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/merge_two_sorted_lists.py) from [LeetCode](https://leetcode.com/problems/merge-two-sorted-lists/)
     - [minimum_depth_of_binary_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/minimum_depth_of_binary_tree.py) from [LeetCode](https://leetcode.com/problems/minimum-depth-of-binary-tree/)
     - [nth_highest_salary](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/nth_highest_salary.sql) from [LeetCode](https://leetcode.com/problems/nth-highest-salary/)
