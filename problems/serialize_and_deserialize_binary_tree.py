@@ -5,7 +5,7 @@ https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
 from collections import deque
 
 
-class TreeNode(object):
+class TreeNode:  # pragma: no cover
     def __init__(self, x):
         self.val = x
         self.left = None

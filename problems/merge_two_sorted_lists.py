@@ -6,7 +6,7 @@ import heapq
 import itertools
 
 
-class ListNode:
+class ListNode:  # pragma: no cover
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next

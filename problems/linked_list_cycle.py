@@ -4,7 +4,7 @@ https://leetcode.com/problems/linked-list-cycle/
 """
 
 
-class ListNode:
+class ListNode:  # pragma: no cover
     def __init__(self, x):
         self.val = x
         self.next = None
