@@ -89,6 +89,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
     - [check_completeness_of_a_binary_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/check_completeness_of_a_binary_tree.py) from [LeetCode](https://leetcode.com/problems/check-completeness-of-a-binary-tree/)
     - [container_with_most_water](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/container_with_most_water.py) from [LeetCode](https://leetcode.com/problems/container-with-most-water/)
     - [contains_duplicate](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/contains_duplicate.py) from [LeetCode](https://leetcode.com/problems/contains-duplicate/)
+    - [counting_valleys](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/counting_valleys.py) from [HackerRank](https://www.hackerrank.com/challenges/counting-valleys/problem)
     - [equality_in_a_array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/equality_in_a_array.py) from [HackerRank](https://www.hackerrank.com/challenges/equality-in-a-array/problem)
     - [fibonacci_number](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/fibonacci_number.py) from [LeetCode](https://leetcode.com/problems/fibonacci-number/)
     - [find_minimum_in_rotated_sorted_array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/find_minimum_in_rotated_sorted_array.py) from [LeetCode](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
