@@ -115,6 +115,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
     - [product_of_array_except_self](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/product_of_array_except_self.py) from [LeetCode](https://leetcode.com/problems/product-of-array-except-self/)
     - [rank_scores](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/rank_scores.sql) from [LeetCode](https://leetcode.com/problems/rank-scores/)
     - [remove_nth_node_from_end_of_list](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/remove_nth_node_from_end_of_list.py) from [LeetCode](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
+    - [repeated_string](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/repeated_string.py) from [HackerRank](https://www.hackerrank.com/challenges/repeated-string/problem)
     - [reverse_integer](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/reverse_integer.py) from [LeetCode](https://leetcode.com/problems/reverse-integer/)
     - [reverse_linked_list](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/reverse_linked_list.py) from [LeetCode](https://leetcode.com/problems/reverse-linked-list/)
     - [same_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/same_tree.py) from [LeetCode](https://leetcode.com/problems/same-tree/)
