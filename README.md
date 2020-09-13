@@ -48,12 +48,14 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
     - `b_trees/`
         - [b_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/b_trees/b_tree.py)
         - [b_plus_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/b_trees/b_plus_tree.py)
-    - `hash_maps`
+    - `graphs/`
+        - [adjacency_map_directed_weighted_graph](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/graphs/adjacency_map_directed_weighted_graph.py)
+    - `hash_maps/`
         - [chain_hash_map](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/hash_maps/chain_hash_map.py)
         - [linear_probing_hash_map](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/hash_maps/linear_probing_hash_map.py)
         - [sorted_table_map](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/hash_maps/sorted_table_map.py)
         - [unsorted_table_map](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/hash_maps/unsorted_table_map.py)
-    - `heaps`
+    - `heaps/`
         - [array_based_binary_heap](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/heaps/array_based_binary_heap.py)
     - `linked_lists/`
         - [doubly_linked_list](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/linked_lists/doubly_linked_list.py)
