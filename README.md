@@ -50,6 +50,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [b_plus_tree](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/b_trees/b_plus_tree.py)
     - `graphs/`
         - [adjacency_map_directed_weighted_graph](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/graphs/adjacency_map_directed_weighted_graph.py)
+        - [adjacency_map_undirected_weighted_graph](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/graphs/adjacency_map_undirected_weighted_graph.py)
     - `hash_maps/`
         - [chain_hash_map](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/hash_maps/chain_hash_map.py)
         - [linear_probing_hash_map](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/hash_maps/linear_probing_hash_map.py)
