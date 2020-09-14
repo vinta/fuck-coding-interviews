@@ -79,6 +79,28 @@ class TestCase(unittest.TestCase):
         for source, destination, weight in self.edges:
             self.assertEqual(self.graph.edge_weight(source, destination), weight)
 
+    def test_depth_first_search(self):
+        v = 'A'
+        visited = {v: None}
+        self.graph.depth_first_search(v, visited)
+        self.assertCountEqual(visited.keys(), ['A', 'B', 'C', 'D'])
+
+        v = 'E'
+        visited = {v: None}
+        self.graph.depth_first_search(v, visited)
+        self.assertCountEqual(visited.keys(), ['A', 'B', 'C', 'D', 'E', 'F', 'G'])
+
+    def test_breadth_first_search(self):
+        v = 'A'
+        visited = {v: None}
+        self.graph.breadth_first_search(v, visited)
+        self.assertCountEqual(visited.keys(), ['A', 'B', 'C', 'D'])
+
+        v = 'E'
+        visited = {v: None}
+        self.graph.breadth_first_search(v, visited)
+        self.assertCountEqual(visited.keys(), ['A', 'B', 'C', 'D', 'E', 'F', 'G'])
+
 
 if __name__ == '__main__':
     unittest.main()
