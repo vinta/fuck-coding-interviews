@@ -124,7 +124,6 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Binary Tree Postorder Traversal](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/binary_tree_postorder_traversal.py) from [LeetCode](https://leetcode.com/problems/binary-tree-postorder-traversal/)
         - [Binary Tree Preorder Traversal](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/binary_tree_preorder_traversal.py) from [LeetCode](https://leetcode.com/problems/binary-tree-preorder-traversal/)
         - [Check Completeness of a Binary Tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/check_completeness_of_a_binary_tree.py) from [LeetCode](https://leetcode.com/problems/check-completeness-of-a-binary-tree/)
-        - [Height of a Binary Tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/tree_height_of_a_binary_tree.py) from [HackerRank](https://www.hackerrank.com/challenges/tree-height-of-a-binary-tree/problem)
         - [Invert Binary Tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/invert_binary_tree.py) from [LeetCode](https://leetcode.com/problems/invert-binary-tree/)
         - [Kth Smallest Element in a BST](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/kth_smallest_element_in_a_bst.py) from [LeetCode](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
         - [Maximum Depth of Binary Tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_depth_of_binary_tree.py) from [LeetCode](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
@@ -132,7 +131,8 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Same Tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/same_tree.py) from [LeetCode](https://leetcode.com/problems/same-tree/)
         - [Search in a Binary Search Tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/search_in_a_binary_search_tree.py) from [LeetCode](https://leetcode.com/problems/search-in-a-binary-search-tree/)
         - [Serialize and Deserialize Binary Tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/serialize_and_deserialize_binary_tree.py) from [LeetCode](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)
-        - [Tree Top View](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/tree_top_view.py) from [HackerRank](https://www.hackerrank.com/challenges/tree-top-view/problem)
+        - [Tree: Height of a Binary Tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/tree_height_of_a_binary_tree.py) from [HackerRank](https://www.hackerrank.com/challenges/tree-height-of-a-binary-tree/problem)
+        - [Tree: Top View](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/tree_top_view.py) from [HackerRank](https://www.hackerrank.com/challenges/tree-top-view/problem)
         - [Univalued Binary Tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/univalued_binary_tree.py) from [LeetCode](https://leetcode.com/problems/univalued-binary-tree/)
         - [Validate Binary Search Tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/validate_binary_search_tree.py) from [LeetCode](https://leetcode.com/problems/validate-binary-search-tree/)
     - Trie

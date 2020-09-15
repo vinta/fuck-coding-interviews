@@ -14,15 +14,15 @@ class TreeNode:  # pragma: no cover
 
 class Solution:
     def isValidBST(self, root: TreeNode) -> bool:
-        def inorder(node):
+        def inorder_traverse(node):
             if not node:
                 return
 
-            yield from inorder(node.left)
+            yield from inorder_traverse(node.left)
             yield node.val
-            yield from inorder(node.right)
+            yield from inorder_traverse(node.right)
 
-        values = list(inorder(root))
+        values = list(inorder_traverse(root))
         sorted_values = sorted(values)
         dedup_values = set(values)
 
@@ -31,19 +31,44 @@ class Solution:
 
 class Solution2:
     def isValidBST(self, root: TreeNode) -> bool:
-        def inorder(node):
+        def inorder_traverse(node):
             if not node:
                 return None
 
-            yield from inorder(node.left)
+            yield from inorder_traverse(node.left)
             yield node.val
-            yield from inorder(node.right)
+            yield from inorder_traverse(node.right)
 
         # last_val = float('-inf')
         last_val = -sys.maxsize
-        for val in inorder(root):
+        for val in inorder_traverse(root):
             if last_val >= val:
                 return False
             last_val = val
+
+        # The following solution doesn't work since you cannot just check a single node at a time.
+        # There might be a binary tree like this which is not BST:
+        #    5
+        #  /   \
+        # 1     6
+        #      / \
+        #     4   7
+
+        # def inorder_traverse(node):
+        #     if not node:
+        #         return
+
+        #     yield from inorder_traverse(node.left)
+        #     yield node
+        #     yield from inorder_traverse(node.right)
+
+        # for node in inorder_traverse(root):
+        #     if node.left:
+        #         if node.val <= node.left.val:
+        #             return False
+
+        #     if node.right:
+        #         if node.val >= node.right.val:
+        #             return False
 
         return True
