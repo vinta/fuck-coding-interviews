@@ -39,16 +39,16 @@ class BinarySearchTree(BaseTree):
 
     def is_valid(self):
         # The inorder traversal of a binary search tree results in an ascending sorted array.
-        def inorder(node):
+        def inorder_traverse(node):
             if not node:
                 return None
 
-            yield from inorder(node.left)
+            yield from inorder_traverse(node.left)
             yield node.value
-            yield from inorder(node.right)
+            yield from inorder_traverse(node.right)
 
         previous_value = -sys.maxsize
-        for value in inorder(self.root):
+        for value in inorder_traverse(self.root):
             if previous_value >= value:
                 return False
             previous_value = value

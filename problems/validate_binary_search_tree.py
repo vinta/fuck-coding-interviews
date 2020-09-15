@@ -72,3 +72,18 @@ class Solution2:
         #             return False
 
         return True
+
+
+class Solution3:
+    def isValidBST(self, root: TreeNode) -> bool:
+        def is_bst(node, lower=float('-inf'), upper=float('inf')):
+            if not node:
+                return True
+
+            return all([
+                lower < node.val < upper,
+                is_bst(node.left, lower, node.val),
+                is_bst(node.right, node.val, upper),
+            ])
+
+        return is_bst(root)
