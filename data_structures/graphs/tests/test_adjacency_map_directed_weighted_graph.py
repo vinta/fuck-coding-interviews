@@ -81,25 +81,21 @@ class TestCase(unittest.TestCase):
 
     def test_depth_first_search(self):
         v = 'A'
-        visited = {v: None}
-        self.graph.depth_first_search(v, visited)
-        self.assertCountEqual(visited.keys(), ['A', 'B', 'C', 'D'])
+        visited = self.graph.depth_first_search(v)
+        self.assertCountEqual(visited, ['A', 'B', 'C', 'D'])
 
         v = 'E'
-        visited = {v: None}
-        self.graph.depth_first_search(v, visited)
-        self.assertCountEqual(visited.keys(), ['A', 'B', 'C', 'D', 'E', 'F', 'G'])
+        visited = self.graph.depth_first_search(v)
+        self.assertCountEqual(visited, ['A', 'B', 'C', 'D', 'E', 'F', 'G'])
 
     def test_breadth_first_search(self):
         v = 'A'
-        visited = {v: None}
-        self.graph.breadth_first_search(v, visited)
-        self.assertCountEqual(visited.keys(), ['A', 'B', 'C', 'D'])
+        visited = self.graph.breadth_first_search(v)
+        self.assertCountEqual(visited, ['A', 'B', 'C', 'D'])
 
         v = 'E'
-        visited = {v: None}
-        self.graph.breadth_first_search(v, visited)
-        self.assertCountEqual(visited.keys(), ['A', 'B', 'C', 'D', 'E', 'F', 'G'])
+        visited = self.graph.breadth_first_search(v)
+        self.assertCountEqual(visited, ['A', 'B', 'C', 'D', 'E', 'F', 'G'])
 
 
 if __name__ == '__main__':

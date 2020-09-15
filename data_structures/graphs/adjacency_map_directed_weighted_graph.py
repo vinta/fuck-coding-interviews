@@ -87,24 +87,32 @@ class DirectedGraph:
         except KeyError:
             raise ValueError(f'No such edge: {(u, v)}')
 
-    def depth_first_search(self, v, visited):
-        for neighbor, weight in self.outgoing_edges[v].items():
+    def depth_first_search(self, v, visited=None):
+        if visited is None:
+            visited = set()
+
+        # NOTE: A vertex is visited means we can access its adjacent vertices.
+        visited.add(v)
+
+        for neighbor in self.outgoing_edges[v].keys():
             if neighbor not in visited:
-                pair = sorted([v, neighbor])
-                visited[neighbor] = (pair[0], pair[1], weight)
                 self.depth_first_search(neighbor, visited)
 
         return visited
 
-    def breadth_first_search(self, v, visited):
+    def breadth_first_search(self, v, visited=None):
+        if visited is None:
+            visited = set()
+
+        visited.add(v)
+
         current_level = [v, ]
         while current_level:
             next_level = []
             for vertex in current_level:
-                for neighbor, weight in self.outgoing_edges[vertex].items():
+                for neighbor in self.outgoing_edges[vertex].keys():
                     if neighbor not in visited:
-                        pair = sorted([vertex, neighbor])
-                        visited[neighbor] = (pair[0], pair[1], weight)
+                        visited.add(neighbor)
                         next_level.append(neighbor)
 
             current_level = next_level
