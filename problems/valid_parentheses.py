@@ -24,13 +24,14 @@ class Solution:
                 stack.append(char)
             # If we find a closing brace, we inspect the top element in the stack. We then analyze:
             elif char in [')', '}', ']']:
+                # NOTE: The stack might be empty if there are unbalanced brackets.
                 try:
-                    opening = stack.pop()
+                    left = stack.pop()
                 except IndexError:
                     return False
-                closing = mapping.get(opening)
-                if char != closing:
-                    return False
+                else:
+                    if char != mapping[left]:
+                        return False
 
         # If we make it to the end of the line and there's still something left on the stack,
         # that means there’s an opening brace without a corresponding closing brace
