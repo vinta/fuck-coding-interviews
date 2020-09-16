@@ -6,6 +6,7 @@ https://en.wikipedia.org/wiki/Directed_graph
 https://en.wikipedia.org/wiki/Adjacency_list
 """
 from collections import defaultdict
+from collections import deque
 
 
 class DirectedGraph:
@@ -87,34 +88,54 @@ class DirectedGraph:
         except KeyError:
             raise ValueError(f'No such edge: {(u, v)}')
 
+    def breadth_first_search(self, v):
+        visited = set()
+        current_level = [v, ]
+        while current_level:
+            next_level = []
+            for node in current_level:
+                visited.add(node)
+                for neighbor in self.outgoing_edges[node].keys():
+                    if neighbor not in visited:
+                        next_level.append(neighbor)
+
+            current_level = next_level
+
+        return visited
+
+    def breadth_first_search_queue(self, v):  # pragma: no cover
+        visited = set()
+        queue = deque([v, ])
+        while queue:
+            node = queue.popleft()
+            visited.add(node)
+            for neighbor in self.outgoing_edges[node].keys():
+                if neighbor not in visited:
+                    queue.append(neighbor)
+
+        return visited
+
     def depth_first_search(self, v, visited=None):
         if visited is None:
             visited = set()
 
-        # NOTE: A vertex is visited means we can access its adjacent vertices.
+        # NOTE: A vertex is visited means we can access its adjacent vertices (neighbors).
         visited.add(v)
-
         for neighbor in self.outgoing_edges[v].keys():
             if neighbor not in visited:
+                # Recursion uses the call "stack".
                 self.depth_first_search(neighbor, visited)
 
         return visited
 
-    def breadth_first_search(self, v, visited=None):
-        if visited is None:
-            visited = set()
-
-        visited.add(v)
-
-        current_level = [v, ]
-        while current_level:
-            next_level = []
-            for vertex in current_level:
-                for neighbor in self.outgoing_edges[vertex].keys():
-                    if neighbor not in visited:
-                        visited.add(neighbor)
-                        next_level.append(neighbor)
-
-            current_level = next_level
+    def depth_first_search_iterate(self, v):  # pragma: no cover
+        visited = set()
+        stack = [v, ]
+        while stack:
+            node = stack.pop()
+            visited.add(node)
+            for neighbor in self.outgoing_edges[node].keys():
+                if neighbor not in visited:
+                    stack.append(neighbor)
 
         return visited
