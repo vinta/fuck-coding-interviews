@@ -80,6 +80,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Trie](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/trie.py)
 - `problems/`
     - Array
+        - [Array Sum](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/array_sum.py) from [HackerEarth](https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/array-sum-2-725368ac/description/)
         - [Find Minimum in Rotated Sorted Array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/find_minimum_in_rotated_sorted_array.py) from [LeetCode](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
         - [Maximum Product Subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_product_subarray.py) from [LeetCode](https://leetcode.com/problems/maximum-product-subarray/)
         - [Maximum Subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_subarray.py) from [LeetCode](https://leetcode.com/problems/maximum-subarray/)

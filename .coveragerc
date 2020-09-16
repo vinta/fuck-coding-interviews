@@ -2,6 +2,7 @@
 branch = True
 omit =
     */tests/*
+    problems/array_sum.py
     problems/clone_graph.py
     problems/linked_list_cycle.py
     problems/tree_height_of_a_binary_tree.py
