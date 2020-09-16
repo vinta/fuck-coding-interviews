@@ -94,6 +94,7 @@ class DirectedGraph:
         while current_level:
             next_level = []
             for node in current_level:
+                # NOTE: A vertex is visited means we can access its adjacent vertices (neighbors).
                 visited.add(node)
                 for neighbor in self.outgoing_edges[node].keys():
                     if neighbor not in visited:
@@ -119,7 +120,6 @@ class DirectedGraph:
         if visited is None:
             visited = set()
 
-        # NOTE: A vertex is visited means we can access its adjacent vertices (neighbors).
         visited.add(v)
         for neighbor in self.outgoing_edges[v].keys():
             if neighbor not in visited:
