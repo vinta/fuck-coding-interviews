@@ -75,9 +75,15 @@ class TestCase(unittest.TestCase):
         incoming_edges = [edge for edge in self.edges if edge[1] == vertex]
         self.assertCountEqual(self.graph.incident_edges(vertex, edge_type='incoming'), incoming_edges)
 
+        self.assertCountEqual(self.graph.incident_edges('NOT EXIST', edge_type='outgoing'), [])
+        self.assertCountEqual(self.graph.incident_edges('NOT EXIST', edge_type='incoming'), [])
+
     def test_edge_weight(self):
         for source, destination, weight in self.edges:
             self.assertEqual(self.graph.edge_weight(source, destination), weight)
+
+        with self.assertRaises(ValueError):
+            self.graph.edge_weight('NOT EXIST', 'NOT EXIST')
 
     def test_depth_first_search(self):
         v = 'A'
