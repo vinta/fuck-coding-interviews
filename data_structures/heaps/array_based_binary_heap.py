@@ -34,8 +34,6 @@ class ArrayBasedBinaryHeap:
             yield value
 
     def _parent(self, index):
-        if index == 0:
-            raise IndexError('The root node has no parent.')
         return (index - 1) // 2
 
     def _left(self, index):
