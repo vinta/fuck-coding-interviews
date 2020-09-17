@@ -9,6 +9,7 @@ from collections import defaultdict
 from collections import deque
 
 
+# Assume that we have V vertices and E edges in the graph G.
 class DirectedGraph:
     def __init__(self):
         # {
@@ -139,3 +140,42 @@ class DirectedGraph:
                     stack.append(neighbor)
 
         return visited
+
+    def find_shortest_path_bellman(self, start, end, return_distance=False):
+        """
+        We use Bellman Ford's algorithm to find the shortest path from start to end.
+
+        It's similar to Dijkstra's algorithm but it can work with negative weights.
+        """
+        # First, we overestimate the distance from start to all other vertices.
+        distances = {}  # The distance from start to a vertex v.
+        backtracks = {}  # {destination: source}
+        for v in self.vertex_data.keys():
+            distances[v] = float('inf')
+            backtracks[v] = None
+        distances[start] = 0
+
+        # We have to do V * E times to readjust distances.
+        vertex_count = self.vertex_count()
+        # The first loop, it calculates the shortest paths with at most 1 edge.
+        # Then, it calculates the shortest paths with at most 2 edges, and so on.
+        for i in range(vertex_count):
+            for src, des, weight in self.edges():
+                distance_to_des = distances[src] + weight  # The distance to destination.
+                if distance_to_des < distances[des]:
+                    # The final loop is to check wheter there are negative weight cycles.
+                    if i == vertex_count - 1:
+                        raise ValueError('Found negative weight cycles')
+                    distances[des] = distance_to_des
+                    backtracks[des] = src
+
+        backtrack_path = [end, ]
+        last_step = backtracks.get(end)
+        while last_step:
+            backtrack_path.append(last_step)
+            last_step = backtracks[last_step]
+        if backtrack_path[-1] != start:
+            raise ValueError(f'No path from {start} to {end}')
+        path = list(reversed(backtrack_path))
+
+        return (path, distances[end]) if return_distance else path

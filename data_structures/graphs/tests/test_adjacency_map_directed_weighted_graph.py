@@ -103,6 +103,65 @@ class TestCase(unittest.TestCase):
         visited = self.graph.breadth_first_search(v)
         self.assertCountEqual(visited, ['A', 'B', 'C', 'D', 'E', 'F', 'G'])
 
+    def test_find_shortest_path_bellman(self):
+        graph = DirectedGraph()
+        edges = [  # https://www.programiz.com/dsa/bellman-ford-algorithm
+            ['A', 'B', 4],
+            ['A', 'C', 2],
+            ['B', 'C', 3],
+            ['B', 'D', 2],
+            ['B', 'E', 4],
+            ['C', 'B', 1],
+            ['C', 'D', 3],
+            ['C', 'E', 5],
+            ['E', 'D', -5],
+        ]
+        for src, des, weight in edges:
+            graph.add_edge(src, des, weight)
+
+        path = graph.find_shortest_path_bellman('A', 'B')
+        self.assertEqual(path, ['A', 'C', 'B'])
+
+        # There is no such path.
+        with self.assertRaises(ValueError):
+            graph.find_shortest_path_bellman('D', 'E')
+
+        path, distance = graph.find_shortest_path_bellman('A', 'A', return_distance=True)
+        self.assertEqual(path, ['A', ])
+        self.assertEqual(distance, 0)
+
+        path, distance = graph.find_shortest_path_bellman('A', 'B', return_distance=True)
+        self.assertEqual(path, ['A', 'C', 'B'])
+        self.assertEqual(distance, 3)
+
+        path, distance = graph.find_shortest_path_bellman('A', 'C', return_distance=True)
+        self.assertEqual(path, ['A', 'C'])
+        self.assertEqual(distance, 2)
+
+        path, distance = graph.find_shortest_path_bellman('A', 'D', return_distance=True)
+        self.assertEqual(path, ['A', 'C', 'E', 'D'])
+        self.assertEqual(distance, 2)
+
+        path, distance = graph.find_shortest_path_bellman('A', 'E', return_distance=True)
+        self.assertEqual(path, ['A', 'C', 'E'])
+        self.assertEqual(distance, 7)
+
+        graph = DirectedGraph()
+        edges = [  # https://www.programiz.com/dsa/bellman-ford-algorithm
+            ['A', 'B', 2],
+            ['B', 'C', 2],
+            ['B', 'D', 1],
+            ['C', 'D', -4],
+            ['D', 'B', 1],
+            ['D', 'E', 3],
+        ]
+        for src, des, weight in edges:
+            graph.add_edge(src, des, weight)
+
+        # There is a negative weight cycle among {B, C, D}.
+        with self.assertRaises(ValueError):
+            graph.find_shortest_path_bellman('A', 'E')
+
 
 if __name__ == '__main__':
     unittest.main()
