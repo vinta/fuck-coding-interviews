@@ -9,6 +9,10 @@ from collections import defaultdict
 from collections import deque
 
 
+class NestedBreak(Exception):
+    pass
+
+
 # Assume that we have V vertices and E edges in the graph G.
 class DirectedGraph:
     def __init__(self):
@@ -141,6 +145,39 @@ class DirectedGraph:
 
         return visited
 
+    # O(V + E)
+    def find_shortest_path_bfs(self, start, end):
+        """
+        This algorithm can only work with an acyclic and unweighted graph.
+        """
+        backtracks = {v: None for v in self.vertex_data.keys()}
+        visited = set()
+        current_level = [start, ]
+        try:
+            while current_level:
+                next_level = []
+                for v in current_level:
+                    visited.add(v)
+                    for neighbor in self.outgoing_edges[v].keys():
+                        backtracks[neighbor] = v
+                        if neighbor == end:
+                            raise NestedBreak
+                        next_level.append(neighbor)
+                current_level = next_level
+        except NestedBreak:
+            pass
+
+        backtrack_path = [end, ]
+        last_step = backtracks.get(end)
+        while last_step:
+            backtrack_path.append(last_step)
+            last_step = backtracks[last_step]
+        if backtrack_path[-1] != start:
+            raise ValueError(f'No path from {start} to {end}')
+
+        return list(reversed(backtrack_path))
+
+    # O(V * E)
     def find_shortest_path_bellman(self, start, end, return_distance=False):
         """
         We use Bellman Ford's algorithm to find the shortest path from start to end.

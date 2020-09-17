@@ -13,8 +13,11 @@ class TestCase(unittest.TestCase):
             ('A', 'C', 0),
             ('B', 'C', 0),
             ('B', 'D', 0),
+            ('B', 'I', 0),
             ('C', 'D', 0),
             ('D', 'C', 0),
+            ('D', 'H', 0),
+            ('H', 'I', 0),
             ('E', 'A', 0),
             ('E', 'F', 0),
             ('F', 'C', 0),
@@ -88,20 +91,41 @@ class TestCase(unittest.TestCase):
     def test_depth_first_search(self):
         v = 'A'
         visited = self.graph.depth_first_search(v)
-        self.assertCountEqual(visited, ['A', 'B', 'C', 'D'])
+        self.assertCountEqual(visited, ['A', 'B', 'C', 'D', 'H', 'I'])
 
         v = 'E'
         visited = self.graph.depth_first_search(v)
-        self.assertCountEqual(visited, ['A', 'B', 'C', 'D', 'E', 'F', 'G'])
+        self.assertCountEqual(visited, ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'])
 
     def test_breadth_first_search(self):
         v = 'A'
         visited = self.graph.breadth_first_search(v)
-        self.assertCountEqual(visited, ['A', 'B', 'C', 'D'])
+        self.assertCountEqual(visited, ['A', 'B', 'C', 'D', 'H', 'I'])
 
         v = 'E'
         visited = self.graph.breadth_first_search(v)
-        self.assertCountEqual(visited, ['A', 'B', 'C', 'D', 'E', 'F', 'G'])
+        self.assertCountEqual(visited, ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'])
+
+    def test_find_shortest_path_bfs(self):
+        graph = DirectedGraph()
+        edges = [  # https://cs.stackexchange.com/questions/18138/dijkstra-algorithm-vs-breadth-first-search-for-shortest-path-in-graph
+            ['A', 'B', 0],
+            ['B', 'C', 0],
+            ['B', 'D', 0],
+            ['B', 'E', 0],
+            ['C', 'E', 0],
+            ['D', 'E', 0],
+            ['E', 'F', 0],
+            ['G', 'D', 0],
+        ]
+        for src, des, weight in edges:
+            graph.add_edge(src, des, weight)
+
+        path = graph.find_shortest_path_bfs('A', 'E')
+        self.assertEqual(path, ['A', 'B', 'E'])
+
+        with self.assertRaises(ValueError):
+            graph.find_shortest_path_bellman('A', 'G')
 
     def test_find_shortest_path_bellman(self):
         graph = DirectedGraph()
