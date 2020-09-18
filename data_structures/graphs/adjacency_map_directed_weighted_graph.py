@@ -94,6 +94,10 @@ class DirectedGraph:
             raise ValueError(f'No such edge: {(u, v)}')
 
     def breadth_first_search(self, v):
+        """
+        Applications
+        https://cp-algorithms.com/graph/breadth-first-search.html#toc-tgt-2
+        """
         visited = set()
         current_level = [v, ]
         while current_level:
@@ -148,7 +152,7 @@ class DirectedGraph:
     # O(V + E)
     def find_shortest_path_bfs(self, start, end):
         """
-        This algorithm can only work with an acyclic and unweighted graph.
+        This algorithm can only work with a unweighted graph.
         """
         backtracks = {v: None for v in self.vertex_data.keys()}
         visited = set()
