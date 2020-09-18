@@ -116,6 +116,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Merge k Sorted Lists](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/merge_k_sorted_lists.py) from [LeetCode](https://leetcode.com/problems/merge-k-sorted-lists/)
         - [Task Scheduler](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/task_scheduler.py) from [LeetCode](https://leetcode.com/problems/task-scheduler/)
     - Stack
+        - [Min Stack](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/min_stack.py) from [LeetCode](https://leetcode.com/problems/min-stack/)
         - [Valid Parentheses](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/valid_parentheses.py) from [LeetCode](https://leetcode.com/problems/valid-parentheses/)
     - Binary Tree
         - [Balanced Binary Tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/balanced_binary_tree.py) from [LeetCode](https://leetcode.com/problems/balanced-binary-tree/)
