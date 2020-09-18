@@ -182,7 +182,7 @@ class DirectedGraph:
         return list(reversed(backtrack_path))
 
     # O(V * E)
-    def find_shortest_path_bellman(self, start, end, return_distance=False):
+    def find_shortest_path_bellman_ford(self, start, end, return_distance=False):
         """
         We use Bellman Ford's algorithm to find the shortest path from start to end.
 
