@@ -96,6 +96,7 @@ class DirectedGraph:
     def breadth_first_search(self, v):
         """
         Applications
+        https://en.wikipedia.org/wiki/Breadth-first_search
         https://cp-algorithms.com/graph/breadth-first-search.html#toc-tgt-2
         """
         visited = set()
@@ -114,13 +115,13 @@ class DirectedGraph:
         return visited
 
     def breadth_first_search_queue(self, v):  # pragma: no cover
-        visited = set()
+        visited = set([v, ])
         queue = deque([v, ])
         while queue:
             node = queue.popleft()
-            visited.add(node)
             for neighbor in self.outgoing_edges[node].keys():
                 if neighbor not in visited:
+                    visited.add(neighbor)
                     queue.append(neighbor)
 
         return visited
@@ -155,19 +156,18 @@ class DirectedGraph:
         This algorithm can only work with a unweighted graph.
         """
         backtracks = {v: None for v in self.vertex_data.keys()}
-        visited = set()
-        current_level = [start, ]
+        visited = set([start, ])
+        queue = deque([start, ])
         try:
-            while current_level:
-                next_level = []
-                for v in current_level:
-                    visited.add(v)
-                    for neighbor in self.outgoing_edges[v].keys():
+            while queue:
+                v = queue.popleft()
+                for neighbor in self.outgoing_edges[v].keys():
+                    if neighbor not in visited:
+                        visited.add(neighbor)
+                        queue.append(neighbor)
                         backtracks[neighbor] = v
                         if neighbor == end:
                             raise NestedBreak
-                        next_level.append(neighbor)
-                current_level = next_level
         except NestedBreak:
             pass
 
