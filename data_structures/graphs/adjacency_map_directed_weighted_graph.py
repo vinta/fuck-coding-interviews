@@ -189,11 +189,12 @@ class DirectedGraph:
 
         return self.construct_path(backtracks, start, end)
 
-    # O(E + V * log V)
+    # O(E * log V)
     def find_shortest_path_dijkstra(self, start, end):
         """
         This algorithm can only work with a non-negative graph.
         https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+        https://leetcode.com/problems/network-delay-time/discuss/329376/efficient-oe-log-v-python-dijkstra-min-heap-with-explanation
         """
         # First, we overestimate the distance from start to all other vertices.
         distances = {}  # The distance from start to a vertex v.
@@ -203,18 +204,24 @@ class DirectedGraph:
             backtracks[v] = None
         distances[start] = 0
 
-        # We maintain a priority queue to extract a vertex v with the minimum distance.
-        min_heap = [(0, start), ]
+        # We maintain a priority queue to extract a vertex v which has the minimum distance.
+        visited = set()
+        min_heap = [(0, start), ]  # (distance, vertex)
         while min_heap:
-            distance_to_v, v = heapq.heappop(min_heap)
-            for neighbor, weight in self.outgoing_edges[v].items():
-                distance_to_nb = distance_to_v + weight
-                if distance_to_nb < distances[neighbor]:
-                    # We find a shorter path to neighbor,
-                    # so distances of its neighbors should also be readjust.
-                    distances[neighbor] = distance_to_nb
-                    backtracks[neighbor] = v
-                    heapq.heappush(min_heap, (distances[neighbor], neighbor))
+            src_distance, src = heapq.heappop(min_heap)
+            # A vertex could be added to the priority queue multiple times,
+            # so we need to track visited vertices.
+            visited.add(src)
+            for des, weight in self.outgoing_edges[src].items():
+                if des in visited:
+                    continue
+                distance_to_des = src_distance + weight
+                if distance_to_des < distances[des]:
+                    # We find a shorter path to des,
+                    # so distances of its dess should also be readjust.
+                    distances[des] = distance_to_des
+                    backtracks[des] = src
+                    heapq.heappush(min_heap, (distances[des], des))
 
         return self.construct_path(backtracks, start, end)
 
