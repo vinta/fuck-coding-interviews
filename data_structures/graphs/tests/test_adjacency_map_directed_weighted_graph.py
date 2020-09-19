@@ -9,19 +9,19 @@ class TestCase(unittest.TestCase):
         self.graph = DirectedGraph()
         self.edges = [
             # (source, destination, weight)
-            ('A', 'B', 0),
-            ('A', 'C', 0),
-            ('B', 'C', 0),
-            ('B', 'D', 0),
-            ('B', 'I', 0),
-            ('C', 'D', 0),
-            ('D', 'C', 0),
-            ('D', 'H', 0),
-            ('H', 'I', 0),
-            ('E', 'A', 0),
-            ('E', 'F', 0),
-            ('F', 'C', 0),
-            ('F', 'G', 0),
+            ('A', 'B', 1),
+            ('A', 'C', 1),
+            ('B', 'C', 1),
+            ('B', 'D', 1),
+            ('B', 'I', 1),
+            ('C', 'D', 1),
+            ('D', 'C', 1),
+            ('D', 'H', 1),
+            ('H', 'I', 1),
+            ('E', 'A', 1),
+            ('E', 'F', 1),
+            ('F', 'C', 1),
+            ('F', 'G', 1),
         ]
         self.vertices = set()
         for source, destination, weight in self.edges:
@@ -109,14 +109,14 @@ class TestCase(unittest.TestCase):
     def test_find_shortest_path_bfs(self):
         graph = DirectedGraph()
         edges = [  # https://cs.stackexchange.com/questions/18138/dijkstra-algorithm-vs-breadth-first-search-for-shortest-path-in-graph
-            ['A', 'B', 0],
-            ['B', 'C', 0],
-            ['B', 'D', 0],
-            ['B', 'E', 0],
-            ['C', 'E', 0],
-            ['D', 'E', 0],
-            ['E', 'F', 0],
-            ['G', 'D', 0],
+            ('A', 'B', 1),
+            ('B', 'C', 1),
+            ('B', 'D', 1),
+            ('B', 'E', 1),
+            ('C', 'E', 1),
+            ('D', 'E', 1),
+            ('E', 'F', 1),
+            ('G', 'D', 1),
         ]
         for src, des, weight in edges:
             graph.add_edge(src, des, weight)
@@ -127,57 +127,85 @@ class TestCase(unittest.TestCase):
         with self.assertRaises(ValueError):
             graph.find_shortest_path_bfs('A', 'G')
 
-    def test_find_shortest_path_bellman_ford(self):
+    def test_find_shortest_path_dijkstra(self):
         graph = DirectedGraph()
-        edges = [  # https://www.programiz.com/dsa/bellman-ford-algorithm
-            ['A', 'B', 4],
-            ['A', 'C', 2],
-            ['B', 'C', 3],
-            ['B', 'D', 2],
-            ['B', 'E', 4],
-            ['C', 'B', 1],
-            ['C', 'D', 3],
-            ['C', 'E', 5],
-            ['E', 'D', -5],
+        edges = [  # https://www.chegg.com/homework-help/questions-and-answers/8-4-14-10-2-figure-2-directed-graph-computing-shortest-path-3-dijkstra-s-algorithm-computi-q25960616#question-transcript
+            ('A', 'B', 4),
+            ('B', 'C', 11),
+            ('B', 'D', 9),
+            ('C', 'A', 8),
+            ('D', 'C', 7),
+            ('D', 'E', 2),
+            ('D', 'F', 6),
+            ('E', 'B', 8),
+            ('E', 'G', 7),
+            ('E', 'H', 4),
+            ('F', 'C', 1),
+            ('F', 'E', 5),
+            ('G', 'H', 14),
+            ('G', 'I', 9),
+            ('H', 'F', 2),
+            ('H', 'I', 10),
         ]
         for src, des, weight in edges:
             graph.add_edge(src, des, weight)
 
-        path = graph.find_shortest_path_bellman_ford('A', 'B')
-        self.assertEqual(path, ['A', 'C', 'B'])
+        # There is no such path.
+        with self.assertRaises(ValueError):
+            graph.find_shortest_path_dijkstra('I', 'A')
+
+        path = graph.find_shortest_path_dijkstra('A', 'I')
+        self.assertEqual(path, ['A', 'B', 'D', 'E', 'H', 'I'])
+
+        path = graph.find_shortest_path_dijkstra('E', 'C')
+        self.assertEqual(path, ['E', 'H', 'F', 'C'])
+
+    def test_find_shortest_path_bellman_ford(self):
+        graph = DirectedGraph()
+        edges = [  # https://www.programiz.com/dsa/bellman-ford-algorithm
+            ('A', 'B', 4),
+            ('A', 'C', 2),
+            ('B', 'C', 3),
+            ('B', 'D', 2),
+            ('B', 'E', 4),
+            ('C', 'B', 1),
+            ('C', 'D', 3),
+            ('C', 'E', 5),
+            ('E', 'D', -5),
+        ]
+        for src, des, weight in edges:
+            graph.add_edge(src, des, weight)
 
         # There is no such path.
         with self.assertRaises(ValueError):
             graph.find_shortest_path_bellman_ford('D', 'E')
 
-        path, distance = graph.find_shortest_path_bellman_ford('A', 'A', return_distance=True)
-        self.assertEqual(path, ['A', ])
-        self.assertEqual(distance, 0)
-
-        path, distance = graph.find_shortest_path_bellman_ford('A', 'B', return_distance=True)
+        path = graph.find_shortest_path_bellman_ford('A', 'B')
         self.assertEqual(path, ['A', 'C', 'B'])
-        self.assertEqual(distance, 3)
 
-        path, distance = graph.find_shortest_path_bellman_ford('A', 'C', return_distance=True)
+        path = graph.find_shortest_path_bellman_ford('A', 'A')
+        self.assertEqual(path, ['A', ])
+
+        path = graph.find_shortest_path_bellman_ford('A', 'B')
+        self.assertEqual(path, ['A', 'C', 'B'])
+
+        path = graph.find_shortest_path_bellman_ford('A', 'C')
         self.assertEqual(path, ['A', 'C'])
-        self.assertEqual(distance, 2)
 
-        path, distance = graph.find_shortest_path_bellman_ford('A', 'D', return_distance=True)
+        path = graph.find_shortest_path_bellman_ford('A', 'D')
         self.assertEqual(path, ['A', 'C', 'E', 'D'])
-        self.assertEqual(distance, 2)
 
-        path, distance = graph.find_shortest_path_bellman_ford('A', 'E', return_distance=True)
+        path = graph.find_shortest_path_bellman_ford('A', 'E')
         self.assertEqual(path, ['A', 'C', 'E'])
-        self.assertEqual(distance, 7)
 
         graph = DirectedGraph()
         edges = [  # https://www.programiz.com/dsa/bellman-ford-algorithm
-            ['A', 'B', 2],
-            ['B', 'C', 2],
-            ['B', 'D', 1],
-            ['C', 'D', -4],
-            ['D', 'B', 1],
-            ['D', 'E', 3],
+            ('A', 'B', 2),
+            ('B', 'C', 2),
+            ('B', 'D', 1),
+            ('C', 'D', -4),
+            ('D', 'B', 1),
+            ('D', 'E', 3),
         ]
         for src, des, weight in edges:
             graph.add_edge(src, des, weight)

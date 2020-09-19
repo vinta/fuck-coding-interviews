@@ -4,27 +4,31 @@ Graph
 https://en.wikipedia.org/wiki/Graph_(abstract_data_type)
 https://en.wikipedia.org/wiki/Directed_graph
 https://en.wikipedia.org/wiki/Adjacency_list
+
+Assume that we have V vertices and E edges in the graph G.
 """
 from collections import defaultdict
 from collections import deque
+import heapq
 
 
 class NestedBreak(Exception):
     pass
 
 
-# Assume that we have V vertices and E edges in the graph G.
+# This implementation cannot properly handle multiple edges between the same endpoints.
+# For instance, (u, v, 1), (u, v, 2) and (u, v, 3).
 class DirectedGraph:
     def __init__(self):
         # {
         #     'source_vertex': {
-        #         'destination_vertex': 'edge_weight',
+        #         'destination_vertex': edge_weight,
         #     },
         # }
         self.outgoing_edges = defaultdict(dict)
 
         # {
-        #     'vertex': 'data',
+        #     'vertex': data,
         # }
         self.vertex_data = {}
 
@@ -150,6 +154,18 @@ class DirectedGraph:
 
         return visited
 
+    def construct_path(self, backtracks, start, end):
+        backtrack_path = [end, ]
+        last_step = backtracks.get(end)
+        while last_step:
+            backtrack_path.append(last_step)
+            last_step = backtracks[last_step]
+
+        if backtrack_path[-1] != start:
+            raise ValueError(f'No path from {start} to {end}')
+
+        return list(reversed(backtrack_path))
+
     # O(V + E)
     def find_shortest_path_bfs(self, start, end):
         """
@@ -171,22 +187,42 @@ class DirectedGraph:
         except NestedBreak:
             pass
 
-        backtrack_path = [end, ]
-        last_step = backtracks.get(end)
-        while last_step:
-            backtrack_path.append(last_step)
-            last_step = backtracks[last_step]
-        if backtrack_path[-1] != start:
-            raise ValueError(f'No path from {start} to {end}')
+        return self.construct_path(backtracks, start, end)
 
-        return list(reversed(backtrack_path))
+    # O(E + V * log V)
+    def find_shortest_path_dijkstra(self, start, end):
+        """
+        This algorithm can only work with a non-negative graph.
+        https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+        """
+        # First, we overestimate the distance from start to all other vertices.
+        distances = {}  # The distance from start to a vertex v.
+        backtracks = {}  # {destination: source}
+        for v in self.vertex_data.keys():
+            distances[v] = float('inf')
+            backtracks[v] = None
+        distances[start] = 0
+
+        # We maintain a priority queue to extract a vertex v with the minimum distance.
+        min_heap = [(0, start), ]
+        while min_heap:
+            distance_to_v, v = heapq.heappop(min_heap)
+            for neighbor, weight in self.outgoing_edges[v].items():
+                distance_to_nb = distance_to_v + weight
+                if distance_to_nb < distances[neighbor]:
+                    # We find a shorter path to neighbor,
+                    # so distances of its neighbors should also be readjust.
+                    distances[neighbor] = distance_to_nb
+                    backtracks[neighbor] = v
+                    heapq.heappush(min_heap, (distances[neighbor], neighbor))
+
+        return self.construct_path(backtracks, start, end)
 
     # O(V * E)
-    def find_shortest_path_bellman_ford(self, start, end, return_distance=False):
+    def find_shortest_path_bellman_ford(self, start, end):
         """
-        We use Bellman Ford's algorithm to find the shortest path from start to end.
-
-        It's similar to Dijkstra's algorithm but it can work with negative weights.
+        This algorithm can only work with a graph which has no negative weight cycles.
+        https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
         """
         # First, we overestimate the distance from start to all other vertices.
         distances = {}  # The distance from start to a vertex v.
@@ -210,13 +246,4 @@ class DirectedGraph:
                     distances[des] = distance_to_des
                     backtracks[des] = src
 
-        backtrack_path = [end, ]
-        last_step = backtracks.get(end)
-        while last_step:
-            backtrack_path.append(last_step)
-            last_step = backtracks[last_step]
-        if backtrack_path[-1] != start:
-            raise ValueError(f'No path from {start} to {end}')
-        path = list(reversed(backtrack_path))
-
-        return (path, distances[end]) if return_distance else path
+        return self.construct_path(backtracks, start, end)
