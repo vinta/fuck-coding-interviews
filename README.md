@@ -115,6 +115,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Kth Largest Element in an Array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/kth_largest_element_in_an_array.py) from [LeetCode](https://leetcode.com/problems/kth-largest-element-in-an-array/)
         - [Merge k Sorted Lists](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/merge_k_sorted_lists.py) from [LeetCode](https://leetcode.com/problems/merge-k-sorted-lists/)
         - [Task Scheduler](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/task_scheduler.py) from [LeetCode](https://leetcode.com/problems/task-scheduler/)
+        - [Third Maximum Number](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/third_maximum_number.py) from [LeetCode](https://leetcode.com/problems/third-maximum-number/)
     - Stack
         - [Maximum Element](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_element.py) from [HackerRank](https://www.hackerrank.com/challenges/maximum-element/problem)
         - [Min Stack](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/min_stack.py) from [LeetCode](https://leetcode.com/problems/min-stack/)
