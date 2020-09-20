@@ -97,60 +97,59 @@ class DirectedGraph:
         except KeyError:
             raise ValueError(f'No such edge: {(u, v)}')
 
-    def breadth_first_search(self, v):
+    def breadth_first_search(self, start):
         """
         Applications
         https://en.wikipedia.org/wiki/Breadth-first_search
         https://cp-algorithms.com/graph/breadth-first-search.html#toc-tgt-2
         """
         visited = set()
-        current_level = [v, ]
+        current_level = [start, ]
         while current_level:
             next_level = []
-            for node in current_level:
+            for v in current_level:
                 # NOTE: A vertex is visited means we can access its adjacent vertices (neighbors).
-                visited.add(node)
-                for neighbor in self.outgoing_edges[node].keys():
-                    if neighbor not in visited:
-                        next_level.append(neighbor)
-
+                visited.add(v)
+                for des in self.outgoing_edges[v].keys():
+                    if des not in visited:
+                        next_level.append(des)
             current_level = next_level
 
         return visited
 
-    def breadth_first_search_queue(self, v):  # pragma: no cover
-        visited = set([v, ])
-        queue = deque([v, ])
+    def breadth_first_search_queue(self, start):  # pragma: no cover
+        visited = set([start, ])
+        queue = deque([start, ])
         while queue:
-            node = queue.popleft()
-            for neighbor in self.outgoing_edges[node].keys():
-                if neighbor not in visited:
-                    visited.add(neighbor)
-                    queue.append(neighbor)
+            v = queue.popleft()
+            for des in self.outgoing_edges[v].keys():
+                if des not in visited:
+                    visited.add(des)
+                    queue.append(des)
 
         return visited
 
-    def depth_first_search(self, v, visited=None):
+    def depth_first_search(self, start, visited=None):
         if visited is None:
             visited = set()
 
-        visited.add(v)
-        for neighbor in self.outgoing_edges[v].keys():
-            if neighbor not in visited:
+        visited.add(start)
+        for des in self.outgoing_edges[start].keys():
+            if des not in visited:
                 # Recursion uses the call "stack".
-                self.depth_first_search(neighbor, visited)
+                self.depth_first_search(des, visited)
 
         return visited
 
-    def depth_first_search_iterate(self, v):  # pragma: no cover
-        visited = set()
-        stack = [v, ]
+    def depth_first_search_iterate(self, start):  # pragma: no cover
+        visited = set([start, ])
+        stack = [start, ]
         while stack:
-            node = stack.pop()
-            visited.add(node)
-            for neighbor in self.outgoing_edges[node].keys():
-                if neighbor not in visited:
-                    stack.append(neighbor)
+            v = stack.pop()
+            for des in self.outgoing_edges[v].keys():
+                if des not in visited:
+                    visited.add(des)
+                    stack.append(des)
 
         return visited
 
@@ -167,30 +166,36 @@ class DirectedGraph:
         return list(reversed(backtrack_path))
 
     # O(V + E)
-    def find_shortest_path_bfs(self, start, end):
+    def find_shortest_paths_bfs(self, start):
         """
         This algorithm can only work with a unweighted graph.
         """
-        backtracks = {v: None for v in self.vertex_data.keys()}
+        # First, we overestimate the distance from start to all other vertices.
+        distances = {}  # The distance from start to a vertex v.
+        backtracks = {}  # {destination: source}
+        for v in self.vertex_data.keys():
+            distances[v] = float('inf')
+            backtracks[v] = None
+        distances[start] = 0
+
+        # BFS with distance relaxation.
         visited = set([start, ])
         queue = deque([start, ])
-        try:
-            while queue:
-                v = queue.popleft()
-                for neighbor in self.outgoing_edges[v].keys():
-                    if neighbor not in visited:
-                        visited.add(neighbor)
-                        queue.append(neighbor)
-                        backtracks[neighbor] = v
-                        if neighbor == end:
-                            raise NestedBreak
-        except NestedBreak:
-            pass
+        while queue:
+            v = queue.popleft()
+            for des, weight in self.outgoing_edges[v].items():
+                if des not in visited:
+                    visited.add(des)
+                    distance_to_des = distances[v] + weight
+                    if distance_to_des < distances[des]:
+                        distances[des] = distance_to_des
+                        backtracks[des] = v
+                        queue.append(des)
 
-        return self.construct_path(backtracks, start, end)
+        return backtracks, distances
 
     # O(E * log V)
-    def find_shortest_path_dijkstra(self, start, end):
+    def find_shortest_path_dijkstra(self, start):
         """
         This algorithm can only work with a non-negative graph.
         https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
@@ -223,10 +228,10 @@ class DirectedGraph:
                     backtracks[des] = src
                     heapq.heappush(min_heap, (distances[des], des))
 
-        return self.construct_path(backtracks, start, end)
+        return backtracks, distances
 
     # O(V * E)
-    def find_shortest_path_bellman_ford(self, start, end):
+    def find_shortest_path_bellman_ford(self, start):
         """
         This algorithm can only work with a graph which has no negative weight cycles.
         https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
@@ -253,4 +258,4 @@ class DirectedGraph:
                     distances[des] = distance_to_des
                     backtracks[des] = src
 
-        return self.construct_path(backtracks, start, end)
+        return backtracks, distances

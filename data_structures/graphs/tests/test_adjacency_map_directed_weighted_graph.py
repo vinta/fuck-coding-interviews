@@ -106,7 +106,7 @@ class TestCase(unittest.TestCase):
         visited = self.graph.breadth_first_search(v)
         self.assertCountEqual(visited, ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'])
 
-    def test_find_shortest_path_bfs(self):
+    def test_find_shortest_paths_bfs(self):
         graph = DirectedGraph()
         edges = [  # https://cs.stackexchange.com/questions/18138/dijkstra-algorithm-vs-breadth-first-search-for-shortest-path-in-graph
             ('A', 'B', 1),
@@ -121,11 +121,16 @@ class TestCase(unittest.TestCase):
         for src, des, weight in edges:
             graph.add_edge(src, des, weight)
 
-        path = graph.find_shortest_path_bfs('A', 'E')
+        backtracks, distances = graph.find_shortest_paths_bfs('A')
+
+        path = graph.construct_path(backtracks, 'A', 'E')
         self.assertEqual(path, ['A', 'B', 'E'])
 
+        path = graph.construct_path(backtracks, 'A', 'D')
+        self.assertEqual(path, ['A', 'B', 'D'])
+
         with self.assertRaises(ValueError):
-            graph.find_shortest_path_bfs('A', 'G')
+            graph.construct_path(backtracks, 'A', 'G')
 
     def test_find_shortest_path_dijkstra(self):
         graph = DirectedGraph()
@@ -150,15 +155,20 @@ class TestCase(unittest.TestCase):
         for src, des, weight in edges:
             graph.add_edge(src, des, weight)
 
-        # There is no such path.
-        with self.assertRaises(ValueError):
-            graph.find_shortest_path_dijkstra('I', 'A')
+        backtracks, distances = graph.find_shortest_path_dijkstra('A')
 
-        path = graph.find_shortest_path_dijkstra('A', 'I')
+        path = graph.construct_path(backtracks, 'A', 'I')
         self.assertEqual(path, ['A', 'B', 'D', 'E', 'H', 'I'])
 
-        path = graph.find_shortest_path_dijkstra('E', 'C')
+        backtracks, distances = graph.find_shortest_path_dijkstra('E')
+
+        path = graph.construct_path(backtracks, 'E', 'C')
         self.assertEqual(path, ['E', 'H', 'F', 'C'])
+
+        backtracks, distances = graph.find_shortest_path_dijkstra('I')
+
+        with self.assertRaises(ValueError):
+            graph.construct_path(backtracks, 'I', 'A')
 
     def test_find_shortest_path_bellman_ford(self):
         graph = DirectedGraph()
@@ -176,27 +186,27 @@ class TestCase(unittest.TestCase):
         for src, des, weight in edges:
             graph.add_edge(src, des, weight)
 
-        # There is no such path.
-        with self.assertRaises(ValueError):
-            graph.find_shortest_path_bellman_ford('D', 'E')
+        backtracks, distances = graph.find_shortest_path_bellman_ford('A')
 
-        path = graph.find_shortest_path_bellman_ford('A', 'B')
-        self.assertEqual(path, ['A', 'C', 'B'])
-
-        path = graph.find_shortest_path_bellman_ford('A', 'A')
+        path = graph.construct_path(backtracks, 'A', 'A')
         self.assertEqual(path, ['A', ])
 
-        path = graph.find_shortest_path_bellman_ford('A', 'B')
+        path = graph.construct_path(backtracks, 'A', 'B')
         self.assertEqual(path, ['A', 'C', 'B'])
 
-        path = graph.find_shortest_path_bellman_ford('A', 'C')
+        path = graph.construct_path(backtracks, 'A', 'C')
         self.assertEqual(path, ['A', 'C'])
 
-        path = graph.find_shortest_path_bellman_ford('A', 'D')
+        path = graph.construct_path(backtracks, 'A', 'D')
         self.assertEqual(path, ['A', 'C', 'E', 'D'])
 
-        path = graph.find_shortest_path_bellman_ford('A', 'E')
+        path = graph.construct_path(backtracks, 'A', 'E')
         self.assertEqual(path, ['A', 'C', 'E'])
+
+        backtracks, distances = graph.find_shortest_path_bellman_ford('D')
+
+        with self.assertRaises(ValueError):
+            graph.construct_path(backtracks, 'D', 'E')
 
         graph = DirectedGraph()
         edges = [  # https://www.programiz.com/dsa/bellman-ford-algorithm
@@ -212,7 +222,7 @@ class TestCase(unittest.TestCase):
 
         # There is a negative weight cycle among {B, C, D}.
         with self.assertRaises(ValueError):
-            graph.find_shortest_path_bellman_ford('A', 'E')
+            backtracks, distances = graph.find_shortest_path_bellman_ford('A')
 
 
 if __name__ == '__main__':
