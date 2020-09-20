@@ -4,6 +4,7 @@ omit =
     */tests/*
     problems/array_sum.py
     problems/clone_graph.py
+    problems/ctci_bfs_shortest_reach.py
     problems/linked_list_cycle.py
     problems/maximum_element.py
     problems/tree_height_of_a_binary_tree.py

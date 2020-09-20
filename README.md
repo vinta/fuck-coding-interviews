@@ -8,7 +8,7 @@ This repository is created by [a clumsy programmer](https://leetcode.com/vinta/)
 
 > How on earth can I ever think of a solution like that in an interview?!
 
-I'm working on implementing common Algorithms and Data Structures in Python (with test cases, of course), as well as straightforward solutions to some LeetCode and HackerRank problems which I solved with frustration in mind.
+I'm working on implementing common Algorithms and Data Structures in Python (with test cases, of course), as well as straightforward solutions to some problems from LeetCode, HackerRank, and HackerEarth which I solved with frustration in mind.
 
 Well, there are SO MUCH things to learn in Computer Science. I'm just a peasant who happens to write some crappy code for living.
 
@@ -142,6 +142,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
     - Trie
         - [Implement Trie (Prefix Tree)](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/implement_trie_prefix_tree.py) from [LeetCode](https://leetcode.com/problems/implement-trie-prefix-tree/)
     - Graph
+        - [BFS: Shortest Reach in a Graph](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/ctci_bfs_shortest_reach.py) from [HackerRank](https://www.hackerrank.com/challenges/ctci-bfs-shortest-reach/problem)
         - [Clone Graph](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/clone_graph.py) from [LeetCode](https://leetcode.com/problems/clone-graph/)
     - SQL
         - [Big Countries](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/big_countries.sql) from [LeetCode](https://leetcode.com/problems/big-countries/)
