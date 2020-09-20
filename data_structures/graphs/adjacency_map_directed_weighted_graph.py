@@ -153,12 +153,12 @@ class DirectedGraph:
 
         return visited
 
-    def construct_path(self, backtracks, start, end):
+    def construct_path(self, predecessors, start, end):
         backtrack_path = [end, ]
-        last_step = backtracks.get(end)
+        last_step = predecessors.get(end)
         while last_step:
             backtrack_path.append(last_step)
-            last_step = backtracks[last_step]
+            last_step = predecessors[last_step]
 
         if backtrack_path[-1] != start:
             raise ValueError(f'No path from {start} to {end}')
@@ -172,10 +172,10 @@ class DirectedGraph:
         """
         # First, we overestimate the distance from start to all other vertices.
         distances = {}  # The distance from start to a vertex v.
-        backtracks = {}  # {destination: source}
+        predecessors = {}  # {destination: source}
         for v in self.vertex_data.keys():
             distances[v] = float('inf')
-            backtracks[v] = None
+            predecessors[v] = None
         distances[start] = 0
 
         # BFS with distance relaxation.
@@ -189,10 +189,10 @@ class DirectedGraph:
                     distance_to_des = distances[v] + weight
                     if distance_to_des < distances[des]:
                         distances[des] = distance_to_des
-                        backtracks[des] = v
+                        predecessors[des] = v
                         queue.append(des)
 
-        return backtracks, distances
+        return predecessors, distances
 
     # O(E * log V)
     def find_shortest_path_dijkstra(self, start):
@@ -203,10 +203,10 @@ class DirectedGraph:
         """
         # First, we overestimate the distance from start to all other vertices.
         distances = {}  # The distance from start to a vertex v.
-        backtracks = {}  # {destination: source}
+        predecessors = {}  # {destination: source}
         for v in self.vertex_data.keys():
             distances[v] = float('inf')
-            backtracks[v] = None
+            predecessors[v] = None
         distances[start] = 0
 
         # We maintain a priority queue to extract a vertex v which has the minimum distance.
@@ -225,10 +225,10 @@ class DirectedGraph:
                     # We find a shorter path to des,
                     # so distances of its dess should also be readjust.
                     distances[des] = distance_to_des
-                    backtracks[des] = src
+                    predecessors[des] = src
                     heapq.heappush(min_heap, (distances[des], des))
 
-        return backtracks, distances
+        return predecessors, distances
 
     # O(V * E)
     def find_shortest_path_bellman_ford(self, start):
@@ -238,10 +238,10 @@ class DirectedGraph:
         """
         # First, we overestimate the distance from start to all other vertices.
         distances = {}  # The distance from start to a vertex v.
-        backtracks = {}  # {destination: source}
+        predecessors = {}  # {destination: source}
         for v in self.vertex_data.keys():
             distances[v] = float('inf')
-            backtracks[v] = None
+            predecessors[v] = None
         distances[start] = 0
 
         # We have to do V * E times to readjust distances.
@@ -256,6 +256,6 @@ class DirectedGraph:
                     if i == vertex_count - 1:
                         raise ValueError('Found negative weight cycles')
                     distances[des] = distance_to_des
-                    backtracks[des] = src
+                    predecessors[des] = src
 
-        return backtracks, distances
+        return predecessors, distances
