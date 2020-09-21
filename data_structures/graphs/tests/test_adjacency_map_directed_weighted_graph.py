@@ -121,18 +121,43 @@ class TestCase(unittest.TestCase):
         for src, des, weight in edges:
             graph.add_edge(src, des, weight)
 
-        predecessors, distances = graph.find_shortest_paths_bfs('A')
+        previous, distances = graph.find_shortest_paths_bfs('A')
 
-        path = graph.construct_path(predecessors, 'A', 'E')
+        path = graph.construct_path(previous, 'A', 'E')
         self.assertEqual(path, ['A', 'B', 'E'])
 
-        path = graph.construct_path(predecessors, 'A', 'D')
+        path = graph.construct_path(previous, 'A', 'D')
         self.assertEqual(path, ['A', 'B', 'D'])
 
         with self.assertRaises(ValueError):
-            graph.construct_path(predecessors, 'A', 'G')
+            graph.construct_path(previous, 'A', 'G')
 
     def test_find_shortest_path_dijkstra(self):
+        graph = DirectedGraph()
+        edges = [  # https://www.youtube.com/watch?v=pVfj6mxhdMw
+            ('A', 'B', 6),
+            ('A', 'D', 1),
+            ('B', 'A', 6),
+            ('B', 'C', 5),
+            ('B', 'D', 2),
+            ('B', 'E', 2),
+            ('C', 'B', 5),
+            ('C', 'E', 5),
+            ('D', 'A', 1),
+            ('D', 'B', 2),
+            ('D', 'E', 1),
+            ('E', 'B', 2),
+            ('E', 'C', 5),
+            ('E', 'D', 1),
+        ]
+        for src, des, weight in edges:
+            graph.add_edge(src, des, weight)
+
+        previous, distances = graph.find_shortest_path_dijkstra('A')
+
+        path = graph.construct_path(previous, 'A', 'C')
+        self.assertEqual(path, ['A', 'D', 'E', 'C'])
+
         graph = DirectedGraph()
         edges = [  # https://www.chegg.com/homework-help/questions-and-answers/8-4-14-10-2-figure-2-directed-graph-computing-shortest-path-3-dijkstra-s-algorithm-computi-q25960616#question-transcript
             ('A', 'B', 4),
@@ -155,20 +180,20 @@ class TestCase(unittest.TestCase):
         for src, des, weight in edges:
             graph.add_edge(src, des, weight)
 
-        predecessors, distances = graph.find_shortest_path_dijkstra('A')
+        previous, distances = graph.find_shortest_path_dijkstra('A')
 
-        path = graph.construct_path(predecessors, 'A', 'I')
+        path = graph.construct_path(previous, 'A', 'I')
         self.assertEqual(path, ['A', 'B', 'D', 'E', 'H', 'I'])
 
-        predecessors, distances = graph.find_shortest_path_dijkstra('E')
+        previous, distances = graph.find_shortest_path_dijkstra('E')
 
-        path = graph.construct_path(predecessors, 'E', 'C')
+        path = graph.construct_path(previous, 'E', 'C')
         self.assertEqual(path, ['E', 'H', 'F', 'C'])
 
-        predecessors, distances = graph.find_shortest_path_dijkstra('I')
+        previous, distances = graph.find_shortest_path_dijkstra('I')
 
         with self.assertRaises(ValueError):
-            graph.construct_path(predecessors, 'I', 'A')
+            graph.construct_path(previous, 'I', 'A')
 
     def test_find_shortest_path_bellman_ford(self):
         graph = DirectedGraph()
@@ -186,27 +211,27 @@ class TestCase(unittest.TestCase):
         for src, des, weight in edges:
             graph.add_edge(src, des, weight)
 
-        predecessors, distances = graph.find_shortest_path_bellman_ford('A')
+        previous, distances = graph.find_shortest_path_bellman_ford('A')
 
-        path = graph.construct_path(predecessors, 'A', 'A')
+        path = graph.construct_path(previous, 'A', 'A')
         self.assertEqual(path, ['A', ])
 
-        path = graph.construct_path(predecessors, 'A', 'B')
+        path = graph.construct_path(previous, 'A', 'B')
         self.assertEqual(path, ['A', 'C', 'B'])
 
-        path = graph.construct_path(predecessors, 'A', 'C')
+        path = graph.construct_path(previous, 'A', 'C')
         self.assertEqual(path, ['A', 'C'])
 
-        path = graph.construct_path(predecessors, 'A', 'D')
+        path = graph.construct_path(previous, 'A', 'D')
         self.assertEqual(path, ['A', 'C', 'E', 'D'])
 
-        path = graph.construct_path(predecessors, 'A', 'E')
+        path = graph.construct_path(previous, 'A', 'E')
         self.assertEqual(path, ['A', 'C', 'E'])
 
-        predecessors, distances = graph.find_shortest_path_bellman_ford('D')
+        previous, distances = graph.find_shortest_path_bellman_ford('D')
 
         with self.assertRaises(ValueError):
-            graph.construct_path(predecessors, 'D', 'E')
+            graph.construct_path(previous, 'D', 'E')
 
         graph = DirectedGraph()
         edges = [  # https://www.programiz.com/dsa/bellman-ford-algorithm
@@ -222,7 +247,7 @@ class TestCase(unittest.TestCase):
 
         # There is a negative weight cycle among {B, C, D}.
         with self.assertRaises(ValueError):
-            predecessors, distances = graph.find_shortest_path_bellman_ford('A')
+            previous, distances = graph.find_shortest_path_bellman_ford('A')
 
 
 if __name__ == '__main__':

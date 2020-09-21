@@ -103,23 +103,23 @@ class DirectedGraph:
         https://en.wikipedia.org/wiki/Breadth-first_search
         https://cp-algorithms.com/graph/breadth-first-search.html#toc-tgt-2
         """
-        visited = set()
         current_level = [start, ]
+        visited = set([start, ])
         while current_level:
             next_level = []
             for v in current_level:
-                # NOTE: A vertex is visited means we can access its adjacent vertices (neighbors).
-                visited.add(v)
                 for des in self.outgoing_edges[v].keys():
+                    # NOTE: A vertex is visited means we can access its neighbors.
                     if des not in visited:
+                        visited.add(des)
                         next_level.append(des)
             current_level = next_level
 
         return visited
 
     def breadth_first_search_queue(self, start):  # pragma: no cover
-        visited = set([start, ])
         queue = deque([start, ])
+        visited = set([start, ])
         while queue:
             v = queue.popleft()
             for des in self.outgoing_edges[v].keys():
@@ -142,8 +142,8 @@ class DirectedGraph:
         return visited
 
     def depth_first_search_iterate(self, start):  # pragma: no cover
-        visited = set([start, ])
         stack = [start, ]
+        visited = set([start, ])
         while stack:
             v = stack.pop()
             for des in self.outgoing_edges[v].keys():
@@ -153,12 +153,12 @@ class DirectedGraph:
 
         return visited
 
-    def construct_path(self, predecessors, start, end):
+    def construct_path(self, previous, start, end):
         backtrack_path = [end, ]
-        last_step = predecessors.get(end)
+        last_step = previous.get(end)
         while last_step:
             backtrack_path.append(last_step)
-            last_step = predecessors[last_step]
+            last_step = previous[last_step]
 
         if backtrack_path[-1] != start:
             raise ValueError(f'No path from {start} to {end}')
@@ -168,31 +168,36 @@ class DirectedGraph:
     # O(V + E)
     def find_shortest_paths_bfs(self, start):
         """
-        This algorithm can only work with a unweighted graph.
+        This algorithm can only work with a unweighted graph or a graph has the same weights.
         """
         # First, we overestimate the distance from start to all other vertices.
         distances = {}  # The distance from start to a vertex v.
-        predecessors = {}  # {destination: source}
+        previous = {}  # {destination: source}
         for v in self.vertex_data.keys():
             distances[v] = float('inf')
-            predecessors[v] = None
+            previous[v] = None
         distances[start] = 0
 
         # BFS with distance relaxation.
-        visited = set([start, ])
         queue = deque([start, ])
+        visited = set([start, ])
         while queue:
             v = queue.popleft()
+            # To calculate distances of the current vertex v's neighbors.
             for des, weight in self.outgoing_edges[v].items():
+                # Only unvisited vertices should be calculated
+                # since we already calculate visited vertices' neighbors.
                 if des not in visited:
                     visited.add(des)
                     distance_to_des = distances[v] + weight
                     if distance_to_des < distances[des]:
+                        # We find a shorter path to des,
+                        # so its unvisited neighbors' distances should be readjust.
                         distances[des] = distance_to_des
-                        predecessors[des] = v
+                        previous[des] = v
                         queue.append(des)
 
-        return predecessors, distances
+        return previous, distances
 
     # O(E * log V)
     def find_shortest_path_dijkstra(self, start):
@@ -201,34 +206,33 @@ class DirectedGraph:
         https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
         https://leetcode.com/problems/network-delay-time/discuss/329376/efficient-oe-log-v-python-dijkstra-min-heap-with-explanation
         """
-        # First, we overestimate the distance from start to all other vertices.
-        distances = {}  # The distance from start to a vertex v.
-        predecessors = {}  # {destination: source}
+        distances = {}
+        previous = {}
         for v in self.vertex_data.keys():
             distances[v] = float('inf')
-            predecessors[v] = None
+            previous[v] = None
         distances[start] = 0
 
-        # We maintain a priority queue to extract a vertex v which has the minimum distance.
-        visited = set()
+        # We begin with a vertex v which has the minimun distance every round,
+        # and calculate its neighbors' distances. The distance of a visited vertex is already the minimum.
+        # To achieve that, we maintain a priority queue using a min heap.
         min_heap = [(0, start), ]  # (distance, vertex)
+        visited = set([start, ])
         while min_heap:
-            src_distance, src = heapq.heappop(min_heap)
-            # A vertex could be added to the priority queue multiple times,
-            # so we need to track visited vertices.
-            visited.add(src)
-            for des, weight in self.outgoing_edges[src].items():
-                if des in visited:
-                    continue
-                distance_to_des = src_distance + weight
-                if distance_to_des < distances[des]:
-                    # We find a shorter path to des,
-                    # so distances of its dess should also be readjust.
-                    distances[des] = distance_to_des
-                    predecessors[des] = src
-                    heapq.heappush(min_heap, (distances[des], des))
+            v_distance, v = heapq.heappop(min_heap)
+            # There might be duplicate vertices with the same index but different distances.
+            if v_distance > distances[v]:
+                continue
+            for des, weight in self.outgoing_edges[v].items():
+                if des not in visited:
+                    visited.add(des)
+                    distance_to_des = v_distance + weight
+                    if distance_to_des < distances[des]:
+                        distances[des] = distance_to_des
+                        previous[des] = v
+                        heapq.heappush(min_heap, (distances[des], des))
 
-        return predecessors, distances
+        return previous, distances
 
     # O(V * E)
     def find_shortest_path_bellman_ford(self, start):
@@ -236,12 +240,11 @@ class DirectedGraph:
         This algorithm can only work with a graph which has no negative weight cycles.
         https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
         """
-        # First, we overestimate the distance from start to all other vertices.
-        distances = {}  # The distance from start to a vertex v.
-        predecessors = {}  # {destination: source}
+        distances = {}
+        previous = {}
         for v in self.vertex_data.keys():
             distances[v] = float('inf')
-            predecessors[v] = None
+            previous[v] = None
         distances[start] = 0
 
         # We have to do V * E times to readjust distances.
@@ -256,6 +259,6 @@ class DirectedGraph:
                     if i == vertex_count - 1:
                         raise ValueError('Found negative weight cycles')
                     distances[des] = distance_to_des
-                    predecessors[des] = src
+                    previous[des] = src
 
-        return predecessors, distances
+        return previous, distances
