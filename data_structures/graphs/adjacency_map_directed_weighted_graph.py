@@ -104,7 +104,7 @@ class DirectedGraph:
         https://cp-algorithms.com/graph/breadth-first-search.html#toc-tgt-2
         """
         current_level = [start, ]
-        visited = set([start, ])
+        visited = {start, }
         while current_level:
             next_level = []
             for v in current_level:
@@ -119,7 +119,7 @@ class DirectedGraph:
 
     def breadth_first_search_queue(self, start):  # pragma: no cover
         queue = deque([start, ])
-        visited = set([start, ])
+        visited = {start, }
         while queue:
             v = queue.popleft()
             for des in self.outgoing_edges[v].keys():
@@ -143,7 +143,7 @@ class DirectedGraph:
 
     def depth_first_search_iterate(self, start):  # pragma: no cover
         stack = [start, ]
-        visited = set([start, ])
+        visited = {start, }
         while stack:
             v = stack.pop()
             for des in self.outgoing_edges[v].keys():
@@ -180,7 +180,7 @@ class DirectedGraph:
 
         # BFS with distance relaxation.
         queue = deque([start, ])
-        visited = set([start, ])
+        visited = {start, }
         while queue:
             v = queue.popleft()
             # To calculate distances of the current vertex v's neighbors.
@@ -217,7 +217,7 @@ class DirectedGraph:
         # and calculate its neighbors' distances. The distance of a visited vertex is already the minimum.
         # To achieve that, we maintain a priority queue using a min heap.
         min_heap = [(0, start), ]  # (distance, vertex)
-        visited = set([start, ])
+        visited = {start, }
         while min_heap:
             v_distance, v = heapq.heappop(min_heap)
             # There might be duplicate vertices with the same index but different distances.
