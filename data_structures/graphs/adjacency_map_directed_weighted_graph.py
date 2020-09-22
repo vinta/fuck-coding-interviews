@@ -153,6 +153,36 @@ class DirectedGraph:
 
         return visited
 
+    def has_cycles_dfs(self):
+        """
+        https://codereview.stackexchange.com/questions/86021/check-if-a-directed-graph-contains-a-cycle
+        """
+        global_visited = set()
+
+        def dfs(start, visited):
+            if start in global_visited:
+                return False
+
+            global_visited.add(start)
+            visited.add(start)
+            for des in self.outgoing_edges[start].keys():
+                # If there is any visited vertex in the recursion call stack,
+                # the graph has cycles.
+                if des in visited:
+                    return True
+                else:
+                    if dfs(des, visited):
+                        return True
+            visited.remove(start)
+            return False
+
+        for v in self.vertex_data.keys():
+            visited = {v, }
+            if dfs(v, visited):
+                return True
+
+        return False
+
     def construct_path(self, previous, start, end):
         backtrack_path = [end, ]
         last_step = previous.get(end)

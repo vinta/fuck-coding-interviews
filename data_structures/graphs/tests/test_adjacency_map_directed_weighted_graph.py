@@ -106,6 +106,28 @@ class TestCase(unittest.TestCase):
         visited = self.graph.breadth_first_search(v)
         self.assertCountEqual(visited, ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'])
 
+    def test_has_cycles_dfs(self):
+        self.assertEqual(self.graph.has_cycles_dfs(), True)
+
+        graph = DirectedGraph()
+        edges = [
+            ('A', 'A', 1),
+        ]
+        for src, des, weight in edges:
+            graph.add_edge(src, des, weight)
+
+        self.assertEqual(graph.has_cycles_dfs(), True)
+
+        graph = DirectedGraph()
+        edges = [
+            ('A', 'B', 1),
+            ('B', 'C', 1),
+        ]
+        for src, des, weight in edges:
+            graph.add_edge(src, des, weight)
+
+        self.assertEqual(graph.has_cycles_dfs(), False)
+
     def test_find_shortest_paths_bfs(self):
         graph = DirectedGraph()
         edges = [  # https://cs.stackexchange.com/questions/18138/dijkstra-algorithm-vs-breadth-first-search-for-shortest-path-in-graph
