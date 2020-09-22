@@ -146,6 +146,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
     - Graph
         - [BFS: Shortest Reach in a Graph](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/ctci_bfs_shortest_reach.py) from [HackerRank](https://www.hackerrank.com/challenges/ctci-bfs-shortest-reach/problem)
         - [Clone Graph](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/clone_graph.py) from [LeetCode](https://leetcode.com/problems/clone-graph/)
+        - [Course Schedule](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/course_schedule.py) from [LeetCode](https://leetcode.com/problems/course-schedule/)
     - SQL
         - [Big Countries](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/big_countries.sql) from [LeetCode](https://leetcode.com/problems/big-countries/)
         - [Nth Highest Salary](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/nth_highest_salary.sql) from [LeetCode](https://leetcode.com/problems/nth-highest-salary/)
