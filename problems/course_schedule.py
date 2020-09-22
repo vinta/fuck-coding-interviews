@@ -16,7 +16,7 @@ class Graph:
         self.vertices.add(u)
         self.vertices.add(v)
 
-    def can_finish(self):
+    def has_cycles(self):
         global_visited = set()
 
         def has_cycles_dfs(v, visited):
@@ -38,9 +38,8 @@ class Graph:
         for v in self.vertices:
             visited = {v, }
             if has_cycles_dfs(v, visited):
-                return False
-
-        return True
+                return True
+        return False
 
 
 class Solution:
@@ -51,4 +50,4 @@ class Solution:
         for u, v in prerequisites:
             graph.add_edge(v, u)
 
-        return graph.can_finish()
+        return not graph.has_cycles()

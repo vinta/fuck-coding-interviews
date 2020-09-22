@@ -159,7 +159,7 @@ class DirectedGraph:
         """
         global_visited = set()
 
-        def dfs(start, visited):
+        def has_cycles(start, visited):
             if start in global_visited:
                 return False
 
@@ -171,16 +171,15 @@ class DirectedGraph:
                 if des in visited:
                     return True
                 else:
-                    if dfs(des, visited):
+                    if has_cycles(des, visited):
                         return True
             visited.remove(start)
             return False
 
         for v in self.vertex_data.keys():
             visited = {v, }
-            if dfs(v, visited):
+            if has_cycles(v, visited):
                 return True
-
         return False
 
     def construct_path(self, previous, start, end):
