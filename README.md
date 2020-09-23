@@ -87,6 +87,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Merge Intervals](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/merge_intervals.py) from [LeetCode](https://leetcode.com/problems/merge-intervals/)
         - [Product of Array Except Self](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/product_of_array_except_self.py) from [LeetCode](https://leetcode.com/problems/product-of-array-except-self/)
         - [Search in Rotated Sorted Array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/search_in_rotated_sorted_array.py) from [LeetCode](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+        - [Shuffle the Array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/shuffle_the_array.py) from [LeetCode](https://leetcode.com/problems/shuffle_the_array/)
         - [Subsets](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/subsets.py) from [LeetCode](https://leetcode.com/problems/subsets/)
     - Linked List
         - [Add Two Numbers](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/add_two_numbers.py) from [LeetCode](https://leetcode.com/problems/add-two-numbers/)
