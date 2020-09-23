@@ -4,7 +4,7 @@ import unittest
 from problems.mars_exploration import marsExploration
 
 
-class Test(unittest.TestCase):
+class TestCase(unittest.TestCase):
     def test(self):
         array = [
             {'message': 'SOSSPSSQSSOR', 'expected': 3},
