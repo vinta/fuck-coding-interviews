@@ -25,6 +25,9 @@ class DirectedGraph:
         #         'destination_vertex': edge_weight,
         #     },
         # }
+        # NOTE: Since we use defaultdict(dict) here,
+        # self.outgoing_edges['NON EXISTED KEY] returns an empty dict.
+        # So we don't need to catch KeyError.
         self.outgoing_edges = defaultdict(dict)
 
         # {
@@ -80,11 +83,8 @@ class DirectedGraph:
 
     def incident_edges(self, v, edge_type='outgoing'):
         if edge_type == 'outgoing':
-            try:
-                for destination, weight in self.outgoing_edges[v].items():
-                    yield (v, destination, weight)
-            except KeyError:
-                return []
+            for destination, weight in self.outgoing_edges[v].items():
+                yield (v, destination, weight)
         elif edge_type == 'incoming':
             for source, incident_vertices in self.outgoing_edges.items():
                 for destination, weight in incident_vertices.items():
