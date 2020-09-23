@@ -175,11 +175,9 @@ $ poetry install
 $ poetry run pytest --benchmark-skip
 ```
 
-And no, you shouldn't use `pipenv` anymore. Actually, the plain old `requirements.txt` with `virtualenv` is good enough in most of the situations.
-
 ## Bugs
 
-If you find any bug or poor implementation in this repo, please let me know by opening an issue or pull request. Me and my cats would appreciate your help since they provide some random strings which are used in two of test cases.
+If you find any bug or incorrect implementation in this repo, please let me know by opening an issue or pull request. Me and my cats would appreciate your help since they provide some random strings which are used in two of test cases.
 
 ## Resources
 
