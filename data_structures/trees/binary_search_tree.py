@@ -38,6 +38,10 @@ class BinarySearchTree(BaseTree):
         return self.search(value)
 
     def is_valid(self):
+        """
+        Also see:
+        https://github.com/vinta/fuck-coding-interviews/blob/master/problems/invert_binary_tree.py
+        """
         # The inorder traversal of a binary search tree results in an ascending sorted array.
         def inorder_traverse(node):
             if not node:
