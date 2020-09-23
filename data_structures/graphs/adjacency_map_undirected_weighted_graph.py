@@ -52,9 +52,6 @@ class UndirectedGraph(DirectedGraph):
         return deduplicate_edges
 
     def incident_edges(self, v, edge_type='outgoing'):
-        try:
-            for destination, weight in self.outgoing_edges[v].items():
-                pair = sorted([v, destination])
-                yield (pair[0], pair[1], weight)
-        except KeyError:
-            return []
+        for destination, weight in self.outgoing_edges[v].items():
+            pair = sorted([v, destination])
+            yield (pair[0], pair[1], weight)

@@ -6,7 +6,7 @@ from collections import Counter
 from typing import List
 
 
-class TreeNode:
+class TreeNode:  # pragma: no cover
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left

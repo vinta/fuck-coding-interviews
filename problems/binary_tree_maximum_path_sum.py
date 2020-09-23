@@ -4,7 +4,7 @@ https://leetcode.com/problems/binary-tree-maximum-path-sum/
 """
 
 
-class TreeNode:
+class TreeNode:  # pragma: no cover
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
