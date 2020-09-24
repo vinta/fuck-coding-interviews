@@ -124,7 +124,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Valid Parentheses](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/valid_parentheses.py) on [LeetCode](https://leetcode.com/problems/valid-parentheses/)
     - Binary Tree
         - [Balanced Binary Tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/balanced_binary_tree.py) on [LeetCode](https://leetcode.com/problems/balanced-binary-tree/)
-        - [Binary Search Tree Iterator](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/binary-search-tree-iterator.py) on [LeetCode](https://leetcode.com/problems/binary-search-tree-iterator/)
+        - [Binary Search Tree Iterator](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/binary_search_tree_iterator.py) on [LeetCode](https://leetcode.com/problems/binary-search-tree-iterator/)
         - [Binary Tree Inorder Traversal](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/binary_tree_inorder_traversal.py) on [LeetCode](https://leetcode.com/problems/binary-tree-inorder-traversal/)
         - [Binary Tree Level Order Traversal](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/binary_tree_level_order_traversal.py) on [LeetCode](https://leetcode.com/problems/binary-tree-level-order-traversal/)
         - [Binary Tree Maximum Path Sum](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/binary_tree_maximum_path_sum.py) on [LeetCode](https://leetcode.com/problems/binary-tree-maximum-path-sum/)
