@@ -17,10 +17,12 @@ class Solution:
 class Solution2:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         # there might be duplicates in `nums`
-        index_dict = {}
-        for index, num in enumerate(nums):
-            complement = target - num
-            if complement in index_dict:
-                # return [index, index_dict[complement]]
-                return [index_dict[complement], index]
-            index_dict[num] = index
+        mapping = {
+            # num: index
+        }
+        for i, num in enumerate(nums):
+            another = target - num
+            another_i = mapping.get(another)
+            if another_i is not None:
+                return [another_i, i]
+            mapping[num] = i
