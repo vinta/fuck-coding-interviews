@@ -89,6 +89,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Search in Rotated Sorted Array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/search_in_rotated_sorted_array.py) on [LeetCode](https://leetcode.com/problems/search-in-rotated-sorted-array/)
         - [Shuffle the Array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/shuffle_the_array.py) on [LeetCode](https://leetcode.com/problems/shuffle-the-array/)
         - [Subsets](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/subsets.py) on [LeetCode](https://leetcode.com/problems/subsets/)
+        - [Two Sum II - Input array is sorted](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/two_sum_ii_input_array_is_sorted.py) on [LeetCode](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
     - Linked List
         - [Add Two Numbers](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/add_two_numbers.py) on [LeetCode](https://leetcode.com/problems/add-two-numbers/)
         - [Linked List Cycle](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/linked_list_cycle.py) on [LeetCode](https://leetcode.com/problems/linked-list-cycle/)
@@ -105,8 +106,8 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Reverse Integer](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/reverse_integer.py) on [LeetCode](https://leetcode.com/problems/reverse-integer/)
         - [Valid Anagram](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/valid_anagram.py) on [LeetCode](https://leetcode.com/problems/valid-anagram/)
     - HashMap
-        - [2 Sum](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/two_sum.py) on [LeetCode](https://leetcode.com/problems/two-sum/)
-        - [3 Sum](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/three_sum.py) on [LeetCode](https://leetcode.com/problems/3sum/)
+        - [Two Sum](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/two_sum.py) on [LeetCode](https://leetcode.com/problems/two-sum/)
+        - [3Sum](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/three_sum.py) on [LeetCode](https://leetcode.com/problems/3sum/)
     - Set
         - [Contains Duplicate](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/contains_duplicate.py) on [LeetCode](https://leetcode.com/problems/contains-duplicate/)
     - Multiset
