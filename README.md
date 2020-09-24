@@ -168,13 +168,11 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
 ## Tests
 
 ```bash
-# Install packages
-$ pip install -U pip poetry
 $ poetry install
-
-# Run tests
 $ poetry run pytest --benchmark-skip
 ```
+
+If you don't use [poetry](https://python-poetry.org/), there is also a classic `requirements-dev.txt` file.
 
 ## Bugs
 
