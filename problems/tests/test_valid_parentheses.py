@@ -9,32 +9,20 @@ class TestCase(unittest.TestCase):
         self.solution = Solution()
 
     def test(self):
-        s = '()[]{}'
-        self.assertEqual(self.solution.isValid(s), True)
-
-    def test2(self):
-        s = '{[]}'
-        self.assertEqual(self.solution.isValid(s), True)
-
-    def test3(self):
-        s = '([)]'
-        self.assertEqual(self.solution.isValid(s), False)
-
-    def test4(self):
-        s = '){'
-        self.assertEqual(self.solution.isValid(s), False)
-
-    def test5(self):
-        s = '['
-        self.assertEqual(self.solution.isValid(s), False)
-
-    def test6(self):
-        s = '}'
-        self.assertEqual(self.solution.isValid(s), False)
-
-    def test7(self):
-        s = ')(]'
-        self.assertEqual(self.solution.isValid(s), False)
+        test_data = [
+            {'s': '()[]{}', 'expected': True},
+            {'s': '{[]}', 'expected': True},
+            {'s': '([)]', 'expected': False},
+            {'s': ')(]', 'expected': False},
+            {'s': '){', 'expected': False},
+            {'s': '[', 'expected': False},
+            {'s': '}', 'expected': False},
+        ]
+        for data in test_data:
+            s = data['s']
+            expected = data['expected']
+            with self.subTest(s=s, expected=expected):
+                self.assertEqual(self.solution.isValid(s), expected)
 
 
 if __name__ == '__main__':

@@ -11,14 +11,16 @@ class TestCase(unittest.TestCase):
         self.solution = Solution()
 
     def test(self):
-        s = 'anagram'
-        t = 'nagaram'
-        self.assertEqual(self.solution.isAnagram(s, t), True)
-
-    def test2(self):
-        s = 'abc'
-        t = 'ab'
-        self.assertEqual(self.solution.isAnagram(s, t), False)
+        test_data = [
+            {'s': 'anagram', 't': 'nagaram', 'expected': True},
+            {'s': 'abc', 't': 'ab', 'expected': False},
+        ]
+        for data in test_data:
+            s = data['s']
+            t = data['t']
+            expected = data['expected']
+            with self.subTest(s=s, t=t, expected=expected):
+                self.assertEqual(self.solution.isAnagram(s, t), expected)
 
 
 class TestCase2(unittest.TestCase):
@@ -26,9 +28,16 @@ class TestCase2(unittest.TestCase):
         self.solution = Solution2()
 
     def test(self):
-        s = 'anagram'
-        t = 'nagaram'
-        self.assertEqual(self.solution.isAnagram(s, t), True)
+        test_data = [
+            {'s': 'anagram', 't': 'nagaram', 'expected': True},
+            {'s': 'abc', 't': 'ab', 'expected': False},
+        ]
+        for data in test_data:
+            s = data['s']
+            t = data['t']
+            expected = data['expected']
+            with self.subTest(s=s, t=t, expected=expected):
+                self.assertEqual(self.solution.isAnagram(s, t), expected)
 
 
 class TestCase3(unittest.TestCase):
@@ -36,14 +45,16 @@ class TestCase3(unittest.TestCase):
         self.solution = Solution3()
 
     def test(self):
-        s = 'anagram'
-        t = 'nagaram'
-        self.assertEqual(self.solution.isAnagram(s, t), True)
-
-    def test2(self):
-        s = 'abc'
-        t = 'ab'
-        self.assertEqual(self.solution.isAnagram(s, t), False)
+        test_data = [
+            {'s': 'anagram', 't': 'nagaram', 'expected': True},
+            {'s': 'abc', 't': 'ab', 'expected': False},
+        ]
+        for data in test_data:
+            s = data['s']
+            t = data['t']
+            expected = data['expected']
+            with self.subTest(s=s, t=t, expected=expected):
+                self.assertEqual(self.solution.isAnagram(s, t), expected)
 
 
 if __name__ == '__main__':
