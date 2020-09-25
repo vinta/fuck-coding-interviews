@@ -104,6 +104,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Pangrams](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/pangrams.py) on [HackerRank](https://www.hackerrank.com/challenges/pangrams/problem)
         - [Repeated String](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/repeated_string.py) on [HackerRank](https://www.hackerrank.com/challenges/repeated-string/problem)
         - [Reverse Integer](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/reverse_integer.py) on [LeetCode](https://leetcode.com/problems/reverse-integer/)
+        - [Reverse String](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/reverse_string.py) on [LeetCode](https://leetcode.com/problems/reverse-string/)
         - [Valid Anagram](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/valid_anagram.py) on [LeetCode](https://leetcode.com/problems/valid-anagram/)
         - [Valid Palindrome](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/valid_palindrome.py) on [LeetCode](https://leetcode.com/problems/valid-palindrome/)
     - HashMap
