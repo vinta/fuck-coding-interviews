@@ -7,9 +7,14 @@ https://www.hackerrank.com/challenges/simple-text-editor/problem
 class SimpleTextEditor:
     def __init__(self):
         self.s = ''
-        self.s_history = []  # It works as a stack for storing the content of s.
+
+        # It works as a stack for storing full copies of previous s.
+        # However, it might take too much memory resource if s is huge.
+        self.s_history = []
 
     def add_history(self):
+        # TODO: Other implementations:
+        # https://stackoverflow.com/questions/1915907/best-practice-for-undo-redo-implementation
         self.s_history.append(self.s)
 
     # 1: Append string w to the end of s.
@@ -21,7 +26,7 @@ class SimpleTextEditor:
         self.s = self.s[:len(self.s) - k]
 
     # 3: Print the k-th character of s.
-    def my_print(self, k):
+    def print_(self, k):
         print(self.s[k - 1])
 
     # 4: Undo the last (not previously undone) operation of type 1 or 2,
@@ -50,6 +55,6 @@ while True:
         editor.delete(k)
     elif operation == '3':
         k = int(line[1])
-        editor.my_print(k)
+        editor.print_(k)
     elif operation == '4':
         editor.undo()
