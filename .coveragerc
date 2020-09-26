@@ -8,6 +8,7 @@ omit =
     problems/ctci_bfs_shortest_reach.py
     problems/linked_list_cycle.py
     problems/maximum_element.py
+    problems/simple_text_editor.py
     problems/tree_height_of_a_binary_tree.py
     problems/tree_top_view.py
 

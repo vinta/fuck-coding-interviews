@@ -124,6 +124,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
     - Stack
         - [Maximum Element](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_element.py) on [HackerRank](https://www.hackerrank.com/challenges/maximum-element/problem)
         - [Min Stack](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/min_stack.py) on [LeetCode](https://leetcode.com/problems/min-stack/)
+        - [Simple Text Editor](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/simple_text_editor.py) on [HackerRank](https://www.hackerrank.com/challenges/simple-text-editor/problem)
         - [Valid Parentheses](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/valid_parentheses.py) on [LeetCode](https://leetcode.com/problems/valid-parentheses/)
     - Binary Tree
         - [Balanced Binary Tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/balanced_binary_tree.py) on [LeetCode](https://leetcode.com/problems/balanced-binary-tree/)
