@@ -44,6 +44,6 @@ class Solution3:
         for i, num in enumerate(nums):
             another = target - num
             another_i = mapping.get(another)
-            if another_i is not None:  # NOTE: another_i might be 0, so we cannot use `if another_i:`.
+            if another_i is not None:  # NOTE: The index of another might be 0, so we cannot use `if another_i:`.
                 return [another_i, i]
             mapping[num] = i
