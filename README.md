@@ -25,60 +25,60 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
 
 ## Contents
 
-- `algorithms/`
-    - `hashing/`
+- Algorithms
+    - Hashing
         - [MAD (Multiply-Add-Divide) compression function](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/hashing/mad_compression.py)
-    - `math/`
+    - Math
         - [Factorial number](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/math/factorial.py)
         - [Fibonacci number](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/math/fibonacci.py)
-    - `searching/`
+    - Searching
         - [Linear Search](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/linear_search.py)
         - [Binary Search](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/binary_search.py)
         - [Binary Search the first appeared position](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/binary_search_left_bound.py)
-    - `sorting/`
+    - Sorting
         - [Bubble Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/bubble_sort.py)
         - [Heap Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/heap_sort.py)
         - [Insertion Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/insertion_sort.py)
         - [Quick Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/quick_sort.py)
         - [Selection Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/selection_sort.py)
-- `data_structures/`
-    - `arrays/`
+- Data Structures
+    - Array
         - [Circular Array](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/arrays/circular_array.py)
         - [Dynamic Array](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/arrays/dynamic_array.py)
-    - `b_trees/`
-        - [B-tree](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/b_trees/b_tree.py)
-        - [B+ Tree](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/b_trees/b_plus_tree.py)
-    - `graphs/`
-        - [Directed Weighted Graph implemented with Adjacency Map](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/graphs/adjacency_map_directed_weighted_graph.py)
-        - [Undirected Weighted Graph implemented with Adjacency Map](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/graphs/adjacency_map_undirected_weighted_graph.py)
-    - `hash_maps/`
-        - [Sorted TableMap](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/hash_maps/sorted_table_map.py)
-        - [Unsorted TableMap](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/hash_maps/unsorted_table_map.py)
-        - [HashMap implemented with Separate Chaining](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/hash_maps/chain_hash_map.py)
-        - [HashMap implemented with Linear Probing](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/hash_maps/linear_probing_hash_map.py)
-    - `heaps/`
-        - [Binary Heap implemented with Array](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/heaps/array_based_binary_heap.py)
-    - `linked_lists/`
+    - Linked List
         - [Singly Linked List](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/linked_lists/singly_linked_list.py)
         - [Doubly Linked List](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/linked_lists/doubly_linked_list.py)
-    - `queues/`
+    - Stack
+        - [Stack implemented with Array](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/stacks/array_based_stack.py)
+        - [Stack implemented with Linked List](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/stacks/linked_list_based_stack.py)
+    - Queue
         - [Queue implemented with Array](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/queues/array_based_queue.py)
         - [Queue implemented with Circular Array](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/queues/circular_array_based_queue.py)
         - [Queue implemented with Linked List](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/queues/linked_list_based_queue.py)
         - [Double-ended Queue implemented with Doubly Linked List](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/queues/doubly_linked_list_based_deque.py)
         - [Priority Queue implemented with Heap](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/queues/heap_based_priority_queue.py)
-    - `sets/`
+    - HashMap
+        - [Sorted TableMap](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/hash_maps/sorted_table_map.py)
+        - [Unsorted TableMap](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/hash_maps/unsorted_table_map.py)
+        - [HashMap implemented with Separate Chaining](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/hash_maps/chain_hash_map.py)
+        - [HashMap implemented with Linear Probing](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/hash_maps/linear_probing_hash_map.py)
+    - Set
         - [Set implemented with HashMap](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/sets/hash_map_based_set.py)
         - [Multiset implemented with HashMap](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/sets/hash_map_based_multiset.py)
-    - `stacks/`
-        - [Stack implemented with Array](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/stacks/array_based_stack.py)
-        - [Stack implemented with Linked List](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/stacks/linked_list_based_stack.py)
-    - `trees/`
+    - Tree
         - [Binary Search Tree](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/binary_search_tree.py)
         - [Binary Tree Serialization](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/binary_tree_serialization.py)
         - [Treap](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/treap.py)
         - [Trie](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/trie.py)
-- `problems/`
+    - Heap
+        - [Binary Heap implemented with Array](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/heaps/array_based_binary_heap.py)
+    - B-tree
+        - [B-tree](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/b_trees/b_tree.py)
+        - [B+ Tree](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/b_trees/b_plus_tree.py)
+    - Graph
+        - [Directed Weighted Graph implemented with Adjacency Map](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/graphs/adjacency_map_directed_weighted_graph.py)
+        - [Undirected Weighted Graph implemented with Adjacency Map](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/graphs/adjacency_map_undirected_weighted_graph.py)
+- Coding Problems
     - Array
         - [Array Sum](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/array_sum.py) on [HackerEarth](https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/array-sum-2-725368ac/description/)
         - [Find Minimum in Rotated Sorted Array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/find_minimum_in_rotated_sorted_array.py) on [LeetCode](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
@@ -97,6 +97,11 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Merge Two Sorted Lists](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/merge_two_sorted_lists.py) on [LeetCode](https://leetcode.com/problems/merge-two-sorted-lists/)
         - [Remove Nth Node From End of List](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/remove_nth_node_from_end_of_list.py) on [LeetCode](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
         - [Reverse Linked List](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/reverse_linked_list.py) on [LeetCode](https://leetcode.com/problems/reverse-linked-list/)
+    - Stack
+        - [Maximum Element](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_element.py) on [HackerRank](https://www.hackerrank.com/challenges/maximum-element/problem)
+        - [Min Stack](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/min_stack.py) on [LeetCode](https://leetcode.com/problems/min-stack/)
+        - [Simple Text Editor](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/simple_text_editor.py) on [HackerRank](https://www.hackerrank.com/challenges/simple-text-editor/problem)
+        - [Valid Parentheses](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/valid_parentheses.py) on [LeetCode](https://leetcode.com/problems/valid-parentheses/)
     - String
         - [CamelCase](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/camel_case.py) on [HackerRank](https://www.hackerrank.com/challenges/camelcase/problem)
         - [Group Anagrams](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/group_anagrams.py) on [LeetCode](https://leetcode.com/problems/group-anagrams/)
@@ -122,11 +127,6 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Merge k Sorted Lists](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/merge_k_sorted_lists.py) on [LeetCode](https://leetcode.com/problems/merge-k-sorted-lists/)
         - [Task Scheduler](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/task_scheduler.py) on [LeetCode](https://leetcode.com/problems/task-scheduler/)
         - [Third Maximum Number](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/third_maximum_number.py) on [LeetCode](https://leetcode.com/problems/third-maximum-number/)
-    - Stack
-        - [Maximum Element](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_element.py) on [HackerRank](https://www.hackerrank.com/challenges/maximum-element/problem)
-        - [Min Stack](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/min_stack.py) on [LeetCode](https://leetcode.com/problems/min-stack/)
-        - [Simple Text Editor](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/simple_text_editor.py) on [HackerRank](https://www.hackerrank.com/challenges/simple-text-editor/problem)
-        - [Valid Parentheses](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/valid_parentheses.py) on [LeetCode](https://leetcode.com/problems/valid-parentheses/)
     - Binary Tree
         - [Balanced Binary Tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/balanced_binary_tree.py) on [LeetCode](https://leetcode.com/problems/balanced-binary-tree/)
         - [Binary Search Tree Iterator](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/binary_search_tree_iterator.py) on [LeetCode](https://leetcode.com/problems/binary-search-tree-iterator/)
