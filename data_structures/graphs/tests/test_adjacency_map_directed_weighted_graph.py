@@ -151,10 +151,37 @@ class TestCase(unittest.TestCase):
         path = graph.construct_path(previous, 'A', 'D')
         self.assertEqual(path, ['A', 'B', 'D'])
 
+        # No such path.
         with self.assertRaises(ValueError):
             graph.construct_path(previous, 'A', 'G')
 
     def test_find_shortest_path_dijkstra(self):
+        graph = DirectedGraph()
+        edges = [  # https://cs.stackexchange.com/questions/18138/dijkstra-algorithm-vs-breadth-first-search-for-shortest-path-in-graph
+            ('A', 'B', 1),
+            ('B', 'C', 1),
+            ('B', 'D', 1),
+            ('B', 'E', 1),
+            ('C', 'E', 1),
+            ('D', 'E', 1),
+            ('E', 'F', 1),
+            ('G', 'D', 1),
+        ]
+        for src, des, weight in edges:
+            graph.add_edge(src, des, weight)
+
+        previous, distances = graph.find_shortest_path_dijkstra('A')
+
+        path = graph.construct_path(previous, 'A', 'E')
+        self.assertEqual(path, ['A', 'B', 'E'])
+
+        path = graph.construct_path(previous, 'A', 'D')
+        self.assertEqual(path, ['A', 'B', 'D'])
+
+        # No such path.
+        with self.assertRaises(ValueError):
+            graph.construct_path(previous, 'A', 'G')
+
         graph = DirectedGraph()
         edges = [  # https://www.youtube.com/watch?v=pVfj6mxhdMw
             ('A', 'B', 6),
@@ -214,10 +241,59 @@ class TestCase(unittest.TestCase):
 
         previous, distances = graph.find_shortest_path_dijkstra('I')
 
+        # No such path.
         with self.assertRaises(ValueError):
             graph.construct_path(previous, 'I', 'A')
 
+        graph = DirectedGraph()
+        edges = [  # https://www.bogotobogo.com/python/python_Prims_Spanning_Tree_Data_Structure.php
+            ('A', 'B', 7),
+            ('A', 'C', 9),
+            ('A', 'F', 14),
+            ('B', 'A', 7),
+            ('B', 'C', 10),
+            ('B', 'D', 15),
+            ('C', 'A', 9),
+            ('C', 'B', 10),
+            ('C', 'D', 11),
+            ('C', 'F', 2),
+            ('D', 'B', 15),
+            ('D', 'C', 11),
+            ('D', 'E', 6),
+            ('E', 'D', 6),
+            ('E', 'F', 9),
+            ('F', 'A', 14),
+            ('F', 'C', 2),
+            ('F', 'E', 9),
+        ]
+        for src, des, weight in edges:
+            graph.add_edge(src, des, weight)
+
+        previous, distances = graph.find_shortest_path_dijkstra('A')
+
+        path = graph.construct_path(previous, 'A', 'E')
+        self.assertEqual(path, ['A', 'C', 'F', 'E'])
+
+        path = graph.construct_path(previous, 'A', 'D')
+        self.assertEqual(path, ['A', 'C', 'D'])
+
     def test_find_shortest_path_bellman_ford(self):
+        graph = DirectedGraph()
+        edges = [  # https://www.programiz.com/dsa/bellman-ford-algorithm
+            ('A', 'B', 2),
+            ('B', 'C', 2),
+            ('B', 'D', 1),
+            ('C', 'D', -4),
+            ('D', 'B', 1),
+            ('D', 'E', 3),
+        ]
+        for src, des, weight in edges:
+            graph.add_edge(src, des, weight)
+
+        # There is a negative weight cycle among {B, C, D}.
+        with self.assertRaises(ValueError):
+            previous, distances = graph.find_shortest_path_bellman_ford('A')
+
         graph = DirectedGraph()
         edges = [  # https://www.programiz.com/dsa/bellman-ford-algorithm
             ('A', 'B', 4),
@@ -252,24 +328,130 @@ class TestCase(unittest.TestCase):
 
         previous, distances = graph.find_shortest_path_bellman_ford('D')
 
+        # No such path.
         with self.assertRaises(ValueError):
             graph.construct_path(previous, 'D', 'E')
 
         graph = DirectedGraph()
-        edges = [  # https://www.programiz.com/dsa/bellman-ford-algorithm
-            ('A', 'B', 2),
-            ('B', 'C', 2),
+        edges = [  # https://cs.stackexchange.com/questions/18138/dijkstra-algorithm-vs-breadth-first-search-for-shortest-path-in-graph
+            ('A', 'B', 1),
+            ('B', 'C', 1),
             ('B', 'D', 1),
-            ('C', 'D', -4),
-            ('D', 'B', 1),
-            ('D', 'E', 3),
+            ('B', 'E', 1),
+            ('C', 'E', 1),
+            ('D', 'E', 1),
+            ('E', 'F', 1),
+            ('G', 'D', 1),
         ]
         for src, des, weight in edges:
             graph.add_edge(src, des, weight)
 
-        # There is a negative weight cycle among {B, C, D}.
+        previous, distances = graph.find_shortest_path_bellman_ford('A')
+
+        path = graph.construct_path(previous, 'A', 'E')
+        self.assertEqual(path, ['A', 'B', 'E'])
+
+        path = graph.construct_path(previous, 'A', 'D')
+        self.assertEqual(path, ['A', 'B', 'D'])
+
+        # No such path.
         with self.assertRaises(ValueError):
-            previous, distances = graph.find_shortest_path_bellman_ford('A')
+            graph.construct_path(previous, 'A', 'G')
+
+        graph = DirectedGraph()
+        edges = [  # https://www.youtube.com/watch?v=pVfj6mxhdMw
+            ('A', 'B', 6),
+            ('A', 'D', 1),
+            ('B', 'A', 6),
+            ('B', 'C', 5),
+            ('B', 'D', 2),
+            ('B', 'E', 2),
+            ('C', 'B', 5),
+            ('C', 'E', 5),
+            ('D', 'A', 1),
+            ('D', 'B', 2),
+            ('D', 'E', 1),
+            ('E', 'B', 2),
+            ('E', 'C', 5),
+            ('E', 'D', 1),
+        ]
+        for src, des, weight in edges:
+            graph.add_edge(src, des, weight)
+
+        previous, distances = graph.find_shortest_path_bellman_ford('A')
+
+        path = graph.construct_path(previous, 'A', 'C')
+        self.assertEqual(path, ['A', 'D', 'E', 'C'])
+
+        graph = DirectedGraph()
+        edges = [  # https://www.chegg.com/homework-help/questions-and-answers/8-4-14-10-2-figure-2-directed-graph-computing-shortest-path-3-dijkstra-s-algorithm-computi-q25960616#question-transcript
+            ('A', 'B', 4),
+            ('B', 'C', 11),
+            ('B', 'D', 9),
+            ('C', 'A', 8),
+            ('D', 'C', 7),
+            ('D', 'E', 2),
+            ('D', 'F', 6),
+            ('E', 'B', 8),
+            ('E', 'G', 7),
+            ('E', 'H', 4),
+            ('F', 'C', 1),
+            ('F', 'E', 5),
+            ('G', 'H', 14),
+            ('G', 'I', 9),
+            ('H', 'F', 2),
+            ('H', 'I', 10),
+        ]
+        for src, des, weight in edges:
+            graph.add_edge(src, des, weight)
+
+        previous, distances = graph.find_shortest_path_bellman_ford('A')
+
+        path = graph.construct_path(previous, 'A', 'I')
+        self.assertEqual(path, ['A', 'B', 'D', 'E', 'H', 'I'])
+
+        previous, distances = graph.find_shortest_path_bellman_ford('E')
+
+        path = graph.construct_path(previous, 'E', 'C')
+        self.assertEqual(path, ['E', 'H', 'F', 'C'])
+
+        previous, distances = graph.find_shortest_path_bellman_ford('I')
+
+        # No such path.
+        with self.assertRaises(ValueError):
+            graph.construct_path(previous, 'I', 'A')
+
+        graph = DirectedGraph()
+        edges = [  # https://www.bogotobogo.com/python/python_Prims_Spanning_Tree_Data_Structure.php
+            ('A', 'B', 7),
+            ('A', 'C', 9),
+            ('A', 'F', 14),
+            ('B', 'A', 7),
+            ('B', 'C', 10),
+            ('B', 'D', 15),
+            ('C', 'A', 9),
+            ('C', 'B', 10),
+            ('C', 'D', 11),
+            ('C', 'F', 2),
+            ('D', 'B', 15),
+            ('D', 'C', 11),
+            ('D', 'E', 6),
+            ('E', 'D', 6),
+            ('E', 'F', 9),
+            ('F', 'A', 14),
+            ('F', 'C', 2),
+            ('F', 'E', 9),
+        ]
+        for src, des, weight in edges:
+            graph.add_edge(src, des, weight)
+
+        previous, distances = graph.find_shortest_path_bellman_ford('A')
+
+        path = graph.construct_path(previous, 'A', 'E')
+        self.assertEqual(path, ['A', 'C', 'F', 'E'])
+
+        path = graph.construct_path(previous, 'A', 'D')
+        self.assertEqual(path, ['A', 'C', 'D'])
 
 
 if __name__ == '__main__':

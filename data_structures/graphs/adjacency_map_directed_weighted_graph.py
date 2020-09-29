@@ -108,10 +108,10 @@ class DirectedGraph:
         while current_level:
             next_level = []
             for v in current_level:
+                # NOTE: A vertex is visited means we can access its neighbors.
+                visited.add(v)
                 for des in self.outgoing_edges[v].keys():
-                    # NOTE: A vertex is visited means we can access its neighbors.
                     if des not in visited:
-                        visited.add(des)
                         next_level.append(des)
             current_level = next_level
 
@@ -122,9 +122,9 @@ class DirectedGraph:
         visited = {start, }
         while queue:
             v = queue.popleft()
+            visited.add(v)
             for des in self.outgoing_edges[v].keys():
                 if des not in visited:
-                    visited.add(des)
                     queue.append(des)
 
         return visited
@@ -146,9 +146,9 @@ class DirectedGraph:
         visited = {start, }
         while stack:
             v = stack.pop()
+            visited.add(v)
             for des in self.outgoing_edges[v].keys():
                 if des not in visited:
-                    visited.add(des)
                     stack.append(des)
 
         return visited
@@ -213,11 +213,11 @@ class DirectedGraph:
         while queue:
             v = queue.popleft()
             # To calculate distances of the current vertex v's neighbors.
+            visited.add(v)
             for des, weight in self.outgoing_edges[v].items():
                 # Only unvisited vertices should be calculated
                 # since we already calculate visited vertices' neighbors.
                 if des not in visited:
-                    visited.add(des)
                     distance_to_des = distances[v] + weight
                     if distance_to_des < distances[des]:
                         # We find a shorter path to des,
@@ -246,15 +246,15 @@ class DirectedGraph:
         # and calculate its neighbors' distances. The distance of a visited vertex is already the minimum.
         # To achieve that, we maintain a priority queue using a min heap.
         min_heap = [(0, start), ]  # (distance, vertex)
-        visited = {start, }
+        visited = set([start, ])
         while min_heap:
             v_distance, v = heapq.heappop(min_heap)
             # There might be duplicate vertices with the same index but different distances.
             if v_distance > distances[v]:
                 continue
+            visited.add(v)
             for des, weight in self.outgoing_edges[v].items():
                 if des not in visited:
-                    visited.add(des)
                     distance_to_des = v_distance + weight
                     if distance_to_des < distances[des]:
                         distances[des] = distance_to_des
