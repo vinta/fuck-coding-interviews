@@ -229,12 +229,16 @@ class DirectedGraph:
         return previous, distances
 
     # O(E * log V)
-    def find_shortest_path_dijkstra(self, start):
+    def find_shortest_path_dijkstra(self, start, end=None):
         """
         This algorithm can only work with a non-negative graph.
         https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+        https://www.youtube.com/watch?v=pVfj6mxhdMw
         https://leetcode.com/problems/network-delay-time/discuss/329376/efficient-oe-log-v-python-dijkstra-min-heap-with-explanation
+
+        This algorithm is quite like find_shortest_paths_bfs() but replacing the queue with a priority queue.
         """
+        # First, we overestimate the distance from start to all other vertices.
         distances = {}
         previous = {}
         for v in self.vertex_data.keys():
@@ -242,24 +246,25 @@ class DirectedGraph:
             previous[v] = None
         distances[start] = 0
 
-        # We begin with a vertex v which has the minimun distance every round,
-        # and calculate its neighbors' distances. The distance of a visited vertex is already the minimum.
-        # To achieve that, we maintain a priority queue using a min heap.
-        min_heap = [(0, start), ]  # (distance, vertex)
-        visited = set([start, ])
+        min_heap = [(0, start), ]
+        visited = {start, }
         while min_heap:
+            # NOTE: `v` is the nearest unvisited vertex to `start`.
             v_distance, v = heapq.heappop(min_heap)
-            # There might be duplicate vertices with the same index but different distances.
+            # There could be duplicate vertices with the same vertex index but different distances.
+            # For instance, [(2, 'B'), (float('inf'), 'B')].
             if v_distance > distances[v]:
                 continue
+            # The shortest path to `v` is found.
             visited.add(v)
-            for des, weight in self.outgoing_edges[v].items():
-                if des not in visited:
-                    distance_to_des = v_distance + weight
-                    if distance_to_des < distances[des]:
-                        distances[des] = distance_to_des
-                        previous[des] = v
-                        heapq.heappush(min_heap, (distances[des], des))
+            for neighbor, weight in self.outgoing_edges[v].items():
+                # We only need to update distances for unvisited vertices since visited ones are already found.
+                if neighbor not in visited:
+                    nei_distance = v_distance + weight
+                    if nei_distance < distances[neighbor]:
+                        distances[neighbor] = nei_distance
+                        previous[neighbor] = v
+                        heapq.heappush(min_heap, (distances[neighbor], neighbor))
 
         return previous, distances
 
@@ -282,12 +287,12 @@ class DirectedGraph:
         # Then, it calculates the shortest paths with at most 2 edges, and so on.
         for i in range(vertex_count):
             for src, des, weight in self.edges():
-                distance_to_des = distances[src] + weight  # The distance to destination.
-                if distance_to_des < distances[des]:
+                des_distance = distances[src] + weight  # The distance to destination.
+                if des_distance < distances[des]:
                     # The final loop is to check wheter there are negative weight cycles.
                     if i == vertex_count - 1:
                         raise ValueError('Found negative weight cycles')
-                    distances[des] = distance_to_des
+                    distances[des] = des_distance
                     previous[des] = src
 
         return previous, distances

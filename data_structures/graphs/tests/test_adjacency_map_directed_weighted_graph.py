@@ -159,12 +159,12 @@ class TestCase(unittest.TestCase):
         graph = DirectedGraph()
         edges = [  # https://cs.stackexchange.com/questions/18138/dijkstra-algorithm-vs-breadth-first-search-for-shortest-path-in-graph
             ('A', 'B', 1),
-            ('B', 'C', 1),
-            ('B', 'D', 1),
+            ('B', 'C', 3),
+            ('B', 'D', 2),
             ('B', 'E', 1),
-            ('C', 'E', 1),
-            ('D', 'E', 1),
-            ('E', 'F', 1),
+            ('C', 'E', 4),
+            ('D', 'E', 2),
+            ('E', 'F', 3),
             ('G', 'D', 1),
         ]
         for src, des, weight in edges:
@@ -172,11 +172,14 @@ class TestCase(unittest.TestCase):
 
         previous, distances = graph.find_shortest_path_dijkstra('A')
 
+        path = graph.construct_path(previous, 'A', 'D')
+        self.assertEqual(path, ['A', 'B', 'D'])
+
         path = graph.construct_path(previous, 'A', 'E')
         self.assertEqual(path, ['A', 'B', 'E'])
 
-        path = graph.construct_path(previous, 'A', 'D')
-        self.assertEqual(path, ['A', 'B', 'D'])
+        path = graph.construct_path(previous, 'A', 'F')
+        self.assertEqual(path, ['A', 'B', 'E', 'F'])
 
         # No such path.
         with self.assertRaises(ValueError):
@@ -204,8 +207,17 @@ class TestCase(unittest.TestCase):
 
         previous, distances = graph.find_shortest_path_dijkstra('A')
 
+        path = graph.construct_path(previous, 'A', 'B')
+        self.assertEqual(path, ['A', 'D', 'B'])
+
         path = graph.construct_path(previous, 'A', 'C')
         self.assertEqual(path, ['A', 'D', 'E', 'C'])
+
+        path = graph.construct_path(previous, 'A', 'D')
+        self.assertEqual(path, ['A', 'D'])
+
+        path = graph.construct_path(previous, 'A', 'E')
+        self.assertEqual(path, ['A', 'D', 'E'])
 
         graph = DirectedGraph()
         edges = [  # https://www.chegg.com/homework-help/questions-and-answers/8-4-14-10-2-figure-2-directed-graph-computing-shortest-path-3-dijkstra-s-algorithm-computi-q25960616#question-transcript
@@ -276,6 +288,31 @@ class TestCase(unittest.TestCase):
 
         path = graph.construct_path(previous, 'A', 'D')
         self.assertEqual(path, ['A', 'C', 'D'])
+
+        graph = DirectedGraph()
+        adj_list = {  # https://adityakamath.com/2018/06/17/Dijktra%27s-Algorithm-In-Python.html
+            'S': {'A': 7, 'B': 2, 'C': 3},
+            'A': {'S': 7, 'B': 3, 'D': 4},
+            'B': {'S': 2, 'A': 3, 'D': 4, 'H': 1, 'C': 12},
+            'C': {'S': 3, 'L': 2},
+            'D': {'A': 4, 'B': 4, 'F': 5},
+            'E': {'G': 2, 'K': 5},
+            'F': {'D': 5, 'H': 3},
+            'G': {'H': 2, 'I': 10, 'E': 2},
+            'H': {'B': 1, 'F': 3, 'G': 2},
+            'I': {'J': 6, 'K': 4, 'L': 4},
+            'J': {'K': 4, 'L': 4},
+            'K': {'I': 4, 'J': 4, 'E': 5},
+            'L': {'C': 2, 'I': 4, 'J': 4},
+        }
+        for src, neighbors in adj_list.items():
+            for des, weight in neighbors.items():
+                graph.add_edge(src, des, weight)
+
+        previous, distances = graph.find_shortest_path_dijkstra('S')
+
+        path = graph.construct_path(previous, 'S', 'E')
+        self.assertEqual(path, ['S', 'B', 'H', 'G', 'E'])
 
     def test_find_shortest_path_bellman_ford(self):
         graph = DirectedGraph()
