@@ -8,12 +8,7 @@ https://en.wikipedia.org/wiki/Adjacency_list
 Assume that we have V vertices and E edges in the graph G.
 """
 from collections import defaultdict
-from collections import deque
 import heapq
-
-
-class NestedBreak(Exception):
-    pass
 
 
 # This implementation cannot properly handle multiple edges between the same endpoints.
