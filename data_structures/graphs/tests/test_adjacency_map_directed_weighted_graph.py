@@ -88,15 +88,6 @@ class TestCase(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.graph.edge_weight('NOT EXIST', 'NOT EXIST')
 
-    def test_depth_first_search(self):
-        v = 'A'
-        visited = self.graph.depth_first_search(v)
-        self.assertCountEqual(visited, ['A', 'B', 'C', 'D', 'H', 'I'])
-
-        v = 'E'
-        visited = self.graph.depth_first_search(v)
-        self.assertCountEqual(visited, ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'])
-
     def test_breadth_first_search(self):
         v = 'A'
         visited = self.graph.breadth_first_search(v)
@@ -104,6 +95,15 @@ class TestCase(unittest.TestCase):
 
         v = 'E'
         visited = self.graph.breadth_first_search(v)
+        self.assertCountEqual(visited, ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'])
+
+    def test_depth_first_search(self):
+        v = 'A'
+        visited = self.graph.depth_first_search(v)
+        self.assertCountEqual(visited, ['A', 'B', 'C', 'D', 'H', 'I'])
+
+        v = 'E'
+        visited = self.graph.depth_first_search(v)
         self.assertCountEqual(visited, ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'])
 
     def test_has_cycles_dfs(self):
@@ -130,30 +130,42 @@ class TestCase(unittest.TestCase):
 
     def test_find_shortest_paths_bfs(self):
         graph = DirectedGraph()
-        edges = [  # https://cs.stackexchange.com/questions/18138/dijkstra-algorithm-vs-breadth-first-search-for-shortest-path-in-graph
-            ('A', 'B', 1),
-            ('B', 'C', 1),
-            ('B', 'D', 1),
-            ('B', 'E', 1),
-            ('C', 'E', 1),
-            ('D', 'E', 1),
-            ('E', 'F', 1),
-            ('G', 'D', 1),
+        edges = [  # https://www.geeksforgeeks.org/shortest-path-unweighted-graph/
+            (0, 1, 1),
+            (0, 3, 1),
+            (1, 0, 1),
+            (1, 2, 1),
+            (2, 1, 1),
+            (3, 0, 1),
+            (3, 4, 1),
+            (3, 7, 1),
+            (4, 3, 1),
+            (4, 5, 1),
+            (4, 6, 1),
+            (4, 7, 1),
+            (5, 4, 1),
+            (5, 6, 1),
+            (6, 4, 1),
+            (6, 5, 1),
+            (6, 7, 1),
+            (7, 3, 1),
+            (7, 4, 1),
+            (7, 6, 1),
         ]
         for src, des, weight in edges:
             graph.add_edge(src, des, weight)
 
-        previous, distances = graph.find_shortest_paths_bfs('A')
+        previous, distances = graph.find_shortest_paths_bfs(0)
 
-        path = graph.construct_path(previous, 'A', 'E')
-        self.assertEqual(path, ['A', 'B', 'E'])
+        path = graph.construct_path(previous, 0, 5)
+        self.assertEqual(path, [0, 3, 4, 5])
 
-        path = graph.construct_path(previous, 'A', 'D')
-        self.assertEqual(path, ['A', 'B', 'D'])
+        path = graph.construct_path(previous, 0, 7)
+        self.assertEqual(path, [0, 3, 7])
 
         # No such path.
         with self.assertRaises(ValueError):
-            graph.construct_path(previous, 'A', 'G')
+            graph.construct_path(previous, 0, 10)
 
     def test_find_shortest_path_dijkstra(self):
         graph = DirectedGraph()

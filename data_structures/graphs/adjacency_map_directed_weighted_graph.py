@@ -99,7 +99,7 @@ class DirectedGraph:
 
     def breadth_first_search(self, start):
         """
-        Applications
+        Applications:
         https://en.wikipedia.org/wiki/Breadth-first_search
         https://cp-algorithms.com/graph/breadth-first-search.html#toc-tgt-2
         """
@@ -108,48 +108,32 @@ class DirectedGraph:
         while current_level:
             next_level = []
             for v in current_level:
-                # NOTE: A vertex is visited means we can access its neighbors.
+                # The shortest path to `v` is found.
                 visited.add(v)
-                for des in self.outgoing_edges[v].keys():
-                    if des not in visited:
-                        next_level.append(des)
+                for neighbor in self.outgoing_edges[v].keys():
+                    # A graph could contain cycles, so we may come to the same vertex multiple times.
+                    # We only process unvisited vertices.
+                    if neighbor not in visited:
+                        next_level.append(neighbor)
             current_level = next_level
 
         return visited
 
-    def breadth_first_search_queue(self, start):  # pragma: no cover
-        queue = deque([start, ])
-        visited = {start, }
-        while queue:
-            v = queue.popleft()
-            visited.add(v)
-            for des in self.outgoing_edges[v].keys():
-                if des not in visited:
-                    queue.append(des)
-
-        return visited
-
     def depth_first_search(self, start, visited=None):
+        """
+        Applications:
+        https://en.wikipedia.org/wiki/Depth-first_search
+        https://cp-algorithms.com/graph/depth-first-search.html#toc-tgt-1
+        """
         if visited is None:
             visited = set()
 
+        # A vertex is visited means we can access its neighbors.
         visited.add(start)
-        for des in self.outgoing_edges[start].keys():
-            if des not in visited:
+        for neighbor in self.outgoing_edges[start].keys():
+            if neighbor not in visited:
                 # Recursion uses the call "stack".
-                self.depth_first_search(des, visited)
-
-        return visited
-
-    def depth_first_search_iterate(self, start):  # pragma: no cover
-        stack = [start, ]
-        visited = {start, }
-        while stack:
-            v = stack.pop()
-            visited.add(v)
-            for des in self.outgoing_edges[v].keys():
-                if des not in visited:
-                    stack.append(des)
+                self.depth_first_search(neighbor, visited)
 
         return visited
 
@@ -185,7 +169,7 @@ class DirectedGraph:
     def construct_path(self, previous, start, end):
         backtrack_path = [end, ]
         last_step = previous.get(end)
-        while last_step:
+        while last_step is not None:
             backtrack_path.append(last_step)
             last_step = previous[last_step]
 
@@ -197,9 +181,10 @@ class DirectedGraph:
     # O(V + E)
     def find_shortest_paths_bfs(self, start):
         """
-        This algorithm can only work with a unweighted graph or a graph has the same weights.
+        This algorithm can only work with a unweighted or equal-weighted graph.
+
+        This algorithm is just BFS with distance relaxation.
         """
-        # First, we overestimate the distance from start to all other vertices.
         distances = {}  # The distance from start to a vertex v.
         previous = {}  # {destination: source}
         for v in self.vertex_data.keys():
@@ -207,24 +192,22 @@ class DirectedGraph:
             previous[v] = None
         distances[start] = 0
 
-        # BFS with distance relaxation.
-        queue = deque([start, ])
+        current_level = [start, ]
         visited = {start, }
-        while queue:
-            v = queue.popleft()
-            # To calculate distances of the current vertex v's neighbors.
-            visited.add(v)
-            for des, weight in self.outgoing_edges[v].items():
-                # Only unvisited vertices should be calculated
-                # since we already calculate visited vertices' neighbors.
-                if des not in visited:
-                    distance_to_des = distances[v] + weight
-                    if distance_to_des < distances[des]:
-                        # We find a shorter path to des,
-                        # so its unvisited neighbors' distances should be readjust.
-                        distances[des] = distance_to_des
-                        previous[des] = v
-                        queue.append(des)
+        while current_level:
+            next_level = []
+            for v in current_level:
+                # The shortest path to `v` is found.
+                visited.add(v)
+                for neighbor in self.outgoing_edges[v].keys():
+                    if neighbor not in visited:
+                        # The distance increases 1 each level.
+                        nei_distance = distances[v] + 1
+                        if nei_distance < distances[neighbor]:
+                            distances[neighbor] = nei_distance
+                            previous[neighbor] = v
+                            next_level.append(neighbor)
+            current_level = next_level
 
         return previous, distances
 
