@@ -170,6 +170,9 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Jumping on the Clouds](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/jumping_on_the_clouds.py) on [HackerRank](https://www.hackerrank.com/challenges/jumping-on-the-clouds/problem)
         - [Mars Exploration](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/mars_exploration.py) on [HackerRank](https://www.hackerrank.com/challenges/mars-exploration/problem)
         - [Sock Merchant](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/sock_merchant.py) on [HackerRank](https://www.hackerrank.com/challenges/sock-merchant/problem)
+- Networking
+    - General
+        - [What happens when you type google.com into your browser and press enter?](https://github.com/alex/what-happens-when)
 
 ## Tests
 
