@@ -8,7 +8,7 @@ This repository is created by [a clumsy programmer](https://leetcode.com/vinta/)
 
 > How on earth can I ever think of a solution like that in an interview?!
 
-I'm working on implementing common Algorithms and Data Structures in Python (with test cases, of course), as well as straightforward solutions to some problems from LeetCode, HackerRank, and HackerEarth which I solved with frustration in mind.
+I'm working on implementing common Algorithms and Data Structures in Python (with test cases, of course), as well as straightforward solutions to some problems from LeetCode, HackerRank, HackerEarth, and AlgoDaily which I solved with frustration in mind.
 
 Well, there are SO MUCH things to learn in Computer Science. I'm just a peasant who happens to write some crappy code for living.
 
@@ -80,6 +80,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Undirected Weighted Graph implemented with Adjacency Map](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/graphs/adjacency_map_undirected_weighted_graph.py)
 - Coding Problems
     - Array
+        - [Array Intersection](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/array_intersection.py) on [AlgoDaily](https://algodaily.com/challenges/array-intersection/)
         - [Array Sum](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/array_sum.py) on [HackerEarth](https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/array-sum-2-725368ac/description/)
         - [Find Minimum in Rotated Sorted Array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/find_minimum_in_rotated_sorted_array.py) on [LeetCode](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
         - [Maximum Product Subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_product_subarray.py) on [LeetCode](https://leetcode.com/problems/maximum-product-subarray/)
