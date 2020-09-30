@@ -82,7 +82,12 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
     - Array
         - [Array Intersection](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/array_intersection.py) on [AlgoDaily](https://algodaily.com/challenges/array-intersection/)
         - [Array Sum](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/array_sum.py) on [HackerEarth](https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/array-sum-2-725368ac/description/)
+        - [Best Time to Buy and Sell Stock](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/best_time_to_buy_and_sell_stock.py) on [LeetCode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+        - [Container With Most Water](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/container_with_most_water.py) on [LeetCode](https://leetcode.com/problems/container-with-most-water/)
+        - [Counting Valleys](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/counting_valleys.py) on [HackerRank](https://www.hackerrank.com/challenges/counting-valleys/problem)
         - [Find Minimum in Rotated Sorted Array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/find_minimum_in_rotated_sorted_array.py) on [LeetCode](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
+        - [Jumping on the Clouds](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/jumping_on_the_clouds.py) on [HackerRank](https://www.hackerrank.com/challenges/jumping-on-the-clouds/problem)
+        - [Mars Exploration](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/mars_exploration.py) on [HackerRank](https://www.hackerrank.com/challenges/mars-exploration/problem)
         - [Maximum Product Subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_product_subarray.py) on [LeetCode](https://leetcode.com/problems/maximum-product-subarray/)
         - [Maximum Subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_subarray.py) on [LeetCode](https://leetcode.com/problems/maximum-subarray/)
         - [Merge Intervals](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/merge_intervals.py) on [LeetCode](https://leetcode.com/problems/merge-intervals/)
@@ -122,6 +127,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
     - Multiset
         - [Equalize the Array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/equality_in_a_array.py) on [HackerRank](https://www.hackerrank.com/challenges/equality-in-a-array/problem)
         - [Single Number](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/single_number.py) on [LeetCode](https://leetcode.com/problems/single-number/)
+        - [Sock Merchant](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/sock_merchant.py) on [HackerRank](https://www.hackerrank.com/challenges/sock-merchant/problem)
         - [Top K Frequent Elements](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/top_k_frequent_elements.py) on [LeetCode](https://leetcode.com/problems/top-k-frequent-elements/)
     - Heap
         - [Kth Largest Element in an Array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/kth_largest_element_in_an_array.py) on [LeetCode](https://leetcode.com/problems/kth-largest-element-in-an-array/)
@@ -162,14 +168,8 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Rank Scores](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/rank_scores.sql) on [LeetCode](https://leetcode.com/problems/rank-scores/)
         - [Second Highest Salary](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/second_highest_salary.sql) on [LeetCode](https://leetcode.com/problems/second-highest-salary/)
     - Uncategorized
-        - [Best Time to Buy and Sell Stock](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/best_time_to_buy_and_sell_stock.py) on [LeetCode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
-        - [Container With Most Water](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/container_with_most_water.py) on [LeetCode](https://leetcode.com/problems/container-with-most-water/)
-        - [Counting Valleys](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/counting_valleys.py) on [HackerRank](https://www.hackerrank.com/challenges/counting-valleys/problem)
         - [Fibonacci Number](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/fibonacci_number.py) on [LeetCode](https://leetcode.com/problems/fibonacci-number/)
         - [Fizz Buzz](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/fizz_buzz.py) on [LeetCode](https://leetcode.com/problems/fizz-buzz/)
-        - [Jumping on the Clouds](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/jumping_on_the_clouds.py) on [HackerRank](https://www.hackerrank.com/challenges/jumping-on-the-clouds/problem)
-        - [Mars Exploration](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/mars_exploration.py) on [HackerRank](https://www.hackerrank.com/challenges/mars-exploration/problem)
-        - [Sock Merchant](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/sock_merchant.py) on [HackerRank](https://www.hackerrank.com/challenges/sock-merchant/problem)
 - Networking
     - General
         - [What happens when you type google.com into your browser and press enter?](https://github.com/alex/what-happens-when)
