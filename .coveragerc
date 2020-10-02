@@ -3,9 +3,9 @@ branch = True
 omit =
     */tests/*
     problems/array_sum.py
+    problems/bfs_shortest_path_in_a_graph.py
     problems/clone_graph.py
     problems/course_schedule.py
-    problems/ctci_bfs_shortest_reach.py
     problems/dijkstra_shortest_reach_2.py
     problems/linked_list_cycle.py
     problems/maximum_element.py
