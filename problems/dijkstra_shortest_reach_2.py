@@ -11,15 +11,6 @@ import sys
 class UndirectedGraph:
     def __init__(self, num_vertices):
         self.num_vertices = num_vertices
-        self.outgoing_edges = defaultdict(dict)
-
-    def add_edge(self, u, v, new_weight):
-        # NOTE: There could be multiple edges between the same pair of nodes with different weights,
-        # so we only store the smallest weight.
-        current_weight = self.outgoing_edges[u].get(v)
-        if (current_weight is None) or (current_weight > new_weight):
-            self.outgoing_edges[u][v] = new_weight
-            self.outgoing_edges[v][u] = new_weight
 
     def shortest_paths(self, start):
         distances = [float('inf'), ] * self.num_vertices
@@ -50,31 +41,38 @@ class UndirectedGraph:
 
 def shortestReach(n, edges, s):
     graph = UndirectedGraph(n)
-    for src, des, weight in edges:
-        # The node indexes are 1-based.
-        graph.add_edge(src - 1, des - 1, weight)
-
-    return graph.shortest_paths(s - 1)
+    graph.outgoing_edges = edges
+    return graph.shortest_paths(s)
 
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
     t = int(input())
+
     for _ in range(t):
         nm = input().split()
         n = int(nm[0])
         m = int(nm[1])
 
-        # Instead of creating a list of edges, we could also build `outgoing_edges` here.
-        edges = []
+        edges = defaultdict(dict)
         for _ in range(m):
             u, v, w = map(int, sys.stdin.readline().split())
-            edges.append((u, v, w))
+
+            # Node indexes are 1-based.
+            u = u - 1
+            v = v - 1
+
+            # NOTE: There could be multiple edges between the same pair of nodes with different weights,
+            # so we only store the edge which has the smallest weight.
+            current_weight = edges[u].get(v)
+            if (current_weight is None) or (current_weight > w):
+                edges[u][v] = w
+                edges[v][u] = w
 
         s = int(input())
 
-        result = shortestReach(n, edges, s)
+        result = shortestReach(n, edges, s - 1)
 
         fptr.write(' '.join(map(str, result)))
         fptr.write('\n')
