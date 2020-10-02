@@ -6,6 +6,7 @@ omit =
     problems/clone_graph.py
     problems/course_schedule.py
     problems/ctci_bfs_shortest_reach.py
+    problems/dijkstra_shortest_reach_2.py
     problems/linked_list_cycle.py
     problems/maximum_element.py
     problems/simple_text_editor.py
