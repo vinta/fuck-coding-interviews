@@ -159,7 +159,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
     - Trie
         - [Implement Trie (Prefix Tree)](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/implement_trie_prefix_tree.py) on [LeetCode](https://leetcode.com/problems/implement-trie-prefix-tree/)
     - Graph
-        - [BFS: Shortest Reach in a Graph](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/ctci_bfs_shortest_reach.py) on [HackerRank](https://www.hackerrank.com/challenges/ctci-bfs-shortest-reach/problem)
+        - [BFS: Shortest Reach in a Graph](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/bfs_shortest_path_in_a_graph.py) on [HackerRank](https://www.hackerrank.com/challenges/ctci-bfs-shortest-reach/problem)
         - [Clone Graph](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/clone_graph.py) on [LeetCode](https://leetcode.com/problems/clone-graph/)
         - [Course Schedule](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/course_schedule.py) on [LeetCode](https://leetcode.com/problems/course-schedule/)
     - SQL
