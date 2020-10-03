@@ -274,3 +274,26 @@ class DirectedGraph:
                     previous[des] = src
 
         return previous, distances
+
+    def find_minimum_spanning_tree_prim_jarnik(self, start):
+        """
+        https://en.wikipedia.org/wiki/Prim%27s_algorithm
+        """
+        all_vertices = set(self.vertex_data.keys())
+        visited = {start, }
+        tree_edges = []
+        while all_vertices - visited:
+            # For every visited vertex, find an edge which connects to a new vertex
+            # and has the minimum weight.
+            new_edge = (None, None, float('inf'))
+            for v in visited:
+                for neighbor, weight in self.outgoing_edges[v].items():
+                    # We only consider an edge which connects to a new vertex.
+                    if neighbor not in visited:
+                        if weight < new_edge[2]:
+                            new_edge = (v, neighbor, weight)
+
+            visited.add(new_edge[1])
+            tree_edges.append(new_edge)
+
+        return tree_edges
