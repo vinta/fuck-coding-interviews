@@ -279,21 +279,18 @@ class DirectedGraph:
         """
         https://en.wikipedia.org/wiki/Prim%27s_algorithm
         """
-        all_vertices = set(self.vertex_data.keys())
-        visited = {start, }
         tree_edges = []
-        while all_vertices - visited:
-            # For every visited vertex, find an edge which connects to a new vertex
-            # and has the minimum weight.
-            new_edge = (None, None, float('inf'))
-            for v in visited:
+        visited = set()
+        unvisited = [(0, start, start), ]  # A dummy edge: (weight, source, destination)
+        while unvisited:
+            # The edge which has the minimum weight and connects to a new vertex.
+            weight, u, v = heapq.heappop(unvisited)
+            if v not in visited:
+                visited.add(v)
+                tree_edges.append((u, v, weight))
                 for neighbor, weight in self.outgoing_edges[v].items():
                     # We only consider an edge which connects to a new vertex.
                     if neighbor not in visited:
-                        if weight < new_edge[2]:
-                            new_edge = (v, neighbor, weight)
-
-            visited.add(new_edge[1])
-            tree_edges.append(new_edge)
+                        heapq.heappush(unvisited, (weight, v, neighbor))
 
         return tree_edges
