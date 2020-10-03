@@ -1,10 +1,4 @@
 # coding: utf-8
-"""
-FIFO: first in, first out
-append, pop left
-"""
-
-
 class ListNode:
     def __init__(self, value, next=None):
         self.value = value

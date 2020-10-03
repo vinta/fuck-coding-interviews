@@ -1,10 +1,4 @@
 # coding: utf-8
-"""
-FIFO: first in, first out
-append, pop left
-"""
-
-
 # Also see: https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/arrays/circular_array.py
 # This implementation is more simplified, however, with specific modifications
 class CircularArray:
