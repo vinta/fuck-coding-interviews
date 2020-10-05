@@ -37,12 +37,13 @@ class QuickFindUnionFind:
         try:
             return self.element_groups[p]
         except KeyError:
-            raise ValueError('Not found')
+            # We implicitly create a new group for the new element `p`.
+            return self.make_group(p)
 
     # O(n)
     def union(self, p, q):
-        p_group_id = self.make_group(p)
-        q_group_id = self.make_group(q)
+        p_group_id = self.find(p)
+        q_group_id = self.find(q)
         if p_group_id != q_group_id:
             for element, group_id in self.element_groups.items():
                 if group_id == p_group_id:

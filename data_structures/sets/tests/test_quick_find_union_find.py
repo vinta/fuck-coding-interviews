@@ -43,9 +43,6 @@ class TestCase(unittest.TestCase):
         self.assertEqual(len(self.union_find), self.num_elements + 1)
 
     def test_find(self):
-        with self.assertRaises(ValueError):
-            self.union_find.find(100)
-
         self.union_find.union(1, 5)
         self.assertEqual(self.union_find.find(1), self.union_find.find(5))
         self.assertEqual(len(self.union_find), self.num_elements - 1)
