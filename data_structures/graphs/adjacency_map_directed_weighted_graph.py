@@ -282,14 +282,18 @@ class DirectedGraph:
         https://en.wikipedia.org/wiki/Prim%27s_algorithm
         """
         tree_edges = []
+        num_edges = 0
+        num_vertices = self.vertex_count()
+
         visited = set()
         min_heap = [(0, start, start), ]  # A dummy edge: (weight, source, destination)
-        while min_heap:
+        while (num_edges < num_vertices - 1) or min_heap:
             # The edge which has the minimum weight and connects to a new vertex.
             weight, u, v = heapq.heappop(min_heap)
             if v not in visited:
-                visited.add(v)
                 tree_edges.append((u, v, weight))
+                num_edges += 1
+                visited.add(v)
                 for neighbor, weight in self.outgoing_edges[v].items():
                     # We only consider an edge which connects to a new vertex.
                     if neighbor not in visited:
@@ -301,21 +305,23 @@ class DirectedGraph:
         """
         https://en.wikipedia.org/wiki/Kruskal%27s_algorithm
         """
+        tree_edges = []
+        num_edges = 0
+        num_vertices = self.vertex_count()
+
         min_heap = []
         for src, des, weight in self.edges():
             min_heap.append((weight, src, des))
         heapq.heapify(min_heap)
 
         union_find = UnionFind()
-        num_vertices = self.vertex_count()
-        num_edges = 0
-        tree_edges = []
-        while (num_edges == num_vertices - 1) or min_heap:
+        while (num_edges < num_vertices - 1) or min_heap:
             # We always pop the unvisited minimum-weight edge.
             weight, src, des = heapq.heappop(min_heap)
             # If both endpoints are not in the same group, we reach a new vertex via the current edge.
             if union_find.find(src) != union_find.find(des):
                 tree_edges.append((src, des, weight))
+                num_edges += 1
                 union_find.union(src, des)
 
         return tree_edges
