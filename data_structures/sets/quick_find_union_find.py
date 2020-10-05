@@ -46,6 +46,7 @@ class QuickFindUnionFind:
         q_group_id = self.find(q)
         if p_group_id != q_group_id:
             for element, group_id in self.element_groups.items():
+                # Merge p into q.
                 if group_id == p_group_id:
                     self.element_groups[element] = q_group_id
             self.num_groups -= 1

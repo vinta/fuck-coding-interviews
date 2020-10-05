@@ -166,6 +166,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Course Schedule](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/course_schedule.py) on [LeetCode](https://leetcode.com/problems/course-schedule/)
         - [Dijkstra: Shortest Reach 2](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/dijkstra_shortest_reach_2.py) on [HackerRank](https://www.hackerrank.com/challenges/dijkstrashortreach/problem)
         - [Prim's (MST): Special Subtree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/prim_mst_special_subtree.py) on [HackerRank](https://www.hackerrank.com/challenges/primsmstsub/problem)
+        - [Kruskal's (MST): Really Special Subtree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/kruskal_mst_really_special_subtree.py) on [HackerRank](https://www.hackerrank.com/challenges/kruskalmstrsub/problem)
     - SQL
         - [Big Countries](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/big_countries.sql) on [LeetCode](https://leetcode.com/problems/big-countries/)
         - [Nth Highest Salary](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/nth_highest_salary.sql) on [LeetCode](https://leetcode.com/problems/nth-highest-salary/)

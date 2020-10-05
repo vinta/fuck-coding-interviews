@@ -14,6 +14,8 @@ class Node:
         return self.size
 
 
+# There is another implementation:
+# https://github.com/vinta/fuck-coding-interviews/blob/master/problems/kruskal_mst_really_special_subtree.py
 class WeightedQuickUnionUnionFind:
     def __init__(self, union_pairs=()):
         self.num_groups = 0
