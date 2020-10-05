@@ -7,15 +7,17 @@ https://en.wikipedia.org/wiki/Disjoint-set_data_structure
 
 class QuickFindUnionFind:
     def __init__(self, union_pairs=()):
-        self.size = 0
+        self.num_groups = 0
+        self.auto_increment_id = 1
         self.element_groups = {
             # element: group_id,
         }
+
         for p, q in union_pairs:
             self.union(p, q)
 
     def __len__(self):
-        return self.size
+        return self.num_groups
 
     # O(1)
     def make_set(self, element):
@@ -23,10 +25,10 @@ class QuickFindUnionFind:
         group_id = self.element_groups.get(element)
         if group_id is None:
             # `group_id` could be arbitrary as long as each group has an unique `group_id`.
-            # We use `self.size` here as an auto increment id.
-            group_id = self.size
+            group_id = self.auto_increment_id
             self.element_groups[element] = group_id
-            self.size += 1
+            self.num_groups += 1
+            self.auto_increment_id += 1
 
         return group_id
 
@@ -41,9 +43,11 @@ class QuickFindUnionFind:
     def union(self, p, q):
         p_group_id = self.make_set(p)
         q_group_id = self.make_set(q)
-        for element, group_id in self.element_groups.items():
-            if group_id == p_group_id:
-                self.element_groups[element] = q_group_id
+        if p_group_id != q_group_id:
+            for element, group_id in self.element_groups.items():
+                if group_id == p_group_id:
+                    self.element_groups[element] = q_group_id
+            self.num_groups -= 1
 
     # O(1)
     def is_connected(self, p, q):
