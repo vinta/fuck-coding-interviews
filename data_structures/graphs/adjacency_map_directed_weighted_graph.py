@@ -10,6 +10,8 @@ Assume that we have V vertices and E edges in the graph G.
 from collections import defaultdict
 import heapq
 
+from data_structures.sets.quick_find_union_find import QuickFindUnionFind as UnionFind
+
 
 # This implementation cannot properly handle multiple edges between the same endpoints.
 # For instance, (u, v, 1), (u, v, 2) and (u, v, 3).
@@ -281,16 +283,39 @@ class DirectedGraph:
         """
         tree_edges = []
         visited = set()
-        unvisited = [(0, start, start), ]  # A dummy edge: (weight, source, destination)
-        while unvisited:
+        min_heap = [(0, start, start), ]  # A dummy edge: (weight, source, destination)
+        while min_heap:
             # The edge which has the minimum weight and connects to a new vertex.
-            weight, u, v = heapq.heappop(unvisited)
+            weight, u, v = heapq.heappop(min_heap)
             if v not in visited:
                 visited.add(v)
                 tree_edges.append((u, v, weight))
                 for neighbor, weight in self.outgoing_edges[v].items():
                     # We only consider an edge which connects to a new vertex.
                     if neighbor not in visited:
-                        heapq.heappush(unvisited, (weight, v, neighbor))
+                        heapq.heappush(min_heap, (weight, v, neighbor))
+
+        return tree_edges
+
+    def find_minimum_spanning_tree_kruskal(self, start):
+        """
+        https://en.wikipedia.org/wiki/Kruskal%27s_algorithm
+        """
+        min_heap = []
+        for src, des, weight in self.edges():
+            min_heap.append((weight, src, des))
+        heapq.heapify(min_heap)
+
+        union_find = UnionFind()
+        num_vertices = self.vertex_count()
+        num_edges = 0
+        tree_edges = []
+        while (num_edges == num_vertices - 1) or min_heap:
+            # We always pop the unvisited minimum-weight edge.
+            weight, src, des = heapq.heappop(min_heap)
+            # If both endpoints are not in the same group, we reach a new vertex via the current edge.
+            if union_find.find(src) != union_find.find(des):
+                tree_edges.append((src, des, weight))
+                union_find.union(src, des)
 
         return tree_edges
