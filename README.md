@@ -66,6 +66,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Set implemented with HashMap](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/sets/hash_map_based_set.py)
         - [Multiset implemented with HashMap](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/sets/hash_map_based_multiset.py)
         - [Union Find implemented with Quick Find](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/sets/quick_find_union_find.py) (Disjoint Set)
+        - [Union Find implemented with Weighted Quick Union](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/sets/weighted_quick_union_union_find.py)
     - Tree
         - [Binary Search Tree](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/binary_search_tree.py)
         - [Binary Tree Serialization](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/trees/binary_tree_serialization.py)
