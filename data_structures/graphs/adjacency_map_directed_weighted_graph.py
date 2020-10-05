@@ -101,7 +101,7 @@ class DirectedGraph:
         https://cp-algorithms.com/graph/breadth-first-search.html#toc-tgt-2
         """
         current_level = [start, ]
-        visited = {start, }
+        visited = set()
         while current_level:
             next_level = []
             for v in current_level:
@@ -190,7 +190,7 @@ class DirectedGraph:
         distances[start] = 0
 
         current_level = [start, ]
-        visited = {start, }
+        visited = set()
         while current_level:
             next_level = []
             for v in current_level:
@@ -227,7 +227,7 @@ class DirectedGraph:
         distances[start] = 0
 
         min_heap = [(0, start), ]
-        visited = {start, }
+        visited = set()
         while min_heap:
             # NOTE: `v` is the nearest unvisited vertex to `start`.
             v_distance, v = heapq.heappop(min_heap)
