@@ -25,6 +25,8 @@ class UndirectedGraph(DirectedGraph):
         self.outgoing_edges = defaultdict(dict)
 
     def add_edge(self, u, v, weight=None):
+        # Actually, we can treat a directed graph as a undirected graph.
+        # As long as we add both endpoints for the same edge, for instance, `add_edge(u, v, 1)` and `add_edge(v, u, 1)`.
         self.outgoing_edges[u][v] = weight
         self.outgoing_edges[v][u] = weight
 
