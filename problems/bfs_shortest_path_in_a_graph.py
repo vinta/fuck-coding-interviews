@@ -1,4 +1,4 @@
-# coding: utf-8
+#!/bin/python3
 """
 https://www.hackerrank.com/challenges/ctci-bfs-shortest-reach/problem
 """

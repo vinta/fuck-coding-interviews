@@ -9,6 +9,7 @@ omit =
     problems/dijkstra_shortest_reach_2.py
     problems/linked_list_cycle.py
     problems/maximum_element.py
+    problems/prim_mst_special_subtree.py
     problems/simple_text_editor.py
     problems/tree_height_of_a_binary_tree.py
     problems/tree_top_view.py
