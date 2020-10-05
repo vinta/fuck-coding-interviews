@@ -24,7 +24,7 @@ class QuickFindUnionFind:
         # Initially, every element is in its own group which contains only itself.
         group_id = self.element_groups.get(element)
         if group_id is None:
-            # `group_id` could be arbitrary as long as each group has an unique `group_id`.
+            # Group id could be arbitrary as long as each group has an unique one.
             group_id = self.auto_increment_id
             self.element_groups[element] = group_id
             self.num_groups += 1
