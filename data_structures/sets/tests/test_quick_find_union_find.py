@@ -10,7 +10,7 @@ class TestCase(unittest.TestCase):
         self.elements = [1, 5, 7, 1, 3, 9, 6, 18, 'A', 'B', 'C']
         self.num_elements = len(set(self.elements))
         for element in self.elements:
-            self.union_find.make_set(element)
+            self.union_find.make_group(element)
 
     def test__init__(self):
         union_pairs = [
@@ -38,8 +38,8 @@ class TestCase(unittest.TestCase):
         self.union_find.union(1, 5)
         self.assertEqual(len(self.union_find), self.num_elements - 1)
 
-    def test_make_set(self):
-        self.union_find.make_set(3.14)
+    def test_make_group(self):
+        self.union_find.make_group(3.14)
         self.assertEqual(len(self.union_find), self.num_elements + 1)
 
     def test_find(self):

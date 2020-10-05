@@ -20,7 +20,7 @@ class QuickFindUnionFind:
         return self.num_groups
 
     # O(1)
-    def make_set(self, element):
+    def make_group(self, element):
         # Initially, every element is in its own group which contains only itself.
         group_id = self.element_groups.get(element)
         if group_id is None:
@@ -41,8 +41,8 @@ class QuickFindUnionFind:
 
     # O(n)
     def union(self, p, q):
-        p_group_id = self.make_set(p)
-        q_group_id = self.make_set(q)
+        p_group_id = self.make_group(p)
+        q_group_id = self.make_group(q)
         if p_group_id != q_group_id:
             for element, group_id in self.element_groups.items():
                 if group_id == p_group_id:
