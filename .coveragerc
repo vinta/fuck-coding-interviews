@@ -7,6 +7,7 @@ omit =
     problems/clone_graph.py
     problems/course_schedule.py
     problems/dijkstra_shortest_reach_2.py
+    problems/hash_tables_ransom_note.py
     problems/kruskal_mst_really_special_subtree.py
     problems/linked_list_cycle.py
     problems/maximum_element.py

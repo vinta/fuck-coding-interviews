@@ -129,6 +129,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Contains Duplicate](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/contains_duplicate.py) on [LeetCode](https://leetcode.com/problems/contains-duplicate/)
     - Multiset
         - [Equalize the Array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/equality_in_a_array.py) on [HackerRank](https://www.hackerrank.com/challenges/equality-in-a-array/problem)
+        - [Hash Tables: Ransom Note](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/hash_tables_ransom_note.py) on [HackerRank](https://www.hackerrank.com/challenges/ctci-ransom-note/problem)
         - [Single Number](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/single_number.py) on [LeetCode](https://leetcode.com/problems/single-number/)
         - [Sock Merchant](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/sock_merchant.py) on [HackerRank](https://www.hackerrank.com/challenges/sock-merchant/problem)
         - [Top K Frequent Elements](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/top_k_frequent_elements.py) on [LeetCode](https://leetcode.com/problems/top-k-frequent-elements/)
