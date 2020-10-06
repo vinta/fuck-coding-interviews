@@ -113,6 +113,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
     - String
         - [CamelCase](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/camel_case.py) on [HackerRank](https://www.hackerrank.com/challenges/camelcase/problem)
         - [Group Anagrams](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/group_anagrams.py) on [LeetCode](https://leetcode.com/problems/group-anagrams/)
+        - [HackerRank in a String](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/hackerrank_in_a_string.py) on [HackerRank](https://www.hackerrank.com/challenges/hackerrank-in-a-string/problem)
         - [Implement strStr()](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/implement_strstr.py) on [LeetCode](https://leetcode.com/problems/implement-strstr/)
         - [Is Subsequence](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/is_subsequence.py) on [LeetCode](https://leetcode.com/problems/is-subsequence/)
         - [Pangrams](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/pangrams.py) on [HackerRank](https://www.hackerrank.com/challenges/pangrams/problem)
