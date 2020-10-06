@@ -1,7 +1,9 @@
 # coding: utf-8
 """
 https://leetcode.com/problems/valid-anagram/
+https://algodaily.com/challenges/is-an-anagram
 """
+from collections import Counter
 from collections import defaultdict
 
 
@@ -43,3 +45,8 @@ class Solution3:
         if len(s) != len(t):
             return False
         return sorted(s) == sorted(t)
+
+
+class Solution4:
+    def isAnagram(self, s: str, t: str) -> bool:
+        return Counter(s.lower()) == Counter(t.lower())

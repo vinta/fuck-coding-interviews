@@ -4,6 +4,7 @@ import unittest
 from problems.valid_anagram import Solution
 from problems.valid_anagram import Solution2
 from problems.valid_anagram import Solution3
+from problems.valid_anagram import Solution4
 
 
 class TestCase(unittest.TestCase):
@@ -14,6 +15,7 @@ class TestCase(unittest.TestCase):
         test_data = [
             {'s': 'anagram', 't': 'nagaram', 'expected': True},
             {'s': 'abc', 't': 'ab', 'expected': False},
+            {'s': 'cinema', 't': 'iceman', 'expected': True},
         ]
         for data in test_data:
             s = data['s']
@@ -31,6 +33,7 @@ class TestCase2(unittest.TestCase):
         test_data = [
             {'s': 'anagram', 't': 'nagaram', 'expected': True},
             {'s': 'abc', 't': 'ab', 'expected': False},
+            {'s': 'cinema', 't': 'iceman', 'expected': True},
         ]
         for data in test_data:
             s = data['s']
@@ -48,6 +51,25 @@ class TestCase3(unittest.TestCase):
         test_data = [
             {'s': 'anagram', 't': 'nagaram', 'expected': True},
             {'s': 'abc', 't': 'ab', 'expected': False},
+            {'s': 'cinema', 't': 'iceman', 'expected': True},
+        ]
+        for data in test_data:
+            s = data['s']
+            t = data['t']
+            expected = data['expected']
+            with self.subTest(s=s, t=t, expected=expected):
+                self.assertEqual(self.solution.isAnagram(s, t), expected)
+
+
+class TestCase4(unittest.TestCase):
+    def setUp(self):
+        self.solution = Solution4()
+
+    def test(self):
+        test_data = [
+            {'s': 'anagram', 't': 'nagaram', 'expected': True},
+            {'s': 'abc', 't': 'ab', 'expected': False},
+            {'s': 'cinema', 't': 'iceman', 'expected': True},
         ]
         for data in test_data:
             s = data['s']
