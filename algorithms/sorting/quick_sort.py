@@ -17,7 +17,7 @@ def quick_sort(arr):
 
     # Recursive case
     # Select the middle item as the pivot
-    pivot = arr[round((0 + len(arr) - 1) / 2)]
+    pivot = arr[(0 + len(arr) - 1) // 2]
 
     # Partition the other elements into two sublists,
     # According to whether they are less than or greater than the pivot

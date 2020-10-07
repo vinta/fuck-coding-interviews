@@ -82,8 +82,6 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Undirected Weighted Graph implemented with Adjacency Map](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/graphs/adjacency_map_undirected_weighted_graph.py)
 - Coding Problems
     - Array
-        - [Array Intersection](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/array_intersection.py) on [AlgoDaily](https://algodaily.com/challenges/array-intersection/)
-        - [Array Sum](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/array_sum.py) on [HackerEarth](https://www.hackerearth.com/practice/basic-programming/implementation/basics-of-implementation/practice-problems/algorithm/array-sum-2-725368ac/description/)
         - [Container With Most Water](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/container_with_most_water.py) on [LeetCode](https://leetcode.com/problems/container-with-most-water/)
         - [Counting Valleys](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/counting_valleys.py) on [HackerRank](https://www.hackerrank.com/challenges/counting-valleys/problem)
         - [Find Minimum in Rotated Sorted Array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/find_minimum_in_rotated_sorted_array.py) on [LeetCode](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
