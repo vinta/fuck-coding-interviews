@@ -37,6 +37,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Binary Search the first appeared position](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/binary_search_left_bound.py)
     - Sorting
         - [Bubble Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/bubble_sort.py)
+        - [Counting Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/counting_sort.py)
         - [Heap Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/heap_sort.py)
         - [Insertion Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/insertion_sort.py)
         - [Quick Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/quick_sort.py)
