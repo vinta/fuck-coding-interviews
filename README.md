@@ -94,7 +94,6 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Maximum Subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_subarray.py) on [LeetCode](https://leetcode.com/problems/maximum-subarray/)
         - [Merge Intervals](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/merge_intervals.py) on [LeetCode](https://leetcode.com/problems/merge-intervals/)
         - [Missing Number](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/missing_number.py) on [LeetCode](https://leetcode.com/problems/missing-number/)
-        - [Permutations](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/permutations.py) on [LeetCode](https://leetcode.com/problems/permutations/)
         - [Product of Array Except Self](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/product_of_array_except_self.py) on [LeetCode](https://leetcode.com/problems/product-of-array-except-self/)
         - [Search in Rotated Sorted Array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/search_in_rotated_sorted_array.py) on [LeetCode](https://leetcode.com/problems/search-in-rotated-sorted-array/)
         - [Shuffle the Array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/shuffle_the_array.py) on [LeetCode](https://leetcode.com/problems/shuffle-the-array/)
@@ -173,6 +172,9 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Kruskal's (MST): Really Special Subtree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/kruskal_mst_really_special_subtree.py) on [HackerRank](https://www.hackerrank.com/challenges/kruskalmstrsub/problem)
     - Bit Manipulation
         - [Power of Two](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/power_of_two.py) on [LeetCode](https://leetcode.com/problems/power-of-two/)
+    - Permutations and Combinations
+        - [Permutations](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/permutations.py) on [LeetCode](https://leetcode.com/problems/permutations/)
+        - [Two Characters](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/two_characters.py) on [HackerRank](https://www.hackerrank.com/challenges/two-characters/problem)
     - SQL
         - [Big Countries](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/big_countries.sql) on [LeetCode](https://leetcode.com/problems/big-countries/)
         - [Nth Highest Salary](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/nth_highest_salary.sql) on [LeetCode](https://leetcode.com/problems/nth-highest-salary/)

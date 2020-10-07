@@ -15,7 +15,7 @@ class Solution2:
     def permute(self, nums: List[int]) -> List[List[int]]:
         def permutations(elements):
             if len(elements) <= 1:
-                yield elements
+                yield elements  # elements is a list.
             else:
                 for i, first in enumerate(elements):
                     other_elements = elements[:i] + elements[i + 1:]

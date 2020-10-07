@@ -17,7 +17,7 @@ class Solution:
         return max_profit
 
 
-# The Two-Pointers way.
+# The Two-Pointer way.
 class Solution2:
     def maxProfit(self, prices: List[int]) -> int:
         max_profit = 0
