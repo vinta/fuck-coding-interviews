@@ -209,4 +209,4 @@ If you find any bug or incorrect implementation in this repo, please let me know
 
 ### Repositories
 
-- [arialdomartini/Back-End-Developer-Interview-Questions](https://github.com/arialdomartini/Back-End-Developer-Interview-Questions)
+- [donnemartin/system-design-primer](https://github.com/donnemartin/system-design-primer)
