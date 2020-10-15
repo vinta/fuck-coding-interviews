@@ -176,8 +176,8 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Easy] [Fibonacci Number](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/fibonacci_number.py) on [LeetCode](https://leetcode.com/problems/fibonacci-number/)
         - [Easy] [Fizz Buzz](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/fizz_buzz.py) on [LeetCode](https://leetcode.com/problems/fizz-buzz/)
 - Networking
-    - General
-        - [What happens when you type google.com into your browser and press enter?](https://github.com/alex/what-happens-when)
+    - HTTP
+        - [How HTTPS Works in Layman's Terms - TLS 1.2 and 1.3](https://vinta.ws/code/how-https-works-in-laymans-terms-tls-1-2-and-1-3.html)
 
 ## Tests
 
