@@ -96,7 +96,6 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Medium] [Subsets](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/subsets.py) on [LeetCode](https://leetcode.com/problems/subsets/)
         - [Hard] [Median of Two Sorted Arrays](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/median_of_two_sorted_arrays.py) on [LeetCode](https://leetcode.com/problems/median-of-two-sorted-arrays/)
     - Linked List
-        - [Easy] [Delete Node in a Linked List](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/delete_node_in_a_linked_list.py) on [LeetCode](https://leetcode.com/problems/delete-node-in-a-linked-list/)
         - [Easy] [Linked List Cycle](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/linked_list_cycle.py) on [LeetCode](https://leetcode.com/problems/linked-list-cycle/)
         - [Easy] [Merge Two Sorted Lists](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/merge_two_sorted_lists.py) on [LeetCode](https://leetcode.com/problems/merge-two-sorted-lists/)
         - [Easy] [Reverse Linked List](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/reverse_linked_list.py) on [LeetCode](https://leetcode.com/problems/reverse-linked-list/)
