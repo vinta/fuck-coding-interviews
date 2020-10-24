@@ -4,7 +4,7 @@
 [![coverage](https://img.shields.io/codecov/c/github/vinta/fuck-coding-interviews?style=flat-square)](https://codecov.io/gh/vinta/fuck-coding-interviews)
 [![requirements](https://img.shields.io/requires/github/vinta/fuck-coding-interviews?style=flat-square)](https://requires.io/github/vinta/fuck-coding-interviews/requirements/)
 
-This repository is created by [a clumsy programmer](https://leetcode.com/vinta/) who always struggles with coding problems on LeetCode, even with some **Easy** questions.
+This repository is created by [an awkward programmer](https://leetcode.com/vinta/) who always struggles with coding problems on LeetCode, even with some **Easy** questions.
 
 > How on earth can I ever think of a solution like that in an interview?!
 
@@ -26,17 +26,12 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
 ## Contents
 
 - Algorithms
-    - Hashing
-        - [MAD (Multiply-Add-Divide) compression function](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/hashing/mad_compression.py)
     - Searching
         - [Linear Search](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/linear_search.py)
             - Worst-case: `O(n)`
         - [Binary Search](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/binary_search.py)
             - Worst-case: `O(log n)`
     - Sorting
-        - [Selection Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/selection_sort.py)
-        - [Insertion Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/insertion_sort.py)
-        - [Bubble Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/bubble_sort.py)
         - [Quick Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/quick_sort.py)
             - Worst-case: `O(n^2)`
             - Best-case: `O(n * log n)`
