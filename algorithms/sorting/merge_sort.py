@@ -9,6 +9,7 @@ Average performance: O(n * log n)
 """
 
 
+# We could replace this function with `heapq.merge()`.
 def merge(sorted_arr1, sorted_arr2):
     sorted_arr = []
     i1 = 0
@@ -17,23 +18,22 @@ def merge(sorted_arr1, sorted_arr2):
         # Since there is no item to process in `sorted_arr1`,
         # we simply merge the remainder of `sorted_arr2` into the result.
         try:
-            head1 = sorted_arr1[i1]
+            n1 = sorted_arr1[i1]
         except IndexError:
             sorted_arr.extend(sorted_arr2[i2:])  # NOTE: Only merge the remainder.
             break
 
         try:
-            head2 = sorted_arr2[i2]
+            n2 = sorted_arr2[i2]
         except IndexError:
             sorted_arr.extend(sorted_arr1[i1:])
             break
 
-        if head1 <= head2:
-            # We could replace this with `yield`.
-            sorted_arr.append(head1)
+        if n1 <= n2:
+            sorted_arr.append(n1)
             i1 += 1
         else:
-            sorted_arr.append(head2)
+            sorted_arr.append(n2)
             i2 += 1
 
     return sorted_arr
