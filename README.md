@@ -83,7 +83,6 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Undirected Weighted Graph implemented with Adjacency Map](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/graphs/adjacency_map_undirected_weighted_graph.py)
 - Coding Problems
     - Array
-        - [Easy] [Maximum Subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_subarray.py) on [LeetCode](https://leetcode.com/problems/maximum-subarray/)
         - [Easy] [Missing Number](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/missing_number.py) on [LeetCode](https://leetcode.com/problems/missing-number/)
         - [Easy] [Shuffle the Array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/shuffle_the_array.py) on [LeetCode](https://leetcode.com/problems/shuffle-the-array/)
         - [Medium] [Container With Most Water](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/container_with_most_water.py) on [LeetCode](https://leetcode.com/problems/container-with-most-water/)
@@ -92,12 +91,9 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Medium] [Maximum Product Subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_product_subarray.py) on [LeetCode](https://leetcode.com/problems/maximum-product-subarray/)
         - [Medium] [Merge Intervals](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/merge_intervals.py) on [LeetCode](https://leetcode.com/problems/merge-intervals/)
         - [Medium] [Product of Array Except Self](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/product_of_array_except_self.py) on [LeetCode](https://leetcode.com/problems/product-of-array-except-self/)
-        - [Medium] [Sort Colors](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/sort_colors.py) on [LeetCode](https://leetcode.com/problems/sort-colors/)
         - [Medium] [Subsets](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/subsets.py) on [LeetCode](https://leetcode.com/problems/subsets/)
-        - [Hard] [Median of Two Sorted Arrays](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/median_of_two_sorted_arrays.py) on [LeetCode](https://leetcode.com/problems/median-of-two-sorted-arrays/)
     - Linked List
         - [Easy] [Linked List Cycle](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/linked_list_cycle.py) on [LeetCode](https://leetcode.com/problems/linked-list-cycle/)
-        - [Easy] [Merge Two Sorted Lists](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/merge_two_sorted_lists.py) on [LeetCode](https://leetcode.com/problems/merge-two-sorted-lists/)
         - [Easy] [Reverse Linked List](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/reverse_linked_list.py) on [LeetCode](https://leetcode.com/problems/reverse-linked-list/)
         - [Medium] [Add Two Numbers](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/add_two_numbers.py) on [LeetCode](https://leetcode.com/problems/add-two-numbers/)
         - [Medium] [Remove Nth Node From End of List](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/remove_nth_node_from_end_of_list.py) on [LeetCode](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
@@ -110,7 +106,6 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Easy] [CamelCase](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/camel_case.py) on [HackerRank](https://www.hackerrank.com/challenges/camelcase/problem)
         - [Easy] [HackerRank in a String](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/hackerrank_in_a_string.py) on [HackerRank](https://www.hackerrank.com/challenges/hackerrank-in-a-string/problem)
         - [Easy] [Implement strStr()](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/implement_strstr.py) on [LeetCode](https://leetcode.com/problems/implement-strstr/)
-        - [Easy] [Is Subsequence](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/is_subsequence.py) on [LeetCode](https://leetcode.com/problems/is-subsequence/)
         - [Easy] [Repeated String](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/repeated_string.py) on [HackerRank](https://www.hackerrank.com/challenges/repeated-string/problem)
         - [Easy] [Reverse Integer](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/reverse_integer.py) on [LeetCode](https://leetcode.com/problems/reverse-integer/)
         - [Easy] [Reverse String](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/reverse_string.py) on [LeetCode](https://leetcode.com/problems/reverse-string/)
@@ -128,9 +123,11 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Easy] [Sock Merchant](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/sock_merchant.py) on [HackerRank](https://www.hackerrank.com/challenges/sock-merchant/problem)
         - [Medium] [Top K Frequent Elements](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/top_k_frequent_elements.py) on [LeetCode](https://leetcode.com/problems/top-k-frequent-elements/)
     - Heap
+        - [Easy] [Merge Two Sorted Lists](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/merge_two_sorted_lists.py) on [LeetCode](https://leetcode.com/problems/merge-two-sorted-lists/)
         - [Easy] [Third Maximum Number](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/third_maximum_number.py) on [LeetCode](https://leetcode.com/problems/third-maximum-number/)
         - [Medium] [Kth Largest Element in an Array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/kth_largest_element_in_an_array.py) on [LeetCode](https://leetcode.com/problems/kth-largest-element-in-an-array/)
         - [Medium] [Task Scheduler](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/task_scheduler.py) on [LeetCode](https://leetcode.com/problems/task-scheduler/)
+        - [Hard] [Median of Two Sorted Arrays](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/median_of_two_sorted_arrays.py) on [LeetCode](https://leetcode.com/problems/median-of-two-sorted-arrays/)
         - [Hard] [Merge k Sorted Lists](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/merge_k_sorted_lists.py) on [LeetCode](https://leetcode.com/problems/merge-k-sorted-lists/)
     - Binary Tree
         - [Easy] [Balanced Binary Tree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/balanced_binary_tree.py) on [LeetCode](https://leetcode.com/problems/balanced-binary-tree/)
@@ -163,6 +160,9 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Medium] [Kruskal's (MST): Really Special Subtree](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/kruskal_mst_really_special_subtree.py) on [HackerRank](https://www.hackerrank.com/challenges/kruskalmstrsub/problem)
         - [Hard] [BFS: Shortest Reach in a Graph](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/bfs_shortest_path_in_a_graph.py) on [HackerRank](https://www.hackerrank.com/challenges/ctci-bfs-shortest-reach/problem)
         - [Hard] [Dijkstra: Shortest Reach 2](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/dijkstra_shortest_reach_2.py) on [HackerRank](https://www.hackerrank.com/challenges/dijkstrashortreach/problem)
+    - Sorting
+        - [Medium] [Sort Colors](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/sort_colors.py) on [LeetCode](https://leetcode.com/problems/sort-colors/)
+        - [Medium] [Sort List](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/sort_list.py) on [LeetCode](https://leetcode.com/problems/sort-list/)
     - Two Pointers
         - [Easy] [Best Time to Buy and Sell Stock](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/best_time_to_buy_and_sell_stock.py) on [LeetCode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
         - [Easy] [Two Sum II - Input array is sorted](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/two_sum_ii_input_array_is_sorted.py) on [LeetCode](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
@@ -174,6 +174,9 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
     - Permutations and Combinations
         - [Easy] [Two Characters](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/two_characters.py) on [HackerRank](https://www.hackerrank.com/challenges/two-characters/problem)
         - [Medium] [Permutations](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/permutations.py) on [LeetCode](https://leetcode.com/problems/permutations/)
+    - Dinamic Programming
+        - [Easy] [Is Subsequence](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/is_subsequence.py) on [LeetCode](https://leetcode.com/problems/is-subsequence/)
+        - [Easy] [Maximum Subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_subarray.py) on [LeetCode](https://leetcode.com/problems/maximum-subarray/)
     - Uncategorized
         - [Easy] [Fibonacci Number](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/fibonacci_number.py) on [LeetCode](https://leetcode.com/problems/fibonacci-number/)
         - [Easy] [Fizz Buzz](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/fizz_buzz.py) on [LeetCode](https://leetcode.com/problems/fizz-buzz/)
