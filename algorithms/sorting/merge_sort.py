@@ -29,6 +29,7 @@ def merge(sorted_arr1, sorted_arr2):
             break
 
         if head1 <= head2:
+            # We could replace this with `yield`.
             sorted_arr.append(head1)
             i1 += 1
         else:
@@ -40,15 +41,12 @@ def merge(sorted_arr1, sorted_arr2):
 
 def merge_sort(arr):
     # Base case:
-    # The list is considered as sorted
-    # if it's empty or there is only one item.
+    # The list is considered sorted if it's empty or there is only one item.
     if len(arr) <= 1:
         return arr
 
     # Recursive case:
-    # We divide the list into two equal-sized sublists,
-    # and sort both sublists recursively.
-    # then merge two sorted lists.
+    # Divide the list in half, sort both sublists recursively, then merge two sorted lists.
     middle_index = len(arr) // 2
     sorted_left_list = merge_sort(arr[:middle_index])
     sorted_right_list = merge_sort(arr[middle_index:])

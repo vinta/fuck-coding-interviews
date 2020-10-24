@@ -11,16 +11,16 @@ Average performance: O(n * log n)
 
 # This implementation takes extra space but is more faster than the in-place version
 def quick_sort(arr):
-    # Base case
+    # Base case:
+    # The list is considered sorted if it's empty or there is only one item.
     if len(arr) <= 1:
         return arr
 
-    # Recursive case
-    # Select the middle item as the pivot
-    pivot = arr[(0 + len(arr) - 1) // 2]
-
-    # Partition the other elements into two sublists,
-    # According to whether they are less than or greater than the pivot
+    # Recursive case:
+    # Select the middle as the pivot,
+    # partition items into tree sublists by whether they are equal to, less than, or greater than the pivot,
+    # sort three sublists recursively, and concatenate them.
+    pivot = arr[len(arr) // 2]
     left_list = []
     right_list = []
     center_list = []
@@ -29,7 +29,7 @@ def quick_sort(arr):
             left_list.append(item)
         elif item > pivot:
             right_list.append(item)
-        # There might be duplicates of the pivot
+        # NOTE: There might be duplicates of the pivot.
         elif item == pivot:
             center_list.append(item)
 

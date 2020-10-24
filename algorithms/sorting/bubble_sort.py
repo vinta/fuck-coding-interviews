@@ -1,6 +1,7 @@
 # coding: utf-8
 """
 Bubble Sort
+https://en.wikipedia.org/wiki/Bubble_sort
 
 Worst-case performance: O(n^2)
 Best-case performance: O(n) (the input array is already sorted)

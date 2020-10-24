@@ -3,9 +3,9 @@
 Insertion Sort
 https://en.wikipedia.org/wiki/Insertion_sort
 
-Worst-case performance: О(n^2) comparisons and swaps
-Best-case performance: O(n) comparisons, O(1) swaps
-Average performance: О(n^2) comparisons and swaps
+Worst-case performance: О(n^2)
+Best-case performance: O(n)
+Average performance: О(n^2)
 """
 
 

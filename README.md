@@ -28,21 +28,25 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
 - Algorithms
     - Hashing
         - [MAD (Multiply-Add-Divide) compression function](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/hashing/mad_compression.py)
-    - Math
-        - [Factorial number](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/math/factorial.py)
-        - [Fibonacci number](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/math/fibonacci.py)
     - Searching
         - [Linear Search](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/linear_search.py)
+            - Worst-case: `O(n)`
         - [Binary Search](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/binary_search.py)
-        - [Binary Search the first appeared position](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/binary_search_left_bound.py)
+            - Worst-case: `O(log n)`
     - Sorting
         - [Selection Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/selection_sort.py)
         - [Insertion Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/insertion_sort.py)
         - [Bubble Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/bubble_sort.py)
         - [Quick Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/quick_sort.py)
+            - Worst-case: `O(n^2)`
+            - Best-case: `O(n * log n)`
+            - Average-case: `O(n * log n)`
         - [Merge Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/merge_sort.py)
+            - All-case: : `O(n * log n)`
         - [Heap Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/heap_sort.py)
+            - All-case: : `O(n * log n)`
         - [Counting Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/counting_sort.py)
+            - All-case: `O(n)`
 - Data Structures
     - Array
         - [Circular Array](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/arrays/circular_array.py)

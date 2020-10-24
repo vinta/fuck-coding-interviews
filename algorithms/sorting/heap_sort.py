@@ -1,4 +1,12 @@
 # coding: utf-8
+"""
+Heap Sort
+https://en.wikipedia.org/wiki/Heapsort
+
+Worst-case performance: O(n * log n)
+Best-case performance: O(n * log n)
+Average performance: O(n * log n)
+"""
 import heapq
 
 
