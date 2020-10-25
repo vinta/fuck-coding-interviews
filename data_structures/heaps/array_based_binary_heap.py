@@ -56,8 +56,7 @@ class ArrayBasedBinaryHeap:
                 return
             index = parent_index
 
-    # O(1)
-    # O(log n) if it triggers up-heap
+    # O(log n)
     def push(self, value):
         self._array.append(value)  # Add the element to the bottom level at the leftmost open space.
         self._up_heap(len(self._array) - 1)

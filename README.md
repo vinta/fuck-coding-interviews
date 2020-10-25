@@ -27,21 +27,12 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
 
 - Algorithms
     - Searching
-        - [Linear Search](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/linear_search.py)
-            - Worst-case: `O(n)`
         - [Binary Search](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/searching/binary_search.py)
-            - Worst-case: `O(log n)`
     - Sorting
-        - [Quick Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/quick_sort.py)
-            - Worst-case: `O(n^2)`
-            - Best-case: `O(n * log n)`
-            - Average-case: `O(n * log n)`
-        - [Merge Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/merge_sort.py)
-            - All-case: : `O(n * log n)`
-        - [Heap Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/heap_sort.py)
-            - All-case: : `O(n * log n)`
+        - [Quicksort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/quicksort.py)
+        - [Mergesort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/mergesort.py)
+        - [Heapsort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/heapsort.py)
         - [Counting Sort](https://github.com/vinta/fuck-coding-interviews/blob/master/algorithms/sorting/counting_sort.py)
-            - All-case: `O(n)`
 - Data Structures
     - Array
         - [Circular Array](https://github.com/vinta/fuck-coding-interviews/blob/master/data_structures/arrays/circular_array.py)
@@ -203,13 +194,13 @@ If you find any bug or incorrect implementation in this repo, please let me know
 
 - [Grokking Algorithms](https://learning.oreilly.com/library/view/grokking-algorithms-an/9781617292231/)
 - [Data Structures and Algorithms in Python](https://learning.oreilly.com/library/view/data-structures-and/9781118290279/)
-- [Cracking the Coding Interview](http://www.crackingthecodinginterview.com/)
+- [Cracking the Coding Interview](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/)
+- [Elements of Programming Interviews in Python](https://www.amazon.com/Elements-Programming-Interviews-Python-Insiders/dp/1537713949/)
 
 ### Websites
 
+- [Big-O Cheat Sheet](https://www.bigocheatsheet.com/)
 - [Data Structure Visualizations](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
-- [Programiz](https://www.programiz.com/dsa)
-- [Tech Interview Handbook](https://yangshun.github.io/tech-interview-handbook/)
 - [Visualize Python Code Execution](http://www.pythontutor.com/live.html#mode=edit)
 
 ### Repositories

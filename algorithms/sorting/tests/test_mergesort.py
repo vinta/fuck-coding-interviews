@@ -2,7 +2,7 @@
 import random
 import unittest
 
-from algorithms.sorting.merge_sort import merge_sort
+from algorithms.sorting.mergesort import mergesort
 
 
 class TestCase(unittest.TestCase):
@@ -23,7 +23,7 @@ class TestCase(unittest.TestCase):
         ]
         for array in test_lists:
             with self.subTest(array=array):
-                self.assertEqual(merge_sort(array.copy()), sorted(array))
+                self.assertEqual(mergesort(array.copy()), sorted(array))
 
 
 if __name__ == '__main__':

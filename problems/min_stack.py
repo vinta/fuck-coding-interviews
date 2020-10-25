@@ -4,7 +4,6 @@ https://leetcode.com/problems/min-stack/
 """
 
 
-# The brute-force way.
 class MinStack:
     def __init__(self):
         self.array = []

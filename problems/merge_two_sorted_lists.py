@@ -12,7 +12,6 @@ class ListNode:  # pragma: no cover
         self.next = next
 
 
-# The brute-force way.
 class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
         def gen_values(node):

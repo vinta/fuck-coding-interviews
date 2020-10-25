@@ -10,7 +10,6 @@ class ListNode:  # pragma: no cover
         self.next = next
 
 
-# The brute-force way.
 class Solution:
     def sortList(self, head: ListNode) -> ListNode:
         def to_list(node):

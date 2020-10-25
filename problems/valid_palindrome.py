@@ -4,7 +4,6 @@ https://leetcode.com/problems/valid-palindrome/
 """
 
 
-# The brute-force way.
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         clean_s = ''.join(c for c in s if c.isalnum()).lower()

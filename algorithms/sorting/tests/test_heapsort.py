@@ -2,8 +2,8 @@
 import random
 import unittest
 
-from algorithms.sorting.quick_sort import quick_sort
-from algorithms.sorting.quick_sort import quick_sort_in_place
+from algorithms.sorting.heapsort import heapsort
+from algorithms.sorting.heapsort import heap_sort_heapq
 
 
 class TestCase(unittest.TestCase):
@@ -24,7 +24,7 @@ class TestCase(unittest.TestCase):
         ]
         for array in test_lists:
             with self.subTest(array=array):
-                self.assertEqual(quick_sort(array.copy()), sorted(array))
+                self.assertEqual(heapsort(array.copy()), sorted(array))
 
 
 class TestCase2(unittest.TestCase):
@@ -45,7 +45,7 @@ class TestCase2(unittest.TestCase):
         ]
         for array in test_lists:
             with self.subTest(array=array):
-                self.assertEqual(quick_sort_in_place(array.copy()), sorted(array))
+                self.assertEqual(heap_sort_heapq(array.copy()), sorted(array))
 
 
 if __name__ == '__main__':

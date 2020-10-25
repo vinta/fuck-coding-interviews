@@ -10,7 +10,7 @@ Average performance: O(n * log n)
 
 
 # This implementation takes extra space but is more faster than the in-place version
-def quick_sort(arr):
+def quicksort(arr):
     # Base case:
     # The list is considered sorted if it's empty or there is only one item.
     if len(arr) <= 1:
@@ -33,12 +33,12 @@ def quick_sort(arr):
         elif item == pivot:
             center_list.append(item)
 
-    return quick_sort(left_list) + center_list + quick_sort(right_list)
+    return quicksort(left_list) + center_list + quicksort(right_list)
 
 
 # https://en.wikipedia.org/wiki/Quicksort#Hoare_partition_scheme
 # https://stackabuse.com/quicksort-in-python/
-def quick_sort_in_place(arr):
+def quicksort_in_place(arr):
     # Partition is to move all items that less than the pivot to the left side of the pivot,
     # and move all items that greater than the pivot to the right side of the pivot
     # As a result, the pivot is in its final position,
@@ -78,7 +78,7 @@ def quick_sort_in_place(arr):
 
         return pivot_index
 
-    def quick_sort_range(arr, start, end):
+    def quicksort_range(arr, start, end):
         # Base case
         # The array of size 0 or 1 which (start, end) is (0, -1) or (0, 0)
         if start >= end:
@@ -86,8 +86,8 @@ def quick_sort_in_place(arr):
 
         # Recursive case
         pivot_index = partition(arr, start, end)
-        quick_sort_range(arr, start, pivot_index - 1)
-        quick_sort_range(arr, pivot_index + 1, end)
+        quicksort_range(arr, start, pivot_index - 1)
+        quicksort_range(arr, pivot_index + 1, end)
         return arr
 
-    return quick_sort_range(arr, 0, len(arr) - 1)
+    return quicksort_range(arr, 0, len(arr) - 1)

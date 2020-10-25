@@ -10,9 +10,11 @@ class ArrayBasedQueue:
         for item in self.array:
             yield item
 
+    # O(1)
     def enqueue(self, value):
         self.array.append(value)
 
+    # O(n)
     def dequeue(self):
         try:
             return self.array.pop(0)

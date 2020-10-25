@@ -77,7 +77,7 @@ class Heap:
         return popped
 
 
-def heap_sort(arr):
+def heapsort(arr):
     heap = Heap()
     for item in arr:
         heap.push(item)

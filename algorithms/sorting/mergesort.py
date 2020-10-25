@@ -1,7 +1,7 @@
 # coding: utf-8
 """
 Merge Sort
-https://en.wikipedia.org/wiki/Merge_sort
+https://en.wikipedia.org/wiki/mergesort
 
 Worst-case performance: O(n * log n)
 Best-case performance: O(n * log n)
@@ -39,7 +39,7 @@ def merge(sorted_arr1, sorted_arr2):
     return sorted_arr
 
 
-def merge_sort(arr):
+def mergesort(arr):
     # Base case:
     # The list is considered sorted if it's empty or there is only one item.
     if len(arr) <= 1:
@@ -48,6 +48,6 @@ def merge_sort(arr):
     # Recursive case:
     # Divide the list in half, sort both sublists recursively, then merge two sorted lists.
     middle_index = len(arr) // 2
-    sorted_left_list = merge_sort(arr[:middle_index])
-    sorted_right_list = merge_sort(arr[middle_index:])
+    sorted_left_list = mergesort(arr[:middle_index])
+    sorted_right_list = mergesort(arr[middle_index:])
     return merge(sorted_left_list, sorted_right_list)
