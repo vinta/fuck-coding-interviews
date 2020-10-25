@@ -18,22 +18,22 @@ def merge(sorted_arr1, sorted_arr2):
         # Since there is no item to process in `sorted_arr1`,
         # we simply merge the remainder of `sorted_arr2` into the result.
         try:
-            n1 = sorted_arr1[i1]
+            current1 = sorted_arr1[i1]
         except IndexError:
             sorted_arr.extend(sorted_arr2[i2:])  # NOTE: Only merge the remainder.
             break
 
         try:
-            n2 = sorted_arr2[i2]
+            current2 = sorted_arr2[i2]
         except IndexError:
             sorted_arr.extend(sorted_arr1[i1:])
             break
 
-        if n1 <= n2:
-            sorted_arr.append(n1)
+        if current1 <= current2:
+            sorted_arr.append(current1)
             i1 += 1
         else:
-            sorted_arr.append(n2)
+            sorted_arr.append(current2)
             i2 += 1
 
     return sorted_arr
