@@ -82,7 +82,6 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Medium] [Maximum Product Subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_product_subarray.py) on [LeetCode](https://leetcode.com/problems/maximum-product-subarray/)
         - [Medium] [Merge Intervals](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/merge_intervals.py) on [LeetCode](https://leetcode.com/problems/merge-intervals/)
         - [Medium] [Product of Array Except Self](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/product_of_array_except_self.py) on [LeetCode](https://leetcode.com/problems/product-of-array-except-self/)
-        - [Medium] [Subsets](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/subsets.py) on [LeetCode](https://leetcode.com/problems/subsets/)
     - Linked List
         - [Easy] [Linked List Cycle](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/linked_list_cycle.py) on [LeetCode](https://leetcode.com/problems/linked-list-cycle/)
         - [Easy] [Reverse Linked List](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/reverse_linked_list.py) on [LeetCode](https://leetcode.com/problems/reverse-linked-list/)
@@ -163,10 +162,11 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Reverse Only Alphabetical](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/reverse_only_alphabetical.py) on [AlgoDaily](https://algodaily.com/challenges/reverse-only-alphabetical)
     - Bit Manipulation
         - [Easy] [Power of Two](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/power_of_two.py) on [LeetCode](https://leetcode.com/problems/power-of-two/)
-    - Permutations and Combinations
+    - Backtracking
         - [Easy] [Two Characters](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/two_characters.py) on [HackerRank](https://www.hackerrank.com/challenges/two-characters/problem)
         - [Medium] [Permutations](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/permutations.py) on [LeetCode](https://leetcode.com/problems/permutations/)
-    - Dinamic Programming
+        - [Medium] [Subsets](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/subsets.py) on [LeetCode](https://leetcode.com/problems/subsets/)
+    - Dynamic Programming
         - [Easy] [Is Subsequence](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/is_subsequence.py) on [LeetCode](https://leetcode.com/problems/is-subsequence/)
         - [Easy] [Maximum Subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_subarray.py) on [LeetCode](https://leetcode.com/problems/maximum-subarray/)
     - Uncategorized
