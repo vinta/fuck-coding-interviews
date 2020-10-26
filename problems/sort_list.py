@@ -87,7 +87,7 @@ class Solution3:
             heapq.heappush(min_heap, head.val)
             head = head.next
 
-        # Rebuild the linked list from the sorted list.
+        # Rebuild the linked list from the heap.
         node = dummy_head = ListNode()
         while min_heap:
             val = heapq.heappop(min_heap)
