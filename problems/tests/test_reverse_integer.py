@@ -20,7 +20,7 @@ class TestCase(unittest.TestCase):
         ]
 
         for x, expected in test_lists:
-            with self.subTest(x=x, expected=expected):
+            with self.subTest(x=x):
                 self.assertEqual(self.solution.reverse(x), expected)
 
 

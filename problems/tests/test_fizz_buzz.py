@@ -19,7 +19,7 @@ class TestCase(unittest.TestCase):
         for data in test_data:
             n = data['n']
             expected = data['expected']
-            with self.subTest(n=n, expected=expected):
+            with self.subTest(n=n):
                 self.assertEqual(list(self.solution.fizzBuzz(n)), expected)
 
 

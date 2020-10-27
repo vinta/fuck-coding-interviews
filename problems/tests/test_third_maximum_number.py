@@ -21,7 +21,7 @@ class TestCase(unittest.TestCase):
         for data in test_data:
             nums = data['nums']
             expected = data['expected']
-            with self.subTest(nums=nums, expected=expected):
+            with self.subTest(nums=nums):
                 self.assertEqual(self.solution.thirdMax(nums), expected)
 
 
@@ -40,7 +40,7 @@ class TestCase2(unittest.TestCase):
         for data in test_data:
             nums = data['nums']
             expected = data['expected']
-            with self.subTest(nums=nums, expected=expected):
+            with self.subTest(nums=nums):
                 self.assertEqual(self.solution.thirdMax(nums), expected)
 
 
@@ -59,7 +59,7 @@ class TestCase3(unittest.TestCase):
         for data in test_data:
             nums = data['nums']
             expected = data['expected']
-            with self.subTest(nums=nums, expected=expected):
+            with self.subTest(nums=nums):
                 self.assertEqual(self.solution.thirdMax(nums), expected)
 
 

@@ -20,7 +20,7 @@ class TestCase(unittest.TestCase):
         for data in test_data:
             prices = data['prices']
             expected = data['expected']
-            with self.subTest(prices=prices, expected=expected):
+            with self.subTest(prices=prices):
                 self.assertEqual(self.solution.maxProfit(prices), expected)
 
 
@@ -38,7 +38,7 @@ class TestCase2(unittest.TestCase):
         for data in test_data:
             prices = data['prices']
             expected = data['expected']
-            with self.subTest(prices=prices, expected=expected):
+            with self.subTest(prices=prices):
                 self.assertEqual(self.solution.maxProfit(prices), expected)
 
 
@@ -56,7 +56,7 @@ class TestCase3(unittest.TestCase):
         for data in test_data:
             prices = data['prices']
             expected = data['expected']
-            with self.subTest(prices=prices, expected=expected):
+            with self.subTest(prices=prices):
                 self.assertEqual(self.solution.maxProfit(prices), expected)
 
 if __name__ == '__main__':

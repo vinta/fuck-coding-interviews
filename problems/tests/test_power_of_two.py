@@ -21,7 +21,7 @@ class TestCase(unittest.TestCase):
         for data in test_data:
             n = data['n']
             expected = data['expected']
-            with self.subTest(n=n, expected=expected):
+            with self.subTest(n=n):
                 self.assertEqual(self.solution.isPowerOfTwo(n), expected)
 
 
@@ -40,7 +40,7 @@ class TestCase2(unittest.TestCase):
         for data in test_data:
             n = data['n']
             expected = data['expected']
-            with self.subTest(n=n, expected=expected):
+            with self.subTest(n=n):
                 self.assertEqual(self.solution.isPowerOfTwo(n), expected)
 
 
@@ -59,7 +59,7 @@ class TestCase3(unittest.TestCase):
         for data in test_data:
             n = data['n']
             expected = data['expected']
-            with self.subTest(n=n, expected=expected):
+            with self.subTest(n=n):
                 self.assertEqual(self.solution.isPowerOfTwo(n), expected)
 
 

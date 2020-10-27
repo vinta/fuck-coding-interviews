@@ -12,7 +12,7 @@ class TestCase(unittest.TestCase):
         for data in test_data:
             s = data['input']
             expected = data['expected']
-            with self.subTest(s=s, expected=expected):
+            with self.subTest(s=s):
                 self.assertEqual(camelcase(s), expected)
 
 

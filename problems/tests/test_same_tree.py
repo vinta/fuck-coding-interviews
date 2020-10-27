@@ -19,7 +19,7 @@ class TestCase(unittest.TestCase):
             p_tree_str = data['p_tree_str']
             q_tree_str = data['q_tree_str']
             expected = data['expected']
-            with self.subTest(p_tree_str=p_tree_str, q_tree_str=q_tree_str, expected=expected):
+            with self.subTest(p_tree_str=p_tree_str, q_tree_str=q_tree_str):
                 p = deserialize_tree_str(p_tree_str)
                 q = deserialize_tree_str(q_tree_str)
                 output = self.solution.isSameTree(p, q)

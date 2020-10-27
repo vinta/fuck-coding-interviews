@@ -17,7 +17,7 @@ class TestCase(unittest.TestCase):
             tree_str = data['tree_str']
             path_sum = data['path_sum']
             expected = data['expected']
-            with self.subTest(tree_str=tree_str, path_sum=path_sum, expected=expected):
+            with self.subTest(tree_str=tree_str, path_sum=path_sum):
                 root = deserialize_tree_str(tree_str)
                 self.assertEqual(self.solution.hasPathSum(root, path_sum), expected)
 

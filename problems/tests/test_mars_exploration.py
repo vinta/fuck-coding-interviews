@@ -14,7 +14,7 @@ class TestCase(unittest.TestCase):
         for item in array:
             message = item['message']
             expected = item['expected']
-            with self.subTest(message=message, expected=expected):
+            with self.subTest(message=message):
                 self.assertEqual(marsExploration(message), expected)
 
 

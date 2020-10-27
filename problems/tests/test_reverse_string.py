@@ -16,7 +16,7 @@ class TestCase(unittest.TestCase):
         for data in test_data:
             s = data['s']
             expected = list(reversed(s))
-            with self.subTest(s=s, expected=expected):
+            with self.subTest(s=s):
                 self.solution.reverseString(s)
                 self.assertEqual(s, expected)
 

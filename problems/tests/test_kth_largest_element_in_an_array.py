@@ -19,7 +19,7 @@ class TestCase(unittest.TestCase):
             nums = data['nums']
             k = data['k']
             expected = data['expected']
-            with self.subTest(nums=nums, k=k, expected=expected):
+            with self.subTest(nums=nums, k=k):
                 self.assertEqual(self.solution.findKthLargest(nums, k), expected)
 
 
@@ -36,7 +36,7 @@ class TestCase2(unittest.TestCase):
             nums = data['nums']
             k = data['k']
             expected = data['expected']
-            with self.subTest(nums=nums, k=k, expected=expected):
+            with self.subTest(nums=nums, k=k):
                 self.assertEqual(self.solution.findKthLargest(nums, k), expected)
 
 
@@ -53,7 +53,7 @@ class TestCase3(unittest.TestCase):
             nums = data['nums']
             k = data['k']
             expected = data['expected']
-            with self.subTest(nums=nums, k=k, expected=expected):
+            with self.subTest(nums=nums, k=k):
                 self.assertEqual(self.solution.findKthLargest(nums, k), expected)
 
 

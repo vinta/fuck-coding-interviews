@@ -21,7 +21,7 @@ class TestCase(unittest.TestCase):
             s = data['s']
             t = data['t']
             expected = data['expected']
-            with self.subTest(s=s, t=t, expected=expected):
+            with self.subTest(s=s, t=t):
                 self.assertEqual(self.solution.isAnagram(s, t), expected)
 
 
@@ -39,7 +39,7 @@ class TestCase2(unittest.TestCase):
             s = data['s']
             t = data['t']
             expected = data['expected']
-            with self.subTest(s=s, t=t, expected=expected):
+            with self.subTest(s=s, t=t):
                 self.assertEqual(self.solution.isAnagram(s, t), expected)
 
 
@@ -57,7 +57,7 @@ class TestCase3(unittest.TestCase):
             s = data['s']
             t = data['t']
             expected = data['expected']
-            with self.subTest(s=s, t=t, expected=expected):
+            with self.subTest(s=s, t=t):
                 self.assertEqual(self.solution.isAnagram(s, t), expected)
 
 
@@ -75,7 +75,7 @@ class TestCase4(unittest.TestCase):
             s = data['s']
             t = data['t']
             expected = data['expected']
-            with self.subTest(s=s, t=t, expected=expected):
+            with self.subTest(s=s, t=t):
                 self.assertEqual(self.solution.isAnagram(s, t), expected)
 
 

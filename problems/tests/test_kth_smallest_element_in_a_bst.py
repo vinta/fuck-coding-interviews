@@ -18,7 +18,7 @@ class TestCase(unittest.TestCase):
             tree_str = data['tree_str']
             k = data['k']
             expected = data['expected']
-            with self.subTest(tree_str=tree_str, k=k, expected=expected):
+            with self.subTest(tree_str=tree_str, k=k):
                 root = deserialize_tree_str(tree_str)
                 output = self.solution.kthSmallest(root, k)
                 self.assertEqual(output, expected)

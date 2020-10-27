@@ -18,7 +18,7 @@ class TestCase(unittest.TestCase):
         for data in test_data:
             tree_str = data['tree_str']
             expected = data['expected']
-            with self.subTest(tree_str=tree_str, expected=expected):
+            with self.subTest(tree_str=tree_str):
                 root = deserialize_tree_str(tree_str)
                 output = self.solution.minDepth(root)
                 self.assertEqual(output, expected)

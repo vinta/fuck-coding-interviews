@@ -19,7 +19,7 @@ class TestCase(unittest.TestCase):
             nums = data['nums']
             n = data['n']
             expected = data['expected']
-            with self.subTest(nums=nums, n=n, expected=expected):
+            with self.subTest(nums=nums, n=n):
                 self.assertEqual(self.solution.shuffle(nums, n), expected)
 
 
@@ -37,7 +37,7 @@ class TestCase2(unittest.TestCase):
             nums = data['nums']
             n = data['n']
             expected = data['expected']
-            with self.subTest(nums=nums, n=n, expected=expected):
+            with self.subTest(nums=nums, n=n):
                 self.assertEqual(self.solution.shuffle(nums, n), expected)
 
 

@@ -21,7 +21,7 @@ class TestCase(unittest.TestCase):
             nums = data['nums']
             target = data['target']
             expected = data['expected']
-            with self.subTest(nums=nums, target=target, expected=expected):
+            with self.subTest(nums=nums, target=target):
                 self.assertEqual(self.solution.twoSum(nums, target), expected)
 
 
@@ -40,7 +40,7 @@ class TestCase2(unittest.TestCase):
             nums = data['nums']
             target = data['target']
             expected = data['expected']
-            with self.subTest(nums=nums, target=target, expected=expected):
+            with self.subTest(nums=nums, target=target):
                 self.assertEqual(self.solution.twoSum(nums, target), expected)
 
 
@@ -59,7 +59,7 @@ class TestCase3(unittest.TestCase):
             nums = data['nums']
             target = data['target']
             expected = data['expected']
-            with self.subTest(nums=nums, target=target, expected=expected):
+            with self.subTest(nums=nums, target=target):
                 self.assertEqual(self.solution.twoSum(nums, target), expected)
 
 

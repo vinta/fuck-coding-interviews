@@ -16,7 +16,7 @@ class TestCase(unittest.TestCase):
         for data in test_data:
             nums = data['nums']
             expected = data['expected']
-            with self.subTest(nums=nums, expected=expected):
+            with self.subTest(nums=nums):
                 self.assertEqual(self.solution.singleNumber(nums), expected)
 
 

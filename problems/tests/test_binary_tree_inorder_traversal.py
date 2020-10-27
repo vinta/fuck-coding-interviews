@@ -25,7 +25,7 @@ class TestCase(unittest.TestCase):
         for data in test_data:
             tree_str = data['input']
             expected = data['expected']
-            with self.subTest(tree_str=tree_str, expected=expected):
+            with self.subTest(tree_str=tree_str):
                 root = deserialize_tree_str(tree_str)
                 output = list_to_compact_str(self.solution.inorderTraversal(root))
                 self.assertEqual(output, expected)

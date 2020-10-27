@@ -14,7 +14,7 @@ class TestCase(unittest.TestCase):
         for data in test_data:
             s = data['s']
             expected = data['expected']
-            with self.subTest(s=s, expected=expected):
+            with self.subTest(s=s):
                 self.assertEqual(alternate(s), expected)
 
 

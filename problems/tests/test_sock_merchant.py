@@ -13,7 +13,7 @@ class TestCase(unittest.TestCase):
             n = data['n']
             ar = data['ar']
             expected = data['expected']
-            with self.subTest(n=n, ar=ar, expected=expected):
+            with self.subTest(n=n, ar=ar):
                 self.assertEqual(sockMerchant(n, ar), expected)
 
 
