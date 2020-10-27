@@ -164,6 +164,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Easy] [Power of Two](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/power_of_two.py) on [LeetCode](https://leetcode.com/problems/power-of-two/)
     - Backtracking
         - [Easy] [Two Characters](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/two_characters.py) on [HackerRank](https://www.hackerrank.com/challenges/two-characters/problem)
+        - [Medium] [Combinations](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/combinations.py) on [LeetCode](https://leetcode.com/problems/combinations/)
         - [Medium] [Permutations](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/permutations.py) on [LeetCode](https://leetcode.com/problems/permutations/)
         - [Medium] [Subsets](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/subsets.py) on [LeetCode](https://leetcode.com/problems/subsets/)
     - Dynamic Programming

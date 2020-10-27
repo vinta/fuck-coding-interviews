@@ -4,6 +4,7 @@ import unittest
 
 from problems.permutations import Solution
 from problems.permutations import Solution2
+from problems.permutations import Solution3
 
 
 class TestCase(unittest.TestCase):
@@ -29,6 +30,27 @@ class TestCase(unittest.TestCase):
 class TestCase2(unittest.TestCase):
     def setUp(self):
         self.solution = Solution2()
+
+    def test(self):
+        test_data = [
+            {'nums': []},
+            {'nums': [1, ]},
+            {'nums': [1, 2]},
+            {'nums': [1, 2, 3]},
+            {'nums': [1, 2, 3, 4]},
+            {'nums': [1, 1, 2, 2, 2]},
+        ]
+        for data in test_data:
+            nums = data['nums']
+            output = (tuple(arr) for arr in self.solution.permute(nums))
+            expected = itertools.permutations(nums)
+            with self.subTest(nums=nums):
+                self.assertCountEqual(output, expected)
+
+
+class TestCase3(unittest.TestCase):
+    def setUp(self):
+        self.solution = Solution3()
 
     def test(self):
         test_data = [
