@@ -170,6 +170,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
     - Dynamic Programming
         - [Easy] [Is Subsequence](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/is_subsequence.py) on [LeetCode](https://leetcode.com/problems/is-subsequence/)
         - [Easy] [Maximum Subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_subarray.py) on [LeetCode](https://leetcode.com/problems/maximum-subarray/)
+        - [Hard] [Trapping Rain Water](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/trapping_rain_water.py) on [LeetCode](https://leetcode.com/problems/trapping-rain-water/)
     - Uncategorized
         - [Easy] [Fibonacci Number](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/fibonacci_number.py) on [LeetCode](https://leetcode.com/problems/fibonacci-number/)
         - [Easy] [Fizz Buzz](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/fizz_buzz.py) on [LeetCode](https://leetcode.com/problems/fizz-buzz/)
