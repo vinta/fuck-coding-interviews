@@ -78,11 +78,9 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Medium] [Container With Most Water](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/container_with_most_water.py) on [LeetCode](https://leetcode.com/problems/container-with-most-water/)
         - [Medium] [Find Minimum in Rotated Sorted Array](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/find_minimum_in_rotated_sorted_array.py) on [LeetCode](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
         - [Medium] [Find the Duplicate Number](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/find_the_duplicate_number.py) on [LeetCode](https://leetcode.com/problems/find-the-duplicate-number/)
-        - [Medium] [Maximum Product Subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_product_subarray.py) on [LeetCode](https://leetcode.com/problems/maximum-product-subarray/)
         - [Medium] [Merge Intervals](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/merge_intervals.py) on [LeetCode](https://leetcode.com/problems/merge-intervals/)
         - [Medium] [Product of Array Except Self](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/product_of_array_except_self.py) on [LeetCode](https://leetcode.com/problems/product-of-array-except-self/)
     - Linked List
-        - [Easy] [Linked List Cycle](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/linked_list_cycle.py) on [LeetCode](https://leetcode.com/problems/linked-list-cycle/)
         - [Easy] [Reverse Linked List](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/reverse_linked_list.py) on [LeetCode](https://leetcode.com/problems/reverse-linked-list/)
         - [Medium] [Add Two Numbers](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/add_two_numbers.py) on [LeetCode](https://leetcode.com/problems/add-two-numbers/)
         - [Medium] [Remove Nth Node From End of List](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/remove_nth_node_from_end_of_list.py) on [LeetCode](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)
@@ -154,6 +152,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Medium] [Sort List](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/sort_list.py) on [LeetCode](https://leetcode.com/problems/sort-list/)
     - Two Pointers
         - [Easy] [Best Time to Buy and Sell Stock](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/best_time_to_buy_and_sell_stock.py) on [LeetCode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+        - [Easy] [Linked List Cycle](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/linked_list_cycle.py) on [LeetCode](https://leetcode.com/problems/linked-list-cycle/)
         - [Easy] [Middle of the Linked List](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/middle_of_the_linked_list.py) on [LeetCode](https://leetcode.com/problems/middle-of-the-linked-list/)
         - [Easy] [Two Sum II - Input array is sorted](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/two_sum_ii_input_array_is_sorted.py) on [LeetCode](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
         - [Easy] [Valid Palindrome](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/valid_palindrome.py) on [LeetCode](https://leetcode.com/problems/valid-palindrome/)
@@ -170,6 +169,7 @@ A list of companies (or teams) that don't do "whiteboard" interviews.
         - [Easy] [Is Subsequence](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/is_subsequence.py) on [LeetCode](https://leetcode.com/problems/is-subsequence/)
         - [Easy] [Maximum Subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_subarray.py) on [LeetCode](https://leetcode.com/problems/maximum-subarray/)
         - [Medium] [Coin Change](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/coin_change.py) on [LeetCode](https://leetcode.com/problems/coin-change/)
+        - [Medium] [Maximum Product Subarray](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/maximum_product_subarray.py) on [LeetCode](https://leetcode.com/problems/maximum-product-subarray/)
         - [Hard] [Trapping Rain Water](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/trapping_rain_water.py) on [LeetCode](https://leetcode.com/problems/trapping-rain-water/)
     - Uncategorized
         - [Easy] [Fibonacci Number](https://github.com/vinta/fuck-coding-interviews/blob/master/problems/fibonacci_number.py) on [LeetCode](https://leetcode.com/problems/fibonacci-number/)
