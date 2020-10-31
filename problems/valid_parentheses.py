@@ -18,11 +18,11 @@ class Solution:
         stack = []
 
         for char in s:
-            # If we find an opening brace, we push it onto the stack.
-            # Having it on the stack means we're waiting to close that particular brace.
+            # If we find an opening bracket, we push it onto the stack.
+            # Having it on the stack means we're waiting to close that particular bracket.
             if char in ['(', '{', '[']:
                 stack.append(char)
-            # If we find a closing brace, we inspect the top element in the stack. We then analyze:
+            # If we find a closing bracket, we inspect the top element in the stack. We then analyze:
             elif char in [')', '}', ']']:
                 # NOTE: The stack might be empty if there are unbalanced brackets.
                 try:
@@ -34,7 +34,7 @@ class Solution:
                         return False
 
         # If we make it to the end of the line and there's still something left on the stack,
-        # that means there’s an opening brace without a corresponding closing brace
+        # that means there’s an opening bracket without a corresponding closing bracket
         if stack:
             return False
 
