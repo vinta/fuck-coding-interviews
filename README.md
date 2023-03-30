@@ -1,8 +1,5 @@
 # fuck-coding-interviews
 
-[![build](https://img.shields.io/github/workflow/status/vinta/fuck-coding-interviews/CI?style=flat-square)](https://github.com/vinta/fuck-coding-interviews/actions)
-[![coverage](https://img.shields.io/codecov/c/github/vinta/fuck-coding-interviews?style=flat-square)](https://codecov.io/gh/vinta/fuck-coding-interviews)
-
 This repository is created by [an awkward programmer](https://leetcode.com/vinta/) who always struggles with coding problems on LeetCode, even with some **Easy** questions.
 
 > How on earth can I ever think of a solution like that in an interview?!
